@@ -1,13 +1,12 @@
-import Login from "pages/authPages/login/Login";
-import SignUp from "pages/authPages/signup/SignUp";
-import NotFound from "pages/notFound";
-
+import NotFound from "../pages/notFound";
+import Trips from "../pages/trips";
+import { TRIPS_URL } from "./frontend";
 
 export const mainRoutes = [
   {
     id: 1,
-    path: WELCOME_URL,
-    Component: Welcome,
+    path: TRIPS_URL,
+    Component: Trips,
     exact: true,
     isProtected: false,
     hide: false,

@@ -1,5 +1,13 @@
+// import { getAuthCookie } from 'utilities/helpers';
 import axios from "axios";
-import { forceLogOut, getAuthCookie } from "utilities/helpers";
+
+function getAuthCookie(){
+  return null
+}
+
+function forceLogOut(){
+  return null
+}
 
 export interface GeneralResponseType {
   error: string | null;
