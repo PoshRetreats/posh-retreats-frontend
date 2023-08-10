@@ -1,5 +1,5 @@
 import { FACEBOOK, INSTAGRAM, LOGO, TIKTOK, YOUTUBE } from "assets";
-import { FooterContainer, FooterLogo } from "./style";
+import { FooterContainer, FooterListDataArea, FooterLogo } from "./style";
 import FooterList, { FooterListType, ListType } from "./FooterList";
 
 const footerListData: FooterListType[] = [
@@ -50,9 +50,11 @@ export default function Footer() {
 	return (
 		<FooterContainer>
 			<FooterLogo src={LOGO} alt="app_logo" />
-			{footerListData.map((data: FooterListType) => (
-				<FooterList props={data} />
-			))}
+			<FooterListDataArea>
+				{footerListData.map((data: FooterListType) => (
+					<FooterList props={data} />
+				))}
+			</FooterListDataArea>
 		</FooterContainer>
 	);
 }

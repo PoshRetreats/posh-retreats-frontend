@@ -29,7 +29,7 @@ export default function FooterList({ props }: FooterListProp) {
 			{props.listType === ListType.texts &&
 				props.list.map((data: ListDataType) => <h2>{data.name}</h2>)}
 			{props.listType === ListType.images &&
-				props.list.map((image: any) => <img src={image} alt="socials_icon" />)}
+				props.list.map((image: string) => <img src={image} alt="socials_icon" />)}
 		</FooterListContainer>
 	);
 }

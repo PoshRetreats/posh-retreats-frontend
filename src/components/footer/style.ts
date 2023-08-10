@@ -7,11 +7,18 @@ export const FooterContainer = styled.div`
 	padding: 26px 64px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
 `;
 
-export const FooterLogo = styled.img``;
+export const FooterListDataArea = styled.div`
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  width: 100%;
+`;
+
+export const FooterLogo = styled.img`
+  margin-right: 73px;
+`;
 
 export const FooterListContainer = styled.div`
 	h1 {
@@ -30,11 +37,13 @@ export const FooterListContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
+    cursor: pointer;
 	}
 
 	img {
 		width: 20px;
 		height: 20px;
 		flex-shrink: 0;
+    margin-right: 16px;
 	}
 `;
