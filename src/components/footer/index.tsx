@@ -51,8 +51,8 @@ export default function Footer() {
 		<FooterContainer>
 			<FooterLogo src={LOGO} alt="app_logo" />
 			<FooterListDataArea>
-				{footerListData.map((data: FooterListType) => (
-					<FooterList props={data} />
+				{footerListData.map((data: FooterListType, key) => (
+					<FooterList key={key} props={data} />
 				))}
 			</FooterListDataArea>
 		</FooterContainer>
