@@ -19,6 +19,11 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
+    margin-bottom: 32px;
+
+    ${media.tablet`
+    font-size: 18px;
+  `}
 	}
 
 	h6 {
@@ -29,6 +34,8 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
+    margin-top: 80px;
+    margin-bottom: 30px;
 	}
 
 	button {
