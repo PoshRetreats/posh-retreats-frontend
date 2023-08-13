@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { mainRoutes } from "./routes/main";
 import ProtectedRoute from "./utilities/ProtectedRoute";
+import Footer from "components/footer";
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
           />
         ))}
       </Routes>
+      <Footer />
     </div>
   );
 }
