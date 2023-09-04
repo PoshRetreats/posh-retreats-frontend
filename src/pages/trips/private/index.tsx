@@ -1,12 +1,15 @@
-import FAQ from 'components/faq'
-import HowWeWork from 'components/howWeWork'
-import React from 'react'
+import FAQ from "components/faq";
+import HowWeWork from "components/howWeWork";
+import MenuHeader from "components/menuHeader";
+import { PRIVATE_TRIPS_HEADER } from "assets";
+
 
 export default function PrivateTrip() {
-  return (
-    <div>
-      <HowWeWork />
-      <FAQ />
-    </div>
-  )
+	return (
+		<div>
+			<MenuHeader img={PRIVATE_TRIPS_HEADER} />
+			<HowWeWork />
+			<FAQ />
+		</div>
+	);
 }
