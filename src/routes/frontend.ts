@@ -8,3 +8,12 @@ export const HOME_URL = "/";
 //trips
 export const TRIPS_URL = "/trips";
 export const PRIVATE_TRIPS_URL = "/trips/private";
+
+//reviews
+export const REVIEWS_URL = "/reviews";
+
+//reviews
+export const ABOUT_US_URL = "/about";
+
+//reviews
+export const CONTACT_US_URL = "/contact_us";
