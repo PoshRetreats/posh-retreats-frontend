@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BrandColors from "utilities/styles/colors";
+import media from "utilities/styles/media";
 
 type MenuStyleProps = {
 	open?: boolean;
@@ -56,9 +57,13 @@ export const Logo = styled.div`
 `;
 
 export const Hamburger = styled.img`
-  position: abs;
-  right: 20px;
-  top: 25px;
+	display: none;
+	${media.tablet`
+	position: fixed;
+	right: 20px;
+	top: 25px;
+	padding: 20px;
+	`}
 `;
 
 export const SideItems = styled.div`

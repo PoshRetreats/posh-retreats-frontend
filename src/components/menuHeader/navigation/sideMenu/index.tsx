@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Logo, SideItems, Item, Paragraph, MenuFlex, Hamburger } from "./style";
+import {
+	Container,
+	Logo,
+	SideItems,
+	Item,
+	Paragraph,
+	MenuFlex,
+} from "./style";
 // import whiteForward from "assets/images/svgs/forwardWhite.svg";
 import { Link } from "react-router-dom";
 import { navbarData } from "../data";
@@ -26,7 +33,7 @@ const SideMenu = ({ sideMenu = false, setSideMenu }: any) => {
 			</Logo>
 			<SideItems>
 				{navbarData.map((menuItem, i) => (
-					<Link to={menuItem.path} key={i}>
+					<Link style={{ textDecoration: "none" }} to={menuItem.path} key={i}>
 						<MenuFlex onClick={() => closeSideMenu()}>
 							<Item>
 								{/* <img src={menuItem.icon} alt="" /> */}
