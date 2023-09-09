@@ -10,7 +10,14 @@ export default function PrivateTrip() {
 	const navigate = useNavigate();
 	return (
 		<>
-			<MenuHeader img={PRIVATE_TRIPS_HEADER} />
+			<MenuHeader
+				title="Private Trips"
+				description="Be a part of our next group experience where you can make 
+awesome connections and explore new horizons with new
+friends. Experience new cultures, take new adventures and
+create lasting memories."
+				img={PRIVATE_TRIPS_HEADER}
+			/>
 			<RequestFormLinkArea>
 				<button onClick={() => navigate(PRIVATE_TRIPS_FORM_URL)}>
 					REQUEST CUSTOM LINK

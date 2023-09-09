@@ -27,7 +27,7 @@ export default function ContactUs() {
 		"Have valueable information for us",
 	];
 
-  function handleChange(e: any, name: string) {
+	function handleChange(e: any, name: string) {
 		setForm({
 			...form,
 			[name]: e.target.value,
@@ -35,7 +35,12 @@ export default function ContactUs() {
 	}
 	return (
 		<>
-			<MenuHeader img={CONTACT_US_HEADER} />
+			<MenuHeader
+				title="Contact Us"
+				description="Have a look at what it’s like taking an adventure with us.
+We make every minute of your retreat worth it!"
+				img={CONTACT_US_HEADER}
+			/>
 			<ContactUsContainer>
 				<ContactUsList>
 					<h1>Why Contact Us?</h1>
@@ -49,27 +54,11 @@ export default function ContactUs() {
 				</ContactUsList>
 				<ContactUsForm>
 					<h3>Need to reach out?</h3>
-					<BasicInput
-						title={'Full name'}
-						onChange={handleChange}
-						name="fullName"
-					/>
-					<BasicInput
-						title={'Email Address'}
-						onChange={handleChange}
-						name="email"
-					/>
-					<BasicInput
-						title={'Phone Number'}
-						onChange={handleChange}
-						name="phone"
-					/>
-					<BasicInput
-						title={'Message'}
-						onChange={handleChange}
-						name="message"
-					/>
-          <FormButton>Submit</FormButton>
+					<BasicInput title={"Full name"} onChange={handleChange} name="fullName" />
+					<BasicInput title={"Email Address"} onChange={handleChange} name="email" />
+					<BasicInput title={"Phone Number"} onChange={handleChange} name="phone" />
+					<BasicInput title={"Message"} onChange={handleChange} name="message" />
+					<FormButton>Submit</FormButton>
 				</ContactUsForm>
 			</ContactUsContainer>
 		</>

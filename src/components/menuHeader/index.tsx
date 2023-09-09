@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { LogoArea, MenuArea, MenuHeaderContainer } from "./style";
+import {
+	DescriptionArea,
+	LogoArea,
+	MenuArea,
+	MenuHeaderContainer,
+	MenuHeaderWrapper,
+} from "./style";
 import { HAMBURGER, LOGO } from "assets";
 import TopNavigation from "./navigation/TopNavigation";
 import SideMenu from "./navigation/sideMenu";
@@ -8,7 +14,7 @@ import BrandColors from "utilities/styles/colors";
 import { Link } from "react-router-dom";
 import { HOME_URL } from "routes/frontend";
 
-export default function MenuHeader({ img }: any) {
+export default function MenuHeader({ img, title, description }: any) {
 	const [sideMenu, setSideMenu] = useState(false);
 	const [scrolling, setScrolling] = useState(false);
 
@@ -22,11 +28,8 @@ export default function MenuHeader({ img }: any) {
 				setScrolling(false);
 			}
 		};
-
 		window.addEventListener("scroll", handleScroll);
-
 		return () => {
-			// Remove the scroll event listener when the component unmounts
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
@@ -35,15 +38,15 @@ export default function MenuHeader({ img }: any) {
 
 	return (
 		<MenuHeaderContainer img={img}>
-			<Hamburger
-				style={{ backgroundColor }}
-				onClick={() => setSideMenu(true)}
-				src={HAMBURGER}
-				alt="hamburger"
-			/>
+			<MenuHeaderWrapper style={{ backgroundColor }} />
+			<Hamburger onClick={() => setSideMenu(true)} src={HAMBURGER} alt="hamburger" />
+			<DescriptionArea>
+				<h3>{title}</h3>
+				<p>{description}</p>
+			</DescriptionArea>
 			<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
 			<MenuArea>
-				<Link to={HOME_URL}>
+				<Link style={{ position: "fixed", top: 10 }} to={HOME_URL}>
 					<LogoArea src={LOGO} alt="logo" />
 				</Link>
 				<TopNavigation />
