@@ -1,5 +1,5 @@
 import NotFound from "pages/notFound";
-import Trips from "pages/trips";
+import Trips from "pages/trips/public";
 import PrivateTrip from "pages/trips/private";
 import { PRIVATE_TRIPS_FORM_URL, PRIVATE_TRIPS_URL, TRIPS_URL } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
