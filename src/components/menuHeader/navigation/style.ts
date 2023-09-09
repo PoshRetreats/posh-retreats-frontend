@@ -49,7 +49,7 @@ export const BottomCenterWrapper = styled.div`
 	h3 {
 		font-size: 16px;
 		font-style: normal;
-		font-weight: 400;
+		font-weight: 500;
 		line-height: normal;
 		margin-right: 40px;
 		cursor: pointer;

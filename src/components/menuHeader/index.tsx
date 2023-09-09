@@ -5,6 +5,8 @@ import TopNavigation from "./navigation/TopNavigation";
 import SideMenu from "./navigation/sideMenu";
 import { Hamburger } from "./navigation/sideMenu/style";
 import BrandColors from "utilities/styles/colors";
+import { Link } from "react-router-dom";
+import { HOME_URL } from "routes/frontend";
 
 export default function MenuHeader({ img }: any) {
 	const [sideMenu, setSideMenu] = useState(false);
@@ -41,7 +43,9 @@ export default function MenuHeader({ img }: any) {
 			/>
 			<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
 			<MenuArea>
-				<LogoArea src={LOGO} alt="logo" />
+				<Link to={HOME_URL}>
+					<LogoArea src={LOGO} alt="logo" />
+				</Link>
 				<TopNavigation />
 			</MenuArea>
 		</MenuHeaderContainer>

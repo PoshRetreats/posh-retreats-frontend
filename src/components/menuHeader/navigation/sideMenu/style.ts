@@ -59,7 +59,7 @@ export const Logo = styled.div`
 export const Hamburger = styled.img`
 	display: none;
 	${media.tablet`
-	position: fixed;
+	position: absolute;
 	right: 20px;
 	top: 25px;
 	padding: 20px;
