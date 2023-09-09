@@ -37,7 +37,6 @@ export default function PrivateTripForm() {
 			[name]: e.target.value,
 		});
 	}
-	console.log({ formObj });
 	return (
 		<div>
 			<MenuHeader img={PRIVATE_TRIPS_HEADER} />
