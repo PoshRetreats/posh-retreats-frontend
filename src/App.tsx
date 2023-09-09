@@ -10,9 +10,9 @@ function App() {
   return (
     <div>
       <Routes location={location} key={location?.pathname}>
-        {mainRoutes.map(({ path, Component, id, isProtected, showBottomNav }) => (
+        {mainRoutes.map(({ path, Component, id, isProtected, showBottomNav },i) => (
           <Route
-            key={id}
+            key={i}
             path={path}
             element={
               <ProtectedRoute isProtected={isProtected}>

@@ -1,7 +1,8 @@
 import NotFound from "pages/notFound";
 import Trips from "pages/trips";
 import PrivateTrip from "pages/trips/private";
-import { PRIVATE_TRIPS_URL, TRIPS_URL } from "./frontend";
+import { PRIVATE_TRIPS_FORM_URL, PRIVATE_TRIPS_URL, TRIPS_URL } from "./frontend";
+import PrivateTripForm from "pages/trips/private/Form";
 
 export const mainRoutes = [
   {
@@ -14,9 +15,18 @@ export const mainRoutes = [
     showBottomNav: false,
   },
   {
-    id: 1,
+    id: 2,
     path: PRIVATE_TRIPS_URL,
     Component: PrivateTrip,
+    exact: true,
+    isProtected: false,
+    hide: false,
+    showBottomNav: false,
+  },
+  {
+    id: 3,
+    path: PRIVATE_TRIPS_FORM_URL,
+    Component: PrivateTripForm,
     exact: true,
     isProtected: false,
     hide: false,
