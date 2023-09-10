@@ -1,12 +1,15 @@
 import AdminMenu from "components/menuHeader/admin";
 import React from "react";
-import { AdminHomeContainer } from "../home/style";
+import { AdminContainer } from "../home/style";
+import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 
 export default function AdminGroupTrips() {
 	return (
-		<AdminHomeContainer>
-      <AdminMenu />
-			<h2>AdminGroupTrips</h2>
-		</AdminHomeContainer>
+		<AdminContainer>
+			<AdminMenu />
+      <div>
+      <AdminHeaderTitle title="Group Trips" />
+      </div>
+		</AdminContainer>
 	);
 }
