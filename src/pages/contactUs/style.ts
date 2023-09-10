@@ -27,7 +27,7 @@ export const ContactUsForm = styled.div`
 	border-radius: 16px;
 	background: var(--p-1-tint-2, rgba(251, 209, 206, 0.6));
 	width: 700px;
-	height: 522px;
+	/* height: 522px; */
 	margin-top: -150px;
 	padding: 32px;
 

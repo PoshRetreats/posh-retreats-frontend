@@ -23,23 +23,6 @@ export enum CONTENT_TYPES {
   NORMAL = "normal",
 }
 
-export async function requestWithToken(
-  url: RequestInfo | URL,
-  body: any,
-  requestMethod: any
-) {
-  const res = await fetch(url, {
-    method: requestMethod,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${getAuthCookie()}`,
-    },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  return data;
-}
-
 export function handleUnauthorizedUser(response: any) {
   if (response.data.statusCode === 403) {
     alert("user forbidden");
@@ -49,16 +32,6 @@ export function handleUnauthorizedUser(response: any) {
     alert("user unauthorized");
     forceLogOut();
   }
-}
-
-export async function requestWithAxios(url: string, body: any) {
-  const res = await axios.post(url, body, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${getAuthCookie()}`,
-    },
-  });
-  return res;
 }
 
 export async function makePostRequest(
@@ -76,27 +49,6 @@ export async function makePostRequest(
       })
       .then((res: any) => {
         resolve(res?.data);
-      })
-      .catch(({ response }) => {
-        handleUnauthorizedUser(response);
-        reject(response?.data);
-      });
-  });
-  return promise;
-}
-
-//remove this later
-export async function makePostRequestWithAxios(url: string, body: any) {
-  const promise = new Promise((resolve, reject) => {
-    axios
-      .post(url, body, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${getAuthCookie()}`,
-        },
-      })
-      .then((res: any) => {
-        resolve(res?.data?.response);
       })
       .catch(({ response }) => {
         handleUnauthorizedUser(response);

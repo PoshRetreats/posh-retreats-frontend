@@ -9,6 +9,7 @@ import {
 import { useState } from "react";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormButton } from "pages/trips/private/style";
+import ComponentLoader from "components/loaders/ComponentLoader";
 
 export default function ContactUs() {
 	const [form, setForm] = useState({
@@ -17,6 +18,7 @@ export default function ContactUs() {
 		phone: "",
 		message: "",
 	});
+	const [loading, setLoading] = useState(false);
 	const reasons: string[] = [
 		"Need help booking a private or group trip",
 		"Would like to partner with us",
@@ -57,8 +59,13 @@ We make every minute of your retreat worth it!"
 					<BasicInput title={"Full name"} onChange={handleChange} name="fullName" />
 					<BasicInput title={"Email Address"} onChange={handleChange} name="email" />
 					<BasicInput title={"Phone Number"} onChange={handleChange} name="phone" />
-					<BasicInput title={"Message"} onChange={handleChange} name="message" />
-					<FormButton>Submit</FormButton>
+					<BasicInput
+						title={"Message"}
+						onChange={handleChange}
+						name="message"
+						type="textarea"
+					/>
+					<FormButton>{loading ? <ComponentLoader /> : "Submit Form"}</FormButton>
 				</ContactUsForm>
 			</ContactUsContainer>
 		</>

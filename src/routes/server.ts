@@ -18,31 +18,6 @@ export const SERVER_URL = IS_LOCAL
 
 //Auth Endpoints
 export const SOCIAL_LOGIN_URL = `${SERVER_URL}/users/social_login`;
-export const SERVER_LOGIN_URL = `${SERVER_URL}/auth/login`;
-export const SERVER_SIGNUP_URL = `${SERVER_URL}/users/create`;
-export const SERVER_OTP_URL = `${SERVER_URL}/users/otp`;
-export const SERVER_LOGOUT_URL = `${SERVER_URL}/users/logout`;
 
-//Circles
-export const GET_CIRCLES = `${SERVER_URL}/circles`;
-export const updateCircleUrl = (id: string) => `${SERVER_URL}/circles/${id}`;
-
-//Activities
-export const SERVER_GET_ACTIVITIES = `${SERVER_URL}/activity/all`;
-export const SERVER_GET_MY_ACTIVITIES = `${SERVER_URL}/activity`;
-export const SERVER_CREATE_ACTIVITIES = `${SERVER_URL}/activity/create`;
-
-//Search and Profile
-export const GET_SEARCHED_USER = `${SERVER_URL}/users/search`;
-export const GET_CONTACTS = `${SERVER_URL}/contacts`;
-
-//contactRequest
-export const REQUEST_CONTACT_BY_EMAIL_URL = `${SERVER_URL}/contact-requests/send/email`;
-
-
-//profile
-export const UPDATE_PROFILE_IMAGE = `${SERVER_URL}/users/profile_picture`;
-
-
-//checkin
-export const GET_CHECKIN = `${SERVER_URL}/checkin`;
+//Contact-us
+export const CONTACT_US = `${SERVER_URL}/contact-us`;
