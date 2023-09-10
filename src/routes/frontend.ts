@@ -18,3 +18,11 @@ export const ABOUT_US_URL = "/about";
 
 //contact
 export const CONTACT_US_URL = "/contact_us";
+
+
+//ADMIN
+export const ADMIN_HOME_URL = "/admin/user";
+export const ADMIN_GROUP_TRIPS_URL = "/admin/user/group_trips";
+export const ADMIN_PRIVATE_TRIPS_URL = "/admin/user/private_trips";
+export const ADMIN_PAST_TRIPS_URL = "/admin/user/past_trips";
+export const ADMIN_MESSAGES_URL = "/admin/user/messages";

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormButton } from "pages/trips/private/style";
 import ComponentLoader from "components/loaders/ComponentLoader";
-import { makePostRequest } from "requests/requests";
+import { makePostRequestWithAxios } from "requests/requests";
 import { CONTACT_US } from "routes/server";
 
 export default function ContactUs() {
@@ -40,7 +40,7 @@ export default function ContactUs() {
 
 	function sendContactMessage() {
 		setLoading(true);
-		makePostRequest(CONTACT_US, form)
+		makePostRequestWithAxios(CONTACT_US, form)
 			.then((res) => {
 				setLoading(false);
 				console.log({ res });

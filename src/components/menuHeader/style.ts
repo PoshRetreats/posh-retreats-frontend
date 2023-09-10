@@ -19,14 +19,15 @@ export const MenuHeaderContainer = styled.div<PrivateStyleProps>`
 `;
 
 export const MenuHeaderWrapper = styled.div`
-	width: 100%;
-	padding: 16px;
-	height: 90px;
-	position: fixed;
-	top: 0;
-	left: 0;
-
+	display: none;
 	${media.tablet`
+		display: block;
+		width: 100%;
+		padding: 16px;
+		height: 90px;
+		position: fixed;
+		top: 0;
+		left: 0;
     padding: 16px;
 	`}
 `;
