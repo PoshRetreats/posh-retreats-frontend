@@ -6,10 +6,12 @@ import {
 	ContactUsList,
 	ContactUsReason,
 } from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormButton } from "pages/trips/private/style";
 import ComponentLoader from "components/loaders/ComponentLoader";
+import { makePostRequest } from "requests/requests";
+import { CONTACT_US } from "routes/server";
 
 export default function ContactUs() {
 	const [form, setForm] = useState({
@@ -35,6 +37,21 @@ export default function ContactUs() {
 			[name]: e.target.value,
 		});
 	}
+
+	function sendContactMessage() {
+		setLoading(true);
+		makePostRequest(CONTACT_US, form)
+			.then((res) => {
+				setLoading(false);
+				console.log({ res });
+			})
+			.catch((err) => {
+				setLoading(false);
+				console.log({ err });
+			});
+	}
+
+	useEffect(() => {}, []);
 	return (
 		<>
 			<MenuHeader
@@ -65,7 +82,9 @@ We make every minute of your retreat worth it!"
 						name="message"
 						type="textarea"
 					/>
-					<FormButton>{loading ? <ComponentLoader /> : "Submit Form"}</FormButton>
+					<FormButton onClick={sendContactMessage}>
+						{loading ? <ComponentLoader /> : "Submit Form"}
+					</FormButton>
 				</ContactUsForm>
 			</ContactUsContainer>
 		</>
