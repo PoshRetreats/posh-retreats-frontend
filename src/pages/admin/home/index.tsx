@@ -1,5 +1,7 @@
 import AdminMenu from "components/menuHeader/admin";
 import {
+	ActivityCardContainer,
+	ActivityCardTemp,
 	AdminContainer,
 	AdminHomeContainer,
 	AdminHomeFlexDiv,
@@ -7,7 +9,7 @@ import {
 	GreyText,
 	TripCardContainer,
 	TripCardList,
-  TripHeadText,
+	TripHeadText,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 
@@ -31,12 +33,7 @@ const tripData: BasicTripData[] = [
 		title: "Explore Canary Island",
 		total: "24 registrations",
 		date: "05/05/2023 6:45 am",
-	},
-	{
-		title: "Explore Canary Island",
-		total: "24 registrations",
-		date: "05/05/2023 6:45 am",
-	},
+	}
 ];
 
 export function TripCard({ title, total, date }: BasicTripData) {
@@ -65,6 +62,31 @@ export function AllTripsCard() {
 	);
 }
 
+export function ActivityCard() {
+	return (
+		<ActivityCardContainer>
+			<ActivityCardTemp>
+				<h1>Upcoming Trips</h1>
+				<GreyText>Recently Published</GreyText>
+				<TripCardList>
+					{tripData.map(({ title, total, date }: BasicTripData) => (
+						<TripCard title={title} total={total} date={date} />
+					))}
+				</TripCardList>
+			</ActivityCardTemp>
+	  	<ActivityCardTemp>
+				<h1>Activity</h1>
+				<GreyText>Recently Published</GreyText>
+				<TripCardList>
+					{tripData.map(({ title, total, date }: BasicTripData) => (
+						<TripCard title={title} total={total} date={date} />
+					))}
+				</TripCardList>
+			</ActivityCardTemp>
+		</ActivityCardContainer>
+	);
+}
+
 export default function AdminHome() {
 	return (
 		<AdminContainer>
@@ -73,6 +95,7 @@ export default function AdminHome() {
 				<AdminHeaderTitle />
 				<AdminHomeFlexDiv>
 					<AllTripsCard />
+					<ActivityCard />
 				</AdminHomeFlexDiv>
 			</AdminHomeContainer>
 		</AdminContainer>

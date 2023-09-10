@@ -1,11 +1,14 @@
-import React from 'react'
-import { AdminHeaderTitleDiv } from './style'
+import React from "react";
+import { AdminHeaderTitleDiv } from "./style";
 
-export default function AdminHeaderTitle({title="Dashboard"}) {
-  return (
-    <AdminHeaderTitleDiv>
-      <p>Welcome, Posh Retreats</p>
-      <h3>{title}</h3>
-    </AdminHeaderTitleDiv>
-  )
+type AdminHeaderProps = {
+	title?: string;
+};
+export default function AdminHeaderTitle({ title = "Dashboard" }: AdminHeaderProps) {
+	return (
+		<AdminHeaderTitleDiv>
+			<p>Welcome, Bukky</p>
+			<h3>{title}</h3>
+		</AdminHeaderTitleDiv>
+	);
 }
