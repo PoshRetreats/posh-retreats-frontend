@@ -11,6 +11,7 @@ import ABOUT_HEADER from 'assets/svgs/aboutHeader.svg'
 import CONTACT_US_HEADER from 'assets/svgs/contactUsHeader.svg'
 import MENU_CANCEL from "assets/svgs/menuCancelIcon.svg";
 import HAMBURGER from "assets/svgs/hamburger.svg";
+import GROUP_TRIPS_IMAGE1 from "assets/svgs/groupTripsImage1.svg";
 
 export  {
   LOGO,
@@ -25,5 +26,6 @@ export  {
   HOME_HEADER,
   REVIEWS_HEADER,
   ABOUT_HEADER,
-  CONTACT_US_HEADER
+  CONTACT_US_HEADER,
+  GROUP_TRIPS_IMAGE1
 }
