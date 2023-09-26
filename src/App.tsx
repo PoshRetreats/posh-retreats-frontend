@@ -17,14 +17,14 @@ function App() {
             element={
               <ProtectedRoute isProtected={isProtected}>
                 <Component />
-                {/* <BottomNavigation isProtected={showBottomNav} /> */}
+                {showBottomNav && <Footer />}
               </ProtectedRoute>
             }
             // exact={exact}
           />
         ))}
       </Routes>
-      <Footer />
+      
     </div>
   );
 }

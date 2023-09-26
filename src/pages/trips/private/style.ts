@@ -84,6 +84,26 @@ export const BasicInputArea = styled.div`
 
 	`}
 	}
+	
+	textarea {
+		width: 100%;
+		background-color: transparent;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		font-size: 14px;
+		font-style: normal;
+		padding: 12px;
+		border-bottom: 1px solid black;
+		height: 100px;
+
+		&:focus {
+			outline: none;
+		}
+		${media.tablet`
+
+	`}
+	}
 	${media.tablet`
 
 	`}

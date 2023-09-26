@@ -1,4 +1,3 @@
-import MenuHeader from "components/menuHeader";
 import { HowWeWorkContainer, HowWeWorkWrapper, WrapperContainer } from "./style";
 
 const data: any = [

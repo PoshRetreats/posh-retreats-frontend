@@ -19,11 +19,15 @@ export enum PRIVATE_TRIP_QUESTIONS {
 	whoToldYou = "How did you hear about us? (optional)",
 }
 
-export function BasicInput({ title, onChange, value, name }: any) {
+export function BasicInput({ title, onChange, value, name, type = "input" }: any) {
 	return (
 		<BasicInputArea>
 			<h3>{title}</h3>
-			<input name={name} value={value} onChange={(e) => onChange(e, name)} />
+			{type === "input" ? (
+				<input name={name} value={value} onChange={(e) => onChange(e, name)} />
+			) : (
+				<textarea name={name} value={value} onChange={(e) => onChange(e, name)} />
+			)}
 		</BasicInputArea>
 	);
 }
@@ -37,7 +41,6 @@ export default function PrivateTripForm() {
 			[name]: e.target.value,
 		});
 	}
-	console.log({ formObj });
 	return (
 		<div>
 			<MenuHeader img={PRIVATE_TRIPS_HEADER} />
@@ -106,7 +109,7 @@ export default function PrivateTripForm() {
 							name="whoToldYou"
 						/>
 					</form>
-				<FormButton>Submit</FormButton>
+					<FormButton>Submit</FormButton>
 				</TripForm>
 			</FormArea>
 		</div>

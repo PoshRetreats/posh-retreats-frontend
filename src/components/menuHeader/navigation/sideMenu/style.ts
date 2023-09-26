@@ -58,11 +58,14 @@ export const Logo = styled.div`
 
 export const Hamburger = styled.img`
 	display: none;
+
 	${media.tablet`
-	position: absolute;
+	display: block;
+	position: fixed;
 	right: 20px;
-	top: 25px;
-	padding: 20px;
+	top: 20px;
+	z-index: 30;
+	/* padding: 20px; */
 	`}
 `;
 
