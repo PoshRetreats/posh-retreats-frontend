@@ -5,6 +5,7 @@ import {
 	MenuArea,
 	MenuHeaderContainer,
 	MenuHeaderWrapper,
+	MenuOverlay,
 } from "./style";
 import { HAMBURGER, LOGO } from "assets";
 import TopNavigation from "./navigation/TopNavigation";
@@ -35,22 +36,29 @@ export default function MenuHeader({ img, title, description }: any) {
 	}, []);
 
 	const backgroundColor = scrolling ? BrandColors.main1 : "transparent";
+	const color = scrolling ? "black" : "white";
 
 	return (
-		<MenuHeaderContainer img={img}>
-			<MenuHeaderWrapper style={{ backgroundColor }} />
-			<Hamburger onClick={() => setSideMenu(true)} src={HAMBURGER} alt="hamburger" />
-			<DescriptionArea>
-				<h3>{title}</h3>
-				<p>{description}</p>
-			</DescriptionArea>
-			<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
-			<MenuArea>
-				<Link style={{ position: "fixed", top: 10 }} to={HOME_URL}>
-					<LogoArea src={LOGO} alt="logo" />
-				</Link>
-				<TopNavigation />
-			</MenuArea>
-		</MenuHeaderContainer>
+		<MenuOverlay>
+			<MenuHeaderContainer img={img}>
+				<MenuHeaderWrapper style={{ backgroundColor }} />
+				<Hamburger
+					onClick={() => setSideMenu(true)}
+					src={HAMBURGER}
+					alt="hamburger"
+				/>
+				<DescriptionArea>
+					<h3>{title}</h3>
+					<p>{description}</p>
+				</DescriptionArea>
+				<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
+				<MenuArea style={{ backgroundColor }}>
+					<Link style={{ position: "fixed", top: 10 }} to={HOME_URL}>
+						<LogoArea src={LOGO} alt="logo" />
+					</Link>
+					<TopNavigation textColor={color} />
+				</MenuArea>
+			</MenuHeaderContainer>
+		</MenuOverlay>
 	);
 }

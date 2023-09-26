@@ -32,10 +32,40 @@ export const MenuHeaderWrapper = styled.div`
 	`}
 `;
 
+export const MenuOverlay = styled.div`
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(
+			0,
+			0,
+			0,
+			0.3
+		);
+		opacity: 1;
+		transition: opacity 0.3s ease;
+	}
+
+	${media.tablet`
+		
+	`}
+`;
+
 export const MenuArea = styled.div`
 	display: flex;
 	align-items: center;
-
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	/* background-color: white; */
+	top: 0;
+	left: 0;
 	${media.tablet`
 
 	`}
@@ -43,6 +73,8 @@ export const MenuArea = styled.div`
 
 export const LogoArea = styled.img`
 	width: 43px;
+	margin-left: 35px;
+	margin-top: 5px;
 	${media.tablet`
 	
 	`}

@@ -45,6 +45,7 @@ export const BottomCenterWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	position: absolute;
 
 	h3 {
 		font-size: 16px;
@@ -53,6 +54,7 @@ export const BottomCenterWrapper = styled.div`
 		line-height: normal;
 		margin-right: 40px;
 		cursor: pointer;
+		/* color: white; */
 	}
 
 	${media.tablet`
