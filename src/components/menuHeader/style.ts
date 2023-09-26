@@ -43,12 +43,7 @@ export const MenuOverlay = styled.div`
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(
-			0,
-			0,
-			0,
-			0.3
-		);
+		background-color: rgba(0, 0, 0, 0.3);
 		opacity: 1;
 		transition: opacity 0.3s ease;
 	}
@@ -76,6 +71,20 @@ export const LogoArea = styled.img`
 	width: 43px;
 	margin-left: 35px;
 	margin-top: 5px;
+
+	${media.tablet`
+	
+	`}
+`;
+
+export const JoinTripButton = styled.button`
+	background: var(--Primary-Color-1, #F7A49D);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	padding: 8px 16px;
+	cursor: pointer;
+	margin-top: 10px;
 	${media.tablet`
 	
 	`}

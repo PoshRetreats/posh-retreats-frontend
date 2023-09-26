@@ -7,6 +7,7 @@ export const HOME_URL = "/";
 
 //trips
 export const TRIPS_URL = "/trips";
+export const TRIPS_OVERVIEW_URL = "/trips/overview";
 export const PRIVATE_TRIPS_URL = "/trips/private";
 export const PRIVATE_TRIPS_FORM_URL = "/trips/private/form";
 

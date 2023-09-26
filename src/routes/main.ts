@@ -10,6 +10,7 @@ import {
 	PRIVATE_TRIPS_FORM_URL,
 	PRIVATE_TRIPS_URL,
 	REVIEWS_URL,
+	TRIPS_OVERVIEW_URL,
 	TRIPS_URL,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
@@ -19,6 +20,7 @@ import About from "pages/about";
 import ContactUs from "pages/contactUs";
 import AdminHome from "pages/admin/home";
 import AdminGroupTrips from "pages/admin/trips";
+import GroupTripOverView from "pages/trips/public/groupTrip";
 
 export const mainRoutes = [
 	{
@@ -85,7 +87,7 @@ export const mainRoutes = [
 		showBottomNav: true,
 	},
 	{
-		id: 7,
+		id: 8,
 		path: ADMIN_HOME_URL,
 		Component: AdminHome,
 		exact: true,
@@ -94,9 +96,18 @@ export const mainRoutes = [
 		showBottomNav: false,
 	},
 	{
-		id: 8,
+		id: 9,
 		path: ADMIN_GROUP_TRIPS_URL,
 		Component: AdminGroupTrips,
+		exact: true,
+		isProtected: false,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 10,
+		path: TRIPS_OVERVIEW_URL,
+		Component: GroupTripOverView,
 		exact: true,
 		isProtected: false,
 		hide: false,

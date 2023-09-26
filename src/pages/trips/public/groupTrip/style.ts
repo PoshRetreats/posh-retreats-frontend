@@ -16,6 +16,7 @@ export const MiniGroupTripContainer = styled.div<GroupTripStyleProps>`
 	border-radius: 16px;
 	padding: 16px;
 	position: relative;
+	cursor: pointer;
 
 	${media.tablet`
     width: 100%;
@@ -29,6 +30,9 @@ export const TagContainer = styled.div<GroupTripStyleProps>`
 	width: fit-content;
 	background: var(--P1-Tint-1, rgba(253, 237, 235, 0.6));
 	margin-right: 8px;
+	height: 30px;
+	display: flex;
+	align-items: center;
 	p {
 		color: var(--Text-Color, #020e07);
 		font-size: 12px;
@@ -51,6 +55,65 @@ export const TagContainerList = styled.div<GroupTripStyleProps>`
 
 	${media.tablet`
 
+	`}
+`;
+
+export const OverviewArea = styled.div<GroupTripStyleProps>`
+	display: flex;
+	padding: 64px;
+	justify-content: space-between;
+
+	img {
+		height: 500px;
+		width: 40%;
+	}
+
+	div {
+		width: 48%;
+
+		p {
+			margin-top: 24px;
+			margin-bottom: 24px;
+			line-height: 24px;
+		}
+
+		h4 {
+			color: var(--Primary-Color-1, #f7a49d);
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			margin-top: 28px;
+			margin-bottom: 18px;
+		}
+
+		h5 {
+			color: black;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+	}
+
+	${media.tablet`
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+
+		img{
+			width: 100%;
+			height: unset;
+			display: none;
+		}
+
+		div{
+			width: 100%;
+			
+			h1{
+				text-align: center;
+			}
+		}
 	`}
 `;
 
@@ -81,6 +144,24 @@ export const TextContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	color: #000; /* Text color is black */
+`;
+
+export const PointsArea = styled.div`
+	display: flex;
+	align-items: center;
+	width: unset !important;
+	margin-bottom: 16px;
+
+	p {
+		color: var(--Text-Color, #020e07);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		margin: unset !important;
+		margin-left: 8px !important;
+		width: 80% !important;
+	}
 `;
 
 export const FilledText = styled.span`

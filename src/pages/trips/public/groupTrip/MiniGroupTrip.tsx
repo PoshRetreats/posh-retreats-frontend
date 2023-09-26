@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
 	FilledProgressBar,
 	FilledText,
@@ -8,12 +9,18 @@ import {
 	TagContainerList,
 	TextContainer,
 } from "./style";
+import { TRIPS_OVERVIEW_URL } from "routes/frontend";
 
 export default function MiniGroupTrip({ data }: any) {
 	console.log({ data });
 	const percent = (data.occupied / data.total) * 100;
+	const navigate = useNavigate();
+
+	function handleTripClick() {
+		navigate(TRIPS_OVERVIEW_URL, { state: { data } });
+	}
 	return (
-		<MiniGroupTripContainer img={data.image}>
+		<MiniGroupTripContainer onClick={handleTripClick} img={data.image}>
 			<TagContainerList>
 				{data.tags.map((tag: string, i: number) => (
 					<TagContainer key={i}>
