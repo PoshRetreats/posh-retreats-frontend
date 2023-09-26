@@ -1,4 +1,4 @@
-import { GROUP_TRIPS_IMAGE1 } from "assets";
+import { GROUP_TRIPS_IMAGE1, GROUP_TRIPS_IMAGE2, GROUP_TRIPS_IMAGE3, GROUP_TRIPS_IMAGE4 } from "assets";
 
 const currentDate = new Date();
 
@@ -13,7 +13,7 @@ export const groupTripsData = [
 		tags: ["adventure", "hiking"],
     date: nextWeekDate,
     total: 300,
-    occupied: 40,
+    occupied: 140,
     image: GROUP_TRIPS_IMAGE1
 	},
 	{
@@ -21,23 +21,23 @@ export const groupTripsData = [
 		tags: ["adventure", "hiking"],
     date: nextWeekDate,
     total: 300,
-    occupied: 40,
-    image: GROUP_TRIPS_IMAGE1
+    occupied: 290,
+    image: GROUP_TRIPS_IMAGE2
 	},
 	{
 		title: `Explore Fuerteventura, Canary Islands`,
 		tags: ["adventure", "hiking"],
     date: nextWeekDate,
     total: 300,
-    occupied: 40,
-    image: GROUP_TRIPS_IMAGE1
+    occupied: 120,
+    image: GROUP_TRIPS_IMAGE3
 	},
 	{
 		title: `Explore Fuerteventura, Canary Islands`,
 		tags: ["adventure", "hiking"],
     date: nextWeekDate,
     total: 300,
-    occupied: 40,
-    image: GROUP_TRIPS_IMAGE1
+    occupied: 110,
+    image: GROUP_TRIPS_IMAGE4
 	},
 ];

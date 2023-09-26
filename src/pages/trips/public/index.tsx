@@ -18,8 +18,8 @@ create lasting memories."
 				img={PUBLIC_TRIPS_HEADER}
 			/>
 			<GroupTripList>
-				{groupTripsData.map((trip) => (
-					<MiniGroupTrip data={trip} />
+				{groupTripsData.map((trip, key) => (
+					<MiniGroupTrip key={key} data={trip} />
 				))}
 			</GroupTripList>
 			<HowWeWork />

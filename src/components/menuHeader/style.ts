@@ -35,6 +35,7 @@ export const MenuHeaderWrapper = styled.div`
 export const MenuOverlay = styled.div`
 	position: relative;
 	overflow: hidden;
+	z-index: 20;
 	&::before {
 		content: "";
 		position: absolute;
