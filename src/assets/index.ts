@@ -15,6 +15,7 @@ import GROUP_TRIPS_IMAGE1 from "assets/svgs/groupTripsImage1.svg";
 import GROUP_TRIPS_IMAGE2 from "assets/svgs/groupTripsImage2.svg";
 import GROUP_TRIPS_IMAGE3 from "assets/svgs/groupTripsImage3.svg";
 import GROUP_TRIPS_IMAGE4 from "assets/svgs/groupTripsImage4.svg";
+import UPCOMING_GROUP_TRIPS_IMAGE from "assets/svgs/allGroupTrip.svg";
 
 export {
 	LOGO,
@@ -34,4 +35,5 @@ export {
 	GROUP_TRIPS_IMAGE2,
 	GROUP_TRIPS_IMAGE3,
 	GROUP_TRIPS_IMAGE4,
+	UPCOMING_GROUP_TRIPS_IMAGE,
 };
