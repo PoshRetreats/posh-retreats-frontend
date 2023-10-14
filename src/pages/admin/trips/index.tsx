@@ -14,6 +14,7 @@ import {
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import {
+	DatePickerr,
 	MuiInnputField,
 	MuiMultiSelect,
 	MuiTextArea,
@@ -23,47 +24,150 @@ import { AddButton } from "components/buttons/addButton";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
+import { InputAdornment } from "@mui/material";
 
 const names = ["Oliver Hansen", "Van Henry", "April Tucker", "Ralph Hubbard"];
 
-const features = ["Breakdown", "Inclusions", "Exclusions"];
+// const features = ["Breakdown", "Inclusions", "Exclusions"];
+
+type FeatureTripDetailsProps = {
+	breakthrough?: string;
+	inclusion?: string;
+	exclusion?: string;
+};
+
+type TripProps = {
+	groupTripDetails: FeatureTripDetailsProps | any;
+	setGroupTripDetails: any;
+};
 
 // FEATURES
-export function TripFeatures() {
+export function TripFeatures({ groupTripDetails, setGroupTripDetails }: TripProps) {
 	return (
 		<>
 			<div>
 				<h3>Features</h3>
 				<GreyText>What are the rules for this trip?</GreyText>
-				{features.map((feature) => (
-					<CreateTripCardList>
-						<MuiInnputField type="text" placeholder={feature} />
-						<AddButton />
-					</CreateTripCardList>
-				))}
+
+				<CreateTripCardList>
+					<MuiInnputField
+						onchange={(e) =>
+							setGroupTripDetails({
+								...groupTripDetails,
+								breakthrough: e.target.value,
+							})
+						}
+						value={groupTripDetails.breakthrough}
+						type="text"
+						placeholder="Breakdown"
+					/>
+					<MuiInnputField
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, inclusion: e.target.value })
+						}
+						value={groupTripDetails.inclusion}
+						type="text"
+						placeholder="Inclusions"
+					/>
+					<MuiInnputField
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, exclusion: e.target.value })
+						}
+						value={groupTripDetails.exclusion}
+						type="text"
+						placeholder="Exclusions"
+					/>
+					<AddButton />
+				</CreateTripCardList>
+			</div>
+		</>
+	);
+}
+
+export function Images({ groupTripDetails, setGroupTripDetails }: TripProps) {
+	return (
+		<>
+			<div>
+				<MuiTextArea
+					value={groupTripDetails.image}
+					onchange={(e) =>
+						setGroupTripDetails({ ...groupTripDetails, image: e.target.value })
+					}
+					label="Images"
+					placeholder="Enter image URLs (one per line)"
+				/>
+				<CreateTripCardList>
+					<MuiInnputField
+						value={groupTripDetails.payment}
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, payment: e.target.value })
+						}
+						type="text"
+						placeholder="Payment"
+						startAdornment={<InputAdornment position="start">$</InputAdornment>}
+					/>
+				</CreateTripCardList>
 			</div>
 		</>
 	);
 }
 
 export function CreateTrip() {
-	const [selectValue] = useState<string[]>([]);
+	const [groupTripDetails, setGroupTripDetails] = useState({
+		title: "",
+		details: "",
+		tag: [],
+		date: "",
+		breakthrough: "",
+		inclusions: "",
+		exclusions: "",
+		image: "",
+		payment: "",
+	});
+
+	console.log(groupTripDetails.title)
 	return (
 		<>
 			<CreateTripsCardContainer>
 				<h1>Create Trip</h1>
 				<GreyText>Add information</GreyText>
 				<CreateTripCardList>
-					<MuiInnputField type="text" placeholder="Title" />
-					<MuiTextArea placeholder="Details" />
+					<MuiInnputField
+						value={groupTripDetails.title}
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, title: e.target.value })
+						}
+						type="text"
+						placeholder="Title"
+					/>
+					<MuiTextArea
+						value={groupTripDetails.details}
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, details: e.target.value })
+						}
+						placeholder="Details"
+					/>
 					<MuiMultiSelect
 						placeholder="Tags"
-						selectValue={selectValue}
+						selectValue={groupTripDetails.tag}
 						names={names}
 					/>
 					<AddButton />
-					<MuiInnputField type="text" placeholder="Departure Date" />
-					<TripFeatures />
+					<DatePickerr
+						onchange={(e) =>
+							setGroupTripDetails({ ...groupTripDetails, date: e.target.value })
+						}
+						value={groupTripDetails.date}
+						placeholder="Departure Date"
+					/>
+					<TripFeatures
+						setGroupTripDetails={setGroupTripDetails}
+						groupTripDetails={groupTripDetails}
+					/>
+					<Images
+						setGroupTripDetails={setGroupTripDetails}
+						groupTripDetails={groupTripDetails}
+					/>
 				</CreateTripCardList>
 				<SubmitButton className="Submit_btn" name="Proceed" />
 			</CreateTripsCardContainer>
@@ -72,15 +176,17 @@ export function CreateTrip() {
 }
 
 // UPCOMING TRIP SECTION
-export function UpcomingGroupTrip() {
+export function AllGroupTrip() {
 	return (
 		<AllGroupTripContainer>
 			<AllGroupTripCardTemp>
-				<h1>Upcoming Trips</h1>
+				<h1>All Group Trips</h1>
 				<GreyText>Recently Published</GreyText>
 				<ContentSection>
 					<AllGroupTripCardList>
-						<h3 className="upcoming_trip_h3">Let’s Tour the shallow waters of Mozambique!</h3>
+						<h3 className="upcoming_trip_h3">
+							Let’s Tour the shallow waters of Mozambique!
+						</h3>
 						<GreyText>03/01/2022 3:56 pm</GreyText>
 					</AllGroupTripCardList>
 					<ImageDiv>
@@ -100,7 +206,7 @@ export default function AdminGroupTrips() {
 				<AdminHeaderTitle title="Group Trips" />
 				<AdminHomeFlexDiv>
 					<CreateTrip />
-					<UpcomingGroupTrip />
+					<AllGroupTrip />
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>
 		</AdminContainer>

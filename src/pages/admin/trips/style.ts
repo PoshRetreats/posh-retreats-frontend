@@ -32,6 +32,7 @@ export const AdminHomeFlexDiv = styled.div`
 export const CreateTripsCardContainer = styled.div`
 	width: 48%;
 	/* height: 100%; */
+	font-family: "Quando";
 	border-radius: 16px;
 	padding: 20px;
 	margin-top: 30px;
@@ -70,6 +71,7 @@ export const GreyText = styled.p`
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	font-family: "sora";
 	${media.tablet`
    
 	`}
@@ -91,8 +93,7 @@ export const AllGroupTripCardTemp = styled.div`
 	padding: 20px;
 	margin-top: 30px;
 	background: var(--White, #fff);
-	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),
-		0px 4px 8px -2px rgba(247, 164, 157, 0.1);
+	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),0px 4px 8px -2px rgba(247, 164, 157, 0.1);
 
 	h1 {
 		font-size: 24px;
@@ -100,6 +101,7 @@ export const AllGroupTripCardTemp = styled.div`
 		font-weight: 600;
 		line-height: normal;
 		margin-bottom: 4px;
+		font-size: "Quando";
 	}
 	${media.tablet`
    
@@ -117,6 +119,7 @@ export const AllGroupTripCardList = styled.div`
 .upcoming_trip_h3{
     margin-bottom: 1rem;
     max-width: 300px;
+	font-size: "Quando";
 }
 `
 

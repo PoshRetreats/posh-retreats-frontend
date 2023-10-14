@@ -1,9 +1,13 @@
 import { InputLabel, MenuItem } from "@mui/material";
-import { InputDiv, InputStyle, SelectStyle, TextareaStyle } from "./style";
+import { DatePickerStyle, InputDiv, InputStyle, SelectStyle, TextareaStyle } from "./style";
 
 type InputProps = {
 	placeholder: string;
-    type?: string;
+	type?: string;
+	startAdornment?: any;
+	label?: string;
+	onchange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+	value?: string;
 };
 
 // INPUTS
@@ -11,19 +15,28 @@ export function MuiInnputField(props: InputProps) {
 	return (
 		<>
 			<InputDiv>
-				<InputStyle type={props.type} placeholder={props.placeholder} />
+				<InputStyle disableUnderline = {true} value={props.value} onChange={props.onchange} startAdornment={props.startAdornment} type={props.type} placeholder={props.placeholder} />
 			</InputDiv>
 		</>
 	);
 }
-
 
 // TEXTAREA
 export function MuiTextArea(props: InputProps) {
 	return (
 		<>
 			<InputDiv>
-				<TextareaStyle placeholder={props.placeholder} />
+				<h3>{props.label}</h3>
+				<TextareaStyle
+					label={props.placeholder}
+					id="standard-multiline-static"
+					multiline
+					// rows={4}
+					value={props.value}
+					variant="standard"
+
+				/>
+				{/* <TextareaStyle placeholder={props.placeholder} /> */}
 			</InputDiv>
 		</>
 	);
@@ -41,7 +54,7 @@ export function MuiMultiSelect(props: MultiSelectProps) {
 	return (
 		<>
 			<InputDiv>
-            <InputLabel>{props.placeholder}</InputLabel>
+				<InputLabel>{props.placeholder}</InputLabel>
 				<SelectStyle multiple value={props.selectValue}>
 					{/* <MenuItem disabled value="">
 						<em>Placeholder</em>
@@ -55,4 +68,13 @@ export function MuiMultiSelect(props: MultiSelectProps) {
 			</InputDiv>
 		</>
 	);
+}
+
+// DATE 
+export function DatePickerr(props: InputProps) {
+	return (
+		<InputDiv>
+			<DatePickerStyle label={props.placeholder} />
+		</InputDiv>
+	)
 }
