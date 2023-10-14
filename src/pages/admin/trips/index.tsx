@@ -24,7 +24,7 @@ import { AddButton } from "components/buttons/addButton";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
-import { InputAdornment } from "@mui/material";
+import { InputAdornment, SelectChangeEvent } from "@mui/material";
 
 const names = ["Oliver Hansen", "Van Henry", "April Tucker", "Ralph Hubbard"];
 
@@ -61,6 +61,7 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails }: TripProp
 						type="text"
 						placeholder="Breakdown"
 					/>
+					<AddButton />
 					<MuiInnputField
 						onchange={(e) =>
 							setGroupTripDetails({ ...groupTripDetails, inclusion: e.target.value })
@@ -69,6 +70,7 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails }: TripProp
 						type="text"
 						placeholder="Inclusions"
 					/>
+					<AddButton />
 					<MuiInnputField
 						onchange={(e) =>
 							setGroupTripDetails({ ...groupTripDetails, exclusion: e.target.value })
@@ -113,10 +115,12 @@ export function Images({ groupTripDetails, setGroupTripDetails }: TripProps) {
 }
 
 export function CreateTrip() {
+
+	const [tags, setTags] = useState<string[]>([]);
+
 	const [groupTripDetails, setGroupTripDetails] = useState({
 		title: "",
 		details: "",
-		tag: [],
 		date: "",
 		breakthrough: "",
 		inclusions: "",
@@ -125,7 +129,13 @@ export function CreateTrip() {
 		payment: "",
 	});
 
-	console.log(groupTripDetails.title)
+	const handleChange = (event: SelectChangeEvent<typeof tags>) => {
+
+		const { target: { value } } = event;
+
+		setTags(typeof value === 'string' ? value.split(',') : value);
+	};
+
 	return (
 		<>
 			<CreateTripsCardContainer>
@@ -148,8 +158,9 @@ export function CreateTrip() {
 						placeholder="Details"
 					/>
 					<MuiMultiSelect
+						onchange={handleChange}
 						placeholder="Tags"
-						selectValue={groupTripDetails.tag}
+						selectValue={tags}
 						names={names}
 					/>
 					<AddButton />

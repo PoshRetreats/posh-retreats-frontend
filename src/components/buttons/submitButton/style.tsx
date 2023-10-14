@@ -8,10 +8,10 @@ export const ButtonDiv = styled.div`
 export const LoadingButtonStyle = styled(LoadingButton)`
     &&{
         text-transform: none;
-        background: rgba(196, 196, 196, 1);
+        background: rgba(247, 164, 157, 1);
         color: var(--White, #fff);
         &:hover{
-            background: rgba(196, 196, 196, 1);
+            background: rgba(247, 164, 157, 1);
         }
     }
 `

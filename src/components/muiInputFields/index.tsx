@@ -1,4 +1,4 @@
-import { InputLabel, MenuItem } from "@mui/material";
+import { InputLabel, MenuItem, SelectChangeEvent } from "@mui/material";
 import { DatePickerStyle, InputDiv, InputStyle, SelectStyle, TextareaStyle } from "./style";
 
 type InputProps = {
@@ -48,6 +48,7 @@ type MultiSelectProps = {
 	names: string[];
 	selectValue: string[];
 	placeholder: string;
+	onchange:(event: SelectChangeEvent<string[]>) => void;
 };
 
 export function MuiMultiSelect(props: MultiSelectProps) {
@@ -55,7 +56,7 @@ export function MuiMultiSelect(props: MultiSelectProps) {
 		<>
 			<InputDiv>
 				<InputLabel>{props.placeholder}</InputLabel>
-				<SelectStyle multiple value={props.selectValue}>
+				<SelectStyle onChange={props.onchange} multiple value={props.selectValue}>
 					{/* <MenuItem disabled value="">
 						<em>Placeholder</em>
 					</MenuItem> */}
