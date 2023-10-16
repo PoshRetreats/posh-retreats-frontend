@@ -45,6 +45,7 @@ export const TextareaStyle = styled(TextField)`
 				border-color: ${BrandColors.black};
 			}
 		}
+		
 	}
 `;
 
