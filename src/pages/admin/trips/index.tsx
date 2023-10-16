@@ -24,97 +24,21 @@ import { AddButton } from "components/buttons/addButton";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
-import { InputAdornment, SelectChangeEvent } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material";
+import { TripFeatures } from "./tripFeatures";
+import { Images } from "./paymentImage";
+import { TripDetails } from "./tripDetails";
+
 
 const names = ["Oliver Hansen", "Van Henry", "April Tucker", "Ralph Hubbard"];
 
 // const features = ["Breakdown", "Inclusions", "Exclusions"];
 
-type FeatureTripDetailsProps = {
-	breakthrough?: string;
-	inclusion?: string;
-	exclusion?: string;
-};
-
-type TripProps = {
-	groupTripDetails: FeatureTripDetailsProps | any;
-	setGroupTripDetails: any;
-};
-
-// FEATURES
-export function TripFeatures({ groupTripDetails, setGroupTripDetails }: TripProps) {
-	return (
-		<>
-			<div>
-				<h3>Features</h3>
-				<GreyText>What are the rules for this trip?</GreyText>
-
-				<CreateTripCardList>
-					<MuiInnputField
-						onchange={(e) =>
-							setGroupTripDetails({
-								...groupTripDetails,
-								breakthrough: e.target.value,
-							})
-						}
-						value={groupTripDetails.breakthrough}
-						type="text"
-						placeholder="Breakdown"
-					/>
-					<AddButton />
-					<MuiInnputField
-						onchange={(e) =>
-							setGroupTripDetails({ ...groupTripDetails, inclusion: e.target.value })
-						}
-						value={groupTripDetails.inclusion}
-						type="text"
-						placeholder="Inclusions"
-					/>
-					<AddButton />
-					<MuiInnputField
-						onchange={(e) =>
-							setGroupTripDetails({ ...groupTripDetails, exclusion: e.target.value })
-						}
-						value={groupTripDetails.exclusion}
-						type="text"
-						placeholder="Exclusions"
-					/>
-					<AddButton />
-				</CreateTripCardList>
-			</div>
-		</>
-	);
+type CreateTripType = {
+	setIsSubmitted: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Images({ groupTripDetails, setGroupTripDetails }: TripProps) {
-	return (
-		<>
-			<div>
-				<MuiTextArea
-					value={groupTripDetails.image}
-					onchange={(e) =>
-						setGroupTripDetails({ ...groupTripDetails, image: e.target.value })
-					}
-					label="Images"
-					placeholder="Enter image URLs (one per line)"
-				/>
-				<CreateTripCardList>
-					<MuiInnputField
-						value={groupTripDetails.payment}
-						onchange={(e) =>
-							setGroupTripDetails({ ...groupTripDetails, payment: e.target.value })
-						}
-						type="text"
-						placeholder="Payment"
-						startAdornment={<InputAdornment position="start">$</InputAdornment>}
-					/>
-				</CreateTripCardList>
-			</div>
-		</>
-	);
-}
-
-export function CreateTrip() {
+export function CreateTrip({ setIsSubmitted, }: CreateTripType) {
 
 	const [tags, setTags] = useState<string[]>([]);
 
@@ -129,12 +53,15 @@ export function CreateTrip() {
 		payment: "",
 	});
 
+
 	const handleChange = (event: SelectChangeEvent<typeof tags>) => {
 
-		const { target: { value } } = event;
+		const { target: { value }, } = event;
 
-		setTags(typeof value === 'string' ? value.split(',') : value);
+		setTags(typeof value === "string" ? value.split(",") : value);
 	};
+
+
 
 	return (
 		<>
@@ -180,11 +107,17 @@ export function CreateTrip() {
 						groupTripDetails={groupTripDetails}
 					/>
 				</CreateTripCardList>
-				<SubmitButton className="Submit_btn" name="Proceed" />
+				<SubmitButton
+					className="Submit_btn"
+					name="Proceed"
+					onclick={() => setIsSubmitted("trip-details")}
+				/>
 			</CreateTripsCardContainer>
 		</>
 	);
 }
+
+
 
 // UPCOMING TRIP SECTION
 export function AllGroupTrip() {
@@ -209,14 +142,21 @@ export function AllGroupTrip() {
 	);
 }
 
+
+
 export default function AdminGroupTrips() {
+	const [isSubmitted, setIsSubmitted] = useState<string>("create-trip"); // this is a temperary state just to toggle the other detials page from create trip
 	return (
 		<AdminContainer>
 			<AdminMenu />
 			<AdminTripContainer>
 				<AdminHeaderTitle title="Group Trips" />
 				<AdminHomeFlexDiv>
-					<CreateTrip />
+					{isSubmitted === "create-trip" ? (
+						<CreateTrip setIsSubmitted={setIsSubmitted} />
+					) : (
+						isSubmitted === "trip-details" && <TripDetails setIsSubmitted={setIsSubmitted} />
+					)}
 					<AllGroupTrip />
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>

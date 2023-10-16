@@ -3,11 +3,12 @@ import { LoadingButtonStyle, ButtonDiv } from "./style";
 type LoadingButtonProps = {
 	name: string;
     className?: string;
+	onclick?: () => void
 };
-export function SubmitButton({className, name }: LoadingButtonProps) {
+export function SubmitButton({className, name,onclick }: LoadingButtonProps) {
 	return (
 		<ButtonDiv className={className}>
-			<LoadingButtonStyle  variant="contained">{name}</LoadingButtonStyle>
+			<LoadingButtonStyle onClick={onclick} variant="contained">{name}</LoadingButtonStyle>
 		</ButtonDiv>
 	);
 }

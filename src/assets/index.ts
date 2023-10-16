@@ -16,6 +16,10 @@ import GROUP_TRIPS_IMAGE2 from "assets/svgs/groupTripsImage2.svg";
 import GROUP_TRIPS_IMAGE3 from "assets/svgs/groupTripsImage3.svg";
 import GROUP_TRIPS_IMAGE4 from "assets/svgs/groupTripsImage4.svg";
 import UPCOMING_GROUP_TRIPS_IMAGE from "assets/svgs/allGroupTrip.svg";
+import BACK_ICON from "assets/svgs/treatback.svg";
+import ACTIVE_ICON from "assets/svgs/Ellipse 29.svg"
+import SELECTED_TRIP_IMAGE from "assets/svgs/selected.svg"
+import THREE_DOT from "assets/svgs/dot.svg"
 
 export {
 	LOGO,
@@ -36,4 +40,8 @@ export {
 	GROUP_TRIPS_IMAGE3,
 	GROUP_TRIPS_IMAGE4,
 	UPCOMING_GROUP_TRIPS_IMAGE,
+	BACK_ICON,
+	ACTIVE_ICON,
+	SELECTED_TRIP_IMAGE,
+	THREE_DOT,
 };
