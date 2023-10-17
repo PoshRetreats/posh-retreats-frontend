@@ -22,7 +22,7 @@ export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({ selectedTa
                 {selectedTags &&
                     selectedTags.map((tag) => (
                         <SelectedTagsBtn key={tag.id}>
-                            <span>{tag.tag}</span>
+                            <span>{tag.tag || tag}</span>
                         </SelectedTagsBtn>
                     ))}
             </SelectedTagsMain>

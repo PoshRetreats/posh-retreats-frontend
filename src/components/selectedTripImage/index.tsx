@@ -5,12 +5,12 @@ type SelectedImageProps = {
     alt: string;
 }
 
-export function SelectedTripImage (props: SelectedImageProps) {
-    return(
+export function SelectedTripImage(props: SelectedImageProps) {
+    return (
         <>
-        <SelectedImageDiv>
-            <Image src = {props.src} alt = {props.alt} />
-        </SelectedImageDiv>
+            <SelectedImageDiv>
+                <Image src={props.src} alt={props.alt} />
+            </SelectedImageDiv>
         </>
     )
 }

@@ -46,9 +46,9 @@ export function MuiTextArea(props: InputProps) {
 
 type MultiSelectProps = {
 	names: string[];
-	selectValue: string[];
+	selectValue: string[] | string;
 	placeholder: string;
-	onchange:(event: SelectChangeEvent<string[]>) => void;
+	onchange:(event: SelectChangeEvent<any>) => void;
 };
 
 export function MuiMultiSelect(props: MultiSelectProps) {
@@ -56,7 +56,7 @@ export function MuiMultiSelect(props: MultiSelectProps) {
 		<>
 			<InputDiv>
 				<InputLabel>{props.placeholder}</InputLabel>
-				<SelectStyle onChange={props.onchange} multiple value={props.selectValue}>
+				<SelectStyle onChange={props.onchange} value={props.selectValue}>
 					{/* <MenuItem disabled value="">
 						<em>Placeholder</em>
 					</MenuItem> */}

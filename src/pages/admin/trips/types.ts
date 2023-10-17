@@ -14,7 +14,7 @@ interface SelectedTagProps {
     id: string;
     tag: string;
 }
-export type SelectedTagType = SelectedTagProps[]
+export type SelectedTagType = SelectedTagProps[] | any[]
 
  interface Condition {
     id: string;

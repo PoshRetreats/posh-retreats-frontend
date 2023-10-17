@@ -1,11 +1,14 @@
 import AddIcon from '@mui/icons-material/Add';
 import { ButtonStyle } from "./style";
 
-export function AddButton() {
+type AddButtonProps = {
+	onclick?: () => void
+}
+export function AddButton(props: AddButtonProps) {
 	return (
 		<>
 			{" "}
-			<ButtonStyle variant="outlined" startIcon={<AddIcon />}>
+			<ButtonStyle onClick={props.onclick} variant="outlined" startIcon={<AddIcon />}>
 				Add
 			</ButtonStyle>
 		</>

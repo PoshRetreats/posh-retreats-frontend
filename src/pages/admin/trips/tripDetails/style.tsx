@@ -95,7 +95,7 @@ export const SelectedTagsBtn = styled.div`
 	justify-content: center;
 	text-align: center;
 	span {
-		font-size: 1rem;
+		font-size: .8rem;
 		font-weight: 400;
 	}
 `;

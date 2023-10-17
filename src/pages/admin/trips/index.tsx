@@ -24,23 +24,22 @@ import { AddButton } from "components/buttons/addButton";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
-import { SelectChangeEvent } from "@mui/material";
 import { TripFeatures } from "./tripFeatures";
 import { Images } from "./paymentImage";
-import { TripDetails } from "./tripDetails";
+import { SelectedTags, TripDetails } from "./tripDetails";
 
-
-const names = ["Oliver Hansen", "Van Henry", "April Tucker", "Ralph Hubbard"];
+const names = ["Hansen", "Van Henry", "Tucker", "Hubbard"];
 
 // const features = ["Breakdown", "Inclusions", "Exclusions"];
 
 type CreateTripType = {
 	setIsSubmitted: React.Dispatch<React.SetStateAction<string>>;
-}
+};
 
-export function CreateTrip({ setIsSubmitted, }: CreateTripType) {
-
+export function CreateTrip({ setIsSubmitted }: CreateTripType) {
 	const [tags, setTags] = useState<string[]>([]);
+
+	const [selectedTags, setSelectedTags] = useState<string>("");
 
 	const [groupTripDetails, setGroupTripDetails] = useState({
 		title: "",
@@ -53,15 +52,23 @@ export function CreateTrip({ setIsSubmitted, }: CreateTripType) {
 		payment: "",
 	});
 
+	// const handleChange = (event: SelectChangeEvent<typeof tags>) => {
 
-	const handleChange = (event: SelectChangeEvent<typeof tags>) => {
+	// 	const { target: { value }, } = event;
 
-		const { target: { value }, } = event;
+	// 	setTags(typeof value === "string" ? value.split(",") : value);
+	// };
 
-		setTags(typeof value === "string" ? value.split(",") : value);
+	const AddTags = () => {
+		if(tags.includes(selectedTags)){
+			setSelectedTags("");
+			return
+		}
+
+		setTags([...tags, selectedTags]);
+
+		setSelectedTags("");
 	};
-
-
 
 	return (
 		<>
@@ -85,12 +92,13 @@ export function CreateTrip({ setIsSubmitted, }: CreateTripType) {
 						placeholder="Details"
 					/>
 					<MuiMultiSelect
-						onchange={handleChange}
+						onchange={(event) => setSelectedTags(event.target.value)}
 						placeholder="Tags"
-						selectValue={tags}
+						selectValue={selectedTags}
 						names={names}
 					/>
-					<AddButton />
+					{tags.length > 0 && <SelectedTags selectedTags={tags} />}
+					<AddButton onclick={AddTags} />
 					<DatePickerr
 						onchange={(e) =>
 							setGroupTripDetails({ ...groupTripDetails, date: e.target.value })
@@ -117,8 +125,6 @@ export function CreateTrip({ setIsSubmitted, }: CreateTripType) {
 	);
 }
 
-
-
 // UPCOMING TRIP SECTION
 export function AllGroupTrip() {
 	return (
@@ -142,8 +148,6 @@ export function AllGroupTrip() {
 	);
 }
 
-
-
 export default function AdminGroupTrips() {
 	const [isSubmitted, setIsSubmitted] = useState<string>("create-trip"); // this is a temperary state just to toggle the other detials page from create trip
 	return (
@@ -155,7 +159,9 @@ export default function AdminGroupTrips() {
 					{isSubmitted === "create-trip" ? (
 						<CreateTrip setIsSubmitted={setIsSubmitted} />
 					) : (
-						isSubmitted === "trip-details" && <TripDetails setIsSubmitted={setIsSubmitted} />
+						isSubmitted === "trip-details" && (
+							<TripDetails setIsSubmitted={setIsSubmitted} />
+						)
 					)}
 					<AllGroupTrip />
 				</AdminHomeFlexDiv>
