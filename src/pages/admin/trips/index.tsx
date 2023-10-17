@@ -36,6 +36,9 @@ type CreateTripType = {
 	setIsSubmitted: React.Dispatch<React.SetStateAction<string>>;
 };
 
+
+
+
 export function CreateTrip({ setIsSubmitted }: CreateTripType) {
 	const [tags, setTags] = useState<string[]>([]);
 
@@ -52,12 +55,6 @@ export function CreateTrip({ setIsSubmitted }: CreateTripType) {
 		payment: "",
 	});
 
-	// const handleChange = (event: SelectChangeEvent<typeof tags>) => {
-
-	// 	const { target: { value }, } = event;
-
-	// 	setTags(typeof value === "string" ? value.split(",") : value);
-	// };
 
 	const AddTags = () => {
 		if(tags.includes(selectedTags)){
@@ -70,6 +67,7 @@ export function CreateTrip({ setIsSubmitted }: CreateTripType) {
 		setSelectedTags("");
 	};
 
+	
 	return (
 		<>
 			<CreateTripsCardContainer>

@@ -8,6 +8,7 @@ type InputProps = {
 	label?: string;
 	onchange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 	value?: string;
+	name?: string;
 };
 
 // INPUTS
@@ -15,7 +16,7 @@ export function MuiInnputField(props: InputProps) {
 	return (
 		<>
 			<InputDiv>
-				<InputStyle disableUnderline = {true} value={props.value} onChange={props.onchange} startAdornment={props.startAdornment} type={props.type} placeholder={props.placeholder} />
+				<InputStyle name={props.name} disableUnderline = {true} value={props.value} onChange={props.onchange} startAdornment={props.startAdornment} type={props.type} placeholder={props.placeholder} />
 			</InputDiv>
 		</>
 	);

@@ -5,6 +5,8 @@ import {
 	ABOUT_US_URL,
 	ADMIN_GROUP_TRIPS_URL,
 	ADMIN_HOME_URL,
+	ADMIN_PAST_TRIPS_URL,
+	ADMIN_PRIVATE_TRIPS_URL,
 	CONTACT_US_URL,
 	HOME_URL,
 	PRIVATE_TRIPS_FORM_URL,
@@ -21,6 +23,8 @@ import ContactUs from "pages/contactUs";
 import AdminHome from "pages/admin/home";
 import AdminGroupTrips from "pages/admin/trips";
 import GroupTripOverView from "pages/trips/public/groupTrip";
+import PrivateTrips from "pages/admin/privateTrips";
+import PastTripsAndReviews from "pages/admin/pastTrips";
 
 export const mainRoutes = [
 	{
@@ -112,6 +116,24 @@ export const mainRoutes = [
 		isProtected: false,
 		hide: false,
 		showBottomNav: false,
+	},
+	{
+		id: 11,
+		path: ADMIN_PRIVATE_TRIPS_URL,
+		Component: PrivateTrips,
+		exact: true,
+		isProtected: false,
+		hide: false,
+		showBottomNav: false,	
+	},
+	{
+		id: 12,
+		path: ADMIN_PAST_TRIPS_URL,
+		Component: PastTripsAndReviews,
+		exact: true,
+		isProtected: false,
+		hide: false,
+		showBottomNav: false,	
 	},
 	{
 		id: 0,
