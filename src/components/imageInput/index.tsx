@@ -1,23 +1,26 @@
-import { ImageInputDiv, Input } from "./style";
+import { ImageInputDiv, Input,UploadedImage } from "./style";
 
 type ImageInputProps = {
 	onClick?: () => void;
-	ref?: any;
+	inneRef?: any;
 	onChange?: (event: any) => void;
+    image?: string
 };
 export function ImageInput(props: ImageInputProps) {
 	return (
 		<>
+       
 			<ImageInputDiv>
+           {props.image &&  <UploadedImage src = {props.image} alt="" />}
 				<label htmlFor="fileInput">
 					<p>select Image</p>
 				</label>
 				<Input
-					ref={props.ref}
+					ref={props.inneRef}
 					type="file"
 					id="fileInput"
 					onChange={props.onChange}
-					accept="image/*"
+					// accept="image/*"
 				/>
 			</ImageInputDiv>
 		</>

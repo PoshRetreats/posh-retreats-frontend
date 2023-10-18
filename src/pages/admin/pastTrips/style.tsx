@@ -97,7 +97,7 @@ export const TripCardList = styled.div`
 export const PastTripCardList = styled.div`
    display: grid;
   grid-template-columns: repeat(3, 1fr); /* Three columns in each row */
-  gap: 32px;
+  gap: 25px;
   margin: auto;
   /* width: 90%; */
 `

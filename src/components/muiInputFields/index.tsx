@@ -35,6 +35,7 @@ export function MuiTextArea(props: InputProps) {
 					// rows={4}
 					value={props.value}
 					variant="standard"
+					onChange={props.onchange}
 
 				/>
 				{/* <TextareaStyle placeholder={props.placeholder} /> */}
