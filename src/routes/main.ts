@@ -5,6 +5,7 @@ import {
 	ABOUT_US_URL,
 	ADMIN_GROUP_TRIPS_URL,
 	ADMIN_HOME_URL,
+	ADMIN_LOGIN,
 	CONTACT_US_URL,
 	HOME_URL,
 	PRIVATE_TRIPS_FORM_URL,
@@ -21,6 +22,7 @@ import ContactUs from "pages/contactUs";
 import AdminHome from "pages/admin/home";
 import AdminGroupTrips from "pages/admin/trips";
 import GroupTripOverView from "pages/trips/public/groupTrip";
+import AdminLogin from "pages/admin/auth/login";
 
 export const mainRoutes = [
 	{
@@ -29,6 +31,7 @@ export const mainRoutes = [
 		Component: Trips,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -38,6 +41,7 @@ export const mainRoutes = [
 		Component: PrivateTrip,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -47,6 +51,7 @@ export const mainRoutes = [
 		Component: PrivateTripForm,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -56,6 +61,7 @@ export const mainRoutes = [
 		Component: Home,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -65,6 +71,7 @@ export const mainRoutes = [
 		Component: Reviews,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -74,6 +81,7 @@ export const mainRoutes = [
 		Component: About,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -83,6 +91,7 @@ export const mainRoutes = [
 		Component: ContactUs,
 		exact: true,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 		showBottomNav: true,
 	},
@@ -92,6 +101,7 @@ export const mainRoutes = [
 		Component: AdminHome,
 		exact: true,
 		isProtected: false,
+		isAdmin: true,
 		hide: false,
 		showBottomNav: false,
 	},
@@ -101,6 +111,7 @@ export const mainRoutes = [
 		Component: AdminGroupTrips,
 		exact: true,
 		isProtected: false,
+		isAdmin: true,
 		hide: false,
 		showBottomNav: false,
 	},
@@ -110,6 +121,17 @@ export const mainRoutes = [
 		Component: GroupTripOverView,
 		exact: true,
 		isProtected: false,
+		isAdmin: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 11,
+		path: ADMIN_LOGIN,
+		Component: AdminLogin,
+		exact: true,
+		isProtected: false,
+		isAdmin: true,
 		hide: false,
 		showBottomNav: false,
 	},
@@ -119,6 +141,7 @@ export const mainRoutes = [
 		Component: NotFound,
 		exact: false,
 		isProtected: false,
+		isAdmin: false,
 		hide: false,
 	},
 ];
