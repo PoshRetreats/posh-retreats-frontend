@@ -33,7 +33,7 @@ const tripData: BasicTripData[] = [
 		title: "Explore Canary Island",
 		total: "24 registrations",
 		date: "05/05/2023 6:45 am",
-	}
+	},
 ];
 
 export function TripCard({ title, total, date }: BasicTripData) {
@@ -74,7 +74,7 @@ export function ActivityCard() {
 					))}
 				</TripCardList>
 			</ActivityCardTemp>
-	  	<ActivityCardTemp>
+			<ActivityCardTemp>
 				<h1>Activity</h1>
 				<GreyText>Recently Published</GreyText>
 				<TripCardList>
