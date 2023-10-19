@@ -1,7 +1,5 @@
 import AdminMenu from "components/menuHeader/admin";
 import {
-    ActivityCardContainer,
-    ActivityCardTemp,
     AdminContainer,
     AdminHomeContainer,
     AdminHomeFlexDiv,
@@ -10,9 +8,13 @@ import {
     ButtonDiv,
     GreyText,
     TripCardContainer,
-    TripCardList,
     PastTripCardList,
     TripHeadText,
+    AllGroupTripContainer,
+    AllGroupTripCardTemp,
+    ContentSection,
+    AllGroupTripCardList,
+    ImageDiv,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { MuiInnputField, MuiTextArea } from "components/muiInputFields";
@@ -20,29 +22,15 @@ import { useRef, useState } from "react";
 import { ImageInput } from "components/imageInput";
 import { CreateTripCardList } from "../trips/style";
 import { SubmitButton } from "components/buttons/submitButton";
+import { TripPreviewDetails } from "./details";
+import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
+import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
 
 type BasicTripData = {
     title: string;
     total: string;
     date: string;
 };
-const tripData: BasicTripData[] = [
-    {
-        title: "Explore Canary Island",
-        total: "24 registrations",
-        date: "05/05/2023 6:45 am",
-    },
-    {
-        title: "Explore Canary Island",
-        total: "24 registrations",
-        date: "05/05/2023 6:45 am",
-    },
-    {
-        title: "Explore Canary Island",
-        total: "24 registrations",
-        date: "05/05/2023 6:45 am",
-    },
-];
 
 const imageInputDetails = [
     { name: "imag1", label: "Select image" },
@@ -122,7 +110,7 @@ export function Review() {
     );
 }
 
-export function TripDetails() {
+export function TripDetails({ setIsSubmitted }: { setIsSubmitted: React.Dispatch<React.SetStateAction<string>> }) {
     const inneRef = useRef<HTMLInputElement | null>(null);
 
     const clickImageField = () => inneRef.current?.click();
@@ -137,15 +125,15 @@ export function TripDetails() {
     });
 
     const [information, setInformation] = useState<string>("")
-    
 
-    function handleImageFieldChange(event: { target: { value: string; name: string };}) {
+
+    function handleImageFieldChange(event: { target: { value: string; name: string }; }) {
         const value = event.target.value;
 
         setImageFields({ ...imageFields, [event.target.name]: value });
     }
 
-   
+
     return (
         <AllTripsCardContainer>
             <h1>Trip Details</h1>
@@ -155,9 +143,10 @@ export function TripDetails() {
                 placeholder="Add Information"
             />
             <PastTripCardList>
-                {imageInputDetails.map((details,index) => (
+                {imageInputDetails.map((details, index) => (
                     <div key={index}>
                         <ImageInput
+
                             inneRef={inneRef}
                             onChange={handleImageFieldChange}
                             onClick={clickImageField}
@@ -170,49 +159,50 @@ export function TripDetails() {
                 <SubmitButton
                     className="Submit_btn_preview"
                     name="Post"
-                // onclick={() => setIsSubmitted("trip-details")}
+                onclick={() => setIsSubmitted("trips-details-review")}
                 />
             </ButtonDiv>
         </AllTripsCardContainer>
     );
 }
 
-export function ActivityCard() {
+export function AllPastTrip() {
     return (
-        <ActivityCardContainer>
-            <ActivityCardTemp>
-                <h1>Upcoming Trips</h1>
+        <AllGroupTripContainer>
+            <AllGroupTripCardTemp>
+                <h1>All Group Trips</h1>
                 <GreyText>Recently Published</GreyText>
-                <TripCardList>
-                    {tripData.map(({ title, total, date }: BasicTripData,key ) => (
-                        <div key={key}>
-                            <TripDetailsCard title={title} total={total} date={date} />
-                        </div>
-                    ))}
-                </TripCardList>
-            </ActivityCardTemp>
-            {/* <ActivityCardTemp>
-				<h1>Activity</h1>
-				<GreyText>Recently Published</GreyText>
-				<TripCardList>
-					{tripData.map(({ title, total, date }: BasicTripData) => (
-						<TripCard title={title} total={total} date={date} />
-					))}
-				</TripCardList>
-			</ActivityCardTemp> */}
-        </ActivityCardContainer>
+                <ContentSection>
+                    <AllGroupTripCardList>
+                        <h3 className="upcoming_trip_h3">
+                            Let’s Tour the shallow waters of Mozambique!
+                        </h3>
+                        <GreyText>2022</GreyText>
+                    </AllGroupTripCardList>
+                    <ImageDiv>
+                        <UpcomingTripImage src={UPCOMING_GROUP_TRIPS_IMAGE} alt="" />
+                    </ImageDiv>
+                </ContentSection>
+            </AllGroupTripCardTemp>
+        </AllGroupTripContainer>
     );
 }
 
+
+
+
 export default function PastTripsAndReviews() {
+    const [isSubmited, setIsSubmitted] = useState("trips-form")
     return (
         <AdminContainer>
             <AdminMenu />
             <AdminHomeContainer>
                 <AdminHeaderTitle title="Past Trips And Reviews" />
                 <AdminHomeFlexDiv>
-                    <TripDetails />
-                    <ActivityCard />
+                    {isSubmited === "trips-form" ? (<TripDetails setIsSubmitted={setIsSubmitted} />) :
+                    isSubmited === "trips-details-review" && (
+                        <TripPreviewDetails setIsSubmitted={setIsSubmitted} />)}
+                    <AllPastTrip />
                 </AdminHomeFlexDiv>
             </AdminHomeContainer>
         </AdminContainer>
