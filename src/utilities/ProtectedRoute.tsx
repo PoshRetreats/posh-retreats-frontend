@@ -1,6 +1,7 @@
-// import { useLocation } from "react-router-dom";
-// import { getAuthCookie } from "./helpers";
-// import { useAuthStore } from "zustandStore/auth";
+import { Navigate, useLocation } from "react-router-dom";
+import { getAuthCookie } from "./helpers";
+
+import { ADMIN_HOME_URL, ADMIN_LOGIN } from "routes/frontend";
 
 // function getAuthCookie() {
 //   return null;
@@ -12,17 +13,15 @@
 
 // const cookieToken = getAuthCookie();
 
-export default function ProtectedRoute({ children, isProtected }: any) {
-  // const authToken = useAuthStore((state: any) => state.token);
-  // const token = authToken || cookieToken;
-  // const location = useLocation();
+export default function ProtectedRoute({ children, isProtected, isAdmin }: any) {
+	const token = getAuthCookie();
+	const location = useLocation();
 
-  // if (isProtected && !token) {
-  //   return <Navigate to={WELCOME_URL} state={{ from: location }} replace />;
-  // } else if (!!token && !isProtected) {
-  //   return <Navigate to={HOME_URL} state={{ from: location }} replace />;
-  // } else {
-  //   return children;
-  // }
-  return children;
+  if (isProtected && !token && isAdmin) {
+		return <Navigate to={ADMIN_LOGIN} state={{ from: location }} replace />;
+	} else if (!!token && !isProtected && isAdmin) {
+		return <Navigate to={ADMIN_HOME_URL} state={{ from: location }} replace />;
+	} else {
+		return children;
+	}
 }
