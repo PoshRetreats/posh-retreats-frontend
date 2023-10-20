@@ -69,8 +69,8 @@ export function ActivityCard() {
 				<h1>Upcoming Trips</h1>
 				<GreyText>Recently Published</GreyText>
 				<TripCardList>
-					{tripData.map(({ title, total, date }: BasicTripData) => (
-						<TripCard title={title} total={total} date={date} />
+					{tripData.map(({ title, total, date }: BasicTripData, i: number) => (
+						<TripCard key={i} title={title} total={total} date={date} />
 					))}
 				</TripCardList>
 			</ActivityCardTemp>
@@ -78,8 +78,8 @@ export function ActivityCard() {
 				<h1>Activity</h1>
 				<GreyText>Recently Published</GreyText>
 				<TripCardList>
-					{tripData.map(({ title, total, date }: BasicTripData) => (
-						<TripCard title={title} total={total} date={date} />
+					{tripData.map(({ title, total, date }: BasicTripData, i: number) => (
+						<TripCard key={i} title={title} total={total} date={date} />
 					))}
 				</TripCardList>
 			</ActivityCardTemp>

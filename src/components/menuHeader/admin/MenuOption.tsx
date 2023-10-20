@@ -6,7 +6,7 @@ export function MenuOption({ title, link, activeIcon, icon }: any) {
 	function handleNavigate() {
 		navigate(link);
 	}
-	const isActive = link === window.location.pathname;
+	const isActive = (link === window.location.pathname);
 	return (
 		<MenuOptionContainer isActive={isActive} onClick={handleNavigate}>
 			{isActive ? activeIcon : icon}

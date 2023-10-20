@@ -8,15 +8,14 @@ export default function AdminMenu() {
 		<AdminMenuContainer>
 			<MenuLogo src={LOGO} alt="lofo" />
 			<MenuList>
-				{data.map(({ title, link, activeIcon, icon }, index) => (
-					<div key={index}>
-						<MenuOption
-							title={title}
-							link={link}
-							activeIcon={activeIcon}
-							icon={icon}
-						/>
-					</div>
+				{data.map(({ title, link, activeIcon, icon }, i) => (
+					<MenuOption
+						key={i}
+						title={title}
+						link={link}
+						activeIcon={activeIcon}
+						icon={icon}
+					/>
 				))}
 			</MenuList>
 		</AdminMenuContainer>
