@@ -33,7 +33,7 @@ const tripData: BasicTripData[] = [
 		title: "Explore Canary Island",
 		total: "24 registrations",
 		date: "05/05/2023 6:45 am",
-	}
+	},
 ];
 
 export function TripCard({ title, total, date }: BasicTripData) {
@@ -69,17 +69,17 @@ export function ActivityCard() {
 				<h1>Upcoming Trips</h1>
 				<GreyText>Recently Published</GreyText>
 				<TripCardList>
-					{tripData.map(({ title, total, date }: BasicTripData) => (
-						<TripCard title={title} total={total} date={date} />
+					{tripData.map(({ title, total, date }: BasicTripData, i: number) => (
+						<TripCard key={i} title={title} total={total} date={date} />
 					))}
 				</TripCardList>
 			</ActivityCardTemp>
-	  	<ActivityCardTemp>
+			<ActivityCardTemp>
 				<h1>Activity</h1>
 				<GreyText>Recently Published</GreyText>
 				<TripCardList>
-					{tripData.map(({ title, total, date }: BasicTripData) => (
-						<TripCard title={title} total={total} date={date} />
+					{tripData.map(({ title, total, date }: BasicTripData, i: number) => (
+						<TripCard key={i} title={title} total={total} date={date} />
 					))}
 				</TripCardList>
 			</ActivityCardTemp>
