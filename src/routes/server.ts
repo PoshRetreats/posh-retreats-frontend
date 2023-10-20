@@ -17,7 +17,7 @@ export const SERVER_URL = IS_LOCAL
 // const SERVER_AND_TAG2 = `${SERVER_URL}${URL_TAG2}`;
 
 //Auth Endpoints
-export const SOCIAL_LOGIN_URL = `${SERVER_URL}/users/social_login`;
+export const SERVER_LOGIN_URL = `${SERVER_URL}/auth/login`;
 
 //Contact-us
 export const CONTACT_US = `${SERVER_URL}/contact-us`;
