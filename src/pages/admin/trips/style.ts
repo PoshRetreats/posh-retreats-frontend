@@ -29,7 +29,8 @@ export const AdminHomeFlexDiv = styled.div`
 	`}
 `;
 
-export const CreateTripsCardContainer = styled.div`
+export const CreateTripsCardContainer = styled.form`
+
 	width: 48%;
 	/* height: 100%; */
 	font-family: "Quando";
@@ -60,6 +61,19 @@ export const CreateTripsCardContainer = styled.div`
 `;
 
 export const CreateTripCardList = styled.div`
+	.included_trips {
+		margin-bottom: 1rem;
+		section {
+			align-items: center;
+			gap: 0.5rem;
+			display: flex;
+			.img{
+				font-size: .7rem;
+				max-width: 100px;
+			}
+		}
+	}
+	
 	${media.tablet`
    
 	`}
@@ -93,7 +107,8 @@ export const AllGroupTripCardTemp = styled.div`
 	padding: 20px;
 	margin-top: 30px;
 	background: var(--White, #fff);
-	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),0px 4px 8px -2px rgba(247, 164, 157, 0.1);
+	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),
+		0px 4px 8px -2px rgba(247, 164, 157, 0.1);
 
 	h1 {
 		font-size: 24px;
@@ -109,20 +124,41 @@ export const AllGroupTripCardTemp = styled.div`
 `;
 
 export const ContentSection = styled.div`
-display: flex;
-justify-content: space-between;
-margin-top: 2rem;
-`
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+`;
 
 export const AllGroupTripCardList = styled.div`
-
-.upcoming_trip_h3{
-    margin-bottom: 1rem;
-    max-width: 300px;
-	font-size: "Quando";
-}
-`
+	.upcoming_trip_h3 {
+		margin-bottom: 1rem;
+		max-width: 300px;
+		font-size: "Quando";
+	}
+`;
 
 export const ImageDiv = styled.div`
-/* width: 130px; */
-`
+	/* width: 130px; */
+`;
+
+// trip capactiy
+
+export const TripCapacityMain = styled.div`
+	div {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 1rem;
+		span{
+			color: rgba(196, 196, 196, 1);
+			font-size: .85rem;
+		}
+		input {
+			border: 1px solid rgba(251, 209, 206, 0.6);
+			width: 40px;
+			height: 32px;
+			border-radius: 8px;
+			text-align: center;
+		}
+	}
+`;

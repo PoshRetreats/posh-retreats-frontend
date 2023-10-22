@@ -1,4 +1,4 @@
-import { Input, Select, TextField } from "@mui/material";
+import { Autocomplete, Input, Select, TextField } from "@mui/material";
 import styled from "styled-components";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import BrandColors from "utilities/styles/colors";
@@ -62,6 +62,19 @@ export const SelectStyle = styled(Select)`
 		font-size: 1.1rem;
 	}
 `;
+
+export const AutocompleteStyle = styled(Autocomplete)`
+&& {
+		& .MuiOutlinedInput-notchedOutline {
+			border: none;
+			border-bottom: 2px solid ${BrandColors.black};
+			border-radius: 0;
+			font-family: "Sora" !important;
+			outline: none;
+		}
+		width: 95%;
+		font-size: 1.1rem;
+	}`
 
 export const DatePickerStyle = styled(DatePicker)`
 	&& {

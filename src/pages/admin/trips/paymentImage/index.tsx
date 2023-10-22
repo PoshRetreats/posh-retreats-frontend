@@ -1,13 +1,35 @@
-import { MuiInnputField, MuiTextArea } from "components/muiInputFields";
-import { CreateTripCardList } from "../style";
-import { InputAdornment } from "@mui/material";
+import { MuiInnputField } from "components/muiInputFields";
 import { TripProps } from "../types";
+import { AddButton } from "components/buttons/addButton";
+import { Active } from "../groupTripDetails/style";
+import { ACTIVE_ICON } from "assets";
 
-export function Images({ groupTripDetails, setGroupTripDetails }: TripProps) {
+export function Images({
+	groupTripDetails,
+	setGroupTripDetails,
+	addedFeatures,
+	setAddedFeatures,
+}: TripProps | any) {
+	const addUrlImage = () => {
+		if (!addedFeatures.image) {
+			// If addedFeatures.breakDown is not defined, initialize it as an empty array
+			addedFeatures.image = [];
+		}
+
+		if (!addedFeatures.image.includes(groupTripDetails.image)) {
+			// Add the value to addedFeatures.breakDown
+			addedFeatures.image.push(groupTripDetails.image);
+			setAddedFeatures({ ...addedFeatures });
+		}
+
+		// Reset the input field
+		setGroupTripDetails({ ...groupTripDetails, image: "" });
+	};
+
 	return (
 		<>
 			<div>
-				<MuiTextArea
+				<MuiInnputField
 					value={groupTripDetails.image}
 					onchange={(e) =>
 						setGroupTripDetails({ ...groupTripDetails, image: e.target.value })
@@ -15,17 +37,18 @@ export function Images({ groupTripDetails, setGroupTripDetails }: TripProps) {
 					label="Images"
 					placeholder="Enter image URLs (one per line)"
 				/>
-				<CreateTripCardList>
-					<MuiInnputField
-						value={groupTripDetails.payment}
-						onchange={(e) =>
-							setGroupTripDetails({ ...groupTripDetails, payment: e.target.value })
-						}
-						type="text"
-						placeholder="Payment"
-						startAdornment={<InputAdornment position="start">$</InputAdornment>}
-					/>
-				</CreateTripCardList>
+
+				{addedFeatures.image.length > 0 &&
+					addedFeatures.image.map((items: any) => (
+						<div className="included_trips">
+							<section className="included_trips_condition">
+								<Active alt="active" src={ACTIVE_ICON} />
+								<span className="img">{items}</span>
+							</section>
+						</div>
+					))}
+
+				<AddButton onclick={addUrlImage} />
 			</div>
 		</>
 	);

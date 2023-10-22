@@ -2,12 +2,19 @@ import { MuiInnputField } from "components/muiInputFields";
 import { CreateTripCardList, GreyText } from "../style";
 import { AddButton } from "components/buttons/addButton";
 import { TripProps } from "../types";
-import { Active } from "../tripDetails/style";
+import { Active } from "../groupTripDetails/style";
 import { ACTIVE_ICON } from "assets";
 
 // FEATURES
-export function TripFeatures({ groupTripDetails, setGroupTripDetails, addedFeatures, setAddedFeatures }: TripProps | any) {
+export function TripFeatures({
+	groupTripDetails,
+	setGroupTripDetails,
+	addedFeatures,
+	setAddedFeatures,
+}: TripProps | any) {
 
+
+	
 	const addBreakdown = () => {
 		if (!addedFeatures.breakDown) {
 			// If addedFeatures.breakDown is not defined, initialize it as an empty array
@@ -22,10 +29,39 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails, addedFeatu
 
 		// Reset the input field
 		setGroupTripDetails({ ...groupTripDetails, breakDown: "" });
-	}
+	};
 
+	const addInclusions = () => {
+		if (!addedFeatures.inclusion) {
+			// If addedFeatures.breakDown is not defined, initialize it as an empty array
+			addedFeatures.inclusion = [];
+		}
 
-	// console.log(addedFeatures.breakDown);
+		if (!addedFeatures.inclusion.includes(groupTripDetails.inclusion)) {
+			// Add the value to addedFeatures.breakDown
+			addedFeatures.inclusion.push(groupTripDetails.inclusion);
+			setAddedFeatures({ ...addedFeatures });
+		}
+
+		// Reset the input field
+		setGroupTripDetails({ ...groupTripDetails, inclusion: "" });
+	};
+
+	const addExclusions = () => {
+		if (!addedFeatures.exclusion) {
+			// If addedFeatures.breakDown is not defined, initialize it as an empty array
+			addedFeatures.exclusion = [];
+		}
+
+		if (!addedFeatures.exclusion.includes(groupTripDetails.exclusion)) {
+			// Add the value to addedFeatures.breakDown
+			addedFeatures.exclusion.push(groupTripDetails.exclusion);
+			setAddedFeatures({ ...addedFeatures });
+		}
+
+		// Reset the input field
+		setGroupTripDetails({ ...groupTripDetails, exclusion: "" });
+	};
 
 	return (
 		<>
@@ -44,14 +80,15 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails, addedFeatu
 						type="text"
 						placeholder="Breakdown"
 					/>
-					{addedFeatures.breakDown.length > 0 && addedFeatures.breakDown.map((items: any) =>
-					(
-						<div className="included_trips">
-							<section className="included_trips_condition">
-								<Active alt="active" src={ACTIVE_ICON} />
-								<span>{items}</span>
-							</section>
-						</div>))}
+					{addedFeatures.breakDown.length > 0 &&
+						addedFeatures.breakDown.map((items: any) => (
+							<div className="included_trips">
+								<section className="included_trips_condition">
+									<Active alt="active" src={ACTIVE_ICON} />
+									<span>{items}</span>
+								</section>
+							</div>
+						))}
 					<AddButton onclick={addBreakdown} />
 					<MuiInnputField
 						onchange={(e) =>
@@ -61,7 +98,16 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails, addedFeatu
 						type="text"
 						placeholder="Inclusions"
 					/>
-					<AddButton />
+					{addedFeatures.inclusion.length > 0 &&
+						addedFeatures.inclusion.map((items: any) => (
+							<div className="included_trips">
+								<section className="included_trips_condition">
+									<Active alt="active" src={ACTIVE_ICON} />
+									<span>{items}</span>
+								</section>
+							</div>
+						))}
+					<AddButton onclick={addInclusions} />
 					<MuiInnputField
 						onchange={(e) =>
 							setGroupTripDetails({ ...groupTripDetails, exclusion: e.target.value })
@@ -70,7 +116,16 @@ export function TripFeatures({ groupTripDetails, setGroupTripDetails, addedFeatu
 						type="text"
 						placeholder="Exclusions"
 					/>
-					<AddButton />
+					{addedFeatures.exclusion.length > 0 &&
+						addedFeatures.exclusion.map((items: any) => (
+							<div className="included_trips">
+								<section className="included_trips_condition">
+									<Active alt="active" src={ACTIVE_ICON} />
+									<span>{items}</span>
+								</section>
+							</div>
+						))}
+					<AddButton onclick={addExclusions} />
 				</CreateTripCardList>
 			</div>
 		</>
