@@ -5,11 +5,12 @@ type LoadingButtonProps = {
     className?: string;
 	onclick?: () => void
 	type?: string | any;
+	disabled?: boolean
 };
-export function SubmitButton({className, name,onclick, type }: LoadingButtonProps) {
+export function SubmitButton({className, name,onclick, type,disabled }: LoadingButtonProps) {
 	return (
 		<ButtonDiv className={className}>
-			<LoadingButtonStyle type = {type} onClick={onclick} variant="contained">{name}</LoadingButtonStyle>
+			<LoadingButtonStyle disabled = {disabled} type = {type} onClick={onclick} variant="contained">{name}</LoadingButtonStyle>
 		</ButtonDiv>
 	);
 }

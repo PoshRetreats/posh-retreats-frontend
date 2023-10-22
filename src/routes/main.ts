@@ -16,6 +16,7 @@ import {
 	TRIPS_OVERVIEW_URL,
 	TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_URL,
+	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -29,6 +30,7 @@ import PrivateTrips from "pages/admin/privateTrips";
 import PastTripsAndReviews from "pages/admin/pastTrips";
 import AdminLogin from "pages/admin/auth/login";
 import AdminGroupTripsDetails from "pages/admin/trips/groupTripDetails";
+import PastTripsAndReviewsDetails from "pages/admin/pastTrips/details";
 
 export const mainRoutes = [
 	{
@@ -164,6 +166,15 @@ export const mainRoutes = [
 		id: 13,
 		path: ADMIN_GROUP_TRIPS_DETAILS_URL,
 		Component: AdminGroupTripsDetails,
+		exact: true,
+		isProtected: false,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 14,
+		path: ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+		Component: PastTripsAndReviewsDetails,
 		exact: true,
 		isProtected: false,
 		hide: false,

@@ -30,7 +30,7 @@ export const AdminHomeFlexDiv = styled.div`
 	`}
 `;
 
-export const AllTripsCardContainer = styled.div`
+export const AllTripsCardContainer = styled.form`
 	width: 48%;
 	height: 100%;
 	border-radius: 16px;

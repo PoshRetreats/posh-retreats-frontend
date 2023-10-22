@@ -18,13 +18,14 @@ import {
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { MuiInnputField, MuiTextArea } from "components/muiInputFields";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { ImageInput } from "components/imageInput";
 import { CreateTripCardList } from "../trips/style";
 import { SubmitButton } from "components/buttons/submitButton";
-import { TripPreviewDetails } from "./details";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
+import { useNavigate } from "react-router-dom";
+import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
 
 type BasicTripData = {
 	title: string;
@@ -32,14 +33,14 @@ type BasicTripData = {
 	date: string;
 };
 
-const imageInputDetails = [
-	{ name: "imag1", label: "Select image" },
-	{ name: "imag2", label: "Select image" },
-	{ name: "imag3", label: "Select image" },
-	{ name: "imag4", label: "Select image" },
-	{ name: "imag5", label: "Select image" },
-	{ name: "imag6", label: "Select image" },
-];
+// const imageInputDetails = [
+// 	{ name: "imag1", label: "Select image" },
+// 	{ name: "imag2", label: "Select image" },
+// 	{ name: "imag3", label: "Select image" },
+// 	{ name: "imag4", label: "Select image" },
+// 	{ name: "imag5", label: "Select image" },
+// 	{ name: "imag6", label: "Select image" },
+// ];
 
 export function TripDetailsCard({ title, total, date }: BasicTripData) {
 	return (
@@ -53,20 +54,15 @@ export function TripDetailsCard({ title, total, date }: BasicTripData) {
 	);
 }
 
-export function Review() {
-	type ReviewState = {
-		review: string;
-		name: string;
-		location: string;
-		year: string;
-	};
+type ReviewState = {
+	review: string;
+	name: string;
+	location: string;
+	year: string;
+};
 
-	const [review, setReviews] = useState<ReviewState>({
-		review: "",
-		name: "",
-		location: "",
-		year: "",
-	});
+export function Review({setReviews,review}:ReviewState | any ) {
+	
 
 	const reviews = [
 		{ name: "review", label: "Review" },
@@ -103,36 +99,74 @@ export function Review() {
 	);
 }
 
-export function TripDetails({
-	setIsSubmitted,
-}: {
-	setIsSubmitted: React.Dispatch<React.SetStateAction<string>>;
-}) {
+export function TripDetails() {
+
+	const navigate = useNavigate()
 	const inneRef = useRef<HTMLInputElement | null>(null);
-
-	const clickImageField = () => inneRef.current?.click();
-
-	const [imageFields, setImageFields] = useState<any>({
-		image1: "",
-		image2: "",
-		image3: "",
-		image4: "",
-		image5: "",
-		image6: "",
-	});
 
 	const [information, setInformation] = useState<string>("");
 
-	function handleImageFieldChange(event: {
-		target: { value: string; name: string };
-	}) {
-		const value = event.target.value;
+	const [review, setReviews] = useState<ReviewState>({
+		review: "",
+		name: "",
+		location: "",
+		year: "",
+	});
 
-		setImageFields({ ...imageFields, [event.target.name]: value });
+
+
+	const [imageFields, setImageFields] = useState<any>({
+		image1: "",
+		// image2: "",
+		// image3: "",
+		// image4: "",
+	});
+
+console.log(imageFields)
+
+	const clickImageField = () => inneRef.current?.click();
+
+	// function handleImageFieldChange(event: {
+	// 	target: { value: string; name: string };
+	// }) {
+	// 	const value = event.target.value;
+
+	// 	setImageFields({ ...imageFields, [event.target.name]: value });
+	// }
+
+	const imgArray  = Object.values(imageFields)
+
+
+	const postData = {
+		information: information,
+		review: review.review,
+		name: review.name,
+		location: review.location,
+		year: review.year,
+		image: imgArray
+	}
+
+	const detailsValidation =
+		information === "" ||
+		review.review === "" ||
+		review.name === "" ||
+		review.location === "" ||
+		review.year === "" ||
+		review.name === "" 
+
+	async function submitTripReview(event: FormEvent){
+		event.preventDefault();
+		if(detailsValidation){
+			alert("Please complete the review form *")
+		}
+		navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
+			state: postData
+		})
+
 	}
 
 	return (
-		<AllTripsCardContainer>
+		<AllTripsCardContainer onSubmit={submitTripReview}>
 			<h1>Trip Details</h1>
 			<MuiTextArea
 				value={information}
@@ -140,23 +174,40 @@ export function TripDetails({
 				placeholder="Add Information"
 			/>
 			<PastTripCardList>
-				{imageInputDetails.map((details, index) => (
+				{/* {imageInputDetails.map((details, index) => (
 					<div key={index}>
 						<ImageInput
 							inneRef={inneRef}
 							onChange={handleImageFieldChange}
 							onClick={clickImageField}
+							image={imageFields}
 						/>
 					</div>
-				))}
+				))} */}
+				<div >
+						<ImageInput
+							inneRef={inneRef}
+							onChange={(e) => {
+								const file = e.target.files[0];
+								if (file) {
+								  const reader = new FileReader();
+								  reader.onload = (event:any) => {
+									const imageDataUrl = event.target.result;
+									setImageFields({ ...imageFields, image1: imageDataUrl });
+								  };
+								  reader.readAsDataURL(file);
+								}
+							  }}
+							onClick={clickImageField}
+							image={imageFields.image1}
+						/>
+					</div>
+	
+					
 			</PastTripCardList>
-			<Review />
+			<Review review ={review} setReviews = {setReviews} />
 			<ButtonDiv>
-				<SubmitButton
-					className="Submit_btn_preview"
-					name="Post"
-					onclick={() => setIsSubmitted("trips-details-review")}
-				/>
+				<SubmitButton type="submit" className="Submit_btn_preview" name="Post" />
 			</ButtonDiv>
 		</AllTripsCardContainer>
 	);
@@ -185,20 +236,13 @@ export function AllPastTrip() {
 }
 
 export default function PastTripsAndReviews() {
-	const [isSubmited, setIsSubmitted] = useState("trips-form");
 	return (
 		<AdminContainer>
 			<AdminMenu />
 			<AdminHomeContainer>
 				<AdminHeaderTitle title="Past Trips And Reviews" />
 				<AdminHomeFlexDiv>
-					{isSubmited === "trips-form" ? (
-						<TripDetails setIsSubmitted={setIsSubmitted} />
-					) : (
-						isSubmited === "trips-details-review" && (
-							<TripPreviewDetails setIsSubmitted={setIsSubmitted} />
-						)
-					)}
+					<TripDetails />
 					<AllPastTrip />
 				</AdminHomeFlexDiv>
 			</AdminHomeContainer>

@@ -26,5 +26,6 @@ export const ADMIN_LOGIN = "/admin/login";
 export const ADMIN_GROUP_TRIPS_URL = "/admin/user/group_trips";
 export const ADMIN_GROUP_TRIPS_DETAILS_URL = "/admin/user/group_trips_details";
 export const ADMIN_PRIVATE_TRIPS_URL = "/admin/user/private_trips";
+export const ADMIN_PRIVATE_TRIPS_DETAILS_URL = "/admin/user/private_trips_details";
 export const ADMIN_PAST_TRIPS_URL = "/admin/user/past_trips";
 export const ADMIN_MESSAGES_URL = "/admin/user/messages";

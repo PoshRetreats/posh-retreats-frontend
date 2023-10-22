@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const UploadedImage = styled.img`
-	border: 2px solid red;
 	position: absolute;
 	height: 100%;
 	width: 100%;
