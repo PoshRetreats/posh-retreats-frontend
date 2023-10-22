@@ -28,55 +28,55 @@ type InformationData = {
 
 
 
-// const privateTripsdetails: InformationData[] = [
-// 	{
-// 		title: "Name",
-//         details: "Sheldon Cooper"
-// 	},
-//     {
-//         title: "Email",
-//         details: "ahelly@mail.com",
-//     },
-// 	{
-//         title: "Where would you like to travel to?:",
-// 		details: "The Grand Canyon",
-// 	},
-//     {
-//         title: "Where would you like to travel to?:",
-// 		details: "The Grand Canyon",
-// 	},
-//     {
-//         title: "Where would you like to travel to?:",
-// 		details: "The Grand Canyon",
-// 	},
-// 	{ 
-//         title: "How many people will be traveling?:",
-//         details: 5 },
-//     { 
-//         title: "Are there any other destinations you would be interested in?:",
-//         details: "Istanbul"
-//     }
-// ];
-
-
-
-const tripData: BasicTripData[] = [
+const privateTripsdetails: InformationData[] = [
 	{
-		title: "Sheldon Cooper",
-		email: "ahelly@mail.com",
-		date: "05/05/2023 6:45 am",
+		title: "Name",
+        details: "Sheldon Cooper"
 	},
+    {
+        title: "Email",
+        details: "ahelly@mail.com",
+    },
 	{
-		title: "Sheldon Cooper",
-		email: "ahelly@mail.com",
-		date: "05/05/2023 6:45 am",
+        title: "Where would you like to travel to?:",
+		details: "The Grand Canyon",
 	},
-	{
-		title: "Sheldon Cooper",
-		email: "ahelly@mail.com",
-		date: "05/05/2023 6:45 am",
+    {
+        title: "Where would you like to travel to?:",
+		details: "The Grand Canyon",
 	},
+    {
+        title: "Where would you like to travel to?:",
+		details: "The Grand Canyon",
+	},
+	{ 
+        title: "How many people will be traveling?:",
+        details: 5 },
+    { 
+        title: "Are there any other destinations you would be interested in?:",
+        details: "Istanbul"
+    }
 ];
+
+
+
+// const tripData: BasicTripData[] = [
+// 	{
+// 		title: "Sheldon Cooper",
+// 		email: "ahelly@mail.com",
+// 		date: "05/05/2023 6:45 am",
+// 	},
+// 	{
+// 		title: "Sheldon Cooper",
+// 		email: "ahelly@mail.com",
+// 		date: "05/05/2023 6:45 am",
+// 	},
+// 	{
+// 		title: "Sheldon Cooper",
+// 		email: "ahelly@mail.com",
+// 		date: "05/05/2023 6:45 am",
+// 	},
+// ];
 
 
 
@@ -120,16 +120,16 @@ export function Registration() {
 		<AllTripsCardContainer>
 			<h1>Registrations</h1>
 			<GreyText>All Entries</GreyText>
-			<TripCardList>
+			{/* <TripCardList>
 				{tripData.map(({ title, email, date }: BasicTripData) => (
 					<RegistrationCard  title={title} email={email} date={date} />
 				))}
-			</TripCardList>
-            {/* <TripCardList>
+			</TripCardList> */}
+            <TripCardList>
 				{privateTripsdetails.map(({ title,details }: InformationData) => (
 					<EntryDetails title={title} details={details} />
 				))}
-			</TripCardList> */}
+			</TripCardList>
 		</AllTripsCardContainer>
 	);
 }

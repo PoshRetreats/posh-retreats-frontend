@@ -34,6 +34,7 @@ import { InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
 
+// THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
 	"Adventure",
 	"Nature",
@@ -138,6 +139,7 @@ export function CreateTrip() {
 	const [tags, setTags] = useState<string[]>([]);
 
 	const [selectedTags, setSelectedTags] = useState<string>("");
+	const [tripType, setTripType] = useState<string>("");
 
 	const [tripCapacity, setTripCapacity] = useState<{
 		value: number | string;
@@ -199,6 +201,7 @@ export function CreateTrip() {
 		details: groupTripDetails.details,
 		tags: tags,
 		date: groupTripDetails.date?.$d,
+		tripType: tripType,
 		features: {
 			breakDown: addedFeatures.breakDown,
 			inclusion: addedFeatures.inclusion,
@@ -249,6 +252,13 @@ export function CreateTrip() {
 							setGroupTripDetails({ ...groupTripDetails, details: e.target.value })
 						}
 						placeholder="Details"
+					/>
+					<AutoComplete
+						onChange={(event: any, value: any) => setTripType(value)}
+						placeholder="Trip Type"
+						value={tripType}
+						// names={names}
+						option={["public", "private"]}
 					/>
 					<AutoComplete
 						onChange={(event: any, value: any) => setSelectedTags(value)}

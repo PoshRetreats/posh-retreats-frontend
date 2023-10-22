@@ -37,17 +37,17 @@ export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 
 // IMAGES: THIS WILL BE MAPPED WHEN THE API'S COME
 export const TripDetailsImage = (image: string[] | any) => {
-    
 	return (
 		<TripDetailsImageMain>
-			{image && image.image?.map((images: any, index: string | number) => (
-				<div key={index} className="images">
-					<SelectedTripImage
-						src={images.images || images}
-						alt="selected trip details"
-					/>
-				</div>
-			))}
+			{image &&
+				image.image?.map((images: any, index: string | number) => (
+					<div key={index} className="images">
+						<SelectedTripImage
+							src={images.images || images}
+							alt="selected trip details"
+						/>
+					</div>
+				))}
 		</TripDetailsImageMain>
 	);
 };
@@ -55,7 +55,6 @@ export const TripDetailsImage = (image: string[] | any) => {
 export function TripDetails(data: any) {
 	const navigate = useNavigate();
 	// LIST OF TAGS SELECTED BY USER THESE DATA WILL COME FROM BACK END
-	
 
 	const tag = data?.data.tags;
 
@@ -68,18 +67,17 @@ export function TripDetails(data: any) {
 
 	const image = data?.data.features.image;
 
-    const date = data?.data.date
-    console.log(date)
+	const date = data?.data.date;
 
-    const inputDate = new Date(date);
+	console.log(data);
 
-const month = String(inputDate.getMonth() + 1).padStart(2, '0'); // Month (0-11) is zero-based
-const day = String(inputDate.getDate()).padStart(2, '0');
-const year = inputDate.getFullYear();
+	const inputDate = new Date(date);
 
-const formattedDate = `${month}/${day}/${year}`;
+	const month = String(inputDate.getMonth() + 1).padStart(2, "0"); // Month (0-11) is zero-based
+	const day = String(inputDate.getDate()).padStart(2, "0");
+	const year = inputDate.getFullYear();
 
-
+	const formattedDate = `${month}/${day}/${year}`;
 
 	return (
 		<>
@@ -91,8 +89,15 @@ const formattedDate = `${month}/${day}/${year}`;
 					</section>
 					<img src={THREE_DOT} alt="dots" />
 				</header>
-				<h3>Let’s Tour the shallow waters of Mozambique!</h3>
+				<h3>{data.data.title}</h3>
 				<TripDetailsDescription>
+					<div className="included_trips">
+						<h3>Trip Includes</h3>
+						<section className="included_trips_condition">
+							<Active alt="active" src={ACTIVE_ICON} />
+							<span>{data.data.tripType}</span>
+						</section>
+					</div>
 					<p>{data?.data.details}</p>
 					<SelectedTags selectedTags={tag} />
 					<Dates>{formattedDate}</Dates>
@@ -127,15 +132,14 @@ const formattedDate = `${month}/${day}/${year}`;
 							<span>${payment}</span>
 						</section>
 					</div>
-                   <div className="included_trips">
-                   <h3>Trip Capacity</h3>
-                    <section className="condition">
-                    
+					<div className="included_trips">
+						<h3>Trip Capacity</h3>
+						<section className="condition">
 							<span>{data?.data.tripCapacity.value}</span>
-                            <span>Out Of</span>
-                            <span>{data?.data.tripCapacity.total}</span>
+							<span>Out Of</span>
+							<span>{data?.data.tripCapacity.total}</span>
 						</section>
-                   </div>
+					</div>
 				</TripDetailsDescription>
 				<SubmitButton className="Submit_btn" name="Update" />
 			</TripDetailsMain>
