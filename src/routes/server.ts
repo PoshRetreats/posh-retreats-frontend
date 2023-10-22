@@ -21,3 +21,7 @@ export const SERVER_LOGIN_URL = `${SERVER_URL}/auth/login`;
 
 //Contact-us
 export const CONTACT_US = `${SERVER_URL}/contact-us`;
+
+//Trips
+export const SERVER_GROUP_TRIP = `${SERVER_URL}/trip/public/create`
+export const SERVER_PRIVATE_TRIP = `${SERVER_URL}/trip/private/create`
