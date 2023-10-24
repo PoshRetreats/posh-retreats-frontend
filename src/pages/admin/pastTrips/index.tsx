@@ -26,6 +26,7 @@ import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
+import { makePostRequestWithAxios } from "requests/requests";
 
 type BasicTripData = {
 	title: string;
@@ -121,8 +122,8 @@ export function TripDetails() {
 		// image3: "",
 		// image4: "",
 	});
+	
 
-console.log(imageFields)
 
 	const clickImageField = () => inneRef.current?.click();
 
@@ -133,6 +134,9 @@ console.log(imageFields)
 
 	// 	setImageFields({ ...imageFields, [event.target.name]: value });
 	// }
+
+	const [data, setData] = useState()
+	const [loading, setLoading] = useState<boolean>(false)
 
 	const imgArray  = Object.values(imageFields)
 
@@ -159,9 +163,24 @@ console.log(imageFields)
 		if(detailsValidation){
 			alert("Please complete the review form *")
 		}
-		navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
-			state: postData
-		})
+
+		makePostRequestWithAxios("", postData)
+		
+			.then((res: any) => {
+				setData(res)
+				setLoading(false)
+				//TODO: save basic admin data
+				navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
+					state: postData
+				})
+			})
+			.catch((err) => {
+				setLoading(false)
+				alert(err.message);
+			});
+
+
+	
 
 	}
 
@@ -207,7 +226,7 @@ console.log(imageFields)
 			</PastTripCardList>
 			<Review review ={review} setReviews = {setReviews} />
 			<ButtonDiv>
-				<SubmitButton type="submit" className="Submit_btn_preview" name="Post" />
+				<SubmitButton loading = {loading} type="submit" className="Submit_btn_preview" name="Post" />
 			</ButtonDiv>
 		</AllTripsCardContainer>
 	);

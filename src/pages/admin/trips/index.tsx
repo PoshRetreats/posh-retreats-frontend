@@ -33,6 +33,8 @@ import { FeatureTripAddedDetailsProps, GroupTripDetailsProps } from "./types";
 import { InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
+import { makePostRequestWithAxios } from "requests/requests";
+import { SERVER_GROUP_TRIP } from "routes/server";
 
 // THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
@@ -195,6 +197,9 @@ export function CreateTrip() {
 	};
 
 	// POST REQUEST
+	const [, setData] = useState()
+	const [loading, setLoading] = useState<boolean>(false)
+	
 	// POST DATA
 	const postData = {
 		title: groupTripDetails.title,
@@ -227,9 +232,22 @@ export function CreateTrip() {
 			return;
 		}
 
-		navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
-			state: postData,
-		});
+		setLoading(true)
+		makePostRequestWithAxios(SERVER_GROUP_TRIP, postData)
+		
+			.then((res: any) => {
+				setData(res)
+				setLoading(false)
+				//TODO: save basic admin data
+				navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
+					state: postData,
+				});
+			})
+			.catch((err) => {
+				setLoading(false)
+				alert(err.message);
+			});
+		
 	}
 
 	return (
@@ -302,7 +320,7 @@ export function CreateTrip() {
 						setTripCapacity={setTripCapacity}
 					/>
 				</CreateTripCardList>
-				<SubmitButton type="submit" className="Submit_btn" name="Proceed" />
+				<SubmitButton loading = {loading} type="submit" className="Submit_btn" name="Proceed" />
 			</CreateTripsCardContainer>
 		</>
 	);
