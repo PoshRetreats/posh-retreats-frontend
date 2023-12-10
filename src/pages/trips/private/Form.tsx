@@ -1,7 +1,10 @@
 import { PRIVATE_TRIPS_HEADER } from "assets";
 import MenuHeader from "components/menuHeader";
-import React, { useState } from "react";
-import { BasicInputArea, FormArea, FormButton, TripForm } from "./style";
+import  { useState } from "react";
+import { BasicInputArea, FormArea, TripForm } from "./style";
+import { makePostRequestWithAxios } from "requests/requests";
+import { SERVER_PRIVATE_TRIP } from "routes/server";
+import LoadingButton from "components/loaders/MainLoadingButton";
 
 export enum PRIVATE_TRIP_QUESTIONS {
 	fullName = "Full Name",
@@ -33,7 +36,12 @@ export function BasicInput({ title, onChange, value, name, type = "input" }: any
 }
 
 export default function PrivateTripForm() {
-	const [formObj, setFormObj] = useState({});
+	const [loading, setLoading] = useState(false);
+	const [formObj, setFormObj] = useState({
+		fullName: "",
+		email: "",
+		phone: "",
+	});
 
 	function handleChange(e: any, name: string) {
 		setFormObj({
@@ -41,6 +49,24 @@ export default function PrivateTripForm() {
 			[name]: e.target.value,
 		});
 	}
+
+	async function submitPrivateTrip() {
+		setLoading(true);
+		try {
+			if (!formObj.fullName || !formObj.email || !formObj.phone) {
+				return;
+			}
+			const res: any = await makePostRequestWithAxios(SERVER_PRIVATE_TRIP, formObj);
+			console.log({ res });
+			if (res.success) {
+			}
+		} catch (err) {
+			console.log({ err });
+		} finally {
+			setLoading(false);
+		}
+	}
+
 	return (
 		<div>
 			<MenuHeader img={PRIVATE_TRIPS_HEADER} />
@@ -109,7 +135,13 @@ export default function PrivateTripForm() {
 							name="whoToldYou"
 						/>
 					</form>
-					<FormButton>Submit</FormButton>
+					{/* <FormButton onClick={submitPrivateTrip}>Submit</FormButton> */}
+					<LoadingButton
+						loading={loading}
+						disabled={loading}
+						buttonText="Submit"
+						onClickFn={submitPrivateTrip}
+					/>
 				</TripForm>
 			</FormArea>
 		</div>
