@@ -34,7 +34,7 @@ import { InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
-import { SERVER_GROUP_TRIP } from "routes/server";
+import { SERVER_CREATE_TRIP } from "routes/server";
 
 // THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
@@ -197,28 +197,26 @@ export function CreateTrip() {
 	};
 
 	// POST REQUEST
-	const [, setData] = useState()
-	const [loading, setLoading] = useState<boolean>(false)
-	
+	const [, setData] = useState();
+	const [loading, setLoading] = useState<boolean>(false);
+
 	// POST DATA
 	const postData = {
 		title: groupTripDetails.title,
 		details: groupTripDetails.details,
 		tags: tags,
-		date: groupTripDetails.date?.$d,
+		depatureDate: groupTripDetails.date?.$d,
 		tripType: tripType,
-		features: {
-			breakDown: addedFeatures.breakDown,
-			inclusion: addedFeatures.inclusion,
-			exclusion: addedFeatures.exclusion,
-			image: addedFeatures.image,
-		},
-		payment: groupTripDetails.payment,
-		tripCapacity: {
-			value: tripCapacity.value,
-			total: tripCapacity.total,
-		},
+		breakdown: addedFeatures.breakDown,
+		inclusions: addedFeatures.inclusion,
+		exclusions: addedFeatures.exclusion,
+		images: addedFeatures.image,
+		amount: groupTripDetails.payment,
+		registeredTravelers: tripCapacity.value,
+		totalExpectedTravelers: tripCapacity.total,
 	};
+
+	console.log({ postData });
 	async function SubmitCreateTrip(event: FormEvent) {
 		event.preventDefault();
 
@@ -232,22 +230,20 @@ export function CreateTrip() {
 			return;
 		}
 
-		setLoading(true)
-		makePostRequestWithAxios(SERVER_GROUP_TRIP, postData)
-		
+		setLoading(true);
+		makePostRequestWithAxios(SERVER_CREATE_TRIP, postData)
 			.then((res: any) => {
-				setData(res)
-				setLoading(false)
+				setData(res);
+				setLoading(false);
 				//TODO: save basic admin data
 				navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
 					state: postData,
 				});
 			})
 			.catch((err) => {
-				setLoading(false)
+				setLoading(false);
 				alert(err.message);
 			});
-		
 	}
 
 	return (
@@ -320,7 +316,12 @@ export function CreateTrip() {
 						setTripCapacity={setTripCapacity}
 					/>
 				</CreateTripCardList>
-				<SubmitButton loading = {loading} type="submit" className="Submit_btn" name="Proceed" />
+				<SubmitButton
+					loading={loading}
+					type="submit"
+					className="Submit_btn"
+					name="Proceed"
+				/>
 			</CreateTripsCardContainer>
 		</>
 	);
