@@ -34,7 +34,6 @@ export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 		</>
 	);
 };
-
 // IMAGES: THIS WILL BE MAPPED WHEN THE API'S COME
 export const TripDetailsImage = (image: string[] | any) => {
 	return (
