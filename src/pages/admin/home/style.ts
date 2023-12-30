@@ -23,7 +23,7 @@ export const AdminHomeContainer = styled.div`
 
 export const AdminHomeFlexDiv = styled.div`
 	display: flex;
-	height: 100%;
+	/* height: 100%; */
 	justify-content: space-between;
 	${media.tablet`
    
@@ -31,8 +31,8 @@ export const AdminHomeFlexDiv = styled.div`
 `;
 
 export const AllTripsCardContainer = styled.div`
-	width: 48%;
-	height: 100%;
+	width: 100%;
+	/* height: 100%; */
 	border-radius: 16px;
 	padding: 20px;
 	margin-top: 30px;
