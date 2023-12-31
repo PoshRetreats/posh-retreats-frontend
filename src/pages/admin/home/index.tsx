@@ -13,7 +13,7 @@ import {
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
-import { SERVER_ALL_TRIPS } from "routes/server";
+import { SERVER_ALL_TRIPS, SERVER_GET_PUBLIC_TRIPS } from "routes/server";
 import { useEffect, useState } from "react";
 
 type BasicTripData = {
@@ -63,7 +63,7 @@ export function AllTripsCard() {
 	async function getAllTrips() {
 		try {
 			const res = (await makeGetRequestWithToken(
-				SERVER_ALL_TRIPS
+				SERVER_GET_PUBLIC_TRIPS
 			)) as GeneralResponseType;
 			setAllTrips(res.data);
 			console.log({ res });
