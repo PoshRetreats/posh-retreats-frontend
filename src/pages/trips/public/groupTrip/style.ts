@@ -64,8 +64,9 @@ export const OverviewArea = styled.div<GroupTripStyleProps>`
 	justify-content: space-between;
 
 	img {
-		height: 500px;
+		/* height: 500px; */
 		width: 40%;
+		border-radius: 8px;
 	}
 
 	div {
@@ -235,4 +236,16 @@ export const MiniGroupTripDescriptionArea = styled.div`
 			font-size: 10px;
 		}
 	`}
+`;
+
+export const GroupImageFlex = styled.div`
+	display: flex;
+	margin-bottom: 120px;
+	padding: 0 64px;
+
+	img {
+		width: 200px;
+		margin-right: 32px;
+		border-radius: 8px;
+	}
 `;

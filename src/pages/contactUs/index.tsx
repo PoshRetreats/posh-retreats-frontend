@@ -6,7 +6,7 @@ import {
 	ContactUsList,
 	ContactUsReason,
 } from "./style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormButton } from "pages/trips/private/style";
 import ComponentLoader from "components/loaders/ComponentLoader";
@@ -63,8 +63,6 @@ export default function ContactUs() {
 		}
 	}
 	console.log({ form });
-
-	useEffect(() => {}, []);
 	return (
 		<>
 			<MenuHeader

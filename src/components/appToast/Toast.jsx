@@ -86,18 +86,20 @@ export default function Toast() {
 		);
 	} else if (isFailed) {
 		return (
-			<FailedContainer isError={isError} show={isOpen ? "block" : "none"}>
-				<WarningHead>
-					<ToastHead>{heading}</ToastHead>
-					<h2 onClick={() => toast.closeResponse()}>x</h2>
-				</WarningHead>
-				{messages.map((message, i) => (
-					<div key={i}>
-						<h5>{message}</h5>
-						<br />
-					</div>
-				))}
-			</FailedContainer>
+			<ToastContainer>
+				<FailedContainer isError={isError} show={isOpen ? "block" : "none"}>
+					<WarningHead>
+						<ToastHead>{heading}</ToastHead>
+						<h2 onClick={() => toast.closeResponse()}>x</h2>
+					</WarningHead>
+					{messages.map((message, i) => (
+						<div key={i}>
+							<h5>{message}</h5>
+							<br />
+						</div>
+					))}
+				</FailedContainer>
+			</ToastContainer>
 		);
 	} else {
 		return null;

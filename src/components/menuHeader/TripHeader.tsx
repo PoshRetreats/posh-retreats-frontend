@@ -39,10 +39,11 @@ export default function TripHeader({ data }: any) {
 
 	const backgroundColor = scrolling ? BrandColors.main1 : "transparent";
 	const color = scrolling ? "black" : "white";
+	const date = new Date(data.depatureDate).toLocaleDateString();
 
 	return (
 		<MenuOverlay>
-			<MenuHeaderContainer img={data.image}>
+			<MenuHeaderContainer img={data.images[1]}>
 				<MenuHeaderWrapper style={{ backgroundColor }} />
 				<Hamburger
 					onClick={() => setSideMenu(true)}
@@ -57,7 +58,7 @@ export default function TripHeader({ data }: any) {
 							</TagContainer>
 						))}
 					</TagContainerList>
-					<p style={{ marginTop: 10 }}>{data.date.toLocaleDateString()}</p>
+					<p style={{ marginTop: 10 }}>{date}</p>
 					<h3>{data.title}</h3>
 					<JoinTripButton>Join Trip</JoinTripButton>
 				</DescriptionArea>
