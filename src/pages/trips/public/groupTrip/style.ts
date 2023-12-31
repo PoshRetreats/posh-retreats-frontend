@@ -242,10 +242,28 @@ export const GroupImageFlex = styled.div`
 	display: flex;
 	margin-bottom: 120px;
 	padding: 0 64px;
+	overflow-x: scroll;
+
+	::-webkit-scrollbar {
+		height: 1.5em; /* You can adjust the width as needed */
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: red;
+	}
+
+	${media.tablet`
+		padding: 24px;
+		margin-bottom: 40px;
+	`}
 
 	img {
-		width: 200px;
+		width: 300px;
 		margin-right: 32px;
 		border-radius: 8px;
+		cursor: pointer;
+
+		${media.tablet`
+	`}
 	}
 `;

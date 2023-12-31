@@ -1,13 +1,20 @@
 import TripHeader from "components/menuHeader/TripHeader";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { GroupImageFlex, OverviewArea, PointsArea } from "./style";
 import { JoinTripButton } from "components/menuHeader/style";
 import Footer from "components/footer";
+import { gotoGroupTripForm } from "routes/frontend";
 
 export default function GroupTripOverView() {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { data } = location.state;
 	const date = new Date(data.depatureDate)?.toLocaleDateString();
+	const formUrl = gotoGroupTripForm(data._id);
+
+	function gotoForm() {
+		navigate(formUrl, { state: { trip: data } });
+	}
 	console.log({ data });
 	return (
 		<div>
@@ -33,7 +40,7 @@ export default function GroupTripOverView() {
 					))}
 					<h5>{date}</h5>
 					<h4>Price - ${data.amount}</h4>
-					<JoinTripButton>Join Trip</JoinTripButton>
+					<JoinTripButton onClick={gotoForm}>Join Trip</JoinTripButton>
 				</div>
 			</OverviewArea>
 			<GroupImageFlex>
