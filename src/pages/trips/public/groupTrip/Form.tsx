@@ -1,7 +1,6 @@
-import { PRIVATE_TRIPS_HEADER } from "assets";
 import useToastStore from "components/appToast/store";
+import { Checkbox } from "components/checkbox";
 import LoadingButton from "components/loaders/MainLoadingButton";
-import MenuHeader from "components/menuHeader";
 import TripHeader from "components/menuHeader/TripHeader";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormArea, TripForm } from "pages/trips/private/style";
@@ -9,6 +8,7 @@ import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_JOIN_PUBLIC_TRIPS } from "routes/server";
+import { CheckboxHeader, CheckboxList } from "./style";
 
 export enum PUBLIC_TRIP_QUESTIONS {
 	fullName = "Full Name",
@@ -27,18 +27,106 @@ export enum PUBLIC_TRIP_QUESTIONS {
 	findAboutTrip = "How Did You Find Out About This Trip?",
 }
 
+const defaultObj = {
+	fullName: "",
+	email: "",
+	phone: "",
+	gender: "",
+	age: "",
+	nationality: "",
+	location: "",
+	instagram: ``,
+	occupation: "",
+	dietryRestrictions: "",
+	occupancy: "",
+	sleepingArrangements: "",
+	shirtSize: "",
+	findAboutTrip: "",
+};
+
+const personalityObj = {
+	keepOnAC: {
+		label: "I keep the AC on",
+		value: false,
+	},
+	roomWarm: {
+		label: "I like my room warm",
+		value: false,
+	},
+	readyToTalk: {
+		label: "I wake up ready to talk",
+		value: false,
+	},
+	morningTalks: {
+		label: "I don't like to speak in the morning",
+		value: false,
+	},
+	alwaysLate: {
+		label: "I am always late",
+		value: false,
+	},
+	alwaysOnTime: {
+		label: "I am always on time",
+		value: false,
+	},
+	getAlong: {
+		label: "I get along with everyone easy",
+		value: false,
+	},
+	introverted: {
+		label: "I am pretty introverted",
+		value: false,
+	},
+	superSocial: {
+		label: "I am super social",
+		value: false,
+	},
+	aloneTime: {
+		label: "I need plenty of alone time",
+		value: false,
+	},
+	roomateGender: {
+		label: "I am open to any gender roommate",
+		value: false,
+	},
+	snorer: {
+		label: "I am a snorer",
+		value: false,
+	},
+	perfectSilence: {
+		label: "I need perfect silence to sleep",
+		value: false,
+	},
+	noSleep: {
+		label: "I am team no sleep (catch me outside)",
+		value: false,
+	},
+	sleeper: {
+		label: "I am team SLEEP (find me in bed)",
+		value: false,
+	},
+	noGuest: {
+		label: "My room has a no extra guest policy",
+		value: false,
+	},
+	allow: {
+		label: "My room is open to new friends (travel baes etc)",
+		value: false,
+	},
+};
+
 export default function GroupForm() {
 	const [loading, setLoading] = useState(false);
-	const [formObj, setFormObj] = useState({
-		fullName: "",
-		email: "",
-		phone: "",
+	const [formObj, setFormObj] = useState<typeof defaultObj>({
+		...defaultObj,
 	});
+	const [checkboxObj, setCheckboxObj] =
+		useState<typeof personalityObj>(personalityObj);
 	const toast = useToastStore();
-  const location = useLocation();
-  const { trip } = location.state;
+	const location = useLocation();
+	const { trip } = location.state;
 	const params = useParams();
-	console.log({ params });
+
 	function handleChange(e: any, name: string) {
 		setFormObj({
 			...formObj,
@@ -46,25 +134,37 @@ export default function GroupForm() {
 		});
 	}
 
+	function handleCheckboxChange(state: boolean, name: string, label: string) {
+		console.log({ state, name, label });
+		setCheckboxObj({
+			...checkboxObj,
+			[name]: {
+				label,
+				value: state,
+			},
+		});
+	}
+
 	async function submitPrivateTrip() {
-		setLoading(true);
 		try {
+			setLoading(true);
+			const personalityLabels = Object.entries(checkboxObj)
+				.filter(({ value }: any) => value)
+				.map(({ label }: any) => label);
+
+			console.log({ personalityLabels });
 			if (!formObj.fullName || !formObj.email || !formObj.phone) {
 				toast.showWarningToast("Please Fill in all required details");
 				return;
 			}
 			const res: any = await makePostRequestWithAxios(SERVER_JOIN_PUBLIC_TRIPS, {
-				questions: { ...formObj },
+				questions: { ...formObj, personality: [...personalityLabels] },
 				tripType: "public",
 				trip: params?.tripID,
 			});
 			console.log({ res });
 			if (res.success) {
-				setFormObj({
-					fullName: "",
-					email: "",
-					phone: "",
-				});
+				setFormObj({ ...defaultObj, ...personalityObj });
 				toast.showSuccessToast(
 					"Successfully Submitted your form and we will get back to you shortly"
 				);
@@ -156,8 +256,22 @@ export default function GroupForm() {
 							onChange={handleChange}
 							name="findAboutTrip"
 						/>
+						<CheckboxHeader>
+							Please select your rooming/personality preferences
+						</CheckboxHeader>
+						<CheckboxList>
+							{Object.entries(checkboxObj).map(([key, { label, value }]) => (
+								<Checkbox
+									key={key}
+									label={label}
+									name={key}
+									onChange={(state: boolean, name: string) =>
+										handleCheckboxChange(state, name, label)
+									}
+								/>
+							))}
+						</CheckboxList>
 					</form>
-					{/* <FormButton onClick={submitPrivateTrip}>Submit</FormButton> */}
 					<LoadingButton
 						loading={loading}
 						disabled={loading}

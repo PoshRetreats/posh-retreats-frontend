@@ -4,6 +4,7 @@ import media from "utilities/styles/media";
 
 type GroupTripStyleProps = {
 	img?: string;
+	checked?: boolean;
 };
 
 export const MiniGroupTripContainer = styled.div<GroupTripStyleProps>`
@@ -266,4 +267,16 @@ export const GroupImageFlex = styled.div`
 		${media.tablet`
 	`}
 	}
+`;
+
+export const CheckboxHeader = styled.h3`
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	margin: 32px 0;
+`;
+
+export const CheckboxList = styled.h3`
+	display: flex;
+	flex-wrap: wrap;
 `;
