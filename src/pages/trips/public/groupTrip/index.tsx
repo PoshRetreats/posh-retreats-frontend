@@ -4,6 +4,7 @@ import { GroupImageFlex, OverviewArea, PointsArea } from "./style";
 import { JoinTripButton } from "components/menuHeader/style";
 import Footer from "components/footer";
 import { gotoGroupTripForm } from "routes/frontend";
+import ReactSlickSlider from "components/reactSlickSlider";
 
 export default function GroupTripOverView() {
 	const location = useLocation();
@@ -15,7 +16,6 @@ export default function GroupTripOverView() {
 	function gotoForm() {
 		navigate(formUrl, { state: { trip: data } });
 	}
-	console.log({ data });
 	return (
 		<div>
 			<TripHeader data={data} />
@@ -44,9 +44,10 @@ export default function GroupTripOverView() {
 				</div>
 			</OverviewArea>
 			<GroupImageFlex>
-				{data.images.map((image: string, i: number) => (
+				{/* {data.images.map((image: string, i: number) => (
 					<img src={image} key={i} alt="group-tag" />
-				))}
+				))} */}
+				<ReactSlickSlider images={data.images} />
 			</GroupImageFlex>
 			<Footer />
 		</div>

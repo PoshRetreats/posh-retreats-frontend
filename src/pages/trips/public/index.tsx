@@ -2,7 +2,6 @@ import { PUBLIC_TRIPS_HEADER } from "assets";
 import FAQ from "components/faq";
 import HowWeWork from "components/howWeWork";
 import MenuHeader from "components/menuHeader";
-import { groupTripsData } from "./data";
 import MiniGroupTrip from "./groupTrip/MiniGroupTrip";
 import { GroupTripList } from "./style";
 import { useEffect, useState } from "react";

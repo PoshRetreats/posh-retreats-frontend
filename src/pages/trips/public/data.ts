@@ -51,7 +51,7 @@ export const groupTripsData = [
 		total: 300,
 		occupied: 290,
 		image: GROUP_TRIPS_IMAGE2,
-    otherImages: [
+    images: [
 			GROUP_TRIPS_IMAGE1,
 			GROUP_TRIPS_IMAGE3,
 			GROUP_TRIPS_IMAGE4,
@@ -83,7 +83,7 @@ export const groupTripsData = [
 		total: 300,
 		occupied: 120,
 		image: GROUP_TRIPS_IMAGE3,
-    otherImages: [
+    images: [
 			GROUP_TRIPS_IMAGE2,
 			GROUP_TRIPS_IMAGE1,
 			GROUP_TRIPS_IMAGE4,
@@ -115,7 +115,7 @@ export const groupTripsData = [
 		total: 300,
 		occupied: 110,
 		image: GROUP_TRIPS_IMAGE4,
-    otherImages: [
+    images: [
 			GROUP_TRIPS_IMAGE2,
 			GROUP_TRIPS_IMAGE3,
 			GROUP_TRIPS_IMAGE1,

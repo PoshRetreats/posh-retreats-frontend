@@ -240,18 +240,11 @@ export const MiniGroupTripDescriptionArea = styled.div`
 `;
 
 export const GroupImageFlex = styled.div`
-	display: flex;
+	/* display: flex; */
 	margin-bottom: 120px;
 	padding: 0 64px;
-	overflow-x: scroll;
+	/* overflow-x: scroll; */
 
-	::-webkit-scrollbar {
-		height: 1.5em; /* You can adjust the width as needed */
-	}
-
-	::-webkit-scrollbar-thumb {
-		background-color: red;
-	}
 
 	${media.tablet`
 		padding: 24px;

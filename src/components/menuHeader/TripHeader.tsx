@@ -17,7 +17,13 @@ import { Link } from "react-router-dom";
 import { HOME_URL } from "routes/frontend";
 import { TagContainer, TagContainerList } from "pages/trips/public/groupTrip/style";
 
-export default function TripHeader({ data }: any) {
+type MainTripHeaderProps = {
+	data?: any;
+	multipleData?: any[];
+	showJoinButton?: boolean;
+};
+
+function SingleTripHeader({ data, showJoinButton }: any) {
 	const [sideMenu, setSideMenu] = useState(false);
 	const [scrolling, setScrolling] = useState(false);
 
@@ -32,9 +38,9 @@ export default function TripHeader({ data }: any) {
 			}
 		};
 		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
+		// return () => {
+		// 	window.removeEventListener("scroll", handleScroll);
+		// };
 	}, []);
 
 	const backgroundColor = scrolling ? BrandColors.main1 : "transparent";
@@ -60,7 +66,7 @@ export default function TripHeader({ data }: any) {
 					</TagContainerList>
 					<p style={{ marginTop: 10 }}>{date}</p>
 					<h3>{data.title}</h3>
-					<JoinTripButton>Join Trip</JoinTripButton>
+					{showJoinButton && <JoinTripButton>Join Trip</JoinTripButton>}
 				</DescriptionArea>
 				<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
 				<MenuArea style={{ backgroundColor }}>
@@ -72,4 +78,12 @@ export default function TripHeader({ data }: any) {
 			</MenuHeaderContainer>
 		</MenuOverlay>
 	);
+}
+
+export default function TripHeader({ data, showJoinButton=false }: MainTripHeaderProps) {
+	if (data) {
+		return <SingleTripHeader data={data} showJoinButton={showJoinButton} />;
+	}
+
+	return null;
 }
