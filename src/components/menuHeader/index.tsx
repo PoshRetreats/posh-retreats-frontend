@@ -3,7 +3,6 @@ import {
 	DescriptionArea,
 	LogoArea,
 	MenuArea,
-	MenuHeaderContainer,
 	MenuHeaderWrapper,
 	MenuOverlay,
 } from "./style";

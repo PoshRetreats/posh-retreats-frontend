@@ -1,5 +1,4 @@
-import Faq from "react-faq-component";
-import { FAQContainer, FAQWrapper } from "./style";
+import { FAQContainer, FAQWrapper, StyledFAQ } from "./style";
 import { Link } from "react-router-dom";
 import { CONTACT_US_URL } from "routes/frontend";
 
@@ -52,7 +51,7 @@ export default function FAQ() {
 		<FAQContainer>
 			<h5>Got Any Questions?</h5>
 			<FAQWrapper>
-				<Faq data={data} styles={styles} config={config} />
+				<StyledFAQ data={data} styles={styles} config={config} />
 			</FAQWrapper>
 			<h6>Have a Question We Haven't Answered?</h6>
 			<Link to={CONTACT_US_URL}><button>Ask A Question</button></Link>

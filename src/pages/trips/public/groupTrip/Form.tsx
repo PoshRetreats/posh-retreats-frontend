@@ -9,6 +9,8 @@ import { useLocation, useParams } from "react-router-dom";
 import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_JOIN_PUBLIC_TRIPS } from "routes/server";
 import { CheckboxHeader, CheckboxList } from "./style";
+import useAppNavigator from "hooks/useAppNavigator";
+import { TRIPS_URL } from "routes/frontend";
 
 export enum PUBLIC_TRIP_QUESTIONS {
 	fullName = "Full Name",
@@ -124,6 +126,7 @@ export default function GroupForm() {
 		useState<typeof personalityObj>(personalityObj);
 	const toast = useToastStore();
 	const location = useLocation();
+	const { appNavigator } = useAppNavigator();
 	const { trip } = location.state;
 	const params = useParams();
 
@@ -144,15 +147,13 @@ export default function GroupForm() {
 			},
 		});
 	}
-
+	console.log({ checkboxObj });
 	async function submitPrivateTrip() {
 		try {
 			setLoading(true);
 			const personalityLabels = Object.entries(checkboxObj)
-				.filter(({ value }: any) => value)
-				.map(({ label }: any) => label);
-
-			console.log({ personalityLabels });
+				.filter((data: any) => data[1].value === true)
+				.map((data: any) => data[1].label);
 			if (!formObj.fullName || !formObj.email || !formObj.phone) {
 				toast.showWarningToast("Please Fill in all required details");
 				return;
@@ -165,6 +166,10 @@ export default function GroupForm() {
 			console.log({ res });
 			if (res.success) {
 				setFormObj({ ...defaultObj, ...personalityObj });
+				setCheckboxObj({
+					...checkboxObj,
+				});
+				appNavigator(TRIPS_URL);
 				toast.showSuccessToast(
 					"Successfully Submitted your form and we will get back to you shortly"
 				);
