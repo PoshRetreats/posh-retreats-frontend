@@ -20,6 +20,8 @@ import BACK_ICON from "assets/svgs/treatback.svg";
 import ACTIVE_ICON from "assets/svgs/Ellipse 29.svg"
 import SELECTED_TRIP_IMAGE from "assets/svgs/selected.svg"
 import THREE_DOT from "assets/svgs/dot.svg"
+import MINI_GROUP_ICON from "assets/svgs/miniGroupIcon.svg"
+import MINI_PRIVATE_ICON from "assets/svgs/miniPrivateIcon.svg"
 
 export {
 	LOGO,
@@ -44,4 +46,6 @@ export {
 	ACTIVE_ICON,
 	SELECTED_TRIP_IMAGE,
 	THREE_DOT,
+	MINI_GROUP_ICON,
+	MINI_PRIVATE_ICON
 };

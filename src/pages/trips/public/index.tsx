@@ -32,6 +32,7 @@ export default function Trips() {
 
 	useEffect(() => {
 		getPublicTrips();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div>

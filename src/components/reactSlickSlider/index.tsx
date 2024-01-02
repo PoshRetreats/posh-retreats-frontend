@@ -4,34 +4,46 @@ import "slick-carousel/slick/slick-theme.css";
 import { isMobile } from "react-device-detect";
 import styled from "styled-components";
 
-	type Settings = {
-		dots?: boolean,
-		infinite?: boolean,
-		speed?: number,
-		slidesToShow?: number,
-		slidesToScroll?: number,
-		autoplay?: boolean,
-		vertical?: boolean,
-		swipe?: boolean,
-		draggable?: boolean,
-	};
-
-type ReactSlickSliderProps = {
-	images: string[];
-	slideSettings?: Settings;
+type Settings = {
+	dots?: boolean;
+	infinite?: boolean;
+	speed?: number;
+	slidesToShow?: number;
+	slidesToScroll?: number;
+	autoplay?: boolean;
+	vertical?: boolean;
+	swipe?: boolean;
+	draggable?: boolean;
 };
 
-function ReactSlickSlider({ images, slideSettings }: ReactSlickSliderProps) {
+type ReactSlickSliderProps = {
+	images?: string[];
+	isComponent?: boolean;
+	slideSettings?: Settings;
+	children?: any;
+	h?: string;
+	m?: string;
+};
+
+function ReactSlickSlider({
+	images = [],
+	slideSettings,
+	isComponent = false,
+	children,
+	h,
+	m,
+}: ReactSlickSliderProps) {
 	const StyledCarousel = styled(Slider)`
+		position: relative;
 		.slick-slide {
 			height: fit-content;
-			margin: 0 10px;
+			margin: ${m || "0 10px"};
 			padding-bottom: 20px;
 		}
 
-    .slick-list{
-      height: 320px;
-    }
+		.slick-list {
+			height: ${h || "320px"};
+		}
 	`;
 
 	const settings = {
@@ -47,6 +59,10 @@ function ReactSlickSlider({ images, slideSettings }: ReactSlickSliderProps) {
 		swipe: slideSettings?.swipe || true,
 		draggable: slideSettings?.draggable || true,
 	};
+
+	if (isComponent) {
+		return <StyledCarousel {...settings}>{children}</StyledCarousel>;
+	}
 
 	return (
 		<StyledCarousel {...settings}>

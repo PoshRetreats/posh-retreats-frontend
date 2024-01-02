@@ -10,7 +10,7 @@ import Toast from "components/appToast/Toast";
 function App() {
 	const location = useLocation();
 	return (
-		<div>
+		<>
 			<Toast />
 			<Routes location={location} key={location?.pathname}>
 				{mainRoutes.map(
@@ -33,7 +33,7 @@ function App() {
 					)
 				)}
 			</Routes>
-		</div>
+		</>
 	);
 }
 

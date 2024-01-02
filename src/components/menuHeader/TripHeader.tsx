@@ -19,7 +19,7 @@ import { TagContainer, TagContainerList } from "pages/trips/public/groupTrip/sty
 
 type MainTripHeaderProps = {
 	data?: any;
-	multipleData?: any[];
+	componentData?: any[];
 	showJoinButton?: boolean;
 };
 
@@ -80,7 +80,7 @@ function SingleTripHeader({ data, showJoinButton }: any) {
 	);
 }
 
-export default function TripHeader({ data, showJoinButton=false }: MainTripHeaderProps) {
+export default function TripHeader({ data, showJoinButton=false, componentData=[] }: MainTripHeaderProps) {
 	if (data) {
 		return <SingleTripHeader data={data} showJoinButton={showJoinButton} />;
 	}

@@ -1,14 +1,52 @@
-import { HOME_HEADER } from "assets";
 import FAQ from "components/faq";
 import HowWeWork from "components/howWeWork";
-import MenuHeader from "components/menuHeader";
+import MiniTripHolder from "./MiniTripHolder";
+import { useEffect, useState } from "react";
+import useToastStore from "components/appToast/store";
+import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
+import { SERVER_GET_LATEST_PUBLIC_TRIPS } from "routes/server";
+import ReactSlickSlider from "components/reactSlickSlider";
+import TripHeader from "components/menuHeader/TripHeader";
 
 export default function Home() {
+	const [loading, setLoading] = useState<boolean>(false);
+	const [publicTrips, setPublicTrips] = useState<any>([]);
+	const toast = useToastStore();
+	async function getPublicTrips() {
+		try {
+			setLoading(true);
+			const res = (await makeGetRequestWithToken(
+				SERVER_GET_LATEST_PUBLIC_TRIPS
+			)) as GeneralResponseType;
+			// toast.showSuccessToast("Message sent successfully");
+			console.log({ res });
+			setPublicTrips(res.data);
+		} catch (err) {
+			toast.showFailedToast("Messages could not be delivered at the moment");
+		} finally {
+			setLoading(false);
+		}
+	}
+	console.log({ publicTrips, loading });
+	useEffect(() => {
+		getPublicTrips();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<>
-			<MenuHeader img={HOME_HEADER} />
-      <HowWeWork />
-      <FAQ />
+			<ReactSlickSlider
+				isComponent={true}
+				h="90vh"
+				m="0"
+				slideSettings={{ slidesToShow: 1, vertical: false }}
+			>
+				{publicTrips.map((data: any, i: number) => (
+					<TripHeader key={i} data={data} showJoinButton={true} />
+				))}
+			</ReactSlickSlider>
+			<MiniTripHolder />
+			<HowWeWork />
+			<FAQ />
 		</>
 	);
 }

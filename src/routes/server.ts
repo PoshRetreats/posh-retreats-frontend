@@ -28,6 +28,7 @@ export const SERVER_PRIVATE_TRIP = `${SERVER_URL}/trip/private/create`
 export const SERVER_CREATE_TRIP = `${SERVER_URL}/trip/create`
 export const SERVER_ALL_TRIPS = `${SERVER_URL}/trip/all`
 export const SERVER_GET_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/all`
+export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`
 export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`
 
 export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`  
