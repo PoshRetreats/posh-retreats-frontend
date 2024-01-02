@@ -38,9 +38,9 @@ function SingleTripHeader({ data, showJoinButton }: any) {
 			}
 		};
 		window.addEventListener("scroll", handleScroll);
-		// return () => {
-		// 	window.removeEventListener("scroll", handleScroll);
-		// };
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
 	}, []);
 
 	const backgroundColor = scrolling ? BrandColors.main1 : "transparent";
