@@ -14,26 +14,31 @@ import SideMenu from "./navigation/sideMenu";
 import { Hamburger } from "./navigation/sideMenu/style";
 import BrandColors from "utilities/styles/colors";
 import { Link } from "react-router-dom";
-import { HOME_URL } from "routes/frontend";
+import { HOME_URL, gotoGroupTripForm } from "routes/frontend";
 import { TagContainer, TagContainerList } from "pages/trips/public/groupTrip/style";
+import useAppNavigator from "hooks/useAppNavigator";
 
 type MainTripHeaderProps = {
 	data?: any;
 	componentData?: any[];
 	showJoinButton?: boolean;
+	isComponent?: boolean;
 };
 
-function SingleTripHeader({ data, showJoinButton }: any) {
+function SingleTripHeader({ data, showJoinButton, isComponent = false }: any) {
 	const [sideMenu, setSideMenu] = useState(false);
 	const [scrolling, setScrolling] = useState(false);
+	const { appNavigator } = useAppNavigator();
+	const formUrl = gotoGroupTripForm(data._id);
 
+	function gotoForm() {
+		appNavigator(formUrl, { trip: data });
+	}
 	useEffect(() => {
 		const handleScroll = () => {
 			if (window.scrollY > 100) {
-				// Change background color when user scrolls down
 				setScrolling(true);
 			} else {
-				// Reset background color when user scrolls back to the top
 				setScrolling(false);
 			}
 		};
@@ -50,12 +55,22 @@ function SingleTripHeader({ data, showJoinButton }: any) {
 	return (
 		<MenuOverlay>
 			<MenuHeaderContainer img={data.images[1]}>
-				<MenuHeaderWrapper style={{ backgroundColor }} />
-				<Hamburger
-					onClick={() => setSideMenu(true)}
-					src={HAMBURGER}
-					alt="hamburger"
-				/>
+				<MenuArea style={{ backgroundColor }}>
+					<Link style={{ position: "fixed", top: 10, zIndex: 300 }} to={HOME_URL}>
+						<LogoArea src={LOGO} alt="logo" />
+					</Link>
+					<TopNavigation textColor={color} />
+				</MenuArea>
+				{!isComponent && (
+					<>
+						<MenuHeaderWrapper style={{ backgroundColor }} />
+						<Hamburger
+							onClick={() => setSideMenu(true)}
+							src={HAMBURGER}
+							alt="hamburger"
+						/>
+					</>
+				)}
 				<DescriptionArea>
 					<TagContainerList>
 						{data.tags.map((tag: string, i: number) => (
@@ -66,24 +81,30 @@ function SingleTripHeader({ data, showJoinButton }: any) {
 					</TagContainerList>
 					<p style={{ marginTop: 10 }}>{date}</p>
 					<h3>{data.title}</h3>
-					{showJoinButton && <JoinTripButton>Join Trip</JoinTripButton>}
+					{showJoinButton && (
+						<JoinTripButton onClick={gotoForm}>Join Trip</JoinTripButton>
+					)}
 				</DescriptionArea>
 				<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
-				<MenuArea style={{ backgroundColor }}>
-					<Link style={{ position: "fixed", top: 10 }} to={HOME_URL}>
-						<LogoArea src={LOGO} alt="logo" />
-					</Link>
-					<TopNavigation textColor={color} />
-				</MenuArea>
 			</MenuHeaderContainer>
 		</MenuOverlay>
 	);
 }
 
-export default function TripHeader({ data, showJoinButton=false, componentData=[] }: MainTripHeaderProps) {
-	if (data) {
-		return <SingleTripHeader data={data} showJoinButton={showJoinButton} />;
-	}
+export default function TripHeader({
+	data,
+	showJoinButton = false,
+	isComponent = false,
+}: MainTripHeaderProps) {
+	// if (data) {
+	return (
+		<SingleTripHeader
+			isComponent={isComponent}
+			data={data}
+			showJoinButton={showJoinButton}
+		/>
+	);
+	// }
 
-	return null;
+	// return null;
 }

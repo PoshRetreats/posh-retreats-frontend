@@ -40,7 +40,7 @@ export default function MenuHeader({ img, title, description }: any) {
 
 	return (
 		<MenuOverlay>
-			<MenuHeaderContainer img={img}>
+			{/* <MenuHeaderContainer> */}
 				<MenuHeaderWrapper style={{ backgroundColor }} />
 				<Hamburger
 					onClick={() => setSideMenu(true)}
@@ -58,7 +58,7 @@ export default function MenuHeader({ img, title, description }: any) {
 					</Link>
 					<TopNavigation textColor={color} />
 				</MenuArea>
-			</MenuHeaderContainer>
+			{/* </MenuHeaderContainer> */}
 		</MenuOverlay>
 	);
 }

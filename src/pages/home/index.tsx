@@ -7,6 +7,7 @@ import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests"
 import { SERVER_GET_LATEST_PUBLIC_TRIPS } from "routes/server";
 import ReactSlickSlider from "components/reactSlickSlider";
 import TripHeader from "components/menuHeader/TripHeader";
+import MenuHeader from "components/menuHeader";
 
 export default function Home() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -34,14 +35,15 @@ export default function Home() {
 	}, []);
 	return (
 		<>
+		<MenuHeader  />
 			<ReactSlickSlider
 				isComponent={true}
 				h="90vh"
 				m="0"
-				slideSettings={{ slidesToShow: 1, vertical: false }}
+				slideSettings={{ slidesToShow: 1, vertical: false, speed: 1000 }}
 			>
 				{publicTrips.map((data: any, i: number) => (
-					<TripHeader key={i} data={data} showJoinButton={true} />
+					<TripHeader key={i} data={data} showJoinButton={true} isComponent={true} />
 				))}
 			</ReactSlickSlider>
 			<MiniTripHolder />
