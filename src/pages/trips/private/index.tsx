@@ -20,11 +20,11 @@ create lasting memories."
 			/>
 			<RequestFormLinkArea>
 				<button onClick={() => navigate(PRIVATE_TRIPS_FORM_URL)}>
-					REQUEST CUSTOM LINK
+					REQUEST PRIVATE TRIP
 				</button>
 			</RequestFormLinkArea>
-			<HowWeWork />
-			<FAQ />
+			<HowWeWork type="private" />
+			<FAQ type="group" />
 		</>
 	);
 }

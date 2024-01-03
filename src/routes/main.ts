@@ -131,9 +131,9 @@ export const mainRoutes = [
 		path: TRIPS_OVERVIEW_URL,
 		Component: GroupTripOverView,
 		exact: true,
-		isProtected: true,
-		isAdmin: true,
-		showAdminMenu: true,
+		isProtected: false,
+		isAdmin: false,
+		showAdminMenu: false,
 		showDefaultFooter: false,
 	},
 	{
