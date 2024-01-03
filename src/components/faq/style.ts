@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Faq from "react-faq-component";
 import BrandColors from "utilities/styles/colors";
 import media from "utilities/styles/media";
 
@@ -59,10 +58,4 @@ export const FAQWrapper = styled.div`
 	${media.tablet`
     width: 100%;
   `}
-`;
-
-export const StyledFAQ = styled(Faq)`
-	.expanded{
-		background-color: red;
-	}
 `;

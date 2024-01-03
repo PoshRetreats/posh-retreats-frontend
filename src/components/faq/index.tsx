@@ -1,6 +1,16 @@
-import { FAQContainer, FAQWrapper, StyledFAQ } from "./style";
+import { FAQContainer, FAQWrapper } from "./style";
 import { Link } from "react-router-dom";
 import { CONTACT_US_URL } from "routes/frontend";
+import {
+	Accordion,
+	AccordionItem,
+	AccordionItemHeading,
+	AccordionItemButton,
+	AccordionItemPanel,
+} from "react-accessible-accordion";
+
+// Demo styles, see 'Styles' section below for some notes on use.
+import "react-accessible-accordion/dist/fancy-example.css";
 
 const data = {
 	title: "",
@@ -31,30 +41,41 @@ const data = {
 	],
 };
 
-const styles = {
-	// bgColor: 'white',
-	titleTextColor: "#020E07",
-	rowTitleColor: "#020E07",
-	// rowContentColor: 'grey',
-	// arrowColor: "red",
-};
+// const styles = {
+// 	// bgColor: 'white',
+// 	titleTextColor: "#020E07",
+// 	rowTitleColor: "#020E07",
+// 	// rowContentColor: 'grey',
+// 	// arrowColor: "red",
+// };
 
-const config = {
-	animate: true,
-	openOnload: true,
-	// arrowIcon: "V",
-	tabFocus: true,
-};
+// const config = {
+// 	animate: true,
+// 	openOnload: true,
+// 	// arrowIcon: "V",
+// 	tabFocus: true,
+// };
 
 export default function FAQ() {
 	return (
 		<FAQContainer>
 			<h5>Got Any Questions?</h5>
 			<FAQWrapper>
-				<StyledFAQ data={data} styles={styles} config={config} />
+				<Accordion allowZeroExpanded>
+					{data.rows.map((item, i) => (
+						<AccordionItem key={i}>
+							<AccordionItemHeading>
+								<AccordionItemButton>{item.title}</AccordionItemButton>
+							</AccordionItemHeading>
+							<AccordionItemPanel>{item.content}</AccordionItemPanel>
+						</AccordionItem>
+					))}
+				</Accordion>
 			</FAQWrapper>
 			<h6>Have a Question We Haven't Answered?</h6>
-			<Link to={CONTACT_US_URL}><button>Ask A Question</button></Link>
+			<Link to={CONTACT_US_URL}>
+				<button>Ask A Question</button>
+			</Link>
 		</FAQContainer>
 	);
 }
