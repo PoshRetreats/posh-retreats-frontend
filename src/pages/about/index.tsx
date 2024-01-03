@@ -4,6 +4,7 @@ import MenuHeader from "components/menuHeader";
 import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { ABOUT_US_URL } from "routes/frontend";
+import AnimateComponent from "components/animateComponent";
 
 export function AboutComponent({ isHome = false }) {
 	const { appNavigator } = useAppNavigator();
@@ -16,7 +17,9 @@ export function AboutComponent({ isHome = false }) {
 					transcending the barriers of passport privilege. Our philosophy rejects the
 					limitations of waiting for travel companions and instead champions the
 					spirit of action. <br />
-					{isHome && <button onClick={() => appNavigator(ABOUT_US_URL)}>Learn more</button>}
+					{isHome && (
+						<button onClick={() => appNavigator(ABOUT_US_URL)}>Learn more</button>
+					)}
 					{!isHome && (
 						<>
 							We warmly welcome travelers who, like us, venture to diverse global
@@ -30,9 +33,15 @@ export function AboutComponent({ isHome = false }) {
 				</p>
 			</TextSection>
 			<ImageSection>
-				<StyledImage r="0px" top="-120px" right="40px" src={ABOUT1} alt="about1" />
-				<StyledImage top="-20px" right="200px" src={ABOUT2} alt="about2" />
-				<StyledImage top="90px" right="60px" src={ABOUT3} alt="about3" />
+				<AnimateComponent>
+					<StyledImage r="0px" top="-120px" right="40px" src={ABOUT1} alt="about1" />
+				</AnimateComponent>
+				<AnimateComponent>
+					<StyledImage top="-20px" right="200px" src={ABOUT2} alt="about2" />
+				</AnimateComponent>
+				<AnimateComponent>
+					<StyledImage top="90px" right="60px" src={ABOUT3} alt="about3" />
+				</AnimateComponent>
 			</ImageSection>
 		</SecondSection>
 	);
