@@ -35,7 +35,7 @@ export default function Home() {
 	}, []);
 	return (
 		<>
-		<MenuHeader  />
+			<MenuHeader  />
 			<ReactSlickSlider
 				isComponent={true}
 				h="90vh"

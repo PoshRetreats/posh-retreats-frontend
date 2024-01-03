@@ -30,7 +30,7 @@ export const ContactUsForm = styled.div`
 	/* height: 522px; */
 	margin-top: -150px;
 	padding: 32px;
-	z-index: 20;
+	z-index: 200;
 
 	${media.tablet`
   width: 100%;

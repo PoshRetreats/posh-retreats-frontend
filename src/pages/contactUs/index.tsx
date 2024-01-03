@@ -24,13 +24,11 @@ export default function ContactUs() {
 	});
 	const [loading, setLoading] = useState(false);
 	const reasons: string[] = [
-		"Need help booking a private or group trip",
+		"Need help booking a group trip",
 		"Would like to partner with us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
+		"Need help planning your next trip",
+		"Want more information about a trip",
+		"Need clarification on any of our offerings",
 	];
 
 	function handleChange(e: any, name: string) {

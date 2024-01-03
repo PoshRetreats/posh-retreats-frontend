@@ -7,7 +7,8 @@ type FeatureTripDetailsProps = {
 export interface GroupTripDetailsProps{
 	title?: string;
 	details?: string;
-	date?: any;
+	depatureDate?: any;
+	returnDate?: any;
 	breakDown?: string;
 	inclusion?: string;
 	exclusion?: string;

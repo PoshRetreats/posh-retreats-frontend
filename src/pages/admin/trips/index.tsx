@@ -163,7 +163,8 @@ export function CreateTrip() {
 	>({
 		title: "",
 		details: "",
-		date: "",
+		depatureDate: "",
+		returnDate: "",
 		breakDown: "",
 		inclusion: "",
 		exclusion: "",
@@ -205,7 +206,8 @@ export function CreateTrip() {
 		title: groupTripDetails.title,
 		details: groupTripDetails.details,
 		tags: tags,
-		depatureDate: groupTripDetails.date?.$d,
+		depatureDate: groupTripDetails.depatureDate.$d,
+		returnDate: groupTripDetails.returnDate.$d,
 		tripType: tripType,
 		breakdown: addedFeatures.breakDown,
 		inclusions: addedFeatures.inclusion,
@@ -285,10 +287,17 @@ export function CreateTrip() {
 					<AddButton onclick={AddTags} />
 					<DatePickerr
 						dateOnChange={(event: any) =>
-							setGroupTripDetails({ ...groupTripDetails, date: event })
+							setGroupTripDetails({ ...groupTripDetails, depatureDate: event })
 						}
 						value={groupTripDetails.date}
 						placeholder="Departure Date"
+					/>
+					<DatePickerr
+						dateOnChange={(event: any) =>
+							setGroupTripDetails({ ...groupTripDetails, returnDate: event })
+						}
+						value={groupTripDetails.date}
+						placeholder="Return Date"
 					/>
 					<TripFeatures
 						addedFeatures={addedFeatures}

@@ -66,15 +66,17 @@ export function TripDetails(data: any) {
 
 	const image = data?.data.image;
 
-	const date = data?.data.depatureDate;
+	const depatureDate = data?.data.depatureDate;
+	const returnDate = data?.data?.returnDate;
 
-	const inputDate = new Date(date);
+	const formatedDepatureDate = new Date(depatureDate)?.toLocaleString();
+	const formatedreturnDate = new Date(returnDate)?.toLocaleDateString();
 
-	const month = String(inputDate.getMonth() + 1).padStart(2, "0"); // Month (0-11) is zero-based
-	const day = String(inputDate.getDate()).padStart(2, "0");
-	const year = inputDate.getFullYear();
+	// const month = String(inputDate.getMonth() + 1).padStart(2, "0"); // Month (0-11) is zero-based
+	// const day = String(inputDate.getDate()).padStart(2, "0");
+	// const year = inputDate.getFullYear();
 
-	const formattedDate = `${month}/${day}/${year}`;
+	// const formattedDate = `${month}/${day}/${year}`;
 
 	return (
 		<>
@@ -97,7 +99,8 @@ export function TripDetails(data: any) {
 					</div>
 					<p>{data?.data.details}</p>
 					<SelectedTags selectedTags={tag} />
-					<Dates>{formattedDate}</Dates>
+					<Dates>{formatedDepatureDate}</Dates>
+					<Dates>{formatedreturnDate}</Dates>
 					{breakdown?.map((condition: any, index: any) => (
 						<section key={index} className="condition">
 							<Active alt="active" src={ACTIVE_ICON} />

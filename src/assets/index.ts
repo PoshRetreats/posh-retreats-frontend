@@ -8,7 +8,7 @@ import PUBLIC_TRIPS_HEADER from "assets/svgs/publicTripsHeader.svg";
 import HOME_HEADER from "assets/svgs/homeHeader.svg";
 import REVIEWS_HEADER from "assets/svgs/reviewsHeader.svg";
 import ABOUT_HEADER from "assets/svgs/aboutHeader.svg";
-import CONTACT_US_HEADER from "assets/svgs/contactUsHeader.svg";
+// import CONTACT_US_HEADER from "assets/svgs/contactUsHeader.svg";
 import MENU_CANCEL from "assets/svgs/menuCancelIcon.svg";
 import HAMBURGER from "assets/svgs/hamburger.svg";
 import GROUP_TRIPS_IMAGE1 from "assets/svgs/groupTripsImage1.svg";
@@ -22,6 +22,7 @@ import SELECTED_TRIP_IMAGE from "assets/svgs/selected.svg"
 import THREE_DOT from "assets/svgs/dot.svg"
 import MINI_GROUP_ICON from "assets/svgs/miniGroupIcon.svg"
 import MINI_PRIVATE_ICON from "assets/svgs/miniPrivateIcon.svg"
+import CONTACT_US_HEADER from "assets/svgs/contactUsImage.svg"
 
 export {
 	LOGO,
