@@ -15,7 +15,15 @@ function App() {
 			<Routes location={location} key={location?.pathname}>
 				{mainRoutes.map(
 					(
-						{ path, Component, id, isProtected, showDefaultFooter, showAdminMenu, isAdmin },
+						{
+							path,
+							Component,
+							id,
+							isProtected,
+							showDefaultFooter,
+							showAdminMenu,
+							isAdmin,
+						},
 						i
 					) => (
 						<Route

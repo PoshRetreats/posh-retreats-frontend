@@ -50,8 +50,8 @@ create lasting memories."
 					<MiniGroupTrip key={key} data={trip} />
 				))}
 			</GroupTripList>
-			<HowWeWork />
-			<FAQ />
+			<HowWeWork type="group" />
+			<FAQ type="group" />
 		</div>
 	);
 }
