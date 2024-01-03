@@ -44,7 +44,7 @@ export const ImageHolder = styled.div`
 export const BottomCenterWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	width: 100%;
+	width: 100vw;
 	position: absolute;
 
 	h3 {

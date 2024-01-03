@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Faq from "react-faq-component";
 import BrandColors from "utilities/styles/colors";
 import media from "utilities/styles/media";
 
@@ -8,8 +9,7 @@ export const FAQContainer = styled.div`
 	align-items: center;
 	flex-direction: column;
 	margin-bottom: 100px;
-  padding: 16px;
-
+	padding: 16px;
 
 	h5 {
 		color: var(--text-color, #020e07);
@@ -19,9 +19,9 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
-    margin-bottom: 32px;
+		margin-bottom: 32px;
 
-    ${media.tablet`
+		${media.tablet`
     font-size: 18px;
   `}
 	}
@@ -34,8 +34,8 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
-    margin-top: 80px;
-    margin-bottom: 30px;
+		margin-top: 80px;
+		margin-bottom: 30px;
 	}
 
 	button {
@@ -59,4 +59,10 @@ export const FAQWrapper = styled.div`
 	${media.tablet`
     width: 100%;
   `}
+`;
+
+export const StyledFAQ = styled(Faq)`
+	.expanded{
+		background-color: red;
+	}
 `;

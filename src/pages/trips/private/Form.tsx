@@ -1,10 +1,11 @@
 import { PRIVATE_TRIPS_HEADER } from "assets";
 import MenuHeader from "components/menuHeader";
-import  { useState } from "react";
+import { useState } from "react";
 import { BasicInputArea, FormArea, TripForm } from "./style";
 import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_PRIVATE_TRIP } from "routes/server";
 import LoadingButton from "components/loaders/MainLoadingButton";
+import useToastStore from "components/appToast/store";
 
 export enum PRIVATE_TRIP_QUESTIONS {
 	fullName = "Full Name",
@@ -42,6 +43,7 @@ export default function PrivateTripForm() {
 		email: "",
 		phone: "",
 	});
+	const toast = useToastStore();
 
 	function handleChange(e: any, name: string) {
 		setFormObj({
@@ -54,11 +56,18 @@ export default function PrivateTripForm() {
 		setLoading(true);
 		try {
 			if (!formObj.fullName || !formObj.email || !formObj.phone) {
+				toast.showWarningToast("Please Fill in all required details");
 				return;
 			}
 			const res: any = await makePostRequestWithAxios(SERVER_PRIVATE_TRIP, formObj);
 			console.log({ res });
 			if (res.success) {
+				setFormObj({
+					fullName: "",
+					email: "",
+					phone: "",
+				});
+				toast.showSuccessToast('Successfully Submitted your form and we will get back to you shortly')
 			}
 		} catch (err) {
 			console.log({ err });
@@ -78,16 +87,19 @@ export default function PrivateTripForm() {
 							title={PRIVATE_TRIP_QUESTIONS.fullName}
 							onChange={handleChange}
 							name="fullName"
+							value={formObj.fullName}
 						/>
 						<BasicInput
 							title={PRIVATE_TRIP_QUESTIONS.email}
 							onChange={handleChange}
 							name="email"
+							value={formObj.email}
 						/>
 						<BasicInput
 							title={PRIVATE_TRIP_QUESTIONS.phone}
 							onChange={handleChange}
 							name="phone"
+							value={formObj.phone}
 						/>
 						<BasicInput
 							title={PRIVATE_TRIP_QUESTIONS.travellingTo}

@@ -1,6 +1,7 @@
 import {
 	ADMIN_GROUP_TRIPS_URL,
 	ADMIN_HOME_URL,
+	ADMIN_MESSAGES_URL,
 	ADMIN_PAST_TRIPS_URL,
 	ADMIN_PRIVATE_TRIPS_URL,
 } from "routes/frontend";
@@ -148,7 +149,7 @@ export const data = [
 	},
 	{
 		title: "Messages",
-		link: ADMIN_PAST_TRIPS_URL,
+		link: ADMIN_MESSAGES_URL,
 		activeIcon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

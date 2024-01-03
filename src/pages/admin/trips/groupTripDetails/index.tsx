@@ -54,29 +54,29 @@ export const TripDetailsImage = (image: string[] | any) => {
 export function TripDetails(data: any) {
 	const navigate = useNavigate();
 	// LIST OF TAGS SELECTED BY USER THESE DATA WILL COME FROM BACK END
-
+	console.log({ data });
 	const tag = data?.data.tags;
 
-	const breakDown = data?.data.features.breakDown;
+	const breakdown = data?.data.breakDown;
 
-	const inclusions = data?.data.features.inclusions;
+	const inclusions = data?.data.inclusions;
 
-	const exclusions = data?.data.features.exclusions;
-	const payment = data?.data.payment;
+	const exclusions = data?.data.exclusions;
+	const payment = data?.data.amount;
 
-	const image = data?.data.features.image;
+	const image = data?.data.image;
 
-	const date = data?.data.date;
+	const depatureDate = data?.data.depatureDate;
+	const returnDate = data?.data?.returnDate;
 
-	console.log(data);
+	const formatedDepatureDate = new Date(depatureDate)?.toLocaleString();
+	const formatedreturnDate = new Date(returnDate)?.toLocaleDateString();
 
-	const inputDate = new Date(date);
+	// const month = String(inputDate.getMonth() + 1).padStart(2, "0"); // Month (0-11) is zero-based
+	// const day = String(inputDate.getDate()).padStart(2, "0");
+	// const year = inputDate.getFullYear();
 
-	const month = String(inputDate.getMonth() + 1).padStart(2, "0"); // Month (0-11) is zero-based
-	const day = String(inputDate.getDate()).padStart(2, "0");
-	const year = inputDate.getFullYear();
-
-	const formattedDate = `${month}/${day}/${year}`;
+	// const formattedDate = `${month}/${day}/${year}`;
 
 	return (
 		<>
@@ -99,8 +99,9 @@ export function TripDetails(data: any) {
 					</div>
 					<p>{data?.data.details}</p>
 					<SelectedTags selectedTags={tag} />
-					<Dates>{formattedDate}</Dates>
-					{breakDown?.map((condition: any, index: any) => (
+					<Dates>{formatedDepatureDate}</Dates>
+					<Dates>{formatedreturnDate}</Dates>
+					{breakdown?.map((condition: any, index: any) => (
 						<section key={index} className="condition">
 							<Active alt="active" src={ACTIVE_ICON} />
 							<span>{condition.condition || condition}</span>
@@ -134,9 +135,9 @@ export function TripDetails(data: any) {
 					<div className="included_trips">
 						<h3>Trip Capacity</h3>
 						<section className="condition">
-							<span>{data?.data.tripCapacity.value}</span>
+							<span>{data?.data.registeredTravelers}</span>
 							<span>Out Of</span>
-							<span>{data?.data.tripCapacity.total}</span>
+							<span>{data?.data.totalExpectedTravelers}</span>
 						</section>
 					</div>
 				</TripDetailsDescription>

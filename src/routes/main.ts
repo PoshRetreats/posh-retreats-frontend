@@ -17,6 +17,7 @@ import {
 	TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_URL,
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+	PUBLIC_TRIPS_FORM_URL,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -31,6 +32,7 @@ import PastTripsAndReviews from "pages/admin/pastTrips";
 import AdminLogin from "pages/admin/auth/login";
 import AdminGroupTripsDetails from "pages/admin/trips/groupTripDetails";
 import PastTripsAndReviewsDetails from "pages/admin/pastTrips/details";
+import GroupForm from "pages/trips/public/groupTrip/Form";
 
 export const mainRoutes = [
 	{
@@ -123,7 +125,7 @@ export const mainRoutes = [
 		showAdminMenu: true,
 		showDefaultFooter: false,
 	},
-	
+
 	{
 		id: 10,
 		path: TRIPS_OVERVIEW_URL,
@@ -145,13 +147,13 @@ export const mainRoutes = [
 		showDefaultFooter: false,
 	},
 	{
-		id: 11,
+		id: 15,
 		path: ADMIN_PRIVATE_TRIPS_URL,
 		Component: PrivateTrips,
 		exact: true,
 		isProtected: true,
 		hide: false,
-		showBottomNav: false,	
+		showBottomNav: false,
 	},
 	{
 		id: 12,
@@ -160,7 +162,7 @@ export const mainRoutes = [
 		exact: true,
 		isProtected: true,
 		hide: false,
-		showBottomNav: false,	
+		showBottomNav: false,
 	},
 	{
 		id: 13,
@@ -177,6 +179,15 @@ export const mainRoutes = [
 		Component: PastTripsAndReviewsDetails,
 		exact: true,
 		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 16,
+		path: PUBLIC_TRIPS_FORM_URL,
+		Component: GroupForm,
+		exact: true,
+		isProtected: false,
 		hide: false,
 		showBottomNav: false,
 	},

@@ -8,6 +8,8 @@ export const HOME_URL = "/";
 //trips
 export const TRIPS_URL = "/trips";
 export const TRIPS_OVERVIEW_URL = "/trips/overview";
+export const PUBLIC_TRIPS_FORM_URL = "/trips/group/:tripID";
+export const gotoGroupTripForm = (tripID: string) => `/trips/group/${tripID}`;
 export const PRIVATE_TRIPS_URL = "/trips/private";
 export const PRIVATE_TRIPS_FORM_URL = "/trips/private/form";
 

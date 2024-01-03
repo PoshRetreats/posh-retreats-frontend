@@ -6,29 +6,29 @@ import {
 	ContactUsList,
 	ContactUsReason,
 } from "./style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BasicInput } from "pages/trips/private/Form";
 import { FormButton } from "pages/trips/private/style";
 import ComponentLoader from "components/loaders/ComponentLoader";
 import { makePostRequestWithAxios } from "requests/requests";
 import { CONTACT_US } from "routes/server";
+import useToastStore from "components/appToast/store";
 
 export default function ContactUs() {
+	const toast = useToastStore();
 	const [form, setForm] = useState({
-		fullname: "",
+		fullName: "",
 		email: "",
 		phone: "",
 		message: "",
 	});
 	const [loading, setLoading] = useState(false);
 	const reasons: string[] = [
-		"Need help booking a private or group trip",
+		"Need help booking a group trip",
 		"Would like to partner with us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
-		"Have valueable information for us",
+		"Need help planning your next trip",
+		"Want more information about a trip",
+		"Need clarification on any of our offerings",
 	];
 
 	function handleChange(e: any, name: string) {
@@ -38,20 +38,29 @@ export default function ContactUs() {
 		});
 	}
 
-	function sendContactMessage() {
-		setLoading(true);
-		makePostRequestWithAxios(CONTACT_US, form)
-			.then((res) => {
-				setLoading(false);
-				console.log({ res });
-			})
-			.catch((err) => {
-				setLoading(false);
-				console.log({ err });
+	async function sendContactMessage() {
+		try {
+			setLoading(true);
+			if (!form.fullName || !form.email || !form.message || !form.phone) {
+				toast.showWarningToast("Please fill in all fields");
+				return;
+			}
+			const res = await makePostRequestWithAxios(CONTACT_US, form);
+			setForm({
+				fullName: "",
+				email: "",
+				phone: "",
+				message: "",
 			});
+			toast.showSuccessToast('Message sent successfully')
+			console.log({ res });
+		} catch (err) {
+			toast.showFailedToast("Messages could not be delivered at the moment");
+		} finally {
+			setLoading(false);
+		}
 	}
-
-	useEffect(() => {}, []);
+	console.log({ form });
 	return (
 		<>
 			<MenuHeader
@@ -73,11 +82,12 @@ We make every minute of your retreat worth it!"
 				</ContactUsList>
 				<ContactUsForm>
 					<h3>Need to reach out?</h3>
-					<BasicInput title={"Full name"} onChange={handleChange} name="fullName" />
-					<BasicInput title={"Email Address"} onChange={handleChange} name="email" />
-					<BasicInput title={"Phone Number"} onChange={handleChange} name="phone" />
+					<BasicInput title={"Full name"} value={form.fullName} onChange={handleChange} name="fullName" />
+					<BasicInput title={"Email Address"} value={form.email} onChange={handleChange} name="email" />
+					<BasicInput title={"Phone Number"} value={form.phone} onChange={handleChange} name="phone" />
 					<BasicInput
 						title={"Message"}
+						value={form.message}
 						onChange={handleChange}
 						name="message"
 						type="textarea"

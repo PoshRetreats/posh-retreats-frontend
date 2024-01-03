@@ -62,9 +62,7 @@ type ReviewState = {
 	year: string;
 };
 
-export function Review({setReviews,review}:ReviewState | any ) {
-	
-
+export function Review({ setReviews, review }: ReviewState | any) {
 	const reviews = [
 		{ name: "review", label: "Review" },
 		{ name: "name", label: "Name" },
@@ -101,8 +99,7 @@ export function Review({setReviews,review}:ReviewState | any ) {
 }
 
 export function TripDetails() {
-
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const inneRef = useRef<HTMLInputElement | null>(null);
 
 	const [information, setInformation] = useState<string>("");
@@ -114,16 +111,12 @@ export function TripDetails() {
 		year: "",
 	});
 
-
-
 	const [imageFields, setImageFields] = useState<any>({
 		image1: "",
 		// image2: "",
 		// image3: "",
 		// image4: "",
 	});
-	
-
 
 	const clickImageField = () => inneRef.current?.click();
 
@@ -135,20 +128,20 @@ export function TripDetails() {
 	// 	setImageFields({ ...imageFields, [event.target.name]: value });
 	// }
 
-	const [data, setData] = useState()
-	const [loading, setLoading] = useState<boolean>(false)
+	const [data, setData] = useState();
+	const [loading, setLoading] = useState<boolean>(false);
 
-	const imgArray  = Object.values(imageFields)
+	const imgArray = Object.values(imageFields);
 
-
+	console.log({ data });
 	const postData = {
 		information: information,
 		review: review.review,
 		name: review.name,
 		location: review.location,
 		year: review.year,
-		image: imgArray
-	}
+		image: imgArray,
+	};
 
 	const detailsValidation =
 		information === "" ||
@@ -156,32 +149,27 @@ export function TripDetails() {
 		review.name === "" ||
 		review.location === "" ||
 		review.year === "" ||
-		review.name === "" 
+		review.name === "";
 
-	async function submitTripReview(event: FormEvent){
+	async function submitTripReview(event: FormEvent) {
 		event.preventDefault();
-		if(detailsValidation){
-			alert("Please complete the review form *")
+		if (detailsValidation) {
+			alert("Please complete the review form *");
 		}
 
 		makePostRequestWithAxios("", postData)
-		
 			.then((res: any) => {
-				setData(res)
-				setLoading(false)
+				setData(res);
+				setLoading(false);
 				//TODO: save basic admin data
 				navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
-					state: postData
-				})
+					state: postData,
+				});
 			})
 			.catch((err) => {
-				setLoading(false)
+				setLoading(false);
 				alert(err.message);
 			});
-
-
-	
-
 	}
 
 	return (
@@ -203,30 +191,33 @@ export function TripDetails() {
 						/>
 					</div>
 				))} */}
-				<div >
-						<ImageInput
-							inneRef={inneRef}
-							onChange={(e) => {
-								const file = e.target.files[0];
-								if (file) {
-								  const reader = new FileReader();
-								  reader.onload = (event:any) => {
+				<div>
+					<ImageInput
+						inneRef={inneRef}
+						onChange={(e) => {
+							const file = e.target.files[0];
+							if (file) {
+								const reader = new FileReader();
+								reader.onload = (event: any) => {
 									const imageDataUrl = event.target.result;
 									setImageFields({ ...imageFields, image1: imageDataUrl });
-								  };
-								  reader.readAsDataURL(file);
-								}
-							  }}
-							onClick={clickImageField}
-							image={imageFields.image1}
-						/>
-					</div>
-	
-					
+								};
+								reader.readAsDataURL(file);
+							}
+						}}
+						onClick={clickImageField}
+						image={imageFields.image1}
+					/>
+				</div>
 			</PastTripCardList>
-			<Review review ={review} setReviews = {setReviews} />
+			<Review review={review} setReviews={setReviews} />
 			<ButtonDiv>
-				<SubmitButton loading = {loading} type="submit" className="Submit_btn_preview" name="Post" />
+				<SubmitButton
+					loading={loading}
+					type="submit"
+					className="Submit_btn_preview"
+					name="Post"
+				/>
 			</ButtonDiv>
 		</AllTripsCardContainer>
 	);

@@ -21,11 +21,11 @@ export const MenuHeaderContainer = styled.div<PrivateStyleProps>`
 export const MenuHeaderWrapper = styled.div`
 	display: none;
 	${media.tablet`
+	position: fixed;
 		display: block;
 		width: 100%;
-		padding: 16px;
+		/* padding: 16px; */
 		height: 90px;
-		position: fixed;
 		top: 0;
 		left: 0;
     padding: 16px;
@@ -35,7 +35,8 @@ export const MenuHeaderWrapper = styled.div`
 export const MenuOverlay = styled.div`
 	position: relative;
 	overflow: hidden;
-	z-index: 20;
+	z-index: 200;
+	
 	&::before {
 		content: "";
 		position: absolute;
@@ -43,7 +44,7 @@ export const MenuOverlay = styled.div`
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: rgba(0, 0, 0, 0.4);
 		opacity: 1;
 		transition: opacity 0.3s ease;
 	}
@@ -71,6 +72,7 @@ export const LogoArea = styled.img`
 	width: 43px;
 	margin-left: 35px;
 	margin-top: 5px;
+	
 
 	${media.tablet`
 	
@@ -78,7 +80,7 @@ export const LogoArea = styled.img`
 `;
 
 export const JoinTripButton = styled.button`
-	background: var(--Primary-Color-1, #F7A49D);
+	background: var(--Primary-Color-1, #f7a49d);
 	color: white;
 	border: none;
 	border-radius: 8px;

@@ -59,27 +59,6 @@ const privateTripsdetails: InformationData[] = [
 ];
 
 
-
-// const tripData: BasicTripData[] = [
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// ];
-
-
-
 const upcoming: BasicTripData[] = [
 	{
 		title: "Explore Canary Island",
