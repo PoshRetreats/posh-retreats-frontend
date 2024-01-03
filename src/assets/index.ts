@@ -23,6 +23,9 @@ import THREE_DOT from "assets/svgs/dot.svg"
 import MINI_GROUP_ICON from "assets/svgs/miniGroupIcon.svg"
 import MINI_PRIVATE_ICON from "assets/svgs/miniPrivateIcon.svg"
 import CONTACT_US_HEADER from "assets/svgs/contactUsImage.svg"
+import ABOUT1 from "assets/svgs/about1.svg"
+import ABOUT2 from "assets/svgs/about2.svg"
+import ABOUT3 from "assets/svgs/about3.svg"
 
 export {
 	LOGO,
@@ -48,5 +51,8 @@ export {
 	SELECTED_TRIP_IMAGE,
 	THREE_DOT,
 	MINI_GROUP_ICON,
-	MINI_PRIVATE_ICON
+	MINI_PRIVATE_ICON,
+	ABOUT1,
+	ABOUT2,
+	ABOUT3
 };

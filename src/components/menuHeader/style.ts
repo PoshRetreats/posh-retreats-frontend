@@ -13,8 +13,9 @@ export const MenuHeaderContainer = styled.div<PrivateStyleProps>`
 	background-position: center;
 	padding: 16px 64px;
 
-	${media.tablet`
+	${media.mobile`
     padding: 16px;
+		height: 65vh;
 	`}
 `;
 

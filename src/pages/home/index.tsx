@@ -8,6 +8,7 @@ import { SERVER_GET_LATEST_PUBLIC_TRIPS } from "routes/server";
 import ReactSlickSlider from "components/reactSlickSlider";
 import TripHeader from "components/menuHeader/TripHeader";
 import MenuHeader from "components/menuHeader";
+import { AboutComponent } from "pages/about";
 
 export default function Home() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -47,6 +48,7 @@ export default function Home() {
 				))}
 			</ReactSlickSlider>
 			<MiniTripHolder />
+			<AboutComponent isHome={true} />
 			<HowWeWork />
 			<FAQ />
 		</>

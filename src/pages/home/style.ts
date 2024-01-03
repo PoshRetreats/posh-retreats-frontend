@@ -26,6 +26,10 @@ export const TripHolderContainer = styled.div`
     padding: 16px;
     z-index: 0;
 	`}
+
+	${media.mobile`
+		margin-top: -200px;
+	`}
 `;
 
 export const TripContainer = styled.div<MiniTripHolderStyleProps>`
@@ -43,7 +47,7 @@ export const TripContainer = styled.div<MiniTripHolderStyleProps>`
 		background-size: contain;
 	}
 
-	${media.mobile`
+	${media.tablet`
     width: 100%;
     flex-direction: column;
     border-radius: 16px;

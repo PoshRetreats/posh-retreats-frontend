@@ -30,13 +30,6 @@ const data = [
 			We're here to assist you in planning a memorable journey.`,
 	},
 	{
-		title: "Curabitur laoreet, mauris vel blandit fringilla",
-		content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-            Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-            Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-            Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
-	},
-	{
 		title: "Are Couples Welcome on Your Trips?",
 		content: `Absolutely, we extend a warm welcome to couples on all our trips! Additionally, we are delighted to offer 
 			customized private trips designed exclusively for couples, ensuring a tailored and intimate experience.`,
