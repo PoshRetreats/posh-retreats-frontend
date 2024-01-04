@@ -66,7 +66,7 @@ export const Cover = styled.div<MiniTripHolderStyleProps>`
 `;
 
 export const Spacer = styled.div<MiniTripHolderStyleProps>`
-	margin-top: -40px;
+	margin-top: -100px;
 
 	${media.tablet`
 	`}
