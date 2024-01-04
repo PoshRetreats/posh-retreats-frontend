@@ -69,6 +69,7 @@ export const Spacer = styled.div<MiniTripHolderStyleProps>`
 	margin-top: -100px;
 
 	${media.tablet`
+		margin-top: -40px;
 	`}
 `;
 
