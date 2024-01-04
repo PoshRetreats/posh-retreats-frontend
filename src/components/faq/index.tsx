@@ -8,8 +8,6 @@ import {
 	AccordionItemButton,
 	AccordionItemPanel,
 } from "react-accessible-accordion";
-
-// Demo styles, see 'Styles' section below for some notes on use.
 import "react-accessible-accordion/dist/fancy-example.css";
 
 const data = [
@@ -90,24 +88,26 @@ const FAQData: any = {
 
 export default function FAQ({ type = "home" }) {
 	return (
-		<FAQContainer>
-			<h5>Got Any Questions?</h5>
-			<FAQWrapper>
-				<Accordion allowZeroExpanded>
-					{FAQData[type].map((item: any, i: number) => (
-						<AccordionItem key={i}>
-							<AccordionItemHeading>
-								<AccordionItemButton>{item.title}</AccordionItemButton>
-							</AccordionItemHeading>
-							<AccordionItemPanel>{item.content}</AccordionItemPanel>
-						</AccordionItem>
-					))}
-				</Accordion>
-			</FAQWrapper>
-			<h6>Have a Question We Haven't Answered?</h6>
-			<Link to={CONTACT_US_URL}>
-				<button>Ask A Question</button>
-			</Link>
-		</FAQContainer>
+		// <AnimateComponent>
+			<FAQContainer>
+				<h5>Got Any Questions?</h5>
+				<FAQWrapper>
+					<Accordion allowZeroExpanded>
+						{FAQData[type].map((item: any, i: number) => (
+							<AccordionItem key={i}>
+								<AccordionItemHeading>
+									<AccordionItemButton>{item.title}</AccordionItemButton>
+								</AccordionItemHeading>
+								<AccordionItemPanel>{item.content}</AccordionItemPanel>
+							</AccordionItem>
+						))}
+					</Accordion>
+				</FAQWrapper>
+				<h6>Have a Question We Haven't Answered?</h6>
+				<Link to={CONTACT_US_URL}>
+					<button>Ask A Question</button>
+				</Link>
+			</FAQContainer>
+		// </AnimateComponent>
 	);
 }

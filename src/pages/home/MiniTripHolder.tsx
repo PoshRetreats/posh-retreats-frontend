@@ -7,8 +7,8 @@ import AnimateComponent from "components/animateComponent";
 function MiniTripHolder() {
 	const { appNavigator } = useAppNavigator();
 	return (
-		<TripHolderContainer>
-			<AnimateComponent>
+		<AnimateComponent>
+			<TripHolderContainer>
 				<TripContainer onClick={() => appNavigator(TRIPS_URL)} img={MINI_GROUP_ICON}>
 					<Cover padding="16px 16px 0 0" />
 					<TripTextArea>
@@ -19,8 +19,6 @@ function MiniTripHolder() {
 						</p>
 					</TripTextArea>
 				</TripContainer>
-			</AnimateComponent>
-			<AnimateComponent>
 				<TripContainer
 					onClick={() => appNavigator(PRIVATE_TRIPS_URL)}
 					img={MINI_PRIVATE_ICON}
@@ -33,8 +31,8 @@ function MiniTripHolder() {
 						</p>
 					</TripTextArea>
 				</TripContainer>
-			</AnimateComponent>
-		</TripHolderContainer>
+			</TripHolderContainer>
+		</AnimateComponent>
 	);
 }
 

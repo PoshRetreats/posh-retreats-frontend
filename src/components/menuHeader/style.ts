@@ -64,6 +64,7 @@ export const MenuArea = styled.div`
 	/* background-color: white; */
 	top: 0;
 	left: 0;
+	z-index: 300;
 	${media.tablet`
 
 	`}

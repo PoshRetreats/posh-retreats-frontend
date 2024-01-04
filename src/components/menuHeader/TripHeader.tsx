@@ -57,20 +57,22 @@ function SingleTripHeader({ data, showJoinButton, isComponent = false }: any) {
 	return (
 		<MenuOverlay>
 			<MenuHeaderContainer img={data.images[1]}>
-				<MenuArea style={{ backgroundColor }}>
-					<Link style={{ position: "fixed", top: 10, zIndex: 300 }} to={HOME_URL}>
-						<LogoArea src={LOGO} alt="logo" />
-					</Link>
-					<TopNavigation textColor={color} />
-				</MenuArea>
 				{!isComponent && (
-					<>
-						<MenuHeaderWrapper style={{ backgroundColor }} />
+					<MenuArea style={{ backgroundColor }}>
+						<Link style={{ position: "fixed", top: 10, zIndex: 300 }} to={HOME_URL}>
+							<LogoArea src={LOGO} alt="logo" />
+						</Link>
+						<TopNavigation textColor={color} />
 						<Hamburger
 							onClick={() => setSideMenu(true)}
 							src={HAMBURGER}
 							alt="hamburger"
 						/>
+					</MenuArea>
+				)}
+				{!isComponent && (
+					<>
+						<MenuHeaderWrapper style={{ backgroundColor }} />
 					</>
 				)}
 				<DescriptionArea>

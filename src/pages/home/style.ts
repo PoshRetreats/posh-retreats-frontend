@@ -65,6 +65,13 @@ export const Cover = styled.div<MiniTripHolderStyleProps>`
 	`}
 `;
 
+export const Spacer = styled.div<MiniTripHolderStyleProps>`
+	margin-top: -40px;
+
+	${media.tablet`
+	`}
+`;
+
 export const TripTextArea = styled.div<MiniTripHolderStyleProps>`
 	color: white;
 	z-index: 2;

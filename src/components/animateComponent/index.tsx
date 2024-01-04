@@ -4,9 +4,13 @@ import { useInView } from "react-intersection-observer";
 
 interface AnimateComponentProps {
 	children: ReactNode;
+	customStyles?: React.CSSProperties; // Allow users to pass additional styles
 }
 
-const AnimateComponent: React.FC<AnimateComponentProps> = ({ children }) => {
+const AnimateComponent: React.FC<AnimateComponentProps> = ({
+	children,
+	customStyles,
+}) => {
 	const controls = useAnimation();
 	const [ref, inView] = useInView({
 		triggerOnce: true,
@@ -30,8 +34,12 @@ const AnimateComponent: React.FC<AnimateComponentProps> = ({ children }) => {
 		<motion.div
 			ref={ref}
 			animate={controls}
-			initial={{ opacity: 0, y: 50, scale: 0.8 }}
-			style={{ opacity: 1, scale: 1 }} // Ensure final opacity and size are unaffected
+			initial={{ opacity: 1, y: 50, scale: 0.8 }}
+			style={{
+				opacity: 1,
+				scale: 1,
+				...customStyles, // Allow users to pass their own styles
+			}}
 		>
 			{children}
 		</motion.div>
