@@ -21,7 +21,7 @@ import {
 	// MuiMultiSelect,
 	MuiTextArea,
 } from "components/muiInputFields";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { AddButton } from "components/buttons/addButton";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
@@ -33,8 +33,13 @@ import { FeatureTripAddedDetailsProps, GroupTripDetailsProps } from "./types";
 import { InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
-import { makePostRequestWithAxios } from "requests/requests";
-import { SERVER_CREATE_TRIP } from "routes/server";
+import {
+	GeneralResponseType,
+	makeGetRequestWithToken,
+	makePostRequestWithAxios,
+} from "requests/requests";
+import { SERVER_CREATE_TRIP, SERVER_GET_ADMIN_PUBLIC_TRIPS } from "routes/server";
+import useToastStore from "components/appToast/store";
 
 // THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
@@ -360,6 +365,29 @@ export function AllGroupTrip() {
 }
 
 export default function AdminGroupTrips() {
+	const [loading, setLoading] = useState<boolean>(false);
+	const [publicTrips, setPublicTrips] = useState<any>([]);
+	const toast = useToastStore();
+	async function getPublicTrips() {
+		try {
+			setLoading(true);
+			const res = (await makeGetRequestWithToken(
+				SERVER_GET_ADMIN_PUBLIC_TRIPS
+			)) as GeneralResponseType;
+			// toast.showSuccessToast("Message sent successfully");
+			console.log({ res });
+			setPublicTrips(res.data);
+		} catch (err) {
+			toast.showFailedToast("could not fetch trips");
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getPublicTrips();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<AdminContainer>
 			<AdminMenu />

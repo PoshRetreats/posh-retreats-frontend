@@ -6,7 +6,7 @@ import { BasicInput } from "pages/trips/private/Form";
 import { FormArea, TripForm } from "pages/trips/private/style";
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { makePostRequestWithAxios } from "requests/requests";
+import { makePostRequestWithAxios, makePutRequestWithAxios } from "requests/requests";
 import { SERVER_JOIN_PUBLIC_TRIPS } from "routes/server";
 import { CheckboxHeader, CheckboxList } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
@@ -158,7 +158,7 @@ export default function GroupForm() {
 				toast.showWarningToast("Please Fill in all required details");
 				return;
 			}
-			const res: any = await makePostRequestWithAxios(SERVER_JOIN_PUBLIC_TRIPS, {
+			const res: any = await makePutRequestWithAxios(SERVER_JOIN_PUBLIC_TRIPS, {
 				questions: { ...formObj, personality: [...personalityLabels] },
 				tripType: "public",
 				trip: params?.tripID,
