@@ -55,6 +55,21 @@ export const MenuLogo = styled.img<AdminMenuStyleProps>`
 	`}
 `;
 
+export const CreateTripButton = styled.button<AdminMenuStyleProps>`
+	width: 100px;
+	padding: 6px;
+	border: none;
+	border-radius: 4px;
+	position: absolute;
+	right: 50px;
+	top: 100px;
+	cursor: pointer;
+	background-color: #f7a49d;
+	color: white;
+	${media.tablet`
+	`}
+`;
+
 export const MenuOptionContainer = styled.div<AdminMenuStyleProps>`
 	width: 100%;
 	height: 56px;
