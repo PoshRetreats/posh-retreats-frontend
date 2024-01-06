@@ -15,7 +15,7 @@ import { SelectedTagType } from "../types";
 import { AdminContainer, AdminHomeFlexDiv, AdminTripContainer, GreyText } from "../style";
 import AdminMenu from "components/menuHeader/admin";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
-import { AllGroupTrip } from "..";
+// import { AllGroupTrip } from "..";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import { TripCardContainer, TripHeadText } from "pages/admin/home/style";

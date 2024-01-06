@@ -6,11 +6,12 @@ import { BasicInput } from "pages/trips/private/Form";
 import { FormArea, TripForm } from "pages/trips/private/style";
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { makePostRequestWithAxios, makePutRequestWithAxios } from "requests/requests";
+// import { makePostRequestWithAxios, makePutRequestWithAxios } from "requests/requests";
 import { SERVER_JOIN_PUBLIC_TRIPS } from "routes/server";
 import { CheckboxHeader, CheckboxList } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { TRIPS_URL } from "routes/frontend";
+import { makePutRequestWithAxios } from "requests/requests";
 
 export enum PUBLIC_TRIP_QUESTIONS {
 	fullName = "Full Name",
