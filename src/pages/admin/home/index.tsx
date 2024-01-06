@@ -15,6 +15,7 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
 import { SERVER_GET_PUBLIC_TRIPS } from "routes/server";
 import { useEffect, useState } from "react";
+import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 type BasicTripData = {
 	title: string;
@@ -24,8 +25,8 @@ type BasicTripData = {
 
 enum TripType {
 	PUBLIC = "public",
-	PRIVATE= "private"
-};
+	PRIVATE = "private",
+}
 
 const tripData: BasicTripData[] = [
 	{
@@ -117,8 +118,9 @@ export default function AdminHome() {
 	return (
 		<AdminContainer>
 			<AdminMenu />
+			<AdminHeaderTitle />
+			<AdminHeaderSpace />
 			<AdminHomeContainer>
-				<AdminHeaderTitle />
 				<AdminHomeFlexDiv>
 					<AllTripsCard />
 					{/* <ActivityCard /> */}

@@ -14,7 +14,7 @@ export const AdminContainer = styled.div`
 `;
 
 export const AdminHomeContainer = styled.div`
-	padding: 64px 40px 0 40px;
+	padding: 0px 40px 0 40px;
 	height: 100%;
 	${media.tablet`
    

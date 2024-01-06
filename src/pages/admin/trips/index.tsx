@@ -34,7 +34,8 @@ import { InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
-import { SERVER_CREATE_TRIP  } from "routes/server";
+import { SERVER_CREATE_TRIP } from "routes/server";
+import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 // THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
@@ -237,7 +238,6 @@ export function CreateTrip() {
 			.then((res: any) => {
 				setData(res);
 				setLoading(false);
-				//TODO: save basic admin data
 				navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
 					state: postData,
 				});
@@ -363,8 +363,9 @@ export default function AdminGroupTrips() {
 	return (
 		<AdminContainer>
 			<AdminMenu />
+			<AdminHeaderTitle title="Create Group Trips" />
+			<AdminHeaderSpace />
 			<AdminTripContainer>
-				<AdminHeaderTitle title="Group Trips" />
 				<AdminHomeFlexDiv>
 					<CreateTrip />
 					<AllGroupTrip />

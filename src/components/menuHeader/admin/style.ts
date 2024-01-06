@@ -23,7 +23,13 @@ export const AdminMenuContainer = styled.div<AdminMenuStyleProps>`
 `;
 
 export const AdminHeaderTitleDiv = styled.div<AdminMenuStyleProps>`
-	width: 100%;
+	width: 90%;
+	padding: 24px 200px 24px 100px;
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	background-color: ${BrandColors.main1};
+	z-index: 20;
 	p {
 		font-size: 18px;
 		font-style: normal;
@@ -33,7 +39,7 @@ export const AdminHeaderTitleDiv = styled.div<AdminMenuStyleProps>`
 	}
 
 	h3 {
-		font-size: 40px;
+		font-size: 20px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: normal;
@@ -55,14 +61,20 @@ export const MenuLogo = styled.img<AdminMenuStyleProps>`
 	`}
 `;
 
+export const AdminHeaderSpace = styled.img<AdminMenuStyleProps>`
+	margin-bottom: 80px;
+	${media.tablet`
+	`}
+`;
+
 export const CreateTripButton = styled.button<AdminMenuStyleProps>`
 	width: 100px;
 	padding: 6px;
 	border: none;
 	border-radius: 4px;
-	position: absolute;
+	/* position: absolute;
 	right: 50px;
-	top: 100px;
+	top: 40px; */
 	cursor: pointer;
 	background-color: #f7a49d;
 	color: white;
