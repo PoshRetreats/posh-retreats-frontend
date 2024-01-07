@@ -24,6 +24,7 @@ export default function AdminGroupTripList() {
 			console.log({ res });
 			setPublicTrips(res.data);
 		} catch (err) {
+			console.log({ err });
 			toast.showFailedToast("could not fetch trips");
 		} finally {
 			setLoading(false);
@@ -38,7 +39,7 @@ export default function AdminGroupTripList() {
 		<AdminContainer padding="0 0 0 210px">
 			<AdminMenu />
 			<AdminHeaderTitle title="Group Trips" />
-      <AdminHeaderSpace />
+			<AdminHeaderSpace />
 			<AdminTripContainer>
 				<GroupTripList padding="0 64px">
 					{loading && <ComponentLoader />}
