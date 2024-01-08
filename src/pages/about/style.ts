@@ -19,8 +19,12 @@ export const SecondSection = styled.div`
 	display: flex;
 	margin-top: 120px;
 	align-items: center;
-	padding: 0 63px;
+	/* padding: 0 63px; */
 	margin-bottom: 250px;
+	width: 1100px;
+	margin: 0 auto;
+	margin-top: 80px;
+	margin-bottom: 120px;
 
 	${media.tablet`
     margin-top: 60px;
@@ -32,32 +36,34 @@ export const SecondSection = styled.div`
 
 export const TextSection = styled.div`
 	width: 50%;
+	margin-right: 200px;
 
 	h1 {
 		font-size: 32px;
 		font-style: normal;
 		font-weight: 500;
-    margin-bottom: 20px;
+		margin-bottom: 20px;
 	}
 
 	button {
-    color: white;
-    background-color: ${BrandColors.main2};
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    margin: 8px 0;
-    cursor: pointer;
+		color: white;
+		background-color: ${BrandColors.main2};
+		padding: 8px;
+		border: none;
+		border-radius: 4px;
+		margin: 8px 0;
+		cursor: pointer;
 	}
 	${media.tablet`
     width: 100%;
+		margin-right: 0px;
     margin-bottom: 160px;
   `}
 `;
 
 export const ImageSection = styled.div`
 	position: relative;
-	width: 50%;
+	width: 40%;
 
 	${media.tablet`
     width: 100%;

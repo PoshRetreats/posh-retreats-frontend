@@ -10,6 +10,8 @@ import TripHeader from "components/menuHeader/TripHeader";
 import MenuHeader from "components/menuHeader";
 import { AboutComponent } from "pages/about";
 import { Spacer } from "./style";
+import { isMobile } from "react-device-detect";
+import { AppSpace } from "utilities/styles";
 
 export default function Home() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -50,6 +52,7 @@ export default function Home() {
 			</ReactSlickSlider>
 			<MiniTripHolder />
 			<AboutComponent isHome={true} />
+			<AppSpace margin={!isMobile ? "150px 0 0 0" : ""} />
 			<HowWeWork />
 			<Spacer />
 			<FAQ />
