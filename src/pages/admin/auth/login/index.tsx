@@ -6,7 +6,7 @@ import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_LOGIN_URL } from "routes/server";
 import { setAuthCookie } from "utilities/helpers";
 import { useNavigate } from "react-router-dom";
-import { ADMIN_GROUP_TRIPS_URL, ADMIN_HOME_URL } from "routes/frontend";
+import { ADMIN_GROUP_TRIPS_URL } from "routes/frontend";
 
 export default function AdminLogin() {
 	const [form, setForm] = useState({
