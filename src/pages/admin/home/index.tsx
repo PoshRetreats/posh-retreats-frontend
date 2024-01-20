@@ -15,7 +15,7 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
 import { SERVER_GET_PUBLIC_TRIPS } from "routes/server";
 import { useEffect, useState } from "react";
-import { AdminHeaderSpace } from "components/menuHeader/admin/style";
+// import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 type BasicTripData = {
 	title: string;
@@ -119,7 +119,7 @@ export default function AdminHome() {
 		<AdminContainer>
 			<AdminMenu />
 			<AdminHeaderTitle />
-			<AdminHeaderSpace />
+			{/* <AdminHeaderSpace /> */}
 			<AdminHomeContainer>
 				<AdminHomeFlexDiv>
 					<AllTripsCard />
