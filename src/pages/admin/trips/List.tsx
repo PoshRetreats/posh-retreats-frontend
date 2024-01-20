@@ -8,7 +8,7 @@ import useToastStore from "components/appToast/store";
 import { GroupTripList } from "pages/trips/public/style";
 import MiniGroupTrip from "pages/trips/public/groupTrip/MiniGroupTrip";
 import ComponentLoader from "components/loaders/ComponentLoader";
-import { AdminHeaderSpace } from "components/menuHeader/admin/style";
+// import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 export default function AdminGroupTripList() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -39,7 +39,7 @@ export default function AdminGroupTripList() {
 		<AdminContainer padding="0 0 0 210px">
 			<AdminMenu />
 			<AdminHeaderTitle title="Group Trips" />
-			<AdminHeaderSpace />
+			{/* <AdminHeaderSpace /> */}
 			<AdminTripContainer>
 				<GroupTripList padding="0 64px">
 					{loading && <ComponentLoader />}
