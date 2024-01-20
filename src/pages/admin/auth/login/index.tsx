@@ -14,6 +14,7 @@ export default function AdminLogin() {
 		password: "",
 	});
 	const [formErr, setFormErr] = useState("");
+	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
 	function handleFormChange(e: any) {
@@ -23,17 +24,19 @@ export default function AdminLogin() {
 		});
 	}
 
-	function handleLogin(e: any) {
-		e.preventDefault();
-		makePostRequestWithAxios(SERVER_LOGIN_URL, form)
-			.then((res: any) => {
-				setAuthCookie(res.data.token);
-				//TODO: save basic admin data
-				navigate(ADMIN_HOME_URL, { state: { user: res.data.user } });
-			})
-			.catch((err) => {
-				setFormErr(err.message);
-			});
+	async function handleLogin(e: any) {
+		try {
+			setLoading(true);
+			e.preventDefault();
+			const res: any = await makePostRequestWithAxios(SERVER_LOGIN_URL, form);
+			setAuthCookie(res.data.token);
+			navigate(ADMIN_HOME_URL, { state: { user: res.data.user } });
+		} catch (err: any) {
+			console.log({ err });
+			setFormErr(err.message);
+		} finally {
+			setLoading(false);
+		}
 	}
 
 	return (
@@ -53,9 +56,12 @@ export default function AdminLogin() {
 					type="password"
 					label="Password"
 					err={formErr}
+					handleFocus={() => setFormErr("")}
 					handlechange={handleFormChange}
 				/>
-				<LoginButton onClick={handleLogin}>Login</LoginButton>
+				<LoginButton disabled={loading} loading={loading} onClick={handleLogin}>
+					{loading ? "loading..." : "Login"}
+				</LoginButton>
 			</LoginForm>
 		</LoginContainer>
 	);

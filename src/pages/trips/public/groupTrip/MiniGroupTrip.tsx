@@ -9,9 +9,9 @@ import {
 	TagContainerList,
 	TextContainer,
 } from "./style";
-import { TRIPS_OVERVIEW_URL } from "routes/frontend";
+import { ADMIN_GROUP_TRIPS_DETAILS_URL, TRIPS_OVERVIEW_URL } from "routes/frontend";
 
-export default function MiniGroupTrip({ data }: any) {
+export default function MiniGroupTrip({ data, isAdmin }: any) {
 	const percent =
 		(Number(data.registeredTravelers) / Number(data.totalExpectedTravelers)) * 100;
 	const navigate = useNavigate();
@@ -24,6 +24,12 @@ export default function MiniGroupTrip({ data }: any) {
 	});
 
 	function handleTripClick() {
+		if (isAdmin) {
+			navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
+				state: { ...data, showButton: false },
+			});
+			return;
+		}
 		navigate(TRIPS_OVERVIEW_URL, { state: { data } });
 	}
 	return (

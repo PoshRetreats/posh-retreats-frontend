@@ -8,8 +8,6 @@ import {
 	AccordionItemButton,
 	AccordionItemPanel,
 } from "react-accessible-accordion";
-
-// Demo styles, see 'Styles' section below for some notes on use.
 import "react-accessible-accordion/dist/fancy-example.css";
 
 const data = [
@@ -28,13 +26,6 @@ const data = [
 			This policy helps maintain a comfortable and considerate environment for everyone to fully enjoy their travel adventures. 
 			If you have any specific concerns or questions related to our policies, please don't hesitate to reach out to our team. 
 			We're here to assist you in planning a memorable journey.`,
-	},
-	{
-		title: "Curabitur laoreet, mauris vel blandit fringilla",
-		content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-            Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-            Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-            Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
 	},
 	{
 		title: "Are Couples Welcome on Your Trips?",
@@ -97,24 +88,26 @@ const FAQData: any = {
 
 export default function FAQ({ type = "home" }) {
 	return (
-		<FAQContainer>
-			<h5>Got Any Questions?</h5>
-			<FAQWrapper>
-				<Accordion allowZeroExpanded>
-					{FAQData[type].map((item: any, i: number) => (
-						<AccordionItem key={i}>
-							<AccordionItemHeading>
-								<AccordionItemButton>{item.title}</AccordionItemButton>
-							</AccordionItemHeading>
-							<AccordionItemPanel>{item.content}</AccordionItemPanel>
-						</AccordionItem>
-					))}
-				</Accordion>
-			</FAQWrapper>
-			<h6>Have a Question We Haven't Answered?</h6>
-			<Link to={CONTACT_US_URL}>
-				<button>Ask A Question</button>
-			</Link>
-		</FAQContainer>
+		// <AnimateComponent>
+			<FAQContainer>
+				<h5>Got Any Questions?</h5>
+				<FAQWrapper>
+					<Accordion allowZeroExpanded>
+						{FAQData[type].map((item: any, i: number) => (
+							<AccordionItem key={i}>
+								<AccordionItemHeading>
+									<AccordionItemButton>{item.title}</AccordionItemButton>
+								</AccordionItemHeading>
+								<AccordionItemPanel>{item.content}</AccordionItemPanel>
+							</AccordionItem>
+						))}
+					</Accordion>
+				</FAQWrapper>
+				<h6>Have a Question We Haven't Answered?</h6>
+				<Link to={CONTACT_US_URL}>
+					<button>Ask A Question</button>
+				</Link>
+			</FAQContainer>
+		// </AnimateComponent>
 	);
 }

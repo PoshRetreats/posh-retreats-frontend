@@ -12,11 +12,13 @@ import { ACTIVE_ICON, BACK_ICON, THREE_DOT } from "assets";
 import { SelectedTripImage } from "components/selectedTripImage";
 import { FC } from "react";
 import { SelectedTagType } from "../types";
-import { AdminContainer, AdminHomeFlexDiv, AdminTripContainer } from "../style";
+import { AdminContainer, AdminHomeFlexDiv, AdminTripContainer, GreyText } from "../style";
 import AdminMenu from "components/menuHeader/admin";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
-import { AllGroupTrip } from "..";
+// import { AllGroupTrip } from "..";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AdminHeaderSpace } from "components/menuHeader/admin/style";
+import { TripCardContainer, TripHeadText } from "pages/admin/home/style";
 
 export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 	selectedTags,
@@ -147,17 +149,30 @@ export function TripDetails(data: any) {
 	);
 }
 
+export function RegistrationCard({ data }: any) {
+	return (
+		<TripCardContainer>
+			<div>
+				<TripHeadText>{data.title}</TripHeadText>
+				<GreyText>{`slimm`}</GreyText>
+			</div>
+			<GreyText>{data?.date}</GreyText>
+		</TripCardContainer>
+	);
+}
+
 export default function AdminGroupTripsDetails() {
 	const location = useLocation();
-
+	console.log({ state: location.state });
 	return (
 		<AdminContainer>
 			<AdminMenu />
+			<AdminHeaderTitle title="Group Trip Details" />
+			<AdminHeaderSpace />
 			<AdminTripContainer>
-				<AdminHeaderTitle title="Group Trips" />
 				<AdminHomeFlexDiv>
 					<TripDetails data={location.state} />
-					<AllGroupTrip />
+					<RegistrationCard data={location.state} />
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>
 		</AdminContainer>

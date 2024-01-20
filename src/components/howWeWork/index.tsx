@@ -1,3 +1,4 @@
+// import AnimateComponent from "components/animateComponent";
 import { HowWeWorkContainer, HowWeWorkWrapper, WrapperContainer } from "./style";
 
 const data: any = [
@@ -91,17 +92,19 @@ const howWeWorkData: any = {
 
 export default function HowWeWork({ type = "home" }) {
 	return (
-		<HowWeWorkContainer>
-			<h1>How We Work</h1>
-			<HowWeWorkWrapper>
-				{howWeWorkData[type].map((workData: any, i: number) => (
-					<WrapperContainer key={i}>
-						<h2>{i + 1}</h2>
-						<h3>{workData.title}</h3>
-						<p>{workData.description}</p>
-					</WrapperContainer>
-				))}
-			</HowWeWorkWrapper>
-		</HowWeWorkContainer>
+		// <AnimateComponent>
+			<HowWeWorkContainer>
+				<h1>How We Work</h1>
+				<HowWeWorkWrapper>
+					{howWeWorkData[type].map((workData: any, i: number) => (
+						<WrapperContainer key={i}>
+							<h2>{i + 1}</h2>
+							<h3>{workData.title}</h3>
+							<p>{workData.description}</p>
+						</WrapperContainer>
+					))}
+				</HowWeWorkWrapper>
+			</HowWeWorkContainer>
+		// </AnimateComponent>
 	);
 }

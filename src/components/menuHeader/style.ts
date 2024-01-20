@@ -13,8 +13,9 @@ export const MenuHeaderContainer = styled.div<PrivateStyleProps>`
 	background-position: center;
 	padding: 16px 64px;
 
-	${media.tablet`
+	${media.mobile`
     padding: 16px;
+		height: 65vh;
 	`}
 `;
 
@@ -63,6 +64,7 @@ export const MenuArea = styled.div`
 	/* background-color: white; */
 	top: 0;
 	left: 0;
+	z-index: 300;
 	${media.tablet`
 
 	`}

@@ -34,6 +34,7 @@ export const TagContainer = styled.div<GroupTripStyleProps>`
 	height: 30px;
 	display: flex;
 	align-items: center;
+	margin-top: 10px;
 	p {
 		color: var(--Text-Color, #020e07);
 		font-size: 12px;
@@ -53,6 +54,7 @@ export const TagContainer = styled.div<GroupTripStyleProps>`
 
 export const TagContainerList = styled.div<GroupTripStyleProps>`
 	display: flex;
+	flex-wrap: wrap;
 
 	${media.tablet`
 

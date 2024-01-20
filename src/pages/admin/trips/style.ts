@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import media from "utilities/styles/media";
 
-export const AdminContainer = styled.div`
+type AdminHomeStyleType = {
+	padding?: string;
+};
+
+export const AdminContainer = styled.div<AdminHomeStyleType>`
 	width: 100vw;
 	height: 100vh;
 	overflow-x: hidden;
 	padding-left: 300px;
+	padding: ${({ padding }) => padding};
 	background-color: #f9f9f9;
 
 	${media.tablet`
@@ -14,7 +19,7 @@ export const AdminContainer = styled.div`
 `;
 
 export const AdminTripContainer = styled.div`
-	padding: 64px 45px 0 40px;
+	padding: 0px 45px 0 40px;
 	height: 100%;
 	${media.tablet`
    
@@ -30,7 +35,6 @@ export const AdminHomeFlexDiv = styled.div`
 `;
 
 export const CreateTripsCardContainer = styled.form`
-
 	width: 48%;
 	/* height: 100%; */
 	font-family: "Quando";
@@ -67,13 +71,13 @@ export const CreateTripCardList = styled.div`
 			align-items: center;
 			gap: 0.5rem;
 			display: flex;
-			.img{
-				font-size: .7rem;
+			.img {
+				font-size: 0.7rem;
 				max-width: 100px;
 			}
 		}
 	}
-	
+
 	${media.tablet`
    
 	`}
@@ -149,9 +153,9 @@ export const TripCapacityMain = styled.div`
 		align-items: center;
 		gap: 1rem;
 		margin-top: 1rem;
-		span{
+		span {
 			color: rgba(196, 196, 196, 1);
-			font-size: .85rem;
+			font-size: 0.85rem;
 		}
 		input {
 			border: 1px solid rgba(251, 209, 206, 0.6);

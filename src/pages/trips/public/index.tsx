@@ -47,7 +47,7 @@ create lasting memories."
 			<GroupTripList>
 				{loading && <ComponentLoader />}
 				{publicTrips.map((trip: any, key: number) => (
-					<MiniGroupTrip key={key} data={trip} />
+					<MiniGroupTrip key={key} data={trip} isAdmin={false} />
 				))}
 			</GroupTripList>
 			<HowWeWork type="group" />
