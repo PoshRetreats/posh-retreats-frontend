@@ -206,7 +206,7 @@ export const mainRoutes = [
 		showBottomNav: false,
 	},
 	{
-		id: 17,
+		id: 18,
 		path: ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 		Component: GroupDetailsInfo,
 		exact: true,
