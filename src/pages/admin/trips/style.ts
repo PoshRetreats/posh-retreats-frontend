@@ -90,6 +90,7 @@ export const GreyText = styled.p`
 	font-weight: 400;
 	line-height: normal;
 	font-family: "sora";
+	margin-bottom: 2rem;
 	${media.tablet`
    
 	`}

@@ -28,6 +28,7 @@ export const ADMIN_LOGIN = "/admin/login";
 export const ADMIN_GROUP_TRIPS_URL = "/admin/user/group_trips";
 export const ADMIN_CREATE_GROUP_TRIPS_URL = "/admin/user/group_trips/create";
 export const ADMIN_GROUP_TRIPS_DETAILS_URL = "/admin/user/group_trips_details";
+export const ADMIN_GROUP_TRIPS_DETAILS_INFO_URL = "/admin/user/group_trips_details_info";
 export const ADMIN_PRIVATE_TRIPS_URL = "/admin/user/private_trips";
 export const ADMIN_PRIVATE_TRIPS_DETAILS_URL = "/admin/user/private_trips_details";
 export const ADMIN_PAST_TRIPS_URL = "/admin/user/past_trips";
