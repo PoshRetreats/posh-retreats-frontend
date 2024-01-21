@@ -135,7 +135,7 @@ export function TripDetails() {
 	// 	setImageFields({ ...imageFields, [event.target.name]: value });
 	// }
 
-	const [data, setData] = useState()
+	
 	const [loading, setLoading] = useState<boolean>(false)
 
 	const imgArray = Object.values(imageFields);
@@ -167,12 +167,13 @@ export function TripDetails() {
 		makePostRequestWithAxios("", postData)
 		
 			.then((res: any) => {
-				setData(res)
+				// setData(res)
 				setLoading(false)
 				//TODO: save basic admin data
 				navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
 					state: postData
 				})
+				return res
 			})
 			.catch((err) => {
 				setLoading(false)
