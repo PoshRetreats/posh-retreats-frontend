@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { getAuthCookie } from "./helpers";
 
-import { ADMIN_HOME_URL, ADMIN_LOGIN } from "routes/frontend";
+import { ADMIN_GROUP_TRIPS_URL, ADMIN_LOGIN } from "routes/frontend";
 
 // function getAuthCookie() {
 //   return null;
@@ -17,10 +17,12 @@ export default function ProtectedRoute({ children, isProtected, isAdmin }: any) 
 	const token = getAuthCookie();
 	const location = useLocation();
 
-  if (isProtected && !token && isAdmin) {
+	if (isProtected && !token && isAdmin) {
 		return <Navigate to={ADMIN_LOGIN} state={{ from: location }} replace />;
 	} else if (!!token && !isProtected && isAdmin) {
-		return <Navigate to={ADMIN_HOME_URL} state={{ from: location }} replace />;
+		return (
+			<Navigate to={ADMIN_GROUP_TRIPS_URL} state={{ from: location }} replace />
+		);
 	} else {
 		return children;
 	}
