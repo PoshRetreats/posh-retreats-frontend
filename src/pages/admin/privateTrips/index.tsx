@@ -8,11 +8,12 @@ import {
 	GreyText,
 	PrivateTripContainer,
 	TripCardContainer,
-    EntryDetailsCardContainer,
+	EntryDetailsCardContainer,
 	TripCardList,
 	TripHeadText,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
+import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 type BasicTripData = {
 	title: string;
@@ -26,59 +27,36 @@ type InformationData = {
 	details?: string | number;
 };
 
-
-
 const privateTripsdetails: InformationData[] = [
 	{
 		title: "Name",
-        details: "Sheldon Cooper"
+		details: "Sheldon Cooper",
 	},
-    {
-        title: "Email",
-        details: "ahelly@mail.com",
-    },
 	{
-        title: "Where would you like to travel to?:",
+		title: "Email",
+		details: "ahelly@mail.com",
+	},
+	{
+		title: "Where would you like to travel to?:",
 		details: "The Grand Canyon",
 	},
-    {
-        title: "Where would you like to travel to?:",
+	{
+		title: "Where would you like to travel to?:",
 		details: "The Grand Canyon",
 	},
-    {
-        title: "Where would you like to travel to?:",
+	{
+		title: "Where would you like to travel to?:",
 		details: "The Grand Canyon",
 	},
-	{ 
-        title: "How many people will be traveling?:",
-        details: 5 },
-    { 
-        title: "Are there any other destinations you would be interested in?:",
-        details: "Istanbul"
-    }
+	{
+		title: "How many people will be traveling?:",
+		details: 5,
+	},
+	{
+		title: "Are there any other destinations you would be interested in?:",
+		details: "Istanbul",
+	},
 ];
-
-
-
-// const tripData: BasicTripData[] = [
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// 	{
-// 		title: "Sheldon Cooper",
-// 		email: "ahelly@mail.com",
-// 		date: "05/05/2023 6:45 am",
-// 	},
-// ];
-
-
 
 const upcoming: BasicTripData[] = [
 	{
@@ -87,8 +65,6 @@ const upcoming: BasicTripData[] = [
 		date: "05/05/2023 6:45 am",
 	},
 ];
-
-
 
 export function EntryDetails({ title, details }: InformationData) {
 	return (
@@ -103,7 +79,7 @@ export function EntryDetails({ title, details }: InformationData) {
 	);
 }
 
-export function RegistrationCard({ title, email, date,total }: BasicTripData) {
+export function RegistrationCard({ title, email, date, total }: BasicTripData) {
 	return (
 		<TripCardContainer>
 			<div>
@@ -125,8 +101,8 @@ export function Registration() {
 					<RegistrationCard  title={title} email={email} date={date} />
 				))}
 			</TripCardList> */}
-            <TripCardList>
-				{privateTripsdetails.map(({ title,details }: InformationData) => (
+			<TripCardList>
+				{privateTripsdetails.map(({ title, details }: InformationData) => (
 					<EntryDetails title={title} details={details} />
 				))}
 			</TripCardList>
@@ -154,8 +130,9 @@ export default function PrivateTrips() {
 	return (
 		<PrivateTripContainer>
 			<AdminMenu />
+			<AdminHeaderTitle title="Private Trips" />
+			<AdminHeaderSpace />
 			<PrivateTripHomeContainer>
-				<AdminHeaderTitle title="Private Trips" />
 				<AdminHomeFlexDiv>
 					<Registration />
 					<UpcominngTrips />

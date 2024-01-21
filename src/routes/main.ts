@@ -17,6 +17,9 @@ import {
 	TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_URL,
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+	PUBLIC_TRIPS_FORM_URL,
+	ADMIN_CREATE_GROUP_TRIPS_URL,
+	ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -31,6 +34,9 @@ import PastTripsAndReviews from "pages/admin/pastTrips";
 import AdminLogin from "pages/admin/auth/login";
 import AdminGroupTripsDetails from "pages/admin/trips/groupTripDetails";
 import PastTripsAndReviewsDetails from "pages/admin/pastTrips/details";
+import GroupForm from "pages/trips/public/groupTrip/Form";
+import AdminGroupTripList from "pages/admin/trips/List";
+import { GroupDetailsInfo } from "pages/admin/trips/groupTripDetails/groupDetailsInfo";
 
 export const mainRoutes = [
 	{
@@ -116,6 +122,16 @@ export const mainRoutes = [
 	{
 		id: 9,
 		path: ADMIN_GROUP_TRIPS_URL,
+		Component: AdminGroupTripList,
+		exact: true,
+		isProtected: true,
+		isAdmin: true,
+		showAdminMenu: true,
+		showDefaultFooter: false,
+	},
+	{
+		id: 17,
+		path: ADMIN_CREATE_GROUP_TRIPS_URL,
 		Component: AdminGroupTrips,
 		exact: true,
 		isProtected: true,
@@ -123,15 +139,15 @@ export const mainRoutes = [
 		showAdminMenu: true,
 		showDefaultFooter: false,
 	},
-	
+
 	{
 		id: 10,
 		path: TRIPS_OVERVIEW_URL,
 		Component: GroupTripOverView,
 		exact: true,
-		isProtected: true,
-		isAdmin: true,
-		showAdminMenu: true,
+		isProtected: false,
+		isAdmin: false,
+		showAdminMenu: false,
 		showDefaultFooter: false,
 	},
 	{
@@ -145,13 +161,13 @@ export const mainRoutes = [
 		showDefaultFooter: false,
 	},
 	{
-		id: 11,
+		id: 15,
 		path: ADMIN_PRIVATE_TRIPS_URL,
 		Component: PrivateTrips,
 		exact: true,
 		isProtected: true,
 		hide: false,
-		showBottomNav: false,	
+		showBottomNav: false,
 	},
 	{
 		id: 12,
@@ -160,7 +176,7 @@ export const mainRoutes = [
 		exact: true,
 		isProtected: true,
 		hide: false,
-		showBottomNav: false,	
+		showBottomNav: false,
 	},
 	{
 		id: 13,
@@ -175,6 +191,24 @@ export const mainRoutes = [
 		id: 14,
 		path: ADMIN_PRIVATE_TRIPS_DETAILS_URL,
 		Component: PastTripsAndReviewsDetails,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 16,
+		path: PUBLIC_TRIPS_FORM_URL,
+		Component: GroupForm,
+		exact: true,
+		isProtected: false,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 17,
+		path: ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
+		Component: GroupDetailsInfo,
 		exact: true,
 		isProtected: true,
 		hide: false,

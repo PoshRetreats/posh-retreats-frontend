@@ -41,13 +41,13 @@ export function dateModifier(date: string | number | Date) {
 export function dateModifierWithYear(date: string | number | Date) {
 	const newDate = new Date(date);
 	const stringDate = newDate.toDateString();
-	const stringTime = newDate.toLocaleTimeString("en-US", {
-		hour: "numeric",
-		minute: "2-digit",
-		hour12: true,
-	});
+	// const stringTime = newDate.toLocaleTimeString("en-US", {
+	// 	hour: "numeric",
+	// 	minute: "2-digit",
+	// 	hour12: true,
+	// });
 
-	return `${stringDate}, ${stringTime}`.toUpperCase();
+	return `${stringDate}`.toUpperCase();
 }
 
 export function timeToStart(minute: number, status: string) {

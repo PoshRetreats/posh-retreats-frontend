@@ -8,8 +8,7 @@ export const FAQContainer = styled.div`
 	align-items: center;
 	flex-direction: column;
 	margin-bottom: 100px;
-  padding: 16px;
-
+	padding: 16px;
 
 	h5 {
 		color: var(--text-color, #020e07);
@@ -19,9 +18,9 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
-    margin-bottom: 32px;
+		margin-bottom: 32px;
 
-    ${media.tablet`
+		${media.tablet`
     font-size: 18px;
   `}
 	}
@@ -34,8 +33,8 @@ export const FAQContainer = styled.div`
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
-    margin-top: 80px;
-    margin-bottom: 30px;
+		margin-top: 80px;
+		margin-bottom: 30px;
 	}
 
 	button {

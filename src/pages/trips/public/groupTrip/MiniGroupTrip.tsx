@@ -9,18 +9,31 @@ import {
 	TagContainerList,
 	TextContainer,
 } from "./style";
-import { TRIPS_OVERVIEW_URL } from "routes/frontend";
+import { ADMIN_GROUP_TRIPS_DETAILS_URL, TRIPS_OVERVIEW_URL } from "routes/frontend";
 
-export default function MiniGroupTrip({ data }: any) {
-	console.log({ data });
-	const percent = (data.occupied / data.total) * 100;
+export default function MiniGroupTrip({ data, isAdmin }: any) {
+	const percent =
+		(Number(data.registeredTravelers) / Number(data.totalExpectedTravelers)) * 100;
 	const navigate = useNavigate();
+	const date = new Date(data.depatureDate).toLocaleDateString();
+	console.log({
+		data,
+		percent,
+		reg: data.registeredTravelers,
+		tot: data.totalExpectedTravelers,
+	});
 
 	function handleTripClick() {
+		if (isAdmin) {
+			navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
+				state: { ...data, showButton: false },
+			});
+			return;
+		}
 		navigate(TRIPS_OVERVIEW_URL, { state: { data } });
 	}
 	return (
-		<MiniGroupTripContainer onClick={handleTripClick} img={data.image}>
+		<MiniGroupTripContainer onClick={handleTripClick} img={data.images[0]}>
 			<TagContainerList>
 				{data.tags.map((tag: string, i: number) => (
 					<TagContainer key={i}>
@@ -29,7 +42,7 @@ export default function MiniGroupTrip({ data }: any) {
 				))}
 			</TagContainerList>
 			<MiniGroupTripDescriptionArea>
-				<p>{data.date.toLocaleDateString()}</p>
+				<p>{date}</p>
 				<h3>{data.title}</h3>
 				<ProgressBarDiv>
 					<FilledProgressBar percent={percent}>

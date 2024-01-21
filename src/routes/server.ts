@@ -2,8 +2,8 @@ import { IS_LOCAL, IS_PRODUCTION, IS_STAGING } from "../constants/constants";
 
 const LOCAL_SERVER_URL = "http://127.0.0.1:8200";
 const DEVELOPMENT_SERVER_URL = "http://localhost:8200";
-const STAGING_SERVER_URL = "https://trigger-backend.onrender.com";
-const PRODUCTION_SERVER_URL = "https://backends.triggerapp.online";
+const STAGING_SERVER_URL = "https://poshretreats-backend.onrender.com";
+const PRODUCTION_SERVER_URL = "https://poshretreats-backend.onrender.com";
 export const SERVER_URL = IS_LOCAL
   ? LOCAL_SERVER_URL
   : IS_STAGING
@@ -26,5 +26,10 @@ export const CONTACT_US = `${SERVER_URL}/contact-us`;
 export const SERVER_GROUP_TRIP = `${SERVER_URL}/trip/public/create`
 export const SERVER_PRIVATE_TRIP = `${SERVER_URL}/trip/private/create`
 export const SERVER_CREATE_TRIP = `${SERVER_URL}/trip/create`
+export const SERVER_ALL_TRIPS = `${SERVER_URL}/trip/all`
+export const SERVER_GET_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/all`
+export const SERVER_GET_ADMIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/admin/all`
+export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`
+export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`
 
 export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`  

@@ -1,12 +1,11 @@
 // import { getAuthCookie } from 'utilities/helpers';
 import axios from "axios";
+import { getAuthCookie, removeAuthCookie } from "utilities/helpers";
 
-function getAuthCookie() {
-	return null;
-}
 
 function forceLogOut() {
-	return null;
+	removeAuthCookie()
+	window.location.href = '/'
 }
 
 export interface GeneralResponseType {

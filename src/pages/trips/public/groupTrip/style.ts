@@ -4,6 +4,7 @@ import media from "utilities/styles/media";
 
 type GroupTripStyleProps = {
 	img?: string;
+	checked?: boolean;
 };
 
 export const MiniGroupTripContainer = styled.div<GroupTripStyleProps>`
@@ -33,6 +34,7 @@ export const TagContainer = styled.div<GroupTripStyleProps>`
 	height: 30px;
 	display: flex;
 	align-items: center;
+	margin-top: 10px;
 	p {
 		color: var(--Text-Color, #020e07);
 		font-size: 12px;
@@ -52,6 +54,7 @@ export const TagContainer = styled.div<GroupTripStyleProps>`
 
 export const TagContainerList = styled.div<GroupTripStyleProps>`
 	display: flex;
+	flex-wrap: wrap;
 
 	${media.tablet`
 
@@ -64,8 +67,9 @@ export const OverviewArea = styled.div<GroupTripStyleProps>`
 	justify-content: space-between;
 
 	img {
-		height: 500px;
+		/* height: 500px; */
 		width: 40%;
+		border-radius: 8px;
 	}
 
 	div {
@@ -235,4 +239,39 @@ export const MiniGroupTripDescriptionArea = styled.div`
 			font-size: 10px;
 		}
 	`}
+`;
+
+export const GroupImageFlex = styled.div`
+	/* display: flex; */
+	margin-bottom: 120px;
+	padding: 0 64px;
+	/* overflow-x: scroll; */
+
+
+	${media.tablet`
+		padding: 24px;
+		margin-bottom: 40px;
+	`}
+
+	img {
+		width: 300px;
+		margin-right: 32px;
+		border-radius: 8px;
+		cursor: pointer;
+
+		${media.tablet`
+	`}
+	}
+`;
+
+export const CheckboxHeader = styled.h3`
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	margin: 32px 0;
+`;
+
+export const CheckboxList = styled.h3`
+	display: flex;
+	flex-wrap: wrap;
 `;

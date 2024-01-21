@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "utilities/styles/media";
 
 export const TripDetailsMain = styled.div`
 	width: 48%;
@@ -58,6 +59,9 @@ export const TripDetailsDescription = styled.div`
 		margin-top: 2rem;
 		font-family: "sora";
 	}
+	.trip_includes_header{
+		margin-top: 1rem;
+	}
 	.included_trips {
 		margin-top: 2rem;
 		h3 {
@@ -110,3 +114,25 @@ export const TripDetailsImageMain = styled.div`
 		gap: 2rem;
 	}
 `;
+
+
+export const GroupTripNameContainer = styled.div`
+	width: 45%;
+	/* display: flex; */
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 1rem;
+	/* justify-content: space-between; */
+	/* align-items: center; */
+	gap: 3rem;
+	/* padding: 20px; */
+	margin-top: 24px;
+	cursor: pointer;
+	${media.tablet`
+   
+	`}
+	.group_name_container{
+		width: 100%;
+		margin-top: 1rem;
+	}
+`

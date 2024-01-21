@@ -135,10 +135,10 @@ export function TripDetails() {
 	// 	setImageFields({ ...imageFields, [event.target.name]: value });
 	// }
 
-	const [, setData] = useState()
+	const [data, setData] = useState()
 	const [loading, setLoading] = useState<boolean>(false)
 
-	const imgArray  = Object.values(imageFields)
+	const imgArray = Object.values(imageFields);
 
 
 	const postData = {

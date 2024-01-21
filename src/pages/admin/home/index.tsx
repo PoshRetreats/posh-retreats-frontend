@@ -12,12 +12,22 @@ import {
 	TripHeadText,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
+import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
+import { SERVER_GET_PUBLIC_TRIPS } from "routes/server";
+import { useEffect, useState } from "react";
+import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 
 type BasicTripData = {
 	title: string;
 	total: string;
 	date: string;
 };
+
+enum TripType {
+	PUBLIC = "public",
+	PRIVATE = "private",
+}
+
 const tripData: BasicTripData[] = [
 	{
 		title: "Explore Canary Island",
@@ -36,12 +46,13 @@ const tripData: BasicTripData[] = [
 	},
 ];
 
-export function TripCard({ title, total, date }: BasicTripData) {
+export function TripCard({ trip }: any) {
+	const date = new Date(trip?.createdAt).toLocaleDateString();
 	return (
 		<TripCardContainer>
 			<div>
-				<TripHeadText>{title}</TripHeadText>
-				<GreyText>{total}</GreyText>
+				<TripHeadText>{trip?.title}</TripHeadText>
+				<GreyText>{trip?.tripType || TripType.PRIVATE}</GreyText>
 			</div>
 			<GreyText>{date}</GreyText>
 		</TripCardContainer>
@@ -49,13 +60,29 @@ export function TripCard({ title, total, date }: BasicTripData) {
 }
 
 export function AllTripsCard() {
+	const [allTrips, setAllTrips] = useState([]);
+	async function getAllTrips() {
+		try {
+			const res = (await makeGetRequestWithToken(
+				SERVER_GET_PUBLIC_TRIPS
+			)) as GeneralResponseType;
+			setAllTrips(res.data);
+			console.log({ res });
+		} catch (err) {
+			console.log({ err });
+		}
+	}
+
+	useEffect(() => {
+		getAllTrips();
+	}, []);
 	return (
 		<AllTripsCardContainer>
 			<h1>All Trips</h1>
 			<GreyText>All Registrations</GreyText>
 			<TripCardList>
-				{tripData.map(({ title, total, date }: BasicTripData) => (
-					<TripCard title={title} total={total} date={date} />
+				{allTrips.map((trip, i) => (
+					<TripCard trip={trip} key={i} />
 				))}
 			</TripCardList>
 		</AllTripsCardContainer>
@@ -91,11 +118,12 @@ export default function AdminHome() {
 	return (
 		<AdminContainer>
 			<AdminMenu />
+			<AdminHeaderTitle />
+			<AdminHeaderSpace />
 			<AdminHomeContainer>
-				<AdminHeaderTitle />
 				<AdminHomeFlexDiv>
 					<AllTripsCard />
-					<ActivityCard />
+					{/* <ActivityCard /> */}
 				</AdminHomeFlexDiv>
 			</AdminHomeContainer>
 		</AdminContainer>
