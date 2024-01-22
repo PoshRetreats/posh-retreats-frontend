@@ -8,9 +8,12 @@ export const LoginContainer = styled.div`
 	width: 100vw;
 	height: 100vh;
 	overflow-x: hidden;
-	padding-left: 300px;
+	/* padding-left: 300px; */
 	background-color: #f9f9f9;
-	padding-top: 80px;
+	padding-top: -80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const LoginForm = styled.form`
