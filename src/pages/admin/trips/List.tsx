@@ -43,8 +43,8 @@ export default function AdminGroupTripList() {
 			<AdminHeaderSpace />
 			<AdminTripContainer>
 				<GroupTripList padding="0 64px">
-					{loading && <ComponentLoader />}
-					{publicTrips.map((trip: any, key: number) => (
+					{loading && <ComponentLoader color="#000" />}
+					{publicTrips?.map((trip: any, key: number) => (
 						<MiniGroupTrip key={key} data={trip} isAdmin={true} />
 					))}
 				</GroupTripList>

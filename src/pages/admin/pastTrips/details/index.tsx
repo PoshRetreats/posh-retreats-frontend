@@ -39,7 +39,7 @@ export const TripDetailsImage = ({src}: any) => {
     return (
         <TripDetailsImageMain>
            {src.map((image: any, index: any) =>( <div className="images">
-                <SelectedTripImage src={image[0]} alt="selected trip details" />
+                <SelectedTripImage key={index} src={image[0]} alt="selected trip details" />
             </div>))}
         </TripDetailsImageMain>
     );

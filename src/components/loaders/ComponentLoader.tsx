@@ -3,13 +3,15 @@ import BrandColors from "utilities/styles/colors";
 type ComponentLoaderProps = {
 	color?: string;
 	size?: string;
+	className?: string;
 };
 export default function ComponentLoader({
 	color = BrandColors.white,
 	size = "20px",
+	className,
 }: ComponentLoaderProps) {
 	return (
-		<div>
+		<div className={className} >
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlnsXlink="http://www.w3.org/1999/xlink"

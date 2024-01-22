@@ -78,7 +78,7 @@ export const GroupDetailsInfo = () => {
 				<AdminHeaderSpace />
 				<AdminTripContainer>
 					<InfoHeader>
-						<img onClick={() => navigate("-1")} src={BACK_ICON} alt="" />
+						<img onClick={() => navigate(-1)} src={BACK_ICON} alt="" />
 						<h2>Registration</h2>
 					</InfoHeader>
 					<AdminHomeFlexDiv>

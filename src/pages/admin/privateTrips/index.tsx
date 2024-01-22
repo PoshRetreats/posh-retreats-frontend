@@ -1,132 +1,23 @@
 import AdminMenu from "components/menuHeader/admin";
 import {
-	ActivityCardContainer,
-	ActivityCardTemp,
 	PrivateTripHomeContainer,
 	AdminHomeFlexDiv,
 	AllTripsCardContainer,
 	GreyText,
 	PrivateTripContainer,
 	TripCardContainer,
-	EntryDetailsCardContainer,
-	TripCardList,
 	TripHeadText,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
-
-type BasicTripData = {
-	title: string;
-	email?: string;
-	date: string;
-	total?: string;
-};
-
-type InformationData = {
-	title: string;
-	details?: string | number;
-};
-
-const privateTripsdetails: InformationData[] = [
-	{
-		title: "Name",
-		details: "Sheldon Cooper",
-	},
-	{
-		title: "Email",
-		details: "ahelly@mail.com",
-	},
-	{
-		title: "Where would you like to travel to?:",
-		details: "The Grand Canyon",
-	},
-	{
-		title: "Where would you like to travel to?:",
-		details: "The Grand Canyon",
-	},
-	{
-		title: "Where would you like to travel to?:",
-		details: "The Grand Canyon",
-	},
-	{
-		title: "How many people will be traveling?:",
-		details: 5,
-	},
-	{
-		title: "Are there any other destinations you would be interested in?:",
-		details: "Istanbul",
-	},
-];
-
-const upcoming: BasicTripData[] = [
-	{
-		title: "Explore Canary Island",
-		total: "Group Trips",
-		date: "05/05/2023 6:45 am",
-	},
-];
-
-export function EntryDetails({ title, details }: InformationData) {
-	return (
-		<>
-			<EntryDetailsCardContainer>
-				<div>
-					<TripHeadText>{title}</TripHeadText>
-				</div>
-				<GreyText>{details}</GreyText>
-			</EntryDetailsCardContainer>
-		</>
-	);
-}
-
-export function RegistrationCard({ title, email, date, total }: BasicTripData) {
-	return (
-		<TripCardContainer>
-			<div>
-				<TripHeadText>{title}</TripHeadText>
-				<GreyText>{email || total}</GreyText>
-			</div>
-			<GreyText>{date}</GreyText>
-		</TripCardContainer>
-	);
-}
-
-export function Registration() {
-	return (
-		<AllTripsCardContainer>
-			<h1>Registrations</h1>
-			<GreyText>All Entries</GreyText>
-			{/* <TripCardList>
-				{tripData.map(({ title, email, date }: BasicTripData) => (
-					<RegistrationCard  title={title} email={email} date={date} />
-				))}
-			</TripCardList> */}
-			<TripCardList>
-				{privateTripsdetails.map(({ title, details }: InformationData) => (
-					<EntryDetails title={title} details={details} />
-				))}
-			</TripCardList>
-		</AllTripsCardContainer>
-	);
-}
-
-export function UpcominngTrips() {
-	return (
-		<ActivityCardContainer>
-			<ActivityCardTemp>
-				<h1>Upcoming Trips</h1>
-				<GreyText>Recently Published</GreyText>
-				<TripCardList>
-					{upcoming.map(({ title, total, date }: BasicTripData) => (
-						<RegistrationCard title={title} total={total} date={date} />
-					))}
-				</TripCardList>
-			</ActivityCardTemp>
-		</ActivityCardContainer>
-	);
-}
+import { useGetPrivateTrip } from "hooks/useGetPrivateTrip.";
+import ComponentLoader from "components/loaders/ComponentLoader";
+import { Link } from "react-router-dom";
+import { ADMIN_PRIVATE_TRIPS_URL_DETAILS } from "routes/frontend";
 
 export default function PrivateTrips() {
+	const { loading, privateTrips } = useGetPrivateTrip();
+
 	return (
 		<PrivateTripContainer>
 			<AdminMenu />
@@ -134,8 +25,32 @@ export default function PrivateTrips() {
 			<AdminHeaderSpace />
 			<PrivateTripHomeContainer>
 				<AdminHomeFlexDiv>
-					<Registration />
-					<UpcominngTrips />
+					<AllTripsCardContainer>
+						<h1>Registrations</h1>
+						<GreyText>All Entries</GreyText>
+						{loading ? (
+							<ComponentLoader color="#000" />
+						) : privateTrips.length === 0 ? (
+							<TripCardContainer>
+								<TripHeadText>No available trips at the moment</TripHeadText>
+							</TripCardContainer>
+						) : (
+							privateTrips?.map((details: any) => {
+								const date = new Date(details?.createdAt)?.toLocaleDateString();
+								return (
+									<Link key={details?.id} to={ADMIN_PRIVATE_TRIPS_URL_DETAILS}>
+										<TripCardContainer>
+											<div>
+												<TripHeadText>{details?.fullName}</TripHeadText>
+												<GreyText>{details?.email}</GreyText>
+											</div>
+											<GreyText>{date}</GreyText>
+										</TripCardContainer>
+									</Link>
+								);
+							})
+						)}
+					</AllTripsCardContainer>
 				</AdminHomeFlexDiv>
 			</PrivateTripHomeContainer>
 		</PrivateTripContainer>

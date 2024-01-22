@@ -25,7 +25,7 @@ import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
 import { useNavigate } from "react-router-dom";
-import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
+import { ADMIN_PAST_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
 
 type BasicTripData = {
@@ -170,7 +170,7 @@ export function TripDetails() {
 				// setData(res)
 				setLoading(false)
 				//TODO: save basic admin data
-				navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
+				navigate(ADMIN_PAST_TRIPS_DETAILS_URL, {
 					state: postData
 				})
 				return res
@@ -179,10 +179,6 @@ export function TripDetails() {
 				setLoading(false)
 				alert(err.message);
 			});
-
-
-	
-
 	}
 
 	return (

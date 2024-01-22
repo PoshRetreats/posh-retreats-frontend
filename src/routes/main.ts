@@ -16,11 +16,12 @@ import {
 	TRIPS_OVERVIEW_URL,
 	TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_URL,
-	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+	ADMIN_PAST_TRIPS_DETAILS_URL,
 	PUBLIC_TRIPS_FORM_URL,
 	ADMIN_CREATE_GROUP_TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 	ADMIN_MESSAGES_URL,
+	ADMIN_PRIVATE_TRIPS_URL_DETAILS,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -39,6 +40,7 @@ import GroupForm from "pages/trips/public/groupTrip/Form";
 import AdminGroupTripList from "pages/admin/trips/List";
 import { GroupDetailsInfo } from "pages/admin/trips/groupTripDetails/groupDetailsInfo";
 import Messages from "pages/admin/messages";
+import { PrivateTripDetails } from "pages/admin/privateTrips/details/index.";
 
 export const mainRoutes = [
 	{
@@ -191,7 +193,7 @@ export const mainRoutes = [
 	},
 	{
 		id: 14,
-		path: ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+		path: ADMIN_PAST_TRIPS_DETAILS_URL,
 		Component: PastTripsAndReviewsDetails,
 		exact: true,
 		isProtected: true,
@@ -207,20 +209,28 @@ export const mainRoutes = [
 		hide: false,
 		showBottomNav: false,
 	},
-   {
-    id: 17,
+	{
+		id: 17,
 		path: ADMIN_MESSAGES_URL,
 		Component: Messages,
 		exact: true,
 		isProtected: true,
 		hide: false,
 		showBottomNav: false,
-  },
+	},
 	{
 		id: 18,
 		path: ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 		Component: GroupDetailsInfo,
 		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 18,
+		path: ADMIN_PRIVATE_TRIPS_URL_DETAILS,
+		Component: PrivateTripDetails,
 		isProtected: true,
 		hide: false,
 		showBottomNav: false,
