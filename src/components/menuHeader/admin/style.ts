@@ -74,12 +74,22 @@ export const CreateTripButton = styled.button<AdminMenuStyleProps>`
 	padding: 6px;
 	border: none;
 	border-radius: 4px;
+	margin-right: 10px;
 	/* position: absolute;
 	right: 50px;
 	top: 40px; */
 	cursor: pointer;
 	background-color: #f7a49d;
 	color: white;
+	${media.tablet`
+	`}
+`;
+
+export const ButtonFlex = styled.button<AdminMenuStyleProps>`
+	display: flex;
+	align-items: center;
+	background-color: unset;
+	border: none;
 	${media.tablet`
 	`}
 `;
