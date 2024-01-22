@@ -38,7 +38,7 @@ export default function PrivateTrips() {
 							privateTrips?.map((details: any) => {
 								const date = new Date(details?.createdAt)?.toLocaleDateString();
 								return (
-									<Link key={details?.id} to={ADMIN_PRIVATE_TRIPS_URL_DETAILS}>
+									<Link className="link" key={details?.id} to={ADMIN_PRIVATE_TRIPS_URL_DETAILS}>
 										<TripCardContainer>
 											<div>
 												<TripHeadText>{details?.fullName}</TripHeadText>
