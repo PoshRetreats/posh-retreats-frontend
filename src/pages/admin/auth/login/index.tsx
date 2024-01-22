@@ -42,6 +42,7 @@ export default function AdminLogin() {
 	return (
 		<LoginContainer>
 			<LoginForm>
+				<h3>Admin Login</h3>
 				<img src={LOGO} alt="logo" />
 				<DefaultInput
 					required={true}
