@@ -18,6 +18,7 @@ export const SERVER_URL = IS_LOCAL
 
 //Auth Endpoints
 export const SERVER_LOGIN_URL = `${SERVER_URL}/auth/login`;
+export const SERVER_CREATE_ADMIN = `${SERVER_URL}/admin/create`;
 
 //Contact-us
 export const CONTACT_US = `${SERVER_URL}/contact-us`;

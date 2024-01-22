@@ -1,7 +1,7 @@
 import React from "react";
 import { AdminHeaderTitleDiv, ButtonFlex, CreateTripButton } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
-import { ADMIN_CREATE_GROUP_TRIPS_URL } from "routes/frontend";
+import { ADMIN_CREATE, ADMIN_CREATE_GROUP_TRIPS_URL } from "routes/frontend";
 
 type AdminHeaderProps = {
 	title?: string;
@@ -28,7 +28,7 @@ export default function AdminHeaderTitle({ title = "Dashboard" }: AdminHeaderPro
 				</CreateTripButton>
 				{canCreateAdmin && (
 					<CreateTripButton
-						onClick={() => appNavigator(ADMIN_CREATE_GROUP_TRIPS_URL)}
+						onClick={() => appNavigator(ADMIN_CREATE)}
 					>
 						Create Admin
 					</CreateTripButton>

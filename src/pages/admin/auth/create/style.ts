@@ -6,14 +6,13 @@ type LoginStyleProps = {
 };
 export const CreateContainer = styled.div`
 	width: 100vw;
-	height: 100vh;
+	/* height: 100vh; */
 	overflow-x: hidden;
+	/* padding-bottom: 100px; */
 	/* padding-left: 300px; */
 	background-color: #f9f9f9;
-	padding-top: -80px;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 `;
 
 export const CreateForm = styled.form`
@@ -21,6 +20,7 @@ export const CreateForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 145px;
 
 	img {
 		width: 100px;
