@@ -24,9 +24,9 @@ import { CreateTripCardList } from "../trips/style";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
-import { useNavigate } from "react-router-dom";
 import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
+import useAppNavigator from "hooks/useAppNavigator";
 
 type BasicTripData = {
 	title: string;
@@ -62,9 +62,7 @@ type ReviewState = {
 	year: string;
 };
 
-export function Review({setReviews,review}:ReviewState | any ) {
-	
-
+export function Review({ setReviews, review }: ReviewState | any) {
 	const reviews = [
 		{ name: "review", label: "Review" },
 		{ name: "name", label: "Name" },
@@ -101,8 +99,7 @@ export function Review({setReviews,review}:ReviewState | any ) {
 }
 
 export function TripDetails() {
-
-	const navigate = useNavigate()
+	const { appNavigator } = useAppNavigator();
 	const inneRef = useRef<HTMLInputElement | null>(null);
 
 	const [information, setInformation] = useState<string>("");
@@ -114,16 +111,12 @@ export function TripDetails() {
 		year: "",
 	});
 
-
-
 	const [imageFields, setImageFields] = useState<any>({
 		image1: "",
 		// image2: "",
 		// image3: "",
 		// image4: "",
 	});
-	
-
 
 	const clickImageField = () => inneRef.current?.click();
 
@@ -135,11 +128,9 @@ export function TripDetails() {
 	// 	setImageFields({ ...imageFields, [event.target.name]: value });
 	// }
 
-	
-	const [loading, setLoading] = useState<boolean>(false)
+	const [loading, setLoading] = useState<boolean>(false);
 
 	const imgArray = Object.values(imageFields);
-
 
 	const postData = {
 		information: information,
@@ -147,8 +138,8 @@ export function TripDetails() {
 		name: review.name,
 		location: review.location,
 		year: review.year,
-		image: imgArray
-	}
+		image: imgArray,
+	};
 
 	const detailsValidation =
 		information === "" ||
@@ -156,33 +147,26 @@ export function TripDetails() {
 		review.name === "" ||
 		review.location === "" ||
 		review.year === "" ||
-		review.name === "" 
+		review.name === "";
 
-	async function submitTripReview(event: FormEvent){
+	async function submitTripReview(event: FormEvent) {
 		event.preventDefault();
-		if(detailsValidation){
-			alert("Please complete the review form *")
+		if (detailsValidation) {
+			alert("Please complete the review form *");
 		}
 
 		makePostRequestWithAxios("", postData)
-		
 			.then((res: any) => {
 				// setData(res)
-				setLoading(false)
+				setLoading(false);
 				//TODO: save basic admin data
-				navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, {
-					state: postData
-				})
-				return res
+				appNavigator(ADMIN_PRIVATE_TRIPS_DETAILS_URL, postData);
+				return res;
 			})
 			.catch((err) => {
-				setLoading(false)
+				setLoading(false);
 				alert(err.message);
 			});
-
-
-	
-
 	}
 
 	return (
@@ -204,30 +188,33 @@ export function TripDetails() {
 						/>
 					</div>
 				))} */}
-				<div >
-						<ImageInput
-							inneRef={inneRef}
-							onChange={(e) => {
-								const file = e.target.files[0];
-								if (file) {
-								  const reader = new FileReader();
-								  reader.onload = (event:any) => {
+				<div>
+					<ImageInput
+						inneRef={inneRef}
+						onChange={(e) => {
+							const file = e.target.files[0];
+							if (file) {
+								const reader = new FileReader();
+								reader.onload = (event: any) => {
 									const imageDataUrl = event.target.result;
 									setImageFields({ ...imageFields, image1: imageDataUrl });
-								  };
-								  reader.readAsDataURL(file);
-								}
-							  }}
-							onClick={clickImageField}
-							image={imageFields.image1}
-						/>
-					</div>
-	
-					
+								};
+								reader.readAsDataURL(file);
+							}
+						}}
+						onClick={clickImageField}
+						image={imageFields.image1}
+					/>
+				</div>
 			</PastTripCardList>
-			<Review review ={review} setReviews = {setReviews} />
+			<Review review={review} setReviews={setReviews} />
 			<ButtonDiv>
-				<SubmitButton loading = {loading} type="submit" className="Submit_btn_preview" name="Post" />
+				<SubmitButton
+					loading={loading}
+					type="submit"
+					className="Submit_btn_preview"
+					name="Post"
+				/>
 			</ButtonDiv>
 		</AllTripsCardContainer>
 	);

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import {
 	AdminFeaturesContainer,
 	FilledProgressBar,
@@ -19,6 +18,7 @@ import {
 import { SERVER_DELETE_PUBLIC_TRIPS, SERVER_END_PUBLIC_TRIPS } from "routes/server";
 import { useState } from "react";
 import useToastStore from "components/appToast/store";
+import useAppNavigator from "hooks/useAppNavigator";
 
 function AdminFeatures({ data }: any) {
 	const [deleting, setDeleting] = useState(false);
@@ -61,7 +61,9 @@ function AdminFeatures({ data }: any) {
 
 	return (
 		<AdminFeaturesContainer>
-			<button onClick={deleteTrip}>{deleting ? "deleting..." : "Delete Trip"}</button>
+			<button onClick={deleteTrip}>
+				{deleting ? "deleting..." : "Delete Trip"}
+			</button>
 			<button onClick={endTrip}>{ending ? "ending..." : "End Trip"}</button>
 		</AdminFeaturesContainer>
 	);
@@ -70,7 +72,7 @@ function AdminFeatures({ data }: any) {
 export default function MiniGroupTrip({ data, isAdmin }: any) {
 	const percent =
 		(Number(data.registeredTravelers) / Number(data.totalExpectedTravelers)) * 100;
-	const navigate = useNavigate();
+	const { appNavigator } = useAppNavigator();
 	const date = new Date(data.depatureDate).toLocaleDateString();
 	console.log({
 		data,
@@ -81,12 +83,10 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 
 	function handleTripClick() {
 		if (isAdmin) {
-			navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
-				state: { ...data, showButton: false },
-			});
+			appNavigator(ADMIN_GROUP_TRIPS_DETAILS_URL, { ...data, showButton: false });
 			return;
 		}
-		navigate(TRIPS_OVERVIEW_URL, { state: { data } });
+		appNavigator(TRIPS_OVERVIEW_URL, { data });
 	}
 	return (
 		<MiniGroupTripContainer img={data.images[0]}>
