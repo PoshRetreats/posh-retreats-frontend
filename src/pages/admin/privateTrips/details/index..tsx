@@ -18,6 +18,7 @@ import ComponentLoader from "components/loaders/ComponentLoader";
 export const PrivateTripDetails = () => {
 	const navigate = useNavigate();
 	const { loading, privateTrips } = useGetPrivateTrip();
+    console.log(privateTrips)
 	return (
 		<>
 			<PrivateTripContainer>
@@ -46,6 +47,7 @@ export const PrivateTripDetails = () => {
 									privateTrips.map((trips: any) => {
 										return (
 											<div>
+                                                <div className="line"></div>
 												<section>
 													<h3>{trips?.fullName}</h3>
 													<p>Name</p>
