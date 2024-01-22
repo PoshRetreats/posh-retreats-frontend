@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CreateButton, CreateContainer, CreateForm } from "./style";
 import { LOGO } from "assets";
 import useAppNavigator from "hooks/useAppNavigator";
@@ -7,7 +7,8 @@ import useToastStore from "components/appToast/store";
 import { GeneralResponseType, makePostRequestWithAxios } from "requests/requests";
 import { SERVER_CREATE_ADMIN } from "routes/server";
 import { ADMIN_GROUP_TRIPS_URL } from "routes/frontend";
-import { ROLE } from "components/menuHeader/admin/HeaderTitle";
+// import { ROLE } from "components/menuHeader/admin/HeaderTitle";
+// import { removeAuthCookie } from "utilities/helpers";
 
 export default function CreateAdmin() {
 	const [form, setForm] = useState<any>({
@@ -23,7 +24,7 @@ export default function CreateAdmin() {
 	const [loading, setLoading] = useState(false);
 	const toast = useToastStore();
 	const [errors, setErrors] = useState({});
-	const { appNavigator, browserState } = useAppNavigator();
+	const { appNavigator } = useAppNavigator();
 
 	function handleFormChange(e: any) {
 		setForm({
@@ -68,12 +69,17 @@ export default function CreateAdmin() {
 		}
 	}
 
-	useEffect(() => {
-		const isNotAllowed = browserState.user.adminLevel < ROLE.SUPER_ADMIN;
-		console.log({ browserState });
-		isNotAllowed && appNavigator(ADMIN_GROUP_TRIPS_URL);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	// function logoutAdmin() {
+	// 	removeAuthCookie();
+	// 	appNavigator(ADMIN_LOGIN);
+	// }
+
+	// useEffect(() => {
+	// 	const isNotAllowed = browserState?.user?.adminLevel < ROLE.SUPER_ADMIN;
+	// 	console.log({ browserState, isNotAllowed });
+	// 	isNotAllowed && logoutAdmin();
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
 	return (
 		<CreateContainer>
