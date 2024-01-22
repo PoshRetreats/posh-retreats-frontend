@@ -61,24 +61,8 @@ function AdminFeatures({ data }: any) {
 
 	return (
 		<AdminFeaturesContainer>
-			{deleting ? (
-				<h3>deleting...</h3>
-			) : (
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="22"
-					height="24"
-					viewBox="0 0 22 24"
-					fill="none"
-				>
-					<path
-						d="M4 24C3.26667 24 2.63867 23.7387 2.116 23.216C1.59333 22.6933 1.33244 22.0658 1.33333 21.3333V4H0V1.33333H6.66667V0H14.6667V1.33333H21.3333V4H20V21.3333C20 22.0667 19.7387 22.6947 19.216 23.2173C18.6933 23.74 18.0658 24.0009 17.3333 24H4ZM17.3333 4H4V21.3333H17.3333V4ZM6.66667 18.6667H9.33333V6.66667H6.66667V18.6667ZM12 18.6667H14.6667V6.66667H12V18.6667Z"
-						fill="#E21E1E"
-					/>
-				</svg>
-			)}
-
-			{ending ? <h3>ending...</h3> : <h3 onClick={endTrip}>End Trip</h3>}
+			<button onClick={deleteTrip}>{deleting ? "deleting..." : "Delete Trip"}</button>
+			<button onClick={endTrip}>{ending ? "ending..." : "End Trip"}</button>
 		</AdminFeaturesContainer>
 	);
 }

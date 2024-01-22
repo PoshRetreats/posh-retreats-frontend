@@ -11,10 +11,18 @@ export const AdminFeaturesContainer = styled.div<GroupTripStyleProps>`
 	color: black;
 	position: absolute;
 	right: 0;
+	display: flex;
+	flex-direction: column;
 
-	svg {
-		cursor: pointer;
+	button {
+		background-color: ${BrandColors.main2};
+		margin-bottom: 8px;
+		padding: 4px 8px;
+		border-radius: 4px;
+		border: none;
+		color: white;
 	}
+
 	${media.tablet`
    
 	`};
@@ -30,7 +38,7 @@ export const MiniGroupTripContainer = styled.div<GroupTripStyleProps>`
 	border-radius: 16px;
 	padding: 16px;
 	position: relative;
-	cursor: pointer;
+
 
 	${media.tablet`
     width: 100%;
@@ -222,6 +230,7 @@ export const MiniGroupTripDescriptionArea = styled.div`
 	bottom: 0;
 	left: 0;
 	padding: 16px;
+	cursor: pointer;
 
 	h3 {
 		color: var(--white, #fff);
