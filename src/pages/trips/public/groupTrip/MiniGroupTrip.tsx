@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {
+	AdminFeaturesContainer,
 	FilledProgressBar,
 	FilledText,
 	MiniGroupTripContainer,
@@ -10,6 +11,61 @@ import {
 	TextContainer,
 } from "./style";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL, TRIPS_OVERVIEW_URL } from "routes/frontend";
+import {
+	GeneralResponseType,
+	makeDeleteRequestWithAxios,
+	makePutRequestWithAxios,
+} from "requests/requests";
+import { SERVER_DELETE_PUBLIC_TRIPS, SERVER_END_PUBLIC_TRIPS } from "routes/server";
+import { useState } from "react";
+import useToastStore from "components/appToast/store";
+
+function AdminFeatures({ data }: any) {
+	const [deleting, setDeleting] = useState(false);
+	const [ending, setEnding] = useState(false);
+	const toast = useToastStore();
+
+	async function deleteTrip() {
+		try {
+			setDeleting(true);
+			const res = (await makeDeleteRequestWithAxios(SERVER_DELETE_PUBLIC_TRIPS, {
+				id: data._id,
+			})) as GeneralResponseType;
+			console.log({ res });
+			toast.showSuccessToast("Successfully deleted trip");
+			window.location.reload();
+		} catch (err: any) {
+			toast.showFailedToast("Failed to delete trip", err.message);
+			return null;
+		} finally {
+			setDeleting(false);
+		}
+	}
+
+	async function endTrip() {
+		try {
+			setEnding(true);
+			const res = (await makePutRequestWithAxios(SERVER_END_PUBLIC_TRIPS, {
+				id: data._id,
+			})) as GeneralResponseType;
+			console.log({ res });
+			toast.showSuccessToast("Successfully ended trip");
+			window.location.reload();
+		} catch (err: any) {
+			toast.showFailedToast("Failed to end trip", err.message);
+			return null;
+		} finally {
+			setEnding(false);
+		}
+	}
+
+	return (
+		<AdminFeaturesContainer>
+			<button onClick={deleteTrip}>{deleting ? "deleting..." : "Delete Trip"}</button>
+			<button onClick={endTrip}>{ending ? "ending..." : "End Trip"}</button>
+		</AdminFeaturesContainer>
+	);
+}
 
 export default function MiniGroupTrip({ data, isAdmin }: any) {
 	const percent =
@@ -33,7 +89,8 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 		navigate(TRIPS_OVERVIEW_URL, { state: { data } });
 	}
 	return (
-		<MiniGroupTripContainer onClick={handleTripClick} img={data.images[0]}>
+		<MiniGroupTripContainer img={data.images[0]}>
+			<AdminFeatures data={data} />
 			<TagContainerList>
 				{data.tags.map((tag: string, i: number) => (
 					<TagContainer key={i}>
@@ -41,7 +98,7 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 					</TagContainer>
 				))}
 			</TagContainerList>
-			<MiniGroupTripDescriptionArea>
+			<MiniGroupTripDescriptionArea onClick={handleTripClick}>
 				<p>{date}</p>
 				<h3>{data.title}</h3>
 				<ProgressBarDiv>

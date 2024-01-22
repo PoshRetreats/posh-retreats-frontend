@@ -2,10 +2,9 @@
 import axios from "axios";
 import { getAuthCookie, removeAuthCookie } from "utilities/helpers";
 
-
 function forceLogOut() {
-	removeAuthCookie()
-	window.location.href = '/'
+	removeAuthCookie();
+	window.location.href = "/";
 }
 
 export interface GeneralResponseType {
@@ -75,10 +74,11 @@ export async function makePutRequestWithAxios(url: string, body: any) {
 	return promise;
 }
 
-export async function makeDeleteRequestWithAxios(url: string) {
+export async function makeDeleteRequestWithAxios(url: string, body: any) {
 	const promise = new Promise((resolve, reject) => {
 		axios
 			.delete(url, {
+				data: body,
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${getAuthCookie()}`,
