@@ -21,6 +21,7 @@ import {
 	ADMIN_CREATE_GROUP_TRIPS_URL,
 	ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 	ADMIN_MESSAGES_URL,
+	ADMIN_CREATE,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -39,6 +40,7 @@ import GroupForm from "pages/trips/public/groupTrip/Form";
 import AdminGroupTripList from "pages/admin/trips/List";
 import { GroupDetailsInfo } from "pages/admin/trips/groupTripDetails/groupDetailsInfo";
 import Messages from "pages/admin/messages";
+import CreateAdmin from "pages/admin/auth/create";
 
 export const mainRoutes = [
 	{
@@ -220,6 +222,15 @@ export const mainRoutes = [
 		id: 18,
 		path: ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
 		Component: GroupDetailsInfo,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 19,
+		path: ADMIN_CREATE,
+		Component: CreateAdmin,
 		exact: true,
 		isProtected: true,
 		hide: false,
