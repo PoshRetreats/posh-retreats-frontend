@@ -2,9 +2,10 @@ import AdminMenu from "components/menuHeader/admin";
 import { AdminContainer, AdminHomeFlexDiv, AdminTripContainer } from "../../style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AdminGroudInfoMain, InfoHeader } from "./style";
 import { BACK_ICON } from "assets";
+import useAppNavigator from "hooks/useAppNavigator";
 
 export const AdminGroupDetailInfoComponent = ({ data }: any) => {
 	console.log(data);
@@ -67,7 +68,7 @@ export const AdminGroupDetailInfoComponent = ({ data }: any) => {
 };
 
 export const GroupDetailsInfo = () => {
-    const navigate = useNavigate()
+	const { appNavigator } = useAppNavigator();
 	const location = useLocation();
 	console.log(location.state);
 	return (
@@ -78,7 +79,7 @@ export const GroupDetailsInfo = () => {
 				<AdminHeaderSpace />
 				<AdminTripContainer>
 					<InfoHeader>
-						<img onClick={() => navigate("-1")} src={BACK_ICON} alt="" />
+						<img onClick={() => appNavigator("-1")} src={BACK_ICON} alt="" />
 						<h2>Registration</h2>
 					</InfoHeader>
 					<AdminHomeFlexDiv>

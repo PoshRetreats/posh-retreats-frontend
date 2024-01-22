@@ -7,11 +7,12 @@ type AdminHeaderProps = {
 	title?: string;
 };
 export default function AdminHeaderTitle({ title = "Dashboard" }: AdminHeaderProps) {
-	const { appNavigator } = useAppNavigator();
+	const { appNavigator, browserState } = useAppNavigator();
+	console.log({ browserState });
 	return (
 		<AdminHeaderTitleDiv>
 			<div>
-				<p>Welcome, Bukky</p>
+				<p>Welcome, {browserState?.user?.firstName}</p>
 				<h3>{title}</h3>
 			</div>
 			<CreateTripButton onClick={() => appNavigator(ADMIN_CREATE_GROUP_TRIPS_URL)}>

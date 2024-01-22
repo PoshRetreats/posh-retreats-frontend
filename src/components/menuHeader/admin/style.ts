@@ -36,6 +36,7 @@ export const AdminHeaderTitleDiv = styled.div<AdminMenuStyleProps>`
 		font-weight: 400;
 		line-height: normal;
 		margin-bottom: 8px;
+		text-transform: capitalize;
 	}
 
 	h3 {
@@ -43,6 +44,7 @@ export const AdminHeaderTitleDiv = styled.div<AdminMenuStyleProps>`
 		font-style: normal;
 		font-weight: 700;
 		line-height: normal;
+		text-transform: capitalize;
 	}
 	${media.tablet`
 	`}
