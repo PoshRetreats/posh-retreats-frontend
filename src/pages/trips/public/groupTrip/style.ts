@@ -7,6 +7,19 @@ type GroupTripStyleProps = {
 	checked?: boolean;
 };
 
+export const AdminFeaturesContainer = styled.div<GroupTripStyleProps>`
+	color: black;
+	position: absolute;
+	right: 0;
+
+	svg {
+		cursor: pointer;
+	}
+	${media.tablet`
+   
+	`};
+`;
+
 export const MiniGroupTripContainer = styled.div<GroupTripStyleProps>`
 	width: 45%;
 	min-height: 400px;
@@ -246,7 +259,6 @@ export const GroupImageFlex = styled.div`
 	margin-bottom: 120px;
 	padding: 0 64px;
 	/* overflow-x: scroll; */
-
 
 	${media.tablet`
 		padding: 24px;
