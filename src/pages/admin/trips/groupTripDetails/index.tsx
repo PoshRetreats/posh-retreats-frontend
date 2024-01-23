@@ -24,9 +24,10 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 // import { AllGroupTrip } from "..";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
-import { 
+import {
 	// TripCardContainer,
-	 TripHeadText } from "pages/admin/home/style";
+	TripHeadText,
+} from "pages/admin/home/style";
 import { ADMIN_GROUP_TRIPS_DETAILS_INFO_URL } from "routes/frontend";
 
 export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
@@ -118,10 +119,9 @@ export function TripDetails(data: any) {
 							<span>{condition.condition || condition}</span>
 						</section>
 					))}
-					<h3 className="trip_includes_header" >Trip Includes</h3>
+					<h3 className="trip_includes_header">Trip Includes</h3>
 					{inclusions?.map((inclusion: any, index: any) => (
 						<div key={index} className="included_trips">
-							
 							<section className="included_trips_condition">
 								<Active alt="active" src={ACTIVE_ICON} />
 								<span>{inclusion.inclusion || inclusion}</span>
@@ -131,7 +131,6 @@ export function TripDetails(data: any) {
 					<h3 className="trip_includes_header">Trip Does Not Includes</h3>
 					{exclusions?.map((exclusion: any, index: any) => (
 						<div key={index} className="included_trips">
-							
 							<section className="included_trips_condition">
 								<Active alt="active" src={ACTIVE_ICON} />
 								<span>{exclusion.exclusion || exclusion}</span>
@@ -162,13 +161,19 @@ export function TripDetails(data: any) {
 
 export function RegistrationCard({ data }: any) {
 	const navigate = useNavigate();
-	
+
 	const joinedTraveller = data?.joinedTravellersForm;
 	return (
 		<GroupTripNameContainer>
 			{joinedTraveller?.map((traveller: any) => (
-				<div className="group_name_container"  key={traveller?.trip}>
-					<div onClick={() => navigate(ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,{state: data.joinedTravellersForm})} >
+				<div className="group_name_container" key={traveller?.trip}>
+					<div
+						onClick={() =>
+							navigate(ADMIN_GROUP_TRIPS_DETAILS_INFO_URL, {
+								state: traveller,
+							})
+						}
+					>
 						<TripHeadText>{traveller?.questions.fullName}</TripHeadText>
 						<GreyText>{traveller?.questions.location}</GreyText>
 					</div>

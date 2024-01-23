@@ -10,64 +10,64 @@ export const AdminGroupDetailInfoComponent = ({ data }: any) => {
 	console.log(data);
 	return (
 		<AdminGroudInfoMain>
-			{data?.map((traveller: any) => (
-				<div key={traveller?.trip}>
+			{data && (
+				<div key={data?.trip}>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Name:</h3>
-						<span>{traveller?.questions.fullName}</span>
+						<span>{data?.questions.fullName}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Email address:</h3>
-						<span>{traveller?.questions.email}</span>
+						<span>{data?.questions.email}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Phone number:</h3>
-						<span>{traveller?.questions.phone}</span>
+						<span>{data?.questions.phone}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Gender:</h3>
-						<span>{traveller?.questions.gender}</span>
+						<span>{data?.questions.gender}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Age:</h3>
-						<span>{traveller?.questions.age}</span>
+						<span>{data?.questions.age}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Nationality:</h3>
-						<span>{traveller?.questions.nationality}</span>
+						<span>{data?.questions.nationality}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Location:</h3>
-						<span>{traveller?.questions.location}</span>
+						<span>{data?.questions.location}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Instagram Handle:</h3>
-						<span>{traveller?.questions.instagram}</span>
+						<span>{data?.questions.instagram}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Occupation:</h3>
-						<span>{traveller?.questions.occupation}</span>
+						<span>{data?.questions.occupation}</span>
 					</div>
 					<div className="AdminGroudInfoMain">
 						<h3 className="name">Occupancy (double or single):</h3>
-						<span>{traveller?.questions.occupancy}</span>
+						<span>{data?.questions.occupancy}</span>
 					</div>
 					<ul>
 						<h3 className="list">personality preferences:</h3>
-						{traveller?.questions.personality.map((personality: any) => (
+						{data?.questions.personality.map((personality: any) => (
 							// <div className="AdminGroudInfoMain">
 							<li key={personality}>{personality}</li>
 							// </div>
 						))}
 					</ul>
 				</div>
-			))}
+			)}
 		</AdminGroudInfoMain>
 	);
 };
 
 export const GroupDetailsInfo = () => {
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 	const location = useLocation();
 	console.log(location.state);
 	return (
