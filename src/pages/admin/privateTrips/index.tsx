@@ -12,10 +12,11 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import { useGetPrivateTrip } from "hooks/useGetPrivateTrip.";
 import ComponentLoader from "components/loaders/ComponentLoader";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { ADMIN_PRIVATE_TRIPS_URL_DETAILS } from "routes/frontend";
 
 export default function PrivateTrips() {
+	const navigate = useNavigate();
 	const { loading, privateTrips } = useGetPrivateTrip();
 
 	return (
@@ -35,18 +36,22 @@ export default function PrivateTrips() {
 								<TripHeadText>No available trips at the moment</TripHeadText>
 							</TripCardContainer>
 						) : (
-							privateTrips?.map((details: any) => {
+							privateTrips?.map((details: any, index: any) => {
 								const date = new Date(details?.createdAt)?.toLocaleDateString();
 								return (
-									<Link className="link" key={details?.id} to={ADMIN_PRIVATE_TRIPS_URL_DETAILS}>
-										<TripCardContainer>
-											<div>
-												<TripHeadText>{details?.fullName}</TripHeadText>
-												<GreyText>{details?.email}</GreyText>
-											</div>
-											<GreyText>{date}</GreyText>
-										</TripCardContainer>
-									</Link>
+									<TripCardContainer
+										onClick={() =>
+											navigate(ADMIN_PRIVATE_TRIPS_URL_DETAILS, { state: details })
+										}
+										className="link"
+										key={details?.id}
+									>
+										<div>
+											<TripHeadText>{details?.fullName}</TripHeadText>
+											<GreyText>{details?.email}</GreyText>
+										</div>
+										<GreyText>{date}</GreyText>
+									</TripCardContainer>
 								);
 							})
 						)}
