@@ -24,9 +24,9 @@ import { CreateTripCardList } from "../trips/style";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
-import { useNavigate } from "react-router-dom";
-import { ADMIN_PAST_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
+import useAppNavigator from "hooks/useAppNavigator";
+import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
 
 type BasicTripData = {
 	title: string;
@@ -62,9 +62,7 @@ type ReviewState = {
 	year: string;
 };
 
-export function Review({setReviews,review}:ReviewState | any ) {
-	
-
+export function Review({ setReviews, review }: ReviewState | any) {
 	const reviews = [
 		{ name: "review", label: "Review" },
 		{ name: "name", label: "Name" },
@@ -102,7 +100,7 @@ export function Review({setReviews,review}:ReviewState | any ) {
 
 export function TripDetails() {
 
-	const navigate = useNavigate()
+	const { appNavigator } = useAppNavigator();
 	const inneRef = useRef<HTMLInputElement | null>(null);
 
 	const [information, setInformation] = useState<string>("");
@@ -170,10 +168,8 @@ export function TripDetails() {
 				// setData(res)
 				setLoading(false)
 				//TODO: save basic admin data
-				navigate(ADMIN_PAST_TRIPS_DETAILS_URL, {
-					state: postData
-				})
-				return res
+				appNavigator(ADMIN_PRIVATE_TRIPS_DETAILS_URL, postData);
+				return res;
 			})
 			.catch((err) => {
 				setLoading(false)

@@ -105,3 +105,12 @@ export const MenuOptionContainer = styled.div<AdminMenuStyleProps>`
 	${media.tablet`
 	`}
 `;
+
+export const ButtonFlex = styled.button<AdminMenuStyleProps>`
+	display: flex;
+	align-items: center;
+	background-color: unset;
+	border: none;
+	${media.tablet`
+	`}
+`;

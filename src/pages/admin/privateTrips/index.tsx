@@ -12,8 +12,8 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import { useGetPrivateTrip } from "hooks/useGetPrivateTrip.";
 import ComponentLoader from "components/loaders/ComponentLoader";
-import {  useNavigate } from "react-router-dom";
-import { ADMIN_PRIVATE_TRIPS_URL_DETAILS } from "routes/frontend";
+import { useNavigate } from "react-router-dom";
+import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
 
 export default function PrivateTrips() {
 	const navigate = useNavigate();
@@ -41,7 +41,7 @@ export default function PrivateTrips() {
 								return (
 									<TripCardContainer
 										onClick={() =>
-											navigate(ADMIN_PRIVATE_TRIPS_URL_DETAILS, { state: details })
+											navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, { state: details })
 										}
 										className="link"
 										key={details?.id}

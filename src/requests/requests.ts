@@ -75,10 +75,11 @@ export async function makePutRequestWithAxios(url: string, body: any) {
 	return promise;
 }
 
-export async function makeDeleteRequestWithAxios(url: string) {
+export async function makeDeleteRequestWithAxios(url: string, body: any) {
 	const promise = new Promise((resolve, reject) => {
 		axios
 			.delete(url, {
+				data: body,
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${getAuthCookie()}`,
