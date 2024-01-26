@@ -18,7 +18,6 @@ export const SERVER_URL = IS_LOCAL
 
 //Auth Endpoints
 export const SERVER_LOGIN_URL = `${SERVER_URL}/auth/login`;
-export const SERVER_CREATE_ADMIN = `${SERVER_URL}/admin/create`;
 
 //Contact-us
 export const CONTACT_US = `${SERVER_URL}/contact-us`;
@@ -32,7 +31,6 @@ export const SERVER_GET_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/all`
 export const SERVER_GET_ADMIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/admin/all`
 export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`
 export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`
-export const SERVER_DELETE_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/delete`
-export const SERVER_END_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/end`
 
-export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`  
+export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`
+export const SERVER_GET_PRIVATE_TRIP = `${SERVER_URL}/trip/private/all`

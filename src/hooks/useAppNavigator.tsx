@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function useAppNavigator() {
 	const location = useLocation();
 	const navigate = useNavigate();
-	function appNavigator(link: string | any, props?: any) {
+	function appNavigator(link: string, props?: any) {
 		navigate(link, {
 			state: { email: "", ...location.state, ...props },
 		});

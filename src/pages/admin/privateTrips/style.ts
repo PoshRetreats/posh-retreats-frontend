@@ -47,6 +47,9 @@ export const AllTripsCardContainer = styled.div`
 		line-height: normal;
 		margin-bottom: 4px;
 	}
+	.link{
+		text-decoration: none;
+	}
 	${media.tablet`
    
 	`}

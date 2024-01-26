@@ -1,12 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { MenuOptionContainer } from "./style";
-import useAppNavigator from "hooks/useAppNavigator";
 
 export function MenuOption({ title, link, activeIcon, icon }: any) {
-	const { appNavigator } = useAppNavigator();
+	const navigate = useNavigate();
 	function handleNavigate() {
-		appNavigator(link);
+		navigate(link);
 	}
-	const isActive = link === window.location.pathname;
+	const isActive = (link === window.location.pathname);
 	return (
 		<MenuOptionContainer isActive={isActive} onClick={handleNavigate}>
 			{isActive ? activeIcon : icon}

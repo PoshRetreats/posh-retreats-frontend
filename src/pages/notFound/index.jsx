@@ -1,11 +1,11 @@
 import React from "react";
-import useAppNavigator from 'hooks/useAppNavigator'
+import { useNavigate } from "react-router-dom";
 // import { HOME_URL } from 'routes/frontend';
 
 export default function NotFound() {
-  const { appNavigator } = useAppNavigator();
+  const navigate = useNavigate();
   React.useEffect(() => {
-    appNavigator("/");
+    navigate("/");
   });
   return <h1>NotFound: youre seeing this because this page dont exist yet</h1>;
 }

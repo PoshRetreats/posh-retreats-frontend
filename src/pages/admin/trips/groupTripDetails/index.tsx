@@ -22,14 +22,13 @@ import {
 import AdminMenu from "components/menuHeader/admin";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 // import { AllGroupTrip } from "..";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import {
 	// TripCardContainer,
 	TripHeadText,
 } from "pages/admin/home/style";
 import { ADMIN_GROUP_TRIPS_DETAILS_INFO_URL } from "routes/frontend";
-import useAppNavigator from "hooks/useAppNavigator";
 
 export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 	selectedTags,
@@ -65,7 +64,7 @@ export const TripDetailsImage = (image: string[] | any) => {
 };
 
 export function TripDetails(data: any) {
-	const { appNavigator } = useAppNavigator();
+	const navigate = useNavigate();
 	// LIST OF TAGS SELECTED BY USER THESE DATA WILL COME FROM BACK END
 	console.log({ data });
 	const tag = data?.data.tags;
@@ -96,7 +95,7 @@ export function TripDetails(data: any) {
 			<TripDetailsMain>
 				<header>
 					<section className="header_section">
-						<img onClick={() => appNavigator(-1)} alt="back icon" src={BACK_ICON} />
+						<img onClick={() => navigate(-1)} alt="back icon" src={BACK_ICON} />
 						<h1>Trip details</h1>
 					</section>
 					<img src={THREE_DOT} alt="dots" />
@@ -161,7 +160,7 @@ export function TripDetails(data: any) {
 }
 
 export function RegistrationCard({ data }: any) {
-	const { appNavigator } = useAppNavigator();
+	const navigate = useNavigate();
 
 	const joinedTraveller = data?.joinedTravellersForm;
 	return (
@@ -170,10 +169,9 @@ export function RegistrationCard({ data }: any) {
 				<div className="group_name_container" key={traveller?.trip}>
 					<div
 						onClick={() =>
-							appNavigator(
-								ADMIN_GROUP_TRIPS_DETAILS_INFO_URL,
-								data.joinedTravellersForm
-							)
+							navigate(ADMIN_GROUP_TRIPS_DETAILS_INFO_URL, {
+								state: traveller,
+							})
 						}
 					>
 						<TripHeadText>{traveller?.questions.fullName}</TripHeadText>

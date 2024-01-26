@@ -1,21 +1,20 @@
 import TripHeader from "components/menuHeader/TripHeader";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { GroupImageFlex, OverviewArea, PointsArea } from "./style";
 import { JoinTripButton } from "components/menuHeader/style";
 import Footer from "components/footer";
 import { gotoGroupTripForm } from "routes/frontend";
 import ReactSlickSlider from "components/reactSlickSlider";
-import useAppNavigator from "hooks/useAppNavigator";
 
 export default function GroupTripOverView() {
 	const location = useLocation();
-	const { appNavigator } = useAppNavigator();
+	const navigate = useNavigate();
 	const { data } = location.state;
 	const date = new Date(data.depatureDate)?.toLocaleDateString();
 	const formUrl = gotoGroupTripForm(data._id);
 
 	function gotoForm() {
-		appNavigator(formUrl, { trip: data });
+		navigate(formUrl, { state: { trip: data } });
 	}
 	return (
 		<div>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const AdminGroudInfoMain = styled.div`
         background-color: rgba(255, 255, 255, 1);
-        padding: 1rem;
+        padding: 2rem;
         border-radius: 10px;
         width: 60%;
         margin-top: 2rem;

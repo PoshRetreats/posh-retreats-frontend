@@ -5,8 +5,8 @@ import { LOGO } from "assets";
 import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_LOGIN_URL } from "routes/server";
 import { setAuthCookie } from "utilities/helpers";
+import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_URL } from "routes/frontend";
-import useAppNavigator from "hooks/useAppNavigator";
 
 export default function AdminLogin() {
 	const [form, setForm] = useState({
@@ -15,7 +15,7 @@ export default function AdminLogin() {
 	});
 	const [formErr, setFormErr] = useState("");
 	const [loading, setLoading] = useState(false);
-	const { appNavigator } = useAppNavigator();
+	const navigate = useNavigate();
 
 	function handleFormChange(e: any) {
 		setForm({
@@ -30,7 +30,7 @@ export default function AdminLogin() {
 			e.preventDefault();
 			const res: any = await makePostRequestWithAxios(SERVER_LOGIN_URL, form);
 			setAuthCookie(res.data.token);
-			appNavigator(ADMIN_GROUP_TRIPS_URL, { user: res.data.user });
+			navigate(ADMIN_GROUP_TRIPS_URL, { state: { user: res.data.user } });
 		} catch (err: any) {
 			console.log({ err });
 			setFormErr(err.message);
@@ -42,7 +42,6 @@ export default function AdminLogin() {
 	return (
 		<LoginContainer>
 			<LoginForm>
-				<h3>Admin Login</h3>
 				<img src={LOGO} alt="logo" />
 				<DefaultInput
 					required={true}
