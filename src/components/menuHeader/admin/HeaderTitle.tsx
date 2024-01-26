@@ -14,7 +14,7 @@ export enum ROLE {
 
 export default function AdminHeaderTitle({ title = "Dashboard" }: AdminHeaderProps) {
 	const { appNavigator, browserState } = useAppNavigator();
-	const canCreateAdmin = browserState.user.adminLevel > ROLE.ADMIN;
+	const canCreateAdmin = browserState.user?.adminLevel > ROLE.ADMIN;
 	console.log({ browserState });
 	return (
 		<AdminHeaderTitleDiv>
