@@ -78,6 +78,7 @@ export const CreateTripButton = styled.button<AdminMenuStyleProps>`
 	cursor: pointer;
 	background-color: #f7a49d;
 	color: white;
+	margin-left: 8px;
 	${media.tablet`
 	`}
 `;
