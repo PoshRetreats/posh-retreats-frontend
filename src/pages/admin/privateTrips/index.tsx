@@ -12,11 +12,11 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import { useGetPrivateTrip } from "hooks/useGetPrivateTrip.";
 import ComponentLoader from "components/loaders/ComponentLoader";
-import { useNavigate } from "react-router-dom";
 import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
+import useAppNavigator from "hooks/useAppNavigator";
 
 export default function PrivateTrips() {
-	const navigate = useNavigate();
+	const { appNavigator } = useAppNavigator();
 	const { loading, privateTrips } = useGetPrivateTrip();
 
 	return (
@@ -36,15 +36,15 @@ export default function PrivateTrips() {
 								<TripHeadText>No available trips at the moment</TripHeadText>
 							</TripCardContainer>
 						) : (
-							privateTrips?.map((details: any, index: any) => {
+							privateTrips?.map((details: any, index: number) => {
 								const date = new Date(details?.createdAt)?.toLocaleDateString();
 								return (
 									<TripCardContainer
 										onClick={() =>
-											navigate(ADMIN_PRIVATE_TRIPS_DETAILS_URL, { state: details })
+											appNavigator(ADMIN_PRIVATE_TRIPS_DETAILS_URL, details)
 										}
 										className="link"
-										key={details?.id}
+										key={index}
 									>
 										<div>
 											<TripHeadText>{details?.fullName}</TripHeadText>

@@ -31,11 +31,11 @@ import { Images } from "./paymentImage";
 import { SelectedTags } from "./groupTripDetails";
 import { FeatureTripAddedDetailsProps, GroupTripDetailsProps } from "./types";
 import { InputAdornment } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { ADMIN_GROUP_TRIPS_DETAILS_URL } from "routes/frontend";
 import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_CREATE_TRIP } from "routes/server";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
+import useAppNavigator from "hooks/useAppNavigator";
 
 // THIS SHOULD BBE PUT IN A DIFFERENNT FILE
 const names = [
@@ -138,7 +138,7 @@ export const TripCapacity = ({
 };
 
 export function CreateTrip() {
-	const navigate = useNavigate();
+	const { appNavigator } = useAppNavigator();
 	const [tags, setTags] = useState<string[]>([]);
 
 	const [selectedTags, setSelectedTags] = useState<string>("");
@@ -238,9 +238,7 @@ export function CreateTrip() {
 			.then((res: any) => {
 				setData(res);
 				setLoading(false);
-				navigate(ADMIN_GROUP_TRIPS_DETAILS_URL, {
-					state: postData,
-				});
+				appNavigator(ADMIN_GROUP_TRIPS_DETAILS_URL, postData);
 			})
 			.catch((err) => {
 				setLoading(false);
