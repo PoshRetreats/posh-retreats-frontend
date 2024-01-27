@@ -197,9 +197,11 @@ export default function AdminGroupTripsDetails() {
 			<AdminTripContainer>
 				<AdminHomeFlexDiv>
 					<TripDetails data={location.state} />
+					<br />
+					<br />
+					<br />
+					<br />
 					<SecondContainer>
-						<br />
-						<br />
 						<ItineraryDetails
 							budget={review?.initialDeposit}
 							paymentPlans={review?.paymentPlan}

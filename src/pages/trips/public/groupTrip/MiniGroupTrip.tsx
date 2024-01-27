@@ -28,9 +28,9 @@ function AdminFeatures({ data }: any) {
 	const [deleting, setDeleting] = useState(false);
 	const [ending, setEnding] = useState(false);
 	const toast = useToastStore();
-	const showItinerary: boolean = !!data?.review?._id;
+	const hasItinerary: boolean = !!data?.review?._id;
 	const { appNavigator } = useAppNavigator();
-
+	console.log({ hasItinerary, rev: data });
 	function goToItinerary() {
 		console.log({ data });
 		const url = getItineraryUrl(data._id);
@@ -73,7 +73,7 @@ function AdminFeatures({ data }: any) {
 
 	return (
 		<AdminFeaturesContainer>
-			{showItinerary && <button onClick={goToItinerary}>Add Itinerary</button>}
+			{!hasItinerary && <button onClick={goToItinerary}>Add Itinerary</button>}
 			<button onClick={deleteTrip}>
 				{deleting ? "deleting..." : "Delete Trip"}
 			</button>
@@ -96,7 +96,10 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 
 	function handleTripClick() {
 		if (isAdmin) {
-			appNavigator(ADMIN_GROUP_TRIPS_DETAILS_URL, { ...data, showButton: false });
+			appNavigator(ADMIN_GROUP_TRIPS_DETAILS_URL, {
+				tripDetails: { ...data },
+				showButton: false,
+			});
 			return;
 		}
 		appNavigator(TRIPS_OVERVIEW_URL, { data });

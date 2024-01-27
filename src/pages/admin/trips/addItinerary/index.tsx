@@ -37,7 +37,7 @@ export function ItineraryDetails({
 							{!toView && <span>{plan.installmentDate}</span>}
 							<span>{plan.paymentTitle}</span>
 							<span>{plan.amount}</span>
-							{toView && (
+							{!toView && (
 								<DeleteButton onClick={() => deletePaymentPlan(index)}>
 									Remove
 								</DeleteButton>
