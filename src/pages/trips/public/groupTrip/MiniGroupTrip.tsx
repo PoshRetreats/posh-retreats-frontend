@@ -28,6 +28,7 @@ function AdminFeatures({ data }: any) {
 	const [deleting, setDeleting] = useState(false);
 	const [ending, setEnding] = useState(false);
 	const toast = useToastStore();
+	const showItinerary: boolean = !!data?.review?._id;
 	const { appNavigator } = useAppNavigator();
 
 	function goToItinerary() {
@@ -72,7 +73,7 @@ function AdminFeatures({ data }: any) {
 
 	return (
 		<AdminFeaturesContainer>
-			<button onClick={goToItinerary}>Add Itinerary</button>
+			{showItinerary && <button onClick={goToItinerary}>Add Itinerary</button>}
 			<button onClick={deleteTrip}>
 				{deleting ? "deleting..." : "Delete Trip"}
 			</button>

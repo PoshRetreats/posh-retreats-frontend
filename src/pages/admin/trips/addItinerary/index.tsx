@@ -16,19 +16,67 @@ import {
 import useItinerary from "./useItinerary";
 import AddItineraryData from "./ItineraryList";
 
+export function ItineraryDetails({
+	budget,
+	paymentPlans,
+	itineraries,
+	toView = false,
+}: any) {
+	const { deletePaymentPlan, handleDeleteItinerary } = useItinerary();
+	return (
+		<div>
+			<h2>Initial Deposit: {budget}</h2>
+			{paymentPlans?.length > 0 && (
+				<PaymentPlansContainer>
+					<h2>Payment Plans</h2>
+					{paymentPlans.map((plan: any, index: number) => (
+						<PaymentItem key={index}>
+							{toView && (
+								<span>{new Date(plan.installmentDate).toLocaleDateString()}</span>
+							)}
+							{!toView && <span>{plan.installmentDate}</span>}
+							<span>{plan.paymentTitle}</span>
+							<span>{plan.amount}</span>
+							{toView && (
+								<DeleteButton onClick={() => deletePaymentPlan(index)}>
+									Remove
+								</DeleteButton>
+							)}
+						</PaymentItem>
+					))}
+				</PaymentPlansContainer>
+			)}
+			{itineraries.length > 0 && (
+				<ItenaryListContainer>
+					<h2>Itinerary List:</h2>
+					{itineraries.map((itinerary: any) => (
+						<div key={itinerary.day}>
+							<h3>Day {itinerary.day}:</h3>
+							<p>{itinerary.description}</p>
+							{!toView && (
+								<button onClick={() => handleDeleteItinerary(itinerary.day)}>
+									Remove
+								</button>
+							)}
+						</div>
+					))}
+				</ItenaryListContainer>
+			)}
+		</div>
+	);
+}
+
 export default function AddItinerary() {
 	const {
 		handleBudget,
 		budget,
 		paymentPlans,
-		deletePaymentPlan,
 		installmentDate,
 		setInstallmentDate,
 		amount,
 		addPaymentPlan,
 		setAmount,
 		setPaymentTitle,
-		handleDeleteItinerary,
 		itineraries,
 		itineraryValue,
 		setItineraryValue,
@@ -72,36 +120,11 @@ export default function AddItinerary() {
 						</SubmitItemButton>
 					</FirstContainer>
 					<SecondContainer>
-						<h2>Initial Deposit: {budget}</h2>
-						{paymentPlans?.length > 0 && (
-							<PaymentPlansContainer>
-								<h2>Payment Plans</h2>
-								{paymentPlans.map((plan, index) => (
-									<PaymentItem key={index}>
-										<span>{plan.installmentDate}</span>
-										<span>{plan.paymentTitle}</span>
-										<span>{plan.amount}</span>
-										<DeleteButton onClick={() => deletePaymentPlan(index)}>
-											Remove
-										</DeleteButton>
-									</PaymentItem>
-								))}
-							</PaymentPlansContainer>
-						)}
-						{itineraries.length > 0 && (
-							<ItenaryListContainer>
-								<h2>Itinerary List:</h2>
-								{itineraries.map((itinerary) => (
-									<div key={itinerary.day}>
-										<h3>Day {itinerary.day}:</h3>
-										<p>{itinerary.description}</p>
-										<button onClick={() => handleDeleteItinerary(itinerary.day)}>
-											Remove
-										</button>
-									</div>
-								))}
-							</ItenaryListContainer>
-						)}
+						<ItineraryDetails
+							budget={budget}
+							paymentPlans={paymentPlans}
+							itineraries={itineraries}
+						/>
 					</SecondContainer>
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>

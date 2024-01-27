@@ -30,6 +30,8 @@ import {
 } from "pages/admin/home/style";
 import { ADMIN_GROUP_TRIPS_DETAILS_INFO_URL } from "routes/frontend";
 import useAppNavigator from "hooks/useAppNavigator";
+import { SecondContainer } from "../addItinerary/style";
+import { ItineraryDetails } from "../addItinerary";
 
 export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 	selectedTags,
@@ -185,7 +187,8 @@ export function RegistrationCard({ data }: any) {
 
 export default function AdminGroupTripsDetails() {
 	const location = useLocation();
-	console.log({ state: location.state });
+	const review = location?.state?.review;
+	console.log({ state: location.state, review });
 	return (
 		<AdminContainer>
 			<AdminMenu />
@@ -194,7 +197,17 @@ export default function AdminGroupTripsDetails() {
 			<AdminTripContainer>
 				<AdminHomeFlexDiv>
 					<TripDetails data={location.state} />
-					<RegistrationCard data={location.state} />
+					<SecondContainer>
+						<br />
+						<br />
+						<ItineraryDetails
+							budget={review?.initialDeposit}
+							paymentPlans={review?.paymentPlan}
+							itineraries={review?.itinerary}
+							toView={true}
+						/>
+					</SecondContainer>
+					{/* <RegistrationCard data={location.state} /> */}
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>
 		</AdminContainer>
