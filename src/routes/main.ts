@@ -23,6 +23,7 @@ import {
 	ADMIN_MESSAGES_URL,
 	ADMIN_CREATE,
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
+	ADMIN_GROUP_TRIPS_ITINERARY_URL,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -43,6 +44,7 @@ import { GroupDetailsInfo } from "pages/admin/trips/groupTripDetails/groupDetail
 import Messages from "pages/admin/messages";
 import { PrivateTripDetails } from "pages/admin/privateTrips/details/index.";
 import CreateAdmin from "pages/admin/auth/create";
+import AddItinerary from "pages/admin/trips/addItinerary";
 
 export const mainRoutes = [
 	{
@@ -241,6 +243,15 @@ export const mainRoutes = [
 		id: 20,
 		path: ADMIN_CREATE,
 		Component: CreateAdmin,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 21,
+		path: ADMIN_GROUP_TRIPS_ITINERARY_URL,
+		Component: AddItinerary,
 		exact: true,
 		isProtected: true,
 		hide: false,

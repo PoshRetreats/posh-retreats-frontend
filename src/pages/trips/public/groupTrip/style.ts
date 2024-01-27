@@ -21,6 +21,7 @@ export const AdminFeaturesContainer = styled.div<GroupTripStyleProps>`
 		border-radius: 4px;
 		border: none;
 		color: white;
+		cursor: pointer;
 	}
 
 	${media.tablet`

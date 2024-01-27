@@ -9,7 +9,11 @@ import {
 	TagContainerList,
 	TextContainer,
 } from "./style";
-import { ADMIN_GROUP_TRIPS_DETAILS_URL, TRIPS_OVERVIEW_URL } from "routes/frontend";
+import {
+	ADMIN_GROUP_TRIPS_DETAILS_URL,
+	TRIPS_OVERVIEW_URL,
+	getItineraryUrl,
+} from "routes/frontend";
 import {
 	GeneralResponseType,
 	makeDeleteRequestWithAxios,
@@ -24,6 +28,13 @@ function AdminFeatures({ data }: any) {
 	const [deleting, setDeleting] = useState(false);
 	const [ending, setEnding] = useState(false);
 	const toast = useToastStore();
+	const { appNavigator } = useAppNavigator();
+
+	function goToItinerary() {
+		console.log({ data });
+		const url = getItineraryUrl(data._id);
+		appNavigator(url, { ...data });
+	}
 
 	async function deleteTrip() {
 		try {
@@ -61,6 +72,7 @@ function AdminFeatures({ data }: any) {
 
 	return (
 		<AdminFeaturesContainer>
+			<button onClick={goToItinerary}>Add Itinerary</button>
 			<button onClick={deleteTrip}>
 				{deleting ? "deleting..." : "Delete Trip"}
 			</button>
