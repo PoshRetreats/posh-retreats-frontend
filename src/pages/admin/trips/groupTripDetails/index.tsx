@@ -22,7 +22,6 @@ import {
 import AdminMenu from "components/menuHeader/admin";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 // import { AllGroupTrip } from "..";
-import { useLocation } from "react-router-dom";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import {
 	// TripCardContainer,

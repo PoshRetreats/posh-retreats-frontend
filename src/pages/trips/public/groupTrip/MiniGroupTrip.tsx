@@ -105,7 +105,7 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 			return;
 		}
 		appNavigator(TRIPS_OVERVIEW_URL, { tripDetails: { ...data } });
-	}
+	} 
 	return (
 		<MiniGroupTripContainer img={data.images[0]}>
 			<AdminFeatures data={data} />
