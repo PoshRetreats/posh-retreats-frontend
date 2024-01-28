@@ -34,6 +34,7 @@ export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`
 export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`
 export const SERVER_DELETE_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/delete`;
 export const SERVER_END_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/end`;
+export const SERVER_CREATE_TRIP_ITINERARY = `${SERVER_URL}/trip/public/itinerary`;
 
 
 export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`

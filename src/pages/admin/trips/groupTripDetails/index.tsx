@@ -22,7 +22,6 @@ import {
 import AdminMenu from "components/menuHeader/admin";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 // import { AllGroupTrip } from "..";
-import { useLocation } from "react-router-dom";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import {
 	// TripCardContainer,
@@ -30,6 +29,8 @@ import {
 } from "pages/admin/home/style";
 import { ADMIN_GROUP_TRIPS_DETAILS_INFO_URL } from "routes/frontend";
 import useAppNavigator from "hooks/useAppNavigator";
+import { SecondContainer } from "../addItinerary/style";
+import { ItineraryDetails } from "../addItinerary";
 
 export const SelectedTags: FC<{ selectedTags: SelectedTagType }> = ({
 	selectedTags,
@@ -184,8 +185,9 @@ export function RegistrationCard({ data }: any) {
 }
 
 export default function AdminGroupTripsDetails() {
-	const location = useLocation();
-	console.log({ state: location.state });
+	const { browserState } = useAppNavigator();
+	const tripInfo = browserState?.tripDetails;
+	console.log({ state: browserState.state, tripInfo });
 	return (
 		<AdminContainer>
 			<AdminMenu />
@@ -193,8 +195,20 @@ export default function AdminGroupTripsDetails() {
 			<AdminHeaderSpace />
 			<AdminTripContainer>
 				<AdminHomeFlexDiv>
-					<TripDetails data={location.state} />
-					<RegistrationCard data={location.state} />
+					<TripDetails data={tripInfo} />
+					<br />
+					<br />
+					<br />
+					<br />
+					<SecondContainer>
+						<ItineraryDetails
+							budget={tripInfo?.review?.initialDeposit}
+							paymentPlans={tripInfo?.review?.paymentPlan}
+							itineraries={tripInfo?.review?.itinerary}
+							toView={true}
+						/>
+					</SecondContainer>
+					{/* <RegistrationCard data={location.state} /> */}
 				</AdminHomeFlexDiv>
 			</AdminTripContainer>
 		</AdminContainer>
