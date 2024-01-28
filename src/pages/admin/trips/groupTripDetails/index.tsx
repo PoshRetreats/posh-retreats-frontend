@@ -186,9 +186,9 @@ export function RegistrationCard({ data }: any) {
 }
 
 export default function AdminGroupTripsDetails() {
-	const location = useLocation();
-	const review = location?.state?.review;
-	console.log({ state: location.state, review });
+	const { browserState } = useAppNavigator();
+	const tripInfo = browserState?.tripDetails;
+	console.log({ state: browserState.state, tripInfo });
 	return (
 		<AdminContainer>
 			<AdminMenu />
@@ -196,16 +196,16 @@ export default function AdminGroupTripsDetails() {
 			<AdminHeaderSpace />
 			<AdminTripContainer>
 				<AdminHomeFlexDiv>
-					<TripDetails data={location.state} />
+					<TripDetails data={tripInfo} />
 					<br />
 					<br />
 					<br />
 					<br />
 					<SecondContainer>
 						<ItineraryDetails
-							budget={review?.initialDeposit}
-							paymentPlans={review?.paymentPlan}
-							itineraries={review?.itinerary}
+							budget={tripInfo?.review?.initialDeposit}
+							paymentPlans={tripInfo?.review?.paymentPlan}
+							itineraries={tripInfo?.review?.itinerary}
 							toView={true}
 						/>
 					</SecondContainer>

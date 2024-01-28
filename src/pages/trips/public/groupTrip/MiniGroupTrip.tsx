@@ -30,11 +30,13 @@ function AdminFeatures({ data }: any) {
 	const toast = useToastStore();
 	const hasItinerary: boolean = !!data?.review?._id;
 	const { appNavigator } = useAppNavigator();
+
 	console.log({ hasItinerary, rev: data });
+
 	function goToItinerary() {
 		console.log({ data });
 		const url = getItineraryUrl(data._id);
-		appNavigator(url, { ...data });
+		appNavigator(url, { tripDetails: { ...data } });
 	}
 
 	async function deleteTrip() {
@@ -102,7 +104,7 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 			});
 			return;
 		}
-		appNavigator(TRIPS_OVERVIEW_URL, { data });
+		appNavigator(TRIPS_OVERVIEW_URL, { tripDetails: { ...data } });
 	}
 	return (
 		<MiniGroupTripContainer img={data.images[0]}>

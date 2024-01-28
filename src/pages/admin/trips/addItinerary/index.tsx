@@ -23,13 +23,19 @@ export function ItineraryDetails({
 	toView = false,
 }: any) {
 	const { deletePaymentPlan, handleDeleteItinerary } = useItinerary();
+	console.log({
+		budget,
+		paymentPlans,
+		itineraries,
+		toView,
+	});
 	return (
 		<div>
 			<h2>Initial Deposit: {budget}</h2>
 			{paymentPlans?.length > 0 && (
 				<PaymentPlansContainer>
 					<h2>Payment Plans</h2>
-					{paymentPlans.map((plan: any, index: number) => (
+					{paymentPlans?.map((plan: any, index: number) => (
 						<PaymentItem key={index}>
 							{toView && (
 								<span>{new Date(plan.installmentDate).toLocaleDateString()}</span>
@@ -46,10 +52,10 @@ export function ItineraryDetails({
 					))}
 				</PaymentPlansContainer>
 			)}
-			{itineraries.length > 0 && (
+			{itineraries?.length > 0 && (
 				<ItenaryListContainer>
 					<h2>Itinerary List:</h2>
-					{itineraries.map((itinerary: any) => (
+					{itineraries?.map((itinerary: any) => (
 						<div key={itinerary.day}>
 							<h3>Day {itinerary.day}:</h3>
 							<p>{itinerary.description}</p>
