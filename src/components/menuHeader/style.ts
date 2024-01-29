@@ -86,7 +86,9 @@ export const JoinTripButton = styled.button`
 	color: white;
 	border: none;
 	border-radius: 8px;
-	padding: 8px 16px;
+	padding: 12px 16px;
+	font-size: 15px;
+	font-weight: 600;
 	cursor: pointer;
 	margin-top: 10px;
 	${media.tablet`

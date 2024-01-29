@@ -5,6 +5,7 @@ import media from "utilities/styles/media";
 type GroupTripStyleProps = {
 	img?: string;
 	checked?: boolean;
+	change?: boolean;
 };
 
 export const AdminFeaturesContainer = styled.div<GroupTripStyleProps>`
@@ -114,10 +115,12 @@ export const OverviewArea = styled.div<GroupTripStyleProps>`
 
 		h5 {
 			color: black;
-			font-size: 14px;
+			font-size: 17px;
 			font-style: normal;
-			font-weight: 400;
+			font-weight: 700;
 			line-height: normal;
+			color: var(--Primary-Color-1, #f7a49d);
+			margin-bottom: 12px;
 		}
 	}
 
@@ -295,4 +298,152 @@ export const CheckboxHeader = styled.h3`
 export const CheckboxList = styled.h3`
 	display: flex;
 	flex-wrap: wrap;
+`;
+
+export const PaymentArea = styled.div`
+	display: flex;
+	justify-content: space-between;
+	background-color: ${BrandColors.main2};
+	width: 100%;
+	min-height: 40vh;
+	padding: 73px;
+	color: white;
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+		flex-direction: column;
+	`}
+`;
+
+export const PaymentFirstSection = styled.div`
+	width: 43%;
+
+	p {
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	h3 {
+		font-size: 32px;
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	${media.tablet`
+		width: 100%;
+	`}
+`;
+
+export const PaymentSecondFirstSection = styled.div`
+	width: 50%;
+
+	div {
+		border-bottom: 2px solid white;
+		padding-bottom: 12px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 12px;
+
+		span {
+			margin-left: 12px;
+		}
+	}
+
+	h3 {
+		font-size: 21px;
+		font-style: normal;
+		font-weight: normal;
+	}
+
+	h4 {
+		font-size: 18px;
+		font-style: normal;
+		font-weight: normal;
+	}
+
+	${media.tablet`
+		width: 100%;
+		margin-top: 48px;
+	`}
+`;
+
+export const ItineraryArea = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 48px;
+
+	h1 {
+		margin-bottom: 48px;
+	}
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+	`}
+`;
+
+export const ItineraryList = styled.div<GroupTripStyleProps>`
+	display: flex;
+	width: 1000px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	${media.tablet`
+		width: 100%;
+	`}
+`;
+
+export const ItineraryCard = styled.div<GroupTripStyleProps>`
+	border-radius: 16px;
+	width: 48%;
+	background-color: ${({ change }) => (change ? "#FDEDEB99" : "#fbd1ce99")};
+	padding: 18px;
+	margin-bottom: 40px;
+
+	h3 {
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	p {
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 300;
+		line-height: normal;
+	}
+
+	${media.tablet`
+		width: 100%;
+	`}
+`;
+
+export const IncludedAndExcludedArea = styled.div<GroupTripStyleProps>`
+	display: flex;
+	width: 600px;
+	margin: 0 auto;
+	justify-content: space-between;
+
+	div {
+	}
+
+	h3 {
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	p {
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 300;
+		line-height: normal;
+	}
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+	`}
 `;
