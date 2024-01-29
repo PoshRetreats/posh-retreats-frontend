@@ -24,6 +24,8 @@ import {
 	ADMIN_CREATE,
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
 	ADMIN_GROUP_TRIPS_ITINERARY_URL,
+	ADMIN_PAST_TRIPS_HOME_DETAILS_URL,
+	ADMIN_PAST_TRIPS_ADD,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -45,6 +47,8 @@ import Messages from "pages/admin/messages";
 import { PrivateTripDetails } from "pages/admin/privateTrips/details/index.";
 import CreateAdmin from "pages/admin/auth/create";
 import AddItinerary from "pages/admin/trips/addItinerary";
+import PastTripsAndReviewsHome from "pages/admin/pastTripsHome";
+import { PastTripHomeDetailsPage } from "pages/admin/pastTripsHome/details";
 
 export const mainRoutes = [
 	{
@@ -180,7 +184,9 @@ export const mainRoutes = [
 	{
 		id: 12,
 		path: ADMIN_PAST_TRIPS_URL,
-		Component: PastTripsAndReviews,
+		// Component: PastTripsAndReviews,
+		Component: PastTripsAndReviewsHome,
+		// Component: PastTripHomeDetailsPage,
 		exact: true,
 		isProtected: true,
 		hide: false,
@@ -252,6 +258,24 @@ export const mainRoutes = [
 		id: 21,
 		path: ADMIN_GROUP_TRIPS_ITINERARY_URL,
 		Component: AddItinerary,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 22,
+		path: ADMIN_PAST_TRIPS_HOME_DETAILS_URL,
+		Component: PastTripHomeDetailsPage,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 23,
+		path: ADMIN_PAST_TRIPS_ADD,
+		Component: PastTripsAndReviews,
 		exact: true,
 		isProtected: true,
 		hide: false,
