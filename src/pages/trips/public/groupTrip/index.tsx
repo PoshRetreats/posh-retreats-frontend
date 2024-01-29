@@ -1,10 +1,21 @@
 import TripHeader from "components/menuHeader/TripHeader";
-import { GroupImageFlex, OverviewArea, PointsArea } from "./style";
+import {
+	GroupImageFlex,
+	ItineraryArea,
+	ItineraryList,
+	OverviewArea,
+	PaymentArea,
+	PaymentFirstSection,
+	PaymentSecondFirstSection,
+	PointsArea,
+	ItineraryCard,
+} from "./style";
 import { JoinTripButton } from "components/menuHeader/style";
 import Footer from "components/footer";
 import { gotoGroupTripForm } from "routes/frontend";
 import ReactSlickSlider from "components/reactSlickSlider";
 import useAppNavigator from "hooks/useAppNavigator";
+import { CURRENCY } from "constants/constants";
 
 export default function GroupTripOverView() {
 	// const location = useLocation();
@@ -45,12 +56,62 @@ export default function GroupTripOverView() {
 					<JoinTripButton onClick={gotoForm}>Join Trip</JoinTripButton>
 				</div>
 			</OverviewArea>
+			<ItineraryArea>
+				<h1>Itinerary</h1>
+				<ItineraryList>
+					{data?.review?.itinerary?.map((item: any, i: number) => (
+						<ItineraryCard change={i % 2 === 0} key={i}>
+							<h3>Day {item.day}</h3>
+							<p>{item.description}</p>
+						</ItineraryCard>
+					))}
+				</ItineraryList>
+			</ItineraryArea>
 			<GroupImageFlex>
-				{/* {data.images.map((image: string, i: number) => (
-					<img src={image} key={i} alt="group-tag" />
-				))} */}
 				<ReactSlickSlider images={data.images} />
 			</GroupImageFlex>
+			{data?.review && (
+				<PaymentArea>
+					<PaymentFirstSection>
+						<h3>Pricing</h3>
+						<p>
+							<br />
+							The package cost of your trip is highlighted in the table on the left.
+							Please note that all displayed prices are based on double occupancy
+							meaning you get to share your room/suite with a fellow adventurer. At
+							Posh Retreats, we provide you the freedom to settle payments either in
+							full or through convenient monthly installments.
+							<br /> <br /> Feel free to join an available trip at any time, simply
+							cover the deposit and any outstanding payments, then settle balances by
+							their due date..
+						</p>
+					</PaymentFirstSection>
+					<PaymentSecondFirstSection>
+						<div>
+							<h3>Package Price</h3>
+							<h3>
+								{CURRENCY}
+								{data?.amount}
+							</h3>
+						</div>
+						<div>
+							<h3>
+								Deposit {CURRENCY}
+								{data?.review?.initialDeposit}
+							</h3>
+						</div>
+						{data?.review?.paymentPlan?.map((plan: any, i: number) => (
+							<div key={i}>
+								<h3>{plan?.paymentTitle}</h3>
+								<h3>
+									{CURRENCY}
+									{plan?.amount}
+								</h3>
+							</div>
+						))}
+					</PaymentSecondFirstSection>
+				</PaymentArea>
+			)}
 			<Footer />
 		</div>
 	);
