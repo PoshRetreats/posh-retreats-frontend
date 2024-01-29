@@ -115,10 +115,12 @@ export const OverviewArea = styled.div<GroupTripStyleProps>`
 
 		h5 {
 			color: black;
-			font-size: 14px;
+			font-size: 17px;
 			font-style: normal;
-			font-weight: 400;
+			font-weight: 700;
 			line-height: normal;
+			color: var(--Primary-Color-1, #f7a49d);
+			margin-bottom: 12px;
 		}
 	}
 
@@ -306,6 +308,12 @@ export const PaymentArea = styled.div`
 	min-height: 40vh;
 	padding: 73px;
 	color: white;
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+		flex-direction: column;
+	`}
 `;
 
 export const PaymentFirstSection = styled.div`
@@ -322,6 +330,10 @@ export const PaymentFirstSection = styled.div`
 		font-style: normal;
 		font-weight: 400;
 	}
+
+	${media.tablet`
+		width: 100%;
+	`}
 `;
 
 export const PaymentSecondFirstSection = styled.div`
@@ -334,13 +346,28 @@ export const PaymentSecondFirstSection = styled.div`
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 12px;
+
+		span {
+			margin-left: 12px;
+		}
 	}
 
 	h3 {
-		font-size: 25px;
+		font-size: 21px;
 		font-style: normal;
-		font-weight: 500;
+		font-weight: normal;
 	}
+
+	h4 {
+		font-size: 18px;
+		font-style: normal;
+		font-weight: normal;
+	}
+
+	${media.tablet`
+		width: 100%;
+		margin-top: 48px;
+	`}
 `;
 
 export const ItineraryArea = styled.div`
@@ -352,6 +379,11 @@ export const ItineraryArea = styled.div`
 	h1 {
 		margin-bottom: 48px;
 	}
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+	`}
 `;
 
 export const ItineraryList = styled.div<GroupTripStyleProps>`
@@ -359,6 +391,10 @@ export const ItineraryList = styled.div<GroupTripStyleProps>`
 	width: 1000px;
 	justify-content: space-between;
 	flex-wrap: wrap;
+
+	${media.tablet`
+		width: 100%;
+	`}
 `;
 
 export const ItineraryCard = styled.div<GroupTripStyleProps>`
@@ -379,4 +415,35 @@ export const ItineraryCard = styled.div<GroupTripStyleProps>`
 		font-weight: 300;
 		line-height: normal;
 	}
+
+	${media.tablet`
+		width: 100%;
+	`}
+`;
+
+export const IncludedAndExcludedArea = styled.div<GroupTripStyleProps>`
+	display: flex;
+	width: 600px;
+	margin: 0 auto;
+	justify-content: space-between;
+
+	div {
+	}
+
+	h3 {
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	p {
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 300;
+		line-height: normal;
+	}
+
+	${media.tablet`
+		width: 100%;
+		padding: 18px;
+	`}
 `;
