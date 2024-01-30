@@ -2,66 +2,59 @@ import AdminMenu from "components/menuHeader/admin";
 import { AdminContainer } from "../home/style";
 import { AdminHomeContainer } from "../pastTrips/style";
 import { HeaderDiv, PastTripHomeStyle } from "./stye";
-import { PAST_TRIPS } from "assets";
 import { ADMIN_PAST_TRIPS_HOME_DETAILS_URL } from "routes/frontend";
 import { useNavigate } from "react-router-dom";
+import { useGetPastTrips } from "hooks/useGetPastRips";
+import ComponentLoader from "components/loaders/ComponentLoader";
+import { dateModifierWithYear } from "utilities/helpers";
 
 const PastTripHomeContent = () => {
-    const navigate = useNavigate()
+	const navigate = useNavigate();
+	const { loading, pastTripsData } = useGetPastTrips();
 	return (
 		<>
-			<PastTripHomeStyle>
-				<main className="past_trip">
-					<section onClick={() => navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL)} className="image_text">
-						<div className="image">
-							<img src={PAST_TRIPS} alt="" />
-						</div>
-						<div className="text_button">
-							<div className="text">
-								<p>10/03/2023 - 10/04/2023</p>
-								<h3 className="location">Morocco 2023</h3>
-							</div>
-							<div className="tabs">Adventures</div>
-						</div>
-					</section>
-                    <section onClick={() => navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL)} className="image_text">
-						<div className="image">
-							<img src={PAST_TRIPS} alt="" />
-						</div>
-						<div className="text_button">
-							<div className="text">
-								<p>10/03/2023 - 10/04/2023</p>
-								<h3 className="location">Morocco 2023</h3>
-							</div>
-							<div className="tabs">Adventures</div>
-						</div>
-					</section>
-                    <section onClick={() => navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL)} className="image_text">
-						<div className="image">
-							<img src={PAST_TRIPS} alt="" />
-						</div>
-						<div className="text_button">
-							<div className="text">
-								<p>10/03/2023 - 10/04/2023</p>
-								<h3 className="location">Morocco 2023</h3>
-							</div>
-							<div className="tabs">Adventures</div>
-						</div>
-					</section>
-                    <section onClick={() => navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL)} className="image_text">
-						<div className="image">
-							<img src={PAST_TRIPS} alt="" />
-						</div>
-						<div className="text_button">
-							<div className="text">
-								<p>10/03/2023 - 10/04/2023</p>
-								<h3 className="location">Morocco 2023</h3>
-							</div>
-							<div className="tabs">Adventures</div>
-						</div>
-					</section>
-				</main>
-			</PastTripHomeStyle>
+			{loading ? (
+				<ComponentLoader color="#000" />
+			) : (
+				pastTripsData && (
+					<PastTripHomeStyle>
+						<main className="past_trip">
+							{pastTripsData?.map((details: any) => {
+								const firstTworeakDown = details.breakdown.slice(0, 2);
+								const date = dateModifierWithYear(new Date(details?.depatureDate));
+								const returnDate = dateModifierWithYear(
+									new Date(details?.returnDate)
+								);
+								return (
+									<section
+										onClick={() =>
+											navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL, { state: details })
+										}
+										className="image_text"
+									>
+										<div className="image">
+											<img src={details?.images[0]} alt="" />
+										</div>
+										<div className="text_button">
+											<div className="text">
+												<p>
+													{date} - {returnDate}
+												</p>
+												<h3 className="location">{details?.title}</h3>
+											</div>
+											<div className="tab_div">
+												{firstTworeakDown?.map((list: string) => (
+													<div className="tabs">{list}</div>
+												))}
+											</div>
+										</div>
+									</section>
+								);
+							})}
+						</main>
+					</PastTripHomeStyle>
+				)
+			)}
 		</>
 	);
 };

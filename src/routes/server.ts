@@ -37,5 +37,5 @@ export const SERVER_END_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/end`;
 export const SERVER_CREATE_TRIP_ITINERARY = `${SERVER_URL}/trip/public/itinerary`;
 
 
-export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/`
+export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/trip/past`
 export const SERVER_GET_PRIVATE_TRIP = `${SERVER_URL}/trip/private/all`
