@@ -8,40 +8,32 @@ import {
 	ButtonDiv,
 	GreyText,
 	TripCardContainer,
-	PastTripCardList,
 	TripHeadText,
 	AllGroupTripContainer,
 	AllGroupTripCardTemp,
 	ContentSection,
 	AllGroupTripCardList,
 	ImageDiv,
+	PastTripCardImageUrl,
 } from "./style";
 import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
-import { MuiInnputField, MuiTextArea } from "components/muiInputFields";
-import { FormEvent, useRef, useState } from "react";
-import { ImageInput } from "components/imageInput";
+import { MuiInnputField } from "components/muiInputFields";
+import { FormEvent, useState } from "react";
 import { CreateTripCardList } from "../trips/style";
 import { SubmitButton } from "components/buttons/submitButton";
 import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage";
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
 import { makePostRequestWithAxios } from "requests/requests";
 import useAppNavigator from "hooks/useAppNavigator";
-import { ADMIN_PRIVATE_TRIPS_DETAILS_URL } from "routes/frontend";
+import { ADMIN_PAST_TRIPS_HOME_DETAILS_URL } from "routes/frontend";
+import { SERVER__ADD_REVIEW } from "routes/server";
+import { useLocation } from "react-router-dom";
 
 type BasicTripData = {
 	title: string;
 	total: string;
 	date: string;
 };
-
-// const imageInputDetails = [
-// 	{ name: "imag1", label: "Select image" },
-// 	{ name: "imag2", label: "Select image" },
-// 	{ name: "imag3", label: "Select image" },
-// 	{ name: "imag4", label: "Select image" },
-// 	{ name: "imag5", label: "Select image" },
-// 	{ name: "imag6", label: "Select image" },
-// ];
 
 export function TripDetailsCard({ title, total, date }: BasicTripData) {
 	return (
@@ -58,16 +50,12 @@ export function TripDetailsCard({ title, total, date }: BasicTripData) {
 type ReviewState = {
 	review: string;
 	name: string;
-	location: string;
-	year: string;
 };
 
 export function Review({ setReviews, review }: ReviewState | any) {
 	const reviews = [
 		{ name: "review", label: "Review" },
 		{ name: "name", label: "Name" },
-		{ name: "location", label: "Location" },
-		{ name: "year", label: "Year" },
 	];
 
 	function handleChange(event: { target: { value: string; name: string } }) {
@@ -98,128 +86,81 @@ export function Review({ setReviews, review }: ReviewState | any) {
 	);
 }
 
-export function TripDetails() {
-
+export function TripDetails(tripDetailsData: any) {
 	const { appNavigator } = useAppNavigator();
-	const inneRef = useRef<HTMLInputElement | null>(null);
 
 	const [information, setInformation] = useState<string>("");
 
 	const [review, setReviews] = useState<ReviewState>({
 		review: "",
 		name: "",
-		location: "",
-		year: "",
 	});
 
+	const [imageFields, setImageFields] = useState<string>("");
 
+	const [loading, setLoading] = useState<boolean>(false);
 
-	const [imageFields, setImageFields] = useState<any>({
-		image1: "",
-		// image2: "",
-		// image3: "",
-		// image4: "",
-	});
-	
-
-
-	const clickImageField = () => inneRef.current?.click();
-
-	// function handleImageFieldChange(event: {
-	// 	target: { value: string; name: string };
-	// }) {
-	// 	const value = event.target.value;
-
-	// 	setImageFields({ ...imageFields, [event.target.name]: value });
-	// }
-
-	
-	const [loading, setLoading] = useState<boolean>(false)
-
-	const imgArray = Object.values(imageFields);
-
-
+const tripId = tripDetailsData?.tripDetailsData?._id
 	const postData = {
-		information: information,
-		review: review.review,
-		name: review.name,
-		location: review.location,
-		year: review.year,
-		image: imgArray
-	}
+		tripId: tripId,
+		reviewObj: {
+			name: review.name,
+			comment: review.review,
+			profileImage:imageFields
+		},
+	};
 
 	const detailsValidation =
-		information === "" ||
 		review.review === "" ||
-		review.name === "" ||
-		review.location === "" ||
-		review.year === "" ||
-		review.name === "" 
+		review.name === ""
 
-	async function submitTripReview(event: FormEvent){
-		event.preventDefault();
-		if(detailsValidation){
-			alert("Please complete the review form *")
-		}
-
-		makePostRequestWithAxios("", postData)
-		
-			.then((res: any) => {
-				// setData(res)
-				setLoading(false)
-				//TODO: save basic admin data
-				appNavigator(ADMIN_PRIVATE_TRIPS_DETAILS_URL, postData);
-				return res;
-			})
-			.catch((err) => {
-				setLoading(false)
-				alert(err.message);
-			});
-	}
+		async function submitTripReview(event: FormEvent) {
+			event.preventDefault();
+			if (detailsValidation) {
+				alert("Please complete the review form *");
+			}
+			setLoading(true);
+			makePostRequestWithAxios(SERVER__ADD_REVIEW, postData)
+				.then((res: any) => {
+					// setData(res)
+					setLoading(false);
+					//TODO: save basic admin data
+					appNavigator(ADMIN_PAST_TRIPS_HOME_DETAILS_URL, res);
+					return res;
+				})
+				.catch((err) => {
+					setLoading(false);
+					alert(err.message);
+				});
+		};
 
 	return (
-		<AllTripsCardContainer onSubmit={submitTripReview}>
+		<AllTripsCardContainer onSubmit={submitTripReview} >
 			<h1>Trip Details</h1>
-			<MuiTextArea
-				value={information}
-				onchange={(e) => setInformation(e.target.value)}
-				placeholder="Add Information"
-			/>
-			<PastTripCardList>
-				{/* {imageInputDetails.map((details, index) => (
-					<div key={index}>
-						<ImageInput
-							inneRef={inneRef}
-							onChange={handleImageFieldChange}
-							onClick={clickImageField}
-							image={imageFields}
-						/>
-					</div>
-				))} */}
-				<div >
-						<ImageInput
-							inneRef={inneRef}
-							onChange={(e) => {
-								const file = e.target.files[0];
-								if (file) {
-								  const reader = new FileReader();
-								  reader.onload = (event:any) => {
-									const imageDataUrl = event.target.result;
-									setImageFields({ ...imageFields, image1: imageDataUrl });
-								  };
-								  reader.readAsDataURL(file);
-								}
-							  }}
-							onClick={clickImageField}
-							image={imageFields.image1}
-						/>
-					</div>
-	
-					
-			</PastTripCardList>
-			<Review review ={review} setReviews = {setReviews} />
+			<MuiInnputField
+					onchange={(e) => setInformation(e.target.value)}
+					value={information}
+					type="text"
+					name="information"
+					placeholder="Information"
+				/>
+			<PastTripCardImageUrl>
+				<MuiInnputField
+					onchange={(e) => setImageFields(e.target.value)}
+					value={imageFields}
+					type="text"
+					name="image url"
+					placeholder="paste photo url here..."
+				/>
+			</PastTripCardImageUrl>
+			<Review review={review} setReviews={setReviews} />
 			<ButtonDiv>
-				<SubmitButton loading = {loading} type="submit" className="Submit_btn_preview" name="Post" />
+				<SubmitButton
+					loading={loading}
+					type="submit"
+					className="Submit_btn_preview"
+					name={loading?"Loading":"Post"}
+				/>
 			</ButtonDiv>
 		</AllTripsCardContainer>
 	);
@@ -248,13 +189,15 @@ export function AllPastTrip() {
 }
 
 export default function PastTripsAndReviews() {
+	const location = useLocation()
+	console.log(location)
 	return (
 		<AdminContainer>
 			<AdminMenu />
 			<AdminHomeContainer>
 				<AdminHeaderTitle title="Past Trips And Reviews" />
 				<AdminHomeFlexDiv>
-					<TripDetails />
+					<TripDetails tripDetailsData={location?.state} />
 					<AllPastTrip />
 				</AdminHomeFlexDiv>
 			</AdminHomeContainer>

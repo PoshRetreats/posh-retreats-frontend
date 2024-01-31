@@ -10,11 +10,19 @@ import { dateModifierWithYear } from "utilities/helpers";
 
 const PastTripHomeDetails = ({ data }: any) => {
 	const navigate = useNavigate();
-	console.log(data);
+	const location = useLocation();
 
+	console.log(location?.state?.data);
+
+	const reviewData = location?.state?.data;
+	console.log(data,"review", reviewData?.profileImage);
+
+	const reviewDate = dateModifierWithYear(new Date(reviewData?.updatedAt));
 	const date = dateModifierWithYear(new Date(data?.depatureDate));
 
 	const returnDate = dateModifierWithYear(new Date(data?.returnDate));
+
+	const reviewProfileImage = reviewData?.profileImage
 
 	return (
 		<PastTripsHomeDetailsStyle>
@@ -43,9 +51,20 @@ const PastTripHomeDetails = ({ data }: any) => {
 						);
 					})}
 				</div>
+				<div className="details">
+					<p>{reviewData?.comment}</p>
+					<p className="name">
+						{reviewData?.name} {reviewDate}
+					</p>
+				</div>
+				<div className="image_div">
+					<div className="image">
+						<img src={reviewProfileImage} alt="" />
+					</div>
+				</div>
 				<div className="button">
 					<SubmitButton
-						onclick={() => navigate(ADMIN_PAST_TRIPS_ADD)}
+						onclick={() => navigate(ADMIN_PAST_TRIPS_ADD, { state: data })}
 						name="Add Reviews"
 					/>
 				</div>
