@@ -1,13 +1,30 @@
 import { REVIEWS_HEADER } from "assets";
 import MenuHeader from "components/menuHeader";
-import React from "react";
+import { useEffect, useState } from "react";
+import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
+import { SERVER_GET_PAST_TRIPS } from "routes/server";
+import {
+	MiniPastTripDescriptionArea,
+	PastTripContainer,
+	PastTripList,
+	PhotoAmount,
+} from "./style";
+import useAppNavigator from "hooks/useAppNavigator";
+import Carousel from "./Carousel";
+import ReviewTripHeader from "components/menuHeader/ReviewHeader";
 
 export default function Reviews() {
+	const { browserState } = useAppNavigator();
+	const [currentImage, setCurrentImage] = useState("");
+	console.log({ browserState });
+
 	return (
 		<div>
-			<MenuHeader title="Past Trips and Reviews"
-				description="Have a look at what it’s like taking an adventure with us.
-We make every minute of your retreat worth it!" img={REVIEWS_HEADER} />
+			<ReviewTripHeader img={currentImage} />
+			<Carousel
+				onActiveImageChange={(img) => setCurrentImage(img)}
+				images={browserState?.trip?.images}
+			/>
 		</div>
 	);
 }
