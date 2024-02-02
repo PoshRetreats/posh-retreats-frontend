@@ -13,9 +13,12 @@ export const PastTripHomeStyle = styled.div`
 			max-width: 600px;
 			border-radius: 16px;
 			.image {
-				max-width: 450px;
-				img{
+				max-width: 400px;
+
+				img {
 					width: 100%;
+					max-width: 400px;
+					max-height: 500px;
 					border-radius: 16px;
 				}
 			}
@@ -25,25 +28,24 @@ export const PastTripHomeStyle = styled.div`
 				padding: 1rem;
 				justify-content: space-between;
 				.text {
-					p{
-						font-size: .9rem;
+					p {
+						font-size: 0.9rem;
 					}
 					h3 {
 						margin-top: 0.4rem;
 						font-size: 1rem;
 					}
 				}
-				.tab_div{
+				.tab_div {
 					display: flex;
-					gap: .6rem;
+					gap: 0.6rem;
 					.tabs {
-					background: #fdedeb99;
-					padding: 0.7rem;
-					width: fit-content;
-					border-radius: 10px;
+						background: #fdedeb99;
+						padding: 0.7rem;
+						width: fit-content;
+						border-radius: 10px;
+					}
 				}
-				}
-				
 			}
 		}
 	}

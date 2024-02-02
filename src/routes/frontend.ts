@@ -45,7 +45,7 @@ export const ADMIN_PRIVATE_TRIPS_DETAILS_URL = "/admin/user/private_trips/detail
 //ADMIN PAST TRIP
 export const ADMIN_PAST_TRIPS_DETAILS_URL = "/admin/user/past_trips_details";
 export const ADMIN_PAST_TRIPS_URL = "/admin/user/past_trips";
-export const ADMIN_PAST_TRIPS_HOME_DETAILS_URL = "/admin/user/past_trips-home-details"
+export const ADMIN_PAST_TRIPS_HOME_DETAILS_URL = "/admin/user/past_trips-home-details/:PastTrips_id"
 export const ADMIN_PAST_TRIPS_ADD = "/admin/user/add-past-trip"
 
 //ADMIN MESSAGE

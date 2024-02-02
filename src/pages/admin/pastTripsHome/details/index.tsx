@@ -5,24 +5,20 @@ import { PastTripsHomeDetailsStyle } from "./style";
 import { BACK_ICON } from "assets";
 import { SubmitButton } from "components/buttons/submitButton";
 import { ADMIN_PAST_TRIPS_ADD } from "routes/frontend";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { dateModifierWithYear } from "utilities/helpers";
+import { useGetPastTripsReviews } from "hooks/useGetReview";
 
 const PastTripHomeDetails = ({ data }: any) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	console.log(location?.state?.data);
+	const { reviewTripsData } = useGetPastTripsReviews();
+	console.log(location?.state?.data, "review", reviewTripsData);
 
-	const reviewData = location?.state?.data;
-	console.log(data,"review", reviewData?.profileImage);
-
-	const reviewDate = dateModifierWithYear(new Date(reviewData?.updatedAt));
 	const date = dateModifierWithYear(new Date(data?.depatureDate));
 
 	const returnDate = dateModifierWithYear(new Date(data?.returnDate));
-
-	const reviewProfileImage = reviewData?.profileImage
 
 	return (
 		<PastTripsHomeDetailsStyle>
@@ -51,17 +47,28 @@ const PastTripHomeDetails = ({ data }: any) => {
 						);
 					})}
 				</div>
-				<div className="details">
-					<p>{reviewData?.comment}</p>
-					<p className="name">
-						{reviewData?.name} {reviewDate}
-					</p>
-				</div>
-				<div className="image_div">
-					<div className="image">
-						<img src={reviewProfileImage} alt="" />
-					</div>
-				</div>
+				{reviewTripsData?.map(
+					(reviews: { comment: string; name: string; _id: string, updatedAt: string,profileImage: string }) => {
+						const reviewProfileImage = reviews?.profileImage;
+						console.log(reviews)
+						const reviewDate = dateModifierWithYear(new Date(reviews?.updatedAt));
+						return (
+							<section key={reviews?._id}>
+								<div className="details">
+									<p>{reviews?.comment}</p>
+									<p className="name">
+										{reviews?.name} {reviewDate}
+									</p>
+								</div>
+								<div className="image_div">
+									<div className="image">
+										<img src={reviewProfileImage} alt="" />
+									</div>
+								</div>
+							</section>
+						);
+					}
+				)}
 				<div className="button">
 					<SubmitButton
 						onclick={() => navigate(ADMIN_PAST_TRIPS_ADD, { state: data })}
@@ -75,6 +82,9 @@ const PastTripHomeDetails = ({ data }: any) => {
 
 export const PastTripHomeDetailsPage = () => {
 	const location = useLocation();
+	const { PastTrips_id } = useParams();
+
+	console.log(PastTrips_id);
 	return (
 		<AdminContainer>
 			<AdminMenu />

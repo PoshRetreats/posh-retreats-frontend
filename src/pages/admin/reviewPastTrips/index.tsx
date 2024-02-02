@@ -25,7 +25,6 @@ import { UpcomingTripImage } from "components/menuHeader/admin/upcomingTripImage
 import { UPCOMING_GROUP_TRIPS_IMAGE } from "assets";
 import { makePostRequestWithAxios } from "requests/requests";
 import useAppNavigator from "hooks/useAppNavigator";
-import { ADMIN_PAST_TRIPS_HOME_DETAILS_URL } from "routes/frontend";
 import { SERVER__ADD_REVIEW } from "routes/server";
 import { useLocation } from "react-router-dom";
 
@@ -34,6 +33,8 @@ type BasicTripData = {
 	total: string;
 	date: string;
 };
+
+const ADMIN_PAST_TRIP_DETAILS = "/admin/user/past_trips-home-details"
 
 export function TripDetailsCard({ title, total, date }: BasicTripData) {
 	return (
@@ -125,7 +126,7 @@ const tripId = tripDetailsData?.tripDetailsData?._id
 					// setData(res)
 					setLoading(false);
 					//TODO: save basic admin data
-					appNavigator(ADMIN_PAST_TRIPS_HOME_DETAILS_URL, res);
+					appNavigator(`${ADMIN_PAST_TRIP_DETAILS}/${res?.data?._id}`, res);
 					return res;
 				})
 				.catch((err) => {
@@ -190,7 +191,7 @@ export function AllPastTrip() {
 
 export default function PastTripsAndReviews() {
 	const location = useLocation()
-	console.log(location)
+
 	return (
 		<AdminContainer>
 			<AdminMenu />

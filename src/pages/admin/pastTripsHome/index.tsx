@@ -1,13 +1,14 @@
 import AdminMenu from "components/menuHeader/admin";
 import { AdminContainer } from "../home/style";
-import { AdminHomeContainer } from "../pastTrips/style";
+import { AdminHomeContainer } from "../reviewPastTrips/style";
 import { HeaderDiv, PastTripHomeStyle } from "./stye";
-import { ADMIN_PAST_TRIPS_HOME_DETAILS_URL } from "routes/frontend";
+// import { ADMIN_PAST_TRIPS_HOME_DETAILS_URL } from "routes/frontend";
 import { useNavigate } from "react-router-dom";
 import { useGetPastTrips } from "hooks/useGetPastRips";
 import ComponentLoader from "components/loaders/ComponentLoader";
 import { dateModifierWithYear } from "utilities/helpers";
 
+const ADMIN_PAST_TRIP_DETAILS = "/admin/user/past_trips-home-details"
 const PastTripHomeContent = () => {
 	const navigate = useNavigate();
 	const { loading, pastTripsData } = useGetPastTrips();
@@ -27,9 +28,11 @@ const PastTripHomeContent = () => {
 								);
 								return (
 									<section
-										onClick={() =>
-											navigate(ADMIN_PAST_TRIPS_HOME_DETAILS_URL, { state: details })
-										}
+									key={details?._id}
+										onClick={() =>{
+											
+											navigate( `${ADMIN_PAST_TRIP_DETAILS}/${details?._id}`, { state: details })
+										}}
 										className="image_text"
 									>
 										<div className="image">
