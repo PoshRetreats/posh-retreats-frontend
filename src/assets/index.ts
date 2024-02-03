@@ -26,6 +26,7 @@ import CONTACT_US_HEADER from "assets/svgs/contactUsImage.svg"
 import ABOUT1 from "assets/svgs/about1.svg"
 import ABOUT2 from "assets/svgs/about2.svg"
 import ABOUT3 from "assets/svgs/about3.svg"
+import PAST_TRIPS from "assets/svgs/trips.svg"
 
 export {
 	LOGO,
@@ -54,5 +55,6 @@ export {
 	MINI_PRIVATE_ICON,
 	ABOUT1,
 	ABOUT2,
-	ABOUT3
+	ABOUT3,
+	PAST_TRIPS,
 };

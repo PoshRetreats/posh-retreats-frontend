@@ -7,7 +7,7 @@ export const AdminContainer = styled.div`
 	overflow-x: hidden;
 	padding-left: 300px;
 	background-color: #f9f9f9;
-   
+
 	${media.tablet`
    
 	`}
@@ -47,15 +47,15 @@ export const AllTripsCardContainer = styled.form`
 		line-height: normal;
 		margin-bottom: 4px;
 	}
-  
+
 	${media.tablet`
    
 	`}
 `;
 
 export const ReviewContainer = styled.div`
-margin-top: 2rem;
-`
+	margin-top: 2rem;
+`;
 
 export const ActivityCardContainer = styled.div`
 	width: 48%;
@@ -95,12 +95,17 @@ export const TripCardList = styled.div`
 `;
 
 export const PastTripCardList = styled.div`
-   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns in each row */
-  gap: 25px;
-  margin: auto;
-  /* width: 90%; */
-`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Three columns in each row */
+	gap: 25px;
+	margin: auto;
+	border: 2px solid red;
+	max-width: 800px;
+	input {
+		width: 100%;
+	}
+	/* width: 90%; */
+`;
 
 export const TripCardContainer = styled.div`
 	width: 100%;
@@ -138,15 +143,12 @@ export const TripHeadText = styled.p`
 	`}
 `;
 
-
 export const ButtonDiv = styled.div`
-    width: 95%;
-    button{
-        width: 100%;
-    }
-`
-
-
+	width: 95%;
+	button {
+		width: 100%;
+	}
+`;
 
 export const AllGroupTripContainer = styled.div`
 	width: 48%;
@@ -164,7 +166,8 @@ export const AllGroupTripCardTemp = styled.div`
 	padding: 20px;
 	margin-top: 30px;
 	background: var(--White, #fff);
-	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),0px 4px 8px -2px rgba(247, 164, 157, 0.1);
+	box-shadow: 0px 2px 4px -2px rgba(247, 164, 157, 0.06),
+		0px 4px 8px -2px rgba(247, 164, 157, 0.1);
 
 	h1 {
 		font-size: 24px;
@@ -179,26 +182,29 @@ export const AllGroupTripCardTemp = styled.div`
 	`}
 `;
 
-
-
 export const ContentSection = styled.div`
-display: flex;
-justify-content: space-between;
-margin-top: 2rem;
-`
-
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+`;
 
 export const AllGroupTripCardList = styled.div`
-
-.upcoming_trip_h3{
-    margin-bottom: 1rem;
-    max-width: 300px;
-	font-size: "Quando";
-}
-`
-
-
+	.upcoming_trip_h3 {
+		margin-bottom: 1rem;
+		max-width: 300px;
+		font-size: "Quando";
+	}
+`;
 
 export const ImageDiv = styled.div`
-/* width: 130px; */
-`
+	/* width: 130px; */
+`;
+
+export const PastTripCardImageUrl = styled.div`
+	margin: auto;
+	max-width: 800px;
+	input {
+		width: 100%;
+	}
+	/* width: 90%; */
+`;

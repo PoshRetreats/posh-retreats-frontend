@@ -25,6 +25,8 @@ import {
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
 	ADMIN_GROUP_TRIPS_ITINERARY_URL,
 	PAST_TRIPS_URL,
+	ADMIN_PAST_TRIPS_HOME_DETAILS_URL,
+	ADMIN_PAST_TRIPS_ADD,
 } from "./frontend";
 import PrivateTripForm from "pages/trips/private/Form";
 import Home from "pages/home";
@@ -35,10 +37,10 @@ import AdminHome from "pages/admin/home";
 import AdminGroupTrips from "pages/admin/trips";
 import GroupTripOverView from "pages/trips/public/groupTrip";
 import PrivateTrips from "pages/admin/privateTrips";
-import PastTripsAndReviews from "pages/admin/pastTrips";
+import PastTripsAndReviews from "pages/admin/reviewPastTrips";
 import AdminLogin from "pages/admin/auth/login";
 import AdminGroupTripsDetails from "pages/admin/trips/groupTripDetails";
-import PastTripsAndReviewsDetails from "pages/admin/pastTrips/details";
+import PastTripsAndReviewsDetails from "pages/admin/reviewPastTrips/details";
 import GroupForm from "pages/trips/public/groupTrip/Form";
 import AdminGroupTripList from "pages/admin/trips/List";
 import { GroupDetailsInfo } from "pages/admin/trips/groupTripDetails/groupDetailsInfo";
@@ -47,6 +49,8 @@ import { PrivateTripDetails } from "pages/admin/privateTrips/details/index.";
 import CreateAdmin from "pages/admin/auth/create";
 import AddItinerary from "pages/admin/trips/addItinerary";
 import PastTrips from "pages/reviews/PastTrips";
+import PastTripsAndReviewsHome from "pages/admin/pastTripsHome";
+import { PastTripHomeDetailsPage } from "pages/admin/pastTripsHome/details";
 
 export const mainRoutes = [
 	{
@@ -192,7 +196,9 @@ export const mainRoutes = [
 	{
 		id: 12,
 		path: ADMIN_PAST_TRIPS_URL,
-		Component: PastTripsAndReviews,
+		// Component: PastTripsAndReviews,
+		Component: PastTripsAndReviewsHome,
+		// Component: PastTripHomeDetailsPage,
 		exact: true,
 		isProtected: true,
 		hide: false,
@@ -264,6 +270,24 @@ export const mainRoutes = [
 		id: 21,
 		path: ADMIN_GROUP_TRIPS_ITINERARY_URL,
 		Component: AddItinerary,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 22,
+		path: ADMIN_PAST_TRIPS_HOME_DETAILS_URL,
+		Component: PastTripHomeDetailsPage,
+		exact: true,
+		isProtected: true,
+		hide: false,
+		showBottomNav: false,
+	},
+	{
+		id: 23,
+		path: ADMIN_PAST_TRIPS_ADD,
+		Component: PastTripsAndReviews,
 		exact: true,
 		isProtected: true,
 		hide: false,
