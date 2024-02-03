@@ -46,6 +46,7 @@ export const BottomCenterWrapper = styled.div`
 	justify-content: center;
 	width: 100vw;
 	position: absolute;
+	left: 0;
 
 	h3 {
 		font-size: 16px;

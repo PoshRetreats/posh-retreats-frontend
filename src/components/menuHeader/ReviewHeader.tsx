@@ -76,7 +76,6 @@ export default function ReviewTripHeader({
 	isComponent = false,
 	img,
 }: MainTripHeaderProps) {
-	// if (data) {
 	return (
 		<ReviewHeader
 			isComponent={isComponent}
@@ -85,7 +84,4 @@ export default function ReviewTripHeader({
 			img={img}
 		/>
 	);
-	// }
-
-	// return null;
 }

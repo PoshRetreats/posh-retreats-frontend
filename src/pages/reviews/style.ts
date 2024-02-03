@@ -6,6 +6,13 @@ type PastTripStyleType = {
 	tripBgImage?: string;
 };
 
+export const ReviewsContainer = styled.div<PastTripStyleType>`
+	width: 100%;
+
+	${media.tablet`
+	`}
+`;
+
 export const PastTripList = styled.div<PastTripStyleType>`
 	width: 100%;
 	margin-top: 30px;

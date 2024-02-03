@@ -8,6 +8,7 @@ import {
 	PastTripContainer,
 	PastTripList,
 	PhotoAmount,
+	ReviewsContainer,
 } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import Carousel from "./Carousel";
@@ -19,12 +20,12 @@ export default function Reviews() {
 	console.log({ browserState });
 
 	return (
-		<div>
+		<ReviewsContainer>
 			<ReviewTripHeader img={currentImage} />
 			<Carousel
 				onActiveImageChange={(img) => setCurrentImage(img)}
 				images={browserState?.trip?.images}
 			/>
-		</div>
+		</ReviewsContainer>
 	);
 }

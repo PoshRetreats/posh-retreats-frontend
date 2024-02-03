@@ -3,7 +3,7 @@ import { navbarData } from "./data";
 import { BottomCenterWrapper } from "./style";
 import { Link } from "react-router-dom";
 
-export default function TopNavigation({textColor}:any) {
+export default function TopNavigation({ textColor }: any) {
 	return (
 		<BottomCenterWrapper>
 			{navbarData.map((menu, i) => (

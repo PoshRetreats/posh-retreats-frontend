@@ -3,8 +3,10 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import media from "utilities/styles/media";
 
 const CarouselContainer = styled.div`
+	width: 100%;
 	.slick-slide {
 		display: flex;
 		justify-content: center;
@@ -25,6 +27,10 @@ const Slide = styled.div`
 	img {
 		width: 100%;
 		border: 2px solid transparent; // Optional: style for non-active slides
+
+    ${media.mobile`
+      /* width: 300px; */
+    `}
 	}
 
 	&.slick-current img {
