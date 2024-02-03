@@ -14,7 +14,9 @@ export const PRIVATE_TRIPS_URL = "/trips/private";
 export const PRIVATE_TRIPS_FORM_URL = "/trips/private/form";
 
 //reviews
-export const REVIEWS_URL = "/reviews";
+export const PAST_TRIPS_URL = "/trips/past";
+export const REVIEWS_URL = `/trip/:tripId/reviews`;
+export const getReviewsUrl = (tripId: string) => `/trip/${tripId}/reviews`;
 
 //about
 export const ABOUT_US_URL = "/about";

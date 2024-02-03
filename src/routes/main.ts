@@ -24,6 +24,7 @@ import {
 	ADMIN_CREATE,
 	ADMIN_PRIVATE_TRIPS_DETAILS_URL,
 	ADMIN_GROUP_TRIPS_ITINERARY_URL,
+	PAST_TRIPS_URL,
 	ADMIN_PAST_TRIPS_HOME_DETAILS_URL,
 	ADMIN_PAST_TRIPS_ADD,
 } from "./frontend";
@@ -47,6 +48,7 @@ import Messages from "pages/admin/messages";
 import { PrivateTripDetails } from "pages/admin/privateTrips/details/index.";
 import CreateAdmin from "pages/admin/auth/create";
 import AddItinerary from "pages/admin/trips/addItinerary";
+import PastTrips from "pages/reviews/PastTrips";
 import PastTripsAndReviewsHome from "pages/admin/pastTripsHome";
 import { PastTripHomeDetailsPage } from "pages/admin/pastTripsHome/details";
 
@@ -93,6 +95,16 @@ export const mainRoutes = [
 	},
 	{
 		id: 5,
+		path: PAST_TRIPS_URL,
+		Component: PastTrips,
+		exact: true,
+		isProtected: false,
+		isAdmin: false,
+		showAdminMenu: false,
+		showDefaultFooter: true,
+	},
+	{
+		id: 115,
 		path: REVIEWS_URL,
 		Component: Reviews,
 		exact: true,
