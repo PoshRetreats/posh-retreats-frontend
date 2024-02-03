@@ -1,13 +1,5 @@
-import { REVIEWS_HEADER } from "assets";
-import MenuHeader from "components/menuHeader";
-import { useEffect, useState } from "react";
-import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
-import { SERVER_GET_PAST_TRIPS } from "routes/server";
+import { useState } from "react";
 import {
-	MiniPastTripDescriptionArea,
-	PastTripContainer,
-	PastTripList,
-	PhotoAmount,
 	ReviewsContainer,
 } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
