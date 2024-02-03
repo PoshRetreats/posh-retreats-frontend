@@ -126,13 +126,14 @@ const tripId = tripDetailsData?.tripDetailsData?._id
 					// setData(res)
 					setLoading(false);
 					//TODO: save basic admin data
-					appNavigator(`${ADMIN_PAST_TRIP_DETAILS}/${res?.data?._id}`, res);
+					console.log(res)
+					appNavigator(`${ADMIN_PAST_TRIP_DETAILS}/${res?.data?.trip}`, res);
 					return res;
 				})
 				.catch((err) => {
 					setLoading(false);
 					alert(err.message);
-				});
+				}).finally(() => setLoading(false));
 		};
 
 	return (
