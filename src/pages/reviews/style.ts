@@ -111,3 +111,36 @@ export const PhotoAmount = styled.div`
 		}
 	`}
 `;
+
+// review slider
+export const ReviewSliderContainerStyle = styled.div`
+	/* border: 2px solid red; */
+	width: 90%;
+	max-width: 800px;
+	margin: 5rem auto 5rem;
+	border-radius: 16px;
+	.content {
+		max-width: 780px;
+		padding: 2rem;
+		background: #fbd1ce99;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 16px;
+		.avatar_details {
+			display: flex;
+			justify-content: start;
+			align-items: start;
+			gap: 1.5rem;
+		}
+		.details {
+			p {
+				line-height: 27px;
+			}
+			span {
+				font-size: 0.85rem;
+				font-weight: 400;
+			}
+		}
+	}
+`;

@@ -5,6 +5,7 @@ import {
 import useAppNavigator from "hooks/useAppNavigator";
 import Carousel from "./Carousel";
 import ReviewTripHeader from "components/menuHeader/ReviewHeader";
+import { ReviewsSlider } from "./reviews";
 
 export default function Reviews() {
 	const { browserState } = useAppNavigator();
@@ -18,6 +19,7 @@ export default function Reviews() {
 				onActiveImageChange={(img) => setCurrentImage(img)}
 				images={browserState?.trip?.images}
 			/>
+			<ReviewsSlider/>
 		</ReviewsContainer>
 	);
 }

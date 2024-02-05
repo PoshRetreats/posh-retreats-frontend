@@ -27,7 +27,8 @@ import ABOUT1 from "assets/svgs/about1.svg"
 import ABOUT2 from "assets/svgs/about2.svg"
 import ABOUT3 from "assets/svgs/about3.svg"
 import PAST_TRIPS from "assets/svgs/trips.svg"
-
+import ARROW_RIGHT from "assets/svgs/arrowRight.svg"
+import ARROW_LEFT from "assets/svgs/grayArrowLeft.svg"
 export {
 	LOGO,
 	INSTAGRAM,
@@ -57,4 +58,6 @@ export {
 	ABOUT2,
 	ABOUT3,
 	PAST_TRIPS,
+	ARROW_RIGHT,
+	ARROW_LEFT,
 };

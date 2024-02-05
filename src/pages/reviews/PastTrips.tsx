@@ -11,6 +11,7 @@ import {
 } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { getReviewsUrl } from "routes/frontend";
+import ComponentLoader from "components/loaders/ComponentLoader";
 
 export function PastTrip({ trip }: any) {
 	const { appNavigator } = useAppNavigator();
@@ -64,8 +65,12 @@ We make every minute of your retreat worth it!"
 				img={REVIEWS_HEADER}
 			/>
 			<PastTripList>
-				{!loading &&
-					pastTrips.map((trip: any, i) => <PastTrip key={i} trip={trip} />)}
+				{loading ? (
+					<ComponentLoader color="#000" />
+				) : (
+					pastTrips &&
+					pastTrips.map((trip: any, i) => <PastTrip key={i} trip={trip} />)
+				)}
 			</PastTripList>
 		</div>
 	);

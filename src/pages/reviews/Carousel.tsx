@@ -4,13 +4,21 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import media from "utilities/styles/media";
+import { ARROW_LEFT, ARROW_RIGHT } from "assets";
 
 const CarouselContainer = styled.div`
-	width: 100%;
+	width: 90%;
+	margin: auto;
+	padding: 3rem;
+	max-width: 1600px;
 	.slick-slide {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		border-radius: 16px;
+		img {
+			border-radius: 16px;
+		}
 	}
 
 	.slick-list {
@@ -24,11 +32,12 @@ const CarouselContainer = styled.div`
 `;
 
 const Slide = styled.div`
+max-width: 440px;
 	img {
 		width: 100%;
 		border: 2px solid transparent; // Optional: style for non-active slides
 
-    ${media.mobile`
+		${media.mobile`
       /* width: 300px; */
     `}
 	}
@@ -48,6 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ images, onActiveImageChange }) => {
 
 	const settings = {
 		dots: false,
+		focusOnSelect: true,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 3,
@@ -55,6 +65,8 @@ const Carousel: React.FC<CarouselProps> = ({ images, onActiveImageChange }) => {
 		centerMode: true,
 		autoplay: true,
 		autoplaySpeed: 4000,
+		nextArrow: <img src={ARROW_RIGHT} alt="" />,
+		prevArrow: <img src={ARROW_LEFT} alt="" />,
 		beforeChange: (current: number, next: number) => setCurrentSlide(next),
 	};
 
@@ -68,7 +80,7 @@ const Carousel: React.FC<CarouselProps> = ({ images, onActiveImageChange }) => {
 		<CarouselContainer>
 			<Slider {...settings}>
 				{images.map((img, index) => (
-					<Slide key={index}>
+					<Slide className="slide_img_container" key={index}>
 						<img src={img} alt={`Slide ${index}`} />
 					</Slide>
 				))}
