@@ -8,7 +8,7 @@ import { ARROW_LEFT, ARROW_RIGHT } from "assets";
 
 const CarouselContainer = styled.div`
 	width: 90%;
-	margin: auto;
+	margin: 2rem auto;
 	padding: 3rem;
 	max-width: 1600px;
 	.slick-slide {
