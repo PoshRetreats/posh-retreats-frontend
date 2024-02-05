@@ -9,6 +9,7 @@ import {
 	AccordionItemPanel,
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
+import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 
 const data = [
 	{
@@ -89,9 +90,10 @@ const FAQData: any = {
 export default function FAQ({ type = "home" }) {
 	return (
 		// <AnimateComponent>
-			<FAQContainer>
-				<h5>Got Any Questions?</h5>
-				<FAQWrapper>
+		<FAQContainer>
+			<h5>Got Any Questions?</h5>
+			<FAQWrapper>
+				<ScrollAnimation>
 					<Accordion allowZeroExpanded>
 						{FAQData[type].map((item: any, i: number) => (
 							<AccordionItem key={i}>
@@ -102,12 +104,15 @@ export default function FAQ({ type = "home" }) {
 							</AccordionItem>
 						))}
 					</Accordion>
-				</FAQWrapper>
+				</ScrollAnimation>
+			</FAQWrapper>
+			<ScrollAnimation>
 				<h6>Have a Question We Haven't Answered?</h6>
+			</ScrollAnimation>
 				<Link to={CONTACT_US_URL}>
 					<button>Ask A Question</button>
 				</Link>
-			</FAQContainer>
+		</FAQContainer>
 		// </AnimateComponent>
 	);
 }

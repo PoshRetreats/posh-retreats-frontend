@@ -2,12 +2,12 @@ import useAppNavigator from "hooks/useAppNavigator";
 import { Cover, TripContainer, TripHolderContainer, TripTextArea } from "./style";
 import { MINI_GROUP_ICON, MINI_PRIVATE_ICON } from "assets";
 import { PRIVATE_TRIPS_URL, TRIPS_URL } from "routes/frontend";
-import AnimateComponent from "components/animateComponent";
+import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 
 function MiniTripHolder() {
 	const { appNavigator } = useAppNavigator();
 	return (
-		<AnimateComponent>
+		<ScrollAnimation>
 			<TripHolderContainer>
 				<TripContainer onClick={() => appNavigator(TRIPS_URL)} img={MINI_GROUP_ICON}>
 					<Cover padding="16px 16px 0 0" />
@@ -32,7 +32,7 @@ function MiniTripHolder() {
 					</TripTextArea>
 				</TripContainer>
 			</TripHolderContainer>
-		</AnimateComponent>
+		</ScrollAnimation>
 	);
 }
 

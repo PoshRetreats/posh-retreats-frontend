@@ -4,13 +4,14 @@ import MenuHeader from "components/menuHeader";
 import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { ABOUT_US_URL } from "routes/frontend";
+import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 // import AnimateComponent from "components/animateComponent";
 
 export function AboutComponent({ isHome = false }) {
 	const { appNavigator } = useAppNavigator();
 	return (
-		// <AnimateComponent>
-			<SecondSection>
+		<SecondSection>
+			<ScrollAnimation>
 				<TextSection>
 					<h1>About Us</h1>
 					<p>
@@ -34,13 +35,15 @@ export function AboutComponent({ isHome = false }) {
 						)}
 					</p>
 				</TextSection>
-				<ImageSection>
+			</ScrollAnimation>
+			<ImageSection>
+				<ScrollAnimation>
 					<StyledImage r="0px" top="-120px" right="40px" src={ABOUT1} alt="about1" />
 					<StyledImage top="-20px" right="200px" src={ABOUT2} alt="about2" />
 					<StyledImage top="90px" right="60px" src={ABOUT3} alt="about3" />
-				</ImageSection>
-			</SecondSection>
-		// </AnimateComponent>
+				</ScrollAnimation>
+			</ImageSection>
+		</SecondSection>
 	);
 }
 
