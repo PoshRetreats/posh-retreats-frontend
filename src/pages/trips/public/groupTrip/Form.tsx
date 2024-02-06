@@ -17,7 +17,7 @@ export enum PUBLIC_TRIP_QUESTIONS {
 	fullName = "Full Name",
 	email = "Email Address",
 	phone = "Phone number (include country code)",
-	gender = "gender",
+	gender = "Gender",
 	age = "Age",
 	nationality = "Nationality",
 	location = "Location",
