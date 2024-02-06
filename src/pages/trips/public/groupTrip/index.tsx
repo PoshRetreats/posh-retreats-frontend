@@ -10,6 +10,7 @@ import {
 	PointsArea,
 	ItineraryCard,
 	IncludedAndExcludedArea,
+	ImageDiv,
 } from "./style";
 import { JoinTripButton } from "components/menuHeader/style";
 import Footer from "components/footer";
@@ -17,7 +18,7 @@ import { gotoGroupTripForm } from "routes/frontend";
 import ReactSlickSlider from "components/reactSlickSlider";
 import useAppNavigator from "hooks/useAppNavigator";
 import { CURRENCY } from "constants/constants";
-import commaNumber from 'comma-number'
+import commaNumber from "comma-number";
 
 export default function GroupTripOverView() {
 	// const location = useLocation();
@@ -25,7 +26,7 @@ export default function GroupTripOverView() {
 	const { browserState, appNavigator } = useAppNavigator();
 	const data = browserState.tripDetails;
 	console.log({ data, browserState });
-	const date = new Date(data.depatureDate)?.toDateString();
+	// const date = new Date(data.depatureDate)?.toDateString();
 	const formUrl = gotoGroupTripForm(data._id);
 	const hasItinerary = !!data?.review;
 
@@ -36,42 +37,34 @@ export default function GroupTripOverView() {
 		<div>
 			<TripHeader data={data} />
 			<OverviewArea>
-				<img src={data.images[2]} alt="img" />
+				<ImageDiv>
+					<img src={data.images[2]} alt="img" />
+				</ImageDiv>
 				<div>
 					<h1>Overview</h1>
 					<p>{data.details}</p>
-					<p>
-						<b>Your Exclusive Phuket Escape Includes:</b>
-					</p>
-					{data?.breakdown?.map((point: any, i: any) => (
-						<PointsArea key={i}>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="8"
-								height="8"
-								viewBox="0 0 8 8"
-								fill="none"
-							>
-								<circle cx="4" cy="4" r="4" fill="#F7A49D" />
-							</svg>
-							<p>{point}</p>
-						</PointsArea>
-					))}
-					{data?.tags?.map((point: any, i: any) => (
-						<PointsArea key={i}>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="8"
-								height="8"
-								viewBox="0 0 8 8"
-								fill="none"
-							>
-								<circle cx="4" cy="4" r="4" fill="#F7A49D" />
-							</svg>
-							<p>{point}</p>
-						</PointsArea>
-					))}
-					<h5>Depature Date: {date}</h5>
+					{!!data?.breakdown && (
+						<>
+							<p>
+								<b>The trip has the following add-ons:</b>
+							</p>
+							{data?.breakdown?.map((point: any, i: any) => (
+								<PointsArea key={i}>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="8"
+										height="8"
+										viewBox="0 0 8 8"
+										fill="none"
+									>
+										<circle cx="4" cy="4" r="4" fill="#F7A49D" />
+									</svg>
+									<p>{point}</p>
+								</PointsArea>
+							))}
+						</>
+					)}
+					{/* <h5>Depature Date: {date}</h5> */}
 					<h5>
 						Price - {CURRENCY}
 						{commaNumber(data.amount)}
@@ -175,8 +168,9 @@ export default function GroupTripOverView() {
 							</h3>
 						</div>
 						<div>
+							<h3>Deposit</h3>
 							<h3>
-								Deposit {CURRENCY}
+								{CURRENCY}
 								{commaNumber(data?.review?.initialDeposit)}
 							</h3>
 						</div>

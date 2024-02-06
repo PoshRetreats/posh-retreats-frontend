@@ -83,17 +83,26 @@ export const TagContainerList = styled.div<GroupTripStyleProps>`
 	`}
 `;
 
+export const ImageDiv = styled.div<GroupTripStyleProps>`
+	width: 40%;
+	img {
+		height: auto;
+		width: 100%;
+		border-radius: 8px;
+	}
+
+	${media.tablet`
+
+	`}
+`;
+
+
 export const OverviewArea = styled.div<GroupTripStyleProps>`
 	display: flex;
 	padding: 64px;
 	justify-content: space-between;
 
-	img {
-		/* height: 500px; */
-		width: 40%;
-		border-radius: 8px;
-	}
-
+	
 	div {
 		width: 48%;
 

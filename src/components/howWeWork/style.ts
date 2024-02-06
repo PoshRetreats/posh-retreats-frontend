@@ -12,7 +12,7 @@ export const HowWeWorkContainer = styled.div`
 	max-width: 1400px;
 	margin: 0 auto;
 	margin-bottom: 200px;
-	margin-top: 250px;
+	/* margin-top: 250px; */
 
 	h1 {
 		color: var(--text-color, #020e07);
