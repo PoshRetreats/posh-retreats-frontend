@@ -45,6 +45,7 @@ export const FooterListContainer = styled.div`
 		font-weight: 400;
 		line-height: normal;
 		cursor: pointer;
+		margin-top: 8px;
 	}
 
 	img {
@@ -52,12 +53,14 @@ export const FooterListContainer = styled.div`
 		height: 20px;
 		flex-shrink: 0;
 		margin-right: 16px;
+		margin-top: 8px;
+		cursor: pointer;
 	}
 
 	${media.tablet`
-		flex-direction: column;
-		align-items: flex-start;
+		/* flex-direction: column; */
+		/* align-items: flex-start;
 		margin-right: 30px;
-		margin-top: 30px;
+		margin-top: 30px; */
 	`}
 `;

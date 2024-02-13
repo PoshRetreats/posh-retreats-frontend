@@ -15,6 +15,7 @@ type ListDataType = {
 export type FooterListType = {
 	listType: ListType;
 	list: ListDataType[] | string[] | any;
+	link: string[];
 	header: string;
 };
 
@@ -32,7 +33,9 @@ export default function FooterList({ props }: FooterListProp) {
 				))}
 			{props.listType === ListType.images &&
 				props.list.map((image: string, key: number) => (
-					<img key={key} src={image} alt="socials_icon" />
+					<a key={key} target="_blank" rel="noreferrer" href={props.link[key]}>
+						<img src={image} alt="socials_icon" />
+					</a>
 				))}
 		</FooterListContainer>
 	);
