@@ -16,6 +16,8 @@ import useToastStore from "components/appToast/store";
 
 export default function ContactUs() {
 	const toast = useToastStore();
+	// const CONTACT_US_HEADER =
+	// 	"https://res.cloudinary.com/poshretreats/image/upload/v1708778781/IMG_2685_upy9bl.jpg";
 	const [form, setForm] = useState({
 		fullName: "",
 		email: "",
@@ -52,7 +54,7 @@ export default function ContactUs() {
 				phone: "",
 				message: "",
 			});
-			toast.showSuccessToast('Message sent successfully')
+			toast.showSuccessToast("Message sent successfully");
 			console.log({ res });
 		} catch (err) {
 			toast.showFailedToast("Messages could not be delivered at the moment");
@@ -82,9 +84,24 @@ We make every minute of your retreat worth it!"
 				</ContactUsList>
 				<ContactUsForm>
 					<h3>Need to reach out?</h3>
-					<BasicInput title={"Full name"} value={form.fullName} onChange={handleChange} name="fullName" />
-					<BasicInput title={"Email Address"} value={form.email} onChange={handleChange} name="email" />
-					<BasicInput title={"Phone Number"} value={form.phone} onChange={handleChange} name="phone" />
+					<BasicInput
+						title={"Full name"}
+						value={form.fullName}
+						onChange={handleChange}
+						name="fullName"
+					/>
+					<BasicInput
+						title={"Email Address"}
+						value={form.email}
+						onChange={handleChange}
+						name="email"
+					/>
+					<BasicInput
+						title={"Phone Number"}
+						value={form.phone}
+						onChange={handleChange}
+						name="phone"
+					/>
 					<BasicInput
 						title={"Message"}
 						value={form.message}

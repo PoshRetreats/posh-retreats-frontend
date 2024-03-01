@@ -1,11 +1,14 @@
 import useAppNavigator from "hooks/useAppNavigator";
 import { Cover, TripContainer, TripHolderContainer, TripTextArea } from "./style";
-import { MINI_GROUP_ICON, MINI_PRIVATE_ICON } from "assets";
 import { PRIVATE_TRIPS_URL, TRIPS_URL } from "routes/frontend";
 import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 
 function MiniTripHolder() {
 	const { appNavigator } = useAppNavigator();
+	const MINI_PRIVATE_ICON =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709191950/2E058A3B-9D57-4B4A-9220-3C50D0768A8A_ok3k8l.jpg";
+	const MINI_GROUP_ICON =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1708778786/Screen_Shot_2020-01-05_at_6.58.12_AM_dnal6b.jpg";
 	return (
 		<ScrollAnimation>
 			<TripHolderContainer>

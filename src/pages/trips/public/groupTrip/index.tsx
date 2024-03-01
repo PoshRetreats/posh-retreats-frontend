@@ -46,7 +46,7 @@ export default function GroupTripOverView() {
 					{!!data?.breakdown && (
 						<>
 							<p>
-								<b>The trip has the following add-ons:</b>
+								<b>The trip has the following add-ons(At an additional cost):</b>
 							</p>
 							{data?.breakdown?.map((point: any, i: any) => (
 								<PointsArea key={i}>
@@ -64,7 +64,6 @@ export default function GroupTripOverView() {
 							))}
 						</>
 					)}
-					{/* <h5>Depature Date: {date}</h5> */}
 					<h5>
 						Price - {CURRENCY}
 						{commaNumber(data.amount)}
@@ -149,7 +148,7 @@ export default function GroupTripOverView() {
 						<h3>Pricing</h3>
 						<p>
 							<br />
-							The package cost of your trip is highlighted in the table on the left.
+							The package cost of your trip is highlighted in the table on the right.
 							Please note that all displayed prices are based on double occupancy
 							meaning you get to share your room/suite with a fellow adventurer. At
 							Posh Retreats, we provide you the freedom to settle payments either in

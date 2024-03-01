@@ -1,13 +1,15 @@
 import FAQ from "components/faq";
 import HowWeWork from "components/howWeWork";
 import MenuHeader from "components/menuHeader";
-import { PRIVATE_TRIPS_HEADER } from "assets";
+// import { PRIVATE_TRIPS_HEADER } from "assets";
 import { RequestFormLinkArea } from "./style";
 import { useNavigate } from "react-router-dom";
 import { PRIVATE_TRIPS_FORM_URL } from "routes/frontend";
 
 export default function PrivateTrip() {
 	const navigate = useNavigate();
+	const PRIVATE_TRIPS_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709191665/7B9A4B80-D297-42DB-9825-6E12BDC890D9_pyzauo.jpg";
 	return (
 		<>
 			<MenuHeader

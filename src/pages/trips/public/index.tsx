@@ -1,4 +1,3 @@
-import { PUBLIC_TRIPS_HEADER } from "assets";
 import FAQ from "components/faq";
 import HowWeWork from "components/howWeWork";
 import MenuHeader from "components/menuHeader";
@@ -13,6 +12,8 @@ import ComponentLoader from "components/loaders/ComponentLoader";
 export default function Trips() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [publicTrips, setPublicTrips] = useState<any>([]);
+	const PUBLIC_TRIPS_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709191048/btqalldwguomymizel6n.jpg";
 	const toast = useToastStore();
 	async function getPublicTrips() {
 		try {

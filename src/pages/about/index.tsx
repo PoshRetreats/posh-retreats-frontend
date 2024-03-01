@@ -1,4 +1,4 @@
-import { ABOUT1, ABOUT2, ABOUT3, ABOUT_HEADER } from "assets";
+import { ABOUT_HEADER } from "assets";
 import FAQ from "components/faq";
 import MenuHeader from "components/menuHeader";
 import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
@@ -9,6 +9,14 @@ import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 
 export function AboutComponent({ isHome = false }) {
 	const { appNavigator } = useAppNavigator();
+	const ABOUT1 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1702126618/IMG_2461_ajpe1i.jpg";
+	// const ABOUT1 =
+	// 	"https://res.cloudinary.com/poshretreats/image/upload/IMG_6894_yndbhl.jpg";
+	const ABOUT2 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1702126619/IMG_2685_r2oian.jpg";
+	const ABOUT3 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1708778778/FDBBA81A-7002-42B1-9B25-AF9C861F39BD_fqasez.jpg";
 	return (
 		<SecondSection>
 			<ScrollAnimation>
