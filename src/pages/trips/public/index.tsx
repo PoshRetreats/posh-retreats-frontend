@@ -39,10 +39,7 @@ export default function Trips() {
 		<div>
 			<MenuHeader
 				title="Group Trips"
-				description="Be a part of our next group experience where you can make 
-awesome connections and explore new horizons with new
-friends. Experience new cultures, take new adventures and
-create lasting memories."
+				description="Step into the world of our vibrant group trips! Join our friendly community of explorers, immerse yourself in diverse cultures, and create lasting memories. Dive into our thoughtfully curated group travel experiences today with confidence and excitement!"
 				img={PUBLIC_TRIPS_HEADER}
 			/>
 			<GroupTripList>
