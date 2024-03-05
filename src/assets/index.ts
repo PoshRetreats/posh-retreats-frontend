@@ -16,16 +16,18 @@ import GROUP_TRIPS_IMAGE3 from "assets/svgs/groupTripsImage3.svg";
 import GROUP_TRIPS_IMAGE4 from "assets/svgs/groupTripsImage4.svg";
 import UPCOMING_GROUP_TRIPS_IMAGE from "assets/svgs/allGroupTrip.svg";
 import BACK_ICON from "assets/svgs/treatback.svg";
-import ACTIVE_ICON from "assets/svgs/Ellipse 29.svg"
-import SELECTED_TRIP_IMAGE from "assets/svgs/selected.svg"
-import THREE_DOT from "assets/svgs/dot.svg"
-import MINI_GROUP_ICON from "assets/svgs/miniGroupIcon.svg"
-import MINI_PRIVATE_ICON from "assets/svgs/miniPrivateIcon.svg"
-import CONTACT_US_HEADER from "assets/svgs/contactUsImage.svg"
-import PAST_TRIPS from "assets/svgs/trips.svg"
-import ARROW_RIGHT from "assets/svgs/arrowRight.svg"
-import ARROW_LEFT from "assets/svgs/grayArrowLeft.svg"
-import TWITTER from "assets/xLogo.webp"
+import ACTIVE_ICON from "assets/svgs/Ellipse 29.svg";
+import SELECTED_TRIP_IMAGE from "assets/svgs/selected.svg";
+import THREE_DOT from "assets/svgs/dot.svg";
+import MINI_GROUP_ICON from "assets/svgs/miniGroupIcon.svg";
+import MINI_PRIVATE_ICON from "assets/svgs/miniPrivateIcon.svg";
+import CONTACT_US_HEADER from "assets/svgs/contactUsImage.svg";
+import PAST_TRIPS from "assets/svgs/trips.svg";
+import ARROW_RIGHT from "assets/svgs/arrowRight.svg";
+import ARROW_LEFT from "assets/svgs/grayArrowLeft.svg";
+import SHORT_LOGO from "assets/svgs/shortLogo.svg";
+import TWITTER from "assets/xLogo.webp";
+
 export {
 	LOGO,
 	INSTAGRAM,
@@ -53,5 +55,6 @@ export {
 	PAST_TRIPS,
 	ARROW_RIGHT,
 	ARROW_LEFT,
-	TWITTER
+	TWITTER,
+	SHORT_LOGO,
 };

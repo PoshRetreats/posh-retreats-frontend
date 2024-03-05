@@ -7,7 +7,7 @@ import {
 	MenuHeaderWrapper,
 	MenuOverlay,
 } from "./style";
-import { HAMBURGER, LOGO } from "assets";
+import { HAMBURGER, LOGO, SHORT_LOGO } from "assets";
 import TopNavigation from "./navigation/TopNavigation";
 import SideMenu from "./navigation/sideMenu";
 import { Hamburger } from "./navigation/sideMenu/style";
@@ -75,7 +75,7 @@ export default function MenuHeader({ img='', title, description }: any) {
 					<SideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
 					<MenuArea style={{ backgroundColor }}>
 						<Link style={{ position: "fixed", top: 10 }} to={HOME_URL}>
-							<LogoArea src={LOGO} alt="logo" />
+							<LogoArea src={SHORT_LOGO} alt="logo" />
 						</Link>
 						<TopNavigation textColor={color} />
 					</MenuArea>
