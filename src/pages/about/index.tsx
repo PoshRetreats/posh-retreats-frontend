@@ -1,4 +1,3 @@
-import { ABOUT_HEADER } from "assets";
 import FAQ from "components/faq";
 import MenuHeader from "components/menuHeader";
 import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
@@ -56,6 +55,8 @@ export function AboutComponent({ isHome = false }) {
 }
 
 export default function About() {
+	const ABOUT_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709631176/6402B13E-0A84-469D-A2C3-29DC2C230C87_1000x750_cl9obx.jpg";
 	return (
 		<>
 			<MenuHeader

@@ -62,7 +62,7 @@ export default function ContactUs() {
 			setLoading(false);
 		}
 	}
-	console.log({ form });
+
 	return (
 		<>
 			<MenuHeader
