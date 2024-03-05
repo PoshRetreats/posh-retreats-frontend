@@ -1,4 +1,4 @@
-import { PRIVATE_TRIPS_HEADER } from "assets";
+// import { PRIVATE_TRIPS_HEADER } from "assets";
 import MenuHeader from "components/menuHeader";
 import { useState } from "react";
 import { BasicInputArea, FormArea, TripForm } from "./style";
@@ -44,6 +44,8 @@ export default function PrivateTripForm() {
 		phone: "",
 	});
 	const toast = useToastStore();
+	const PRIVATE_TRIPS_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709279758/nouaeadtojoznf1enxov.jpg";
 
 	function handleChange(e: any, name: string) {
 		setFormObj({
@@ -67,7 +69,9 @@ export default function PrivateTripForm() {
 					email: "",
 					phone: "",
 				});
-				toast.showSuccessToast('Successfully Submitted your form and we will get back to you shortly')
+				toast.showSuccessToast(
+					"Successfully Submitted your form and we will get back to you shortly"
+				);
 			}
 		} catch (err) {
 			console.log({ err });

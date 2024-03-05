@@ -60,7 +60,7 @@ export const MenuArea = styled.div`
 	align-items: center;
 	position: fixed;
 	width: 100%;
-	height: 100px;
+	height: 85px;
 	/* background-color: white; */
 	top: 0;
 	left: 0;

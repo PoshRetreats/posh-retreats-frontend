@@ -9,6 +9,10 @@ export const HowWeWorkContainer = styled.div`
 	flex-direction: column;
 	margin-bottom: 150px;
 	text-align: center;
+	max-width: 1400px;
+	margin: 0 auto;
+	margin-bottom: 200px;
+	/* margin-top: 250px; */
 
 	h1 {
 		color: var(--text-color, #020e07);
@@ -51,18 +55,25 @@ export const WrapperContainer = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 280px;
+	max-width: 260px;
 	/* height: 280px; */
 	flex-shrink: 0;
 	border-radius: 16px;
 	padding: 25px 20px;
 	text-align: center;
 	background-color: ${BrandColors.main3};
-	margin-bottom: 30px;
-  padding-bottom: 50px;
+	/* margin-bottom: 30px;
+  padding-bottom: 50px; */
+	margin-right: 8px;
+	min-height: 300px;
 
   ${media.tablet`
-  height: fit-content;
+  min-height: fit-content;
+	margin-bottom: 16px;
+`}
+ 
+ ${media.mobile`
+  width: 100%;
 `}
 
 	h2 {

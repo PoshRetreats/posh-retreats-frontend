@@ -72,8 +72,9 @@ export const ImageSection = styled.div`
 
 export const StyledImage = styled.img<AboutStyleProps>`
 	position: absolute;
-	width: 265px;
-	/* height: 255px; */
+	max-width: 305px;
+	border-radius: 8px;
+	max-height: 255px;
 	top: ${({ top }) => top};
 	right: ${({ right }) => right};
 	left: ${({ left }) => left};

@@ -1,4 +1,3 @@
-import { PUBLIC_TRIPS_HEADER } from "assets";
 import FAQ from "components/faq";
 import HowWeWork from "components/howWeWork";
 import MenuHeader from "components/menuHeader";
@@ -13,6 +12,8 @@ import ComponentLoader from "components/loaders/ComponentLoader";
 export default function Trips() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [publicTrips, setPublicTrips] = useState<any>([]);
+	const PUBLIC_TRIPS_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709191048/btqalldwguomymizel6n.jpg";
 	const toast = useToastStore();
 	async function getPublicTrips() {
 		try {
@@ -38,10 +39,7 @@ export default function Trips() {
 		<div>
 			<MenuHeader
 				title="Group Trips"
-				description="Be a part of our next group experience where you can make 
-awesome connections and explore new horizons with new
-friends. Experience new cultures, take new adventures and
-create lasting memories."
+				description="Step into the world of our vibrant group trips! Join our friendly community of explorers, immerse yourself in diverse cultures, and create lasting memories. Dive into our thoughtfully curated group travel experiences today with confidence and excitement!"
 				img={PUBLIC_TRIPS_HEADER}
 			/>
 			<GroupTripList>

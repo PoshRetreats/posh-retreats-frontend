@@ -1,5 +1,5 @@
 import useToastStore from "components/appToast/store";
-import { Checkbox } from "components/checkbox";
+// import { Checkbox } from "components/checkbox";
 import LoadingButton from "components/loaders/MainLoadingButton";
 import TripHeader from "components/menuHeader/TripHeader";
 import { BasicInput } from "pages/trips/private/Form";
@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 // import { makePostRequestWithAxios, makePutRequestWithAxios } from "requests/requests";
 import { SERVER_JOIN_PUBLIC_TRIPS } from "routes/server";
-import { CheckboxHeader, CheckboxList } from "./style";
+// import { CheckboxHeader, CheckboxList } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { TRIPS_URL } from "routes/frontend";
 import { makePutRequestWithAxios } from "requests/requests";
@@ -17,7 +17,7 @@ export enum PUBLIC_TRIP_QUESTIONS {
 	fullName = "Full Name",
 	email = "Email Address",
 	phone = "Phone number (include country code)",
-	gender = "gender",
+	gender = "Gender",
 	age = "Age",
 	nationality = "Nationality",
 	location = "Location",
@@ -138,17 +138,17 @@ export default function GroupForm() {
 		});
 	}
 
-	function handleCheckboxChange(state: boolean, name: string, label: string) {
-		console.log({ state, name, label });
-		setCheckboxObj({
-			...checkboxObj,
-			[name]: {
-				label,
-				value: state,
-			},
-		});
-	}
-	console.log({ checkboxObj });
+	// function handleCheckboxChange(state: boolean, name: string, label: string) {
+	// 	console.log({ state, name, label });
+	// 	setCheckboxObj({
+	// 		...checkboxObj,
+	// 		[name]: {
+	// 			label,
+	// 			value: state,
+	// 		},
+	// 	});
+	// }
+	// console.log({ checkboxObj });
 	async function submitPrivateTrip() {
 		try {
 			setLoading(true);
@@ -262,7 +262,7 @@ export default function GroupForm() {
 							onChange={handleChange}
 							name="findAboutTrip"
 						/>
-						<CheckboxHeader>
+						{/* <CheckboxHeader>
 							Please select your rooming/personality preferences
 						</CheckboxHeader>
 						<CheckboxList>
@@ -276,7 +276,7 @@ export default function GroupForm() {
 									}
 								/>
 							))}
-						</CheckboxList>
+						</CheckboxList> */}
 					</form>
 					<LoadingButton
 						loading={loading}

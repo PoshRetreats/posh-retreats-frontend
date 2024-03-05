@@ -1,16 +1,16 @@
 import { IS_LOCAL, IS_PRODUCTION, IS_STAGING } from "../constants/constants";
 
 const LOCAL_SERVER_URL = "http://127.0.0.1:8200";
-const DEVELOPMENT_SERVER_URL = "http://localhost:8200";
-const STAGING_SERVER_URL = "https://poshretreats-backend.onrender.com";
-const PRODUCTION_SERVER_URL = "https://poshretreats-backend.onrender.com";
+// const DEVELOPMENT_SERVER_URL = "http://localhost:8200";
+const STAGING_SERVER_URL = "https://poshretreats.onrender.com";
+const PRODUCTION_SERVER_URL = "https://posh-retreats-backend.onrender.com";
 export const SERVER_URL = IS_LOCAL
-  ? LOCAL_SERVER_URL
-  : IS_STAGING
-  ? STAGING_SERVER_URL
-  : IS_PRODUCTION
-  ? PRODUCTION_SERVER_URL
-  : DEVELOPMENT_SERVER_URL;
+	? LOCAL_SERVER_URL
+	: IS_STAGING
+	? STAGING_SERVER_URL
+	: IS_PRODUCTION
+	? PRODUCTION_SERVER_URL
+	: PRODUCTION_SERVER_URL;
 // const URL_TAG = "/api/v2";
 // const URL_TAG2 = '/api/v1';
 // const SERVER_AND_TAG = `${SERVER_URL}${URL_TAG}`;

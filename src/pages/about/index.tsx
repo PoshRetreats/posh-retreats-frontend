@@ -1,16 +1,24 @@
-import { ABOUT1, ABOUT2, ABOUT3, ABOUT_HEADER } from "assets";
 import FAQ from "components/faq";
 import MenuHeader from "components/menuHeader";
 import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { ABOUT_US_URL } from "routes/frontend";
+import ScrollAnimation from "components/animateComponent/ScrollAnimation";
 // import AnimateComponent from "components/animateComponent";
 
 export function AboutComponent({ isHome = false }) {
 	const { appNavigator } = useAppNavigator();
+	const ABOUT1 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1702126618/IMG_2461_ajpe1i.jpg";
+	// const ABOUT1 =
+	// 	"https://res.cloudinary.com/poshretreats/image/upload/IMG_6894_yndbhl.jpg";
+	const ABOUT2 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1702126619/IMG_2685_r2oian.jpg";
+	const ABOUT3 =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1708778778/FDBBA81A-7002-42B1-9B25-AF9C861F39BD_fqasez.jpg";
 	return (
-		// <AnimateComponent>
-			<SecondSection>
+		<SecondSection>
+			<ScrollAnimation>
 				<TextSection>
 					<h1>About Us</h1>
 					<p>
@@ -34,22 +42,26 @@ export function AboutComponent({ isHome = false }) {
 						)}
 					</p>
 				</TextSection>
-				<ImageSection>
+			</ScrollAnimation>
+			<ImageSection>
+				<ScrollAnimation>
 					<StyledImage r="0px" top="-120px" right="40px" src={ABOUT1} alt="about1" />
 					<StyledImage top="-20px" right="200px" src={ABOUT2} alt="about2" />
 					<StyledImage top="90px" right="60px" src={ABOUT3} alt="about3" />
-				</ImageSection>
-			</SecondSection>
-		// </AnimateComponent>
+				</ScrollAnimation>
+			</ImageSection>
+		</SecondSection>
 	);
 }
 
 export default function About() {
+	const ABOUT_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709631176/6402B13E-0A84-469D-A2C3-29DC2C230C87_1000x750_cl9obx.jpg";
 	return (
 		<>
 			<MenuHeader
 				title="About Us"
-				description="Have a look at what it’s like taking an adventure with us.
+				description="Take a look at what it’s like taking an adventure with us.
 We make every minute of your retreat worth it!"
 				img={ABOUT_HEADER}
 			/>
