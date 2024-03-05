@@ -202,7 +202,7 @@ export const PointsArea = styled.div`
 `;
 
 export const FilledText = styled.span`
-	color: #fff;
+	color: pink;
 	font-size: 12px;
 `;
 
