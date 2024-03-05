@@ -61,7 +61,7 @@ export default function About() {
 		<>
 			<MenuHeader
 				title="About Us"
-				description="Have a look at what it’s like taking an adventure with us.
+				description="Take a look at what it’s like taking an adventure with us.
 We make every minute of your retreat worth it!"
 				img={ABOUT_HEADER}
 			/>
