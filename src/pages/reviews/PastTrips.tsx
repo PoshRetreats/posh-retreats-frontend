@@ -1,4 +1,3 @@
-import { REVIEWS_HEADER } from "assets";
 import MenuHeader from "components/menuHeader";
 import { useEffect, useState } from "react";
 import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests";
@@ -38,7 +37,8 @@ export function PastTrip({ trip }: any) {
 export default function PastTrips() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [pastTrips, setPastTrips] = useState([]);
-
+	const REVIEWS_HEADER =
+		"https://res.cloudinary.com/poshretreats/image/upload/v1709343210/panuthbkdfw3c68ict8s.jpg";
 	async function getPastTrips() {
 		try {
 			const res = (await makeGetRequestWithToken(

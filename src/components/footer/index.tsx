@@ -1,7 +1,7 @@
 import { FACEBOOK, INSTAGRAM, LOGO, TIKTOK, TWITTER } from "assets";
 import { FooterContainer, FooterListDataArea, FooterLogo } from "./style";
 import FooterList, { FooterListType, ListType } from "./FooterList";
-import { CONTACT_US_URL } from "routes/frontend";
+// import { CONTACT_US_URL } from "routes/frontend";
 
 const tiktokLink = "https://www.tiktok.com/@posh.retreats?_t=8jfaklTKkdc&_r=1";
 const instagramLink =
