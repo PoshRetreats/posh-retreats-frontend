@@ -14,10 +14,7 @@ export default function PrivateTrip() {
 		<>
 			<MenuHeader
 				title="Private Trips"
-				description="Be a part of our next group experience where you can make 
-awesome connections and explore new horizons with new
-friends. Experience new cultures, take new adventures and
-create lasting memories."
+				description="Indulge in the luxury of personalization with our private trips. Whether you're a solo explorer or prefer traveling with your own crew, we've got you covered. We handle all the trip planning and activity bookings, ensuring that every moment is customized to your desires. Say goodbye to the hassle of planning and booking, and embrace the joy of a seamless, stress-free journey."
 				img={PRIVATE_TRIPS_HEADER}
 			/>
 			<RequestFormLinkArea>
