@@ -94,7 +94,7 @@ const howWeWorkData: any = {
 export default function HowWeWork({ type = "home" }) {
 	return (
 		// <AnimateComponent>
-		<HowWeWorkContainer>
+		<HowWeWorkContainer isHome={type === "home"}>
 			<h1>How We Work</h1>
 			<HowWeWorkWrapper>
 				{howWeWorkData[type].map((workData: any, i: number) => (

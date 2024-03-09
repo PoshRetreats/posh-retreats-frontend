@@ -148,14 +148,14 @@ export default function GroupTripOverView() {
 						<h3>Pricing</h3>
 						<p>
 							<br />
-							The package cost of your trip is highlighted in the table on the right.
-							Please note that all displayed prices are based on double occupancy
-							meaning you get to share your room/suite with a fellow adventurer. At
-							Posh Retreats, we provide you the freedom to settle payments either in
-							full or through convenient monthly installments.
+							The cost of your trip is highlighted in the table. Please note that all
+							displayed prices are based on double occupancy meaning you get to share
+							your room/suite with a fellow adventurer. At Posh Retreats, we provide
+							you the freedom to settle payments either in full or through convenient
+							monthly installments.
 							<br /> <br /> Feel free to join an available trip at any time, simply
 							cover the deposit and any outstanding payments, then settle balances by
-							their due date..
+							their due date.
 						</p>
 					</PaymentFirstSection>
 					<PaymentSecondFirstSection>
@@ -166,13 +166,13 @@ export default function GroupTripOverView() {
 								{commaNumber(data?.amount)}
 							</h3>
 						</div>
-						<div>
+						{/* <div>
 							<h3>Deposit</h3>
 							<h3>
 								{CURRENCY}
 								{commaNumber(data?.review?.initialDeposit)}
 							</h3>
-						</div>
+						</div> */}
 						{data?.review?.paymentPlan?.map((plan: any, i: number) => (
 							<div key={i}>
 								<h3>

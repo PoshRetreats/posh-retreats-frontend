@@ -1,6 +1,6 @@
 import FAQ from "components/faq";
 import MenuHeader from "components/menuHeader";
-import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
+import { AddSpace, ImageSection, SecondSection, StyledImage, TextSection } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { ABOUT_US_URL } from "routes/frontend";
 import ScrollAnimation from "components/animateComponent/ScrollAnimation";
@@ -66,6 +66,7 @@ We make every minute of your retreat worth it!"
 				img={ABOUT_HEADER}
 			/>
 			<AboutComponent />
+			<AddSpace />
 			<FAQ />
 		</>
 	);

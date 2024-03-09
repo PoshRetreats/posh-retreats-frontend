@@ -2,7 +2,10 @@ import styled from "styled-components";
 import BrandColors from "utilities/styles/colors";
 import media from "utilities/styles/media";
 
-export const HowWeWorkContainer = styled.div`
+interface HowWeWorkComponentProps {
+	isHome: boolean;
+}
+export const HowWeWorkContainer = styled.div<HowWeWorkComponentProps>`
 	padding: 26px 64px;
 	display: flex;
 	align-items: center;
@@ -12,12 +15,10 @@ export const HowWeWorkContainer = styled.div`
 	max-width: 1400px;
 	margin: 0 auto;
 	margin-bottom: 200px;
-	/* margin-top: 250px; */
 
 	h1 {
 		color: var(--text-color, #020e07);
 		text-align: center;
-		/* font-family: Quando; */
 		font-size: 32px;
 		font-style: normal;
 		font-weight: 400;
@@ -32,10 +33,11 @@ export const HowWeWorkContainer = styled.div`
 	}
 
 	${media.tablet`
-		align-items: center;
-		padding: 26px 16px;
+		margin-top: 370px;
+    align-items: center;
+    padding: 26px 16px;
     margin-bottom: 0px;
-	`}
+  `}
 `;
 
 export const HowWeWorkWrapper = styled.div`
@@ -67,12 +69,12 @@ export const WrapperContainer = styled.div`
 	margin-right: 8px;
 	min-height: 300px;
 
-  ${media.tablet`
+	${media.tablet`
   min-height: fit-content;
 	margin-bottom: 16px;
 `}
- 
- ${media.mobile`
+
+	${media.mobile`
   width: 100%;
 `}
 
@@ -111,7 +113,7 @@ export const WrapperContainer = styled.div`
 		font-weight: 400;
 		line-height: normal;
 
-    ${media.tablet`
+		${media.tablet`
     font-size: 12px;
 	`}
 	}

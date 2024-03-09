@@ -77,11 +77,22 @@ function SingleTripHeader({ data, showJoinButton, isComponent = false }: any) {
 				)}
 				<DescriptionArea>
 					<TagContainerList>
-						{data.tags.map((tag: string, i: number) => (
+						{/* {data.tags.map((tag: string, i: number) => (
 							<TagContainer key={i}>
 								<p style={{ marginTop: "unset" }}>{tag}</p>
 							</TagContainer>
-						))}
+						))} */}
+						{data.tags.map((tag: string, i: number) => {
+							if(i < 4){
+								return (
+									<TagContainer key={i}>
+										<p style={{ marginTop: "unset" }}>{tag}</p>
+									</TagContainer>
+								);
+							}else{
+								return null;
+							}
+						})}
 					</TagContainerList>
 					<p style={{ marginTop: 10 }}>{`${date} - ${returnDate}`}</p>
 					<h3>{data.title}</h3>

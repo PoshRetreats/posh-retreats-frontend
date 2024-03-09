@@ -15,7 +15,7 @@ import BrandColors from "utilities/styles/colors";
 import { Link } from "react-router-dom";
 import { HOME_URL } from "routes/frontend";
 
-export default function MenuHeader({ img='', title, description }: any) {
+export default function MenuHeader({ img = "", title, description }: any) {
 	const [sideMenu, setSideMenu] = useState(false);
 	const [scrolling, setScrolling] = useState(false);
 
