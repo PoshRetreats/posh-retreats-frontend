@@ -39,6 +39,7 @@ export default function PastTrips() {
 	const [pastTrips, setPastTrips] = useState([]);
 	const REVIEWS_HEADER =
 		"https://res.cloudinary.com/poshretreats/image/upload/v1709343210/panuthbkdfw3c68ict8s.jpg";
+
 	async function getPastTrips() {
 		try {
 			const res = (await makeGetRequestWithToken(
@@ -56,6 +57,7 @@ export default function PastTrips() {
 	useEffect(() => {
 		getPastTrips();
 	}, []);
+
 	return (
 		<div>
 			<MenuHeader

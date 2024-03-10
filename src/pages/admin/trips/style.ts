@@ -174,8 +174,9 @@ export const TravellerInfoContainer = styled.div`
 	border-radius: 4px;
 	background: white;
 	width: 40%;
-	position: fixed;
 	right: 20px;
+	position: absolute;
+	overflow: scroll;
 
 	${media.tablet`
    
