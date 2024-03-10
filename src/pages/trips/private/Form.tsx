@@ -6,6 +6,8 @@ import { makePostRequestWithAxios } from "requests/requests";
 import { SERVER_PRIVATE_TRIP } from "routes/server";
 import LoadingButton from "components/loaders/MainLoadingButton";
 import useToastStore from "components/appToast/store";
+import { PRIVATE_TRIPS_URL } from "routes/frontend";
+import useAppNavigator from "hooks/useAppNavigator";
 
 export enum PRIVATE_TRIP_QUESTIONS {
 	fullName = "Full Name",
@@ -44,6 +46,7 @@ export default function PrivateTripForm() {
 		phone: "",
 	});
 	const toast = useToastStore();
+	const { appNavigator } = useAppNavigator();
 	const PRIVATE_TRIPS_HEADER =
 		"https://res.cloudinary.com/poshretreats/image/upload/v1709279758/nouaeadtojoznf1enxov.jpg";
 
@@ -69,6 +72,7 @@ export default function PrivateTripForm() {
 					email: "",
 					phone: "",
 				});
+				appNavigator(PRIVATE_TRIPS_URL);
 				toast.showSuccessToast(
 					"Successfully Submitted your form and we will get back to you shortly"
 				);

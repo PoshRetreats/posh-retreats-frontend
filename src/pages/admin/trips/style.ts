@@ -167,3 +167,18 @@ export const TripCapacityMain = styled.div`
 		}
 	}
 `;
+
+export const TravellerInfoContainer = styled.div`
+	padding: 16px;
+	margin-top: 16px;
+	border-radius: 4px;
+	background: white;
+	width: 40%;
+	right: 20px;
+	position: absolute;
+	overflow: scroll;
+
+	${media.tablet`
+   
+	`}
+`;

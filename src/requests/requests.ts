@@ -66,7 +66,7 @@ export async function makePutRequestWithAxios(url: string, body: any) {
 				},
 			})
 			.then((res) => {
-				resolve(res?.data?.response);
+				resolve(res?.data);
 			})
 			.catch(({ response }) => {
 				reject(response?.data);

@@ -15,7 +15,7 @@ export const MenuHeaderContainer = styled.div<PrivateStyleProps>`
 
 	${media.mobile`
     padding: 16px;
-		height: 65vh;
+		height: 85vh;
 	`}
 `;
 
@@ -37,7 +37,7 @@ export const MenuOverlay = styled.div`
 	position: relative;
 	overflow: hidden;
 	z-index: 200;
-	
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -74,7 +74,6 @@ export const LogoArea = styled.img`
 	width: 43px;
 	margin-left: 35px;
 	margin-top: 5px;
-	
 
 	${media.tablet`
 	

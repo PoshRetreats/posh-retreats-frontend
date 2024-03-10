@@ -11,6 +11,7 @@ import {
 } from "./style";
 import {
 	ADMIN_GROUP_TRIPS_DETAILS_URL,
+	ADMIN_GROUP_TRIP_USERS_URL,
 	TRIPS_OVERVIEW_URL,
 	getItineraryUrl,
 } from "routes/frontend";
@@ -73,6 +74,14 @@ function AdminFeatures({ data }: any) {
 		}
 	}
 
+	async function viewRegistrations() {
+		console.log({ data });
+		appNavigator(ADMIN_GROUP_TRIP_USERS_URL, {
+			travellers: [...data?.joinedTravellersForm],
+		});
+		return null;
+	}
+
 	return (
 		<AdminFeaturesContainer>
 			{!hasItinerary && <button onClick={goToItinerary}>Add Itinerary</button>}
@@ -80,6 +89,7 @@ function AdminFeatures({ data }: any) {
 				{deleting ? "deleting..." : "Delete Trip"}
 			</button>
 			<button onClick={endTrip}>{ending ? "ending..." : "End Trip"}</button>
+			<button onClick={viewRegistrations}>Registrations</button>
 		</AdminFeaturesContainer>
 	);
 }

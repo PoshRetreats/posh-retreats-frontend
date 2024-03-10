@@ -39,6 +39,8 @@ export const ADMIN_GROUP_TRIPS_ITINERARY_URL =
 	"/admin/user/group-trip/itinerary/:tripId";
 export const getItineraryUrl = (tripId: string) =>
 	`/admin/user/group-trip/itinerary/${tripId}`;
+export const ADMIN_GROUP_TRIP_USERS_URL = "/admin/user/group-trip/forms";
+// export const ADMIN_PRIVATE_TRIPS_DETAILS_URL = "/admin/user/private_trips/details";
 
 //ADMIN PRIVATE TRIP
 export const ADMIN_PRIVATE_TRIPS_URL = "/admin/user/private_trips";
@@ -47,8 +49,9 @@ export const ADMIN_PRIVATE_TRIPS_DETAILS_URL = "/admin/user/private_trips/detail
 //ADMIN PAST TRIP
 export const ADMIN_PAST_TRIPS_DETAILS_URL = "/admin/user/past_trips_details";
 export const ADMIN_PAST_TRIPS_URL = "/admin/user/past_trips";
-export const ADMIN_PAST_TRIPS_HOME_DETAILS_URL = "/admin/user/past_trips-home-details/:PastTrips_id"
-export const ADMIN_PAST_TRIPS_ADD = "/admin/user/add-past-trip"
+export const ADMIN_PAST_TRIPS_HOME_DETAILS_URL =
+	"/admin/user/past_trips-home-details/:PastTrips_id";
+export const ADMIN_PAST_TRIPS_ADD = "/admin/user/add-past-trip";
 
 //ADMIN MESSAGE
 export const ADMIN_MESSAGES_URL = "/admin/user/messages";

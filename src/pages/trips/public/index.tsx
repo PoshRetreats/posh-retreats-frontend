@@ -8,6 +8,7 @@ import { GeneralResponseType, makeGetRequestWithToken } from "requests/requests"
 import { SERVER_GET_PUBLIC_TRIPS } from "routes/server";
 import useToastStore from "components/appToast/store";
 import ComponentLoader from "components/loaders/ComponentLoader";
+import { RemoveMobileSpace } from "../private/style";
 
 export default function Trips() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -48,6 +49,7 @@ export default function Trips() {
 					<MiniGroupTrip key={key} data={trip} isAdmin={false} />
 				))}
 			</GroupTripList>
+			<RemoveMobileSpace />
 			<HowWeWork type="group" />
 			<FAQ type="group" />
 		</div>

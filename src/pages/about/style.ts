@@ -84,3 +84,11 @@ export const StyledImage = styled.img<AboutStyleProps>`
     width: 215px;
   `};
 `;
+
+export const AddSpace = styled.img<any>`
+	margin-top: 200px;
+	${media.tablet`
+	margin-top: 250px;
+   
+  `};
+`;

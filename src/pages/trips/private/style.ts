@@ -84,7 +84,7 @@ export const BasicInputArea = styled.div`
 
 	`}
 	}
-	
+
 	textarea {
 		width: 100%;
 		background-color: transparent;
@@ -136,5 +136,11 @@ export const FormButton = styled.button`
 
 	${media.tablet`
 
+	`}
+`;
+
+export const RemoveMobileSpace = styled.div<any>`
+	${media.tablet`
+	margin-top: -370px;
 	`}
 `;

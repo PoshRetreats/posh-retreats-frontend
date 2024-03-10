@@ -172,7 +172,8 @@ export default function GroupForm() {
 				});
 				appNavigator(TRIPS_URL);
 				toast.showSuccessToast(
-					"Successfully Submitted your form and we will get back to you shortly"
+					"Thank you for submitting your form! 🌟",
+					`Your inquiry is important to us. A member of our team will be in touch with you shortly. In the meantime, feel free to explore more about Posh Retreats on our website.`
 				);
 			}
 		} catch (err) {
@@ -247,16 +248,16 @@ export default function GroupForm() {
 							onChange={handleChange}
 							name="occupancy"
 						/>
-						<BasicInput
+						{/* <BasicInput
 							title={PUBLIC_TRIP_QUESTIONS.sleepingArrangements}
 							onChange={handleChange}
 							name="sleepingArrangements"
-						/>
-						<BasicInput
+						/> */}
+						{/* <BasicInput
 							title={PUBLIC_TRIP_QUESTIONS.shirtSize}
 							onChange={handleChange}
 							name="shirtSize"
-						/>
+						/> */}
 						<BasicInput
 							title={PUBLIC_TRIP_QUESTIONS.findAboutTrip}
 							onChange={handleChange}

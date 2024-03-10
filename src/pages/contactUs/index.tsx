@@ -67,8 +67,7 @@ export default function ContactUs() {
 		<>
 			<MenuHeader
 				title="Contact Us"
-				description="Have a look at what it’s like taking an adventure with us.
-We make every minute of your retreat worth it!"
+				description="Got questions? We're here to help! Reach out to the Posh Retreats team for personalized assistance, booking inquiries, or any travel-related queries"
 				img={CONTACT_US_HEADER}
 			/>
 			<ContactUsContainer>

@@ -28,7 +28,7 @@ export const TripHolderContainer = styled.div`
 	`}
 
 	${media.mobile`
-		margin-top: -200px;
+		margin-top: -45px;
 	`}
 `;
 

@@ -1,6 +1,6 @@
 import FAQ from "components/faq";
 import MenuHeader from "components/menuHeader";
-import { ImageSection, SecondSection, StyledImage, TextSection } from "./style";
+import { AddSpace, ImageSection, SecondSection, StyledImage, TextSection } from "./style";
 import useAppNavigator from "hooks/useAppNavigator";
 import { ABOUT_US_URL } from "routes/frontend";
 import ScrollAnimation from "components/animateComponent/ScrollAnimation";
@@ -61,11 +61,11 @@ export default function About() {
 		<>
 			<MenuHeader
 				title="About Us"
-				description="Take a look at what it’s like taking an adventure with us.
-We make every minute of your retreat worth it!"
+				description="At Posh Retreats, we're dedicated to crafting extraordinary travel experiences tailored to your dreams. With a blend of expertise, passion, and personalized service, we turn wanderlust into reality, one journey at a time"
 				img={ABOUT_HEADER}
 			/>
 			<AboutComponent />
+			<AddSpace />
 			<FAQ />
 		</>
 	);

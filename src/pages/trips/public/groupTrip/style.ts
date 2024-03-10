@@ -96,13 +96,11 @@ export const ImageDiv = styled.div<GroupTripStyleProps>`
 	`}
 `;
 
-
 export const OverviewArea = styled.div<GroupTripStyleProps>`
 	display: flex;
 	padding: 64px;
 	justify-content: space-between;
 
-	
 	div {
 		width: 48%;
 
@@ -365,6 +363,10 @@ export const PaymentSecondFirstSection = styled.div`
 		font-size: 21px;
 		font-style: normal;
 		font-weight: normal;
+
+		${media.mobile`
+		font-size: 16px
+	`}
 	}
 
 	h4 {
@@ -437,11 +439,20 @@ export const IncludedAndExcludedArea = styled.div<GroupTripStyleProps>`
 	justify-content: space-between;
 
 	div {
+		width: 100%;
+
+		${media.mobile`
+			width: 50%;
+	`}
 	}
 
 	h3 {
-		text-align: center;
+		/* text-align: center; */
 		margin-bottom: 16px;
+
+		${media.tablet`
+
+	`}
 	}
 
 	p {
