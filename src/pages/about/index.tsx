@@ -61,8 +61,7 @@ export default function About() {
 		<>
 			<MenuHeader
 				title="About Us"
-				description="Take a look at what it’s like taking an adventure with us.
-We make every minute of your retreat worth it!"
+				description="At Posh Retreats, we're dedicated to crafting extraordinary travel experiences tailored to your dreams. With a blend of expertise, passion, and personalized service, we turn wanderlust into reality, one journey at a time"
 				img={ABOUT_HEADER}
 			/>
 			<AboutComponent />
