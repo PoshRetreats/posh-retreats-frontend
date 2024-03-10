@@ -60,7 +60,7 @@ export default function PastTrips() {
 		<div>
 			<MenuHeader
 				title="Past Trips and Reviews"
-				description="Have a look at what it’s like taking an adventure with us.
+				description="Take a look at what it’s like taking an adventure with us.
 We make every minute of your retreat worth it!"
 				img={REVIEWS_HEADER}
 			/>

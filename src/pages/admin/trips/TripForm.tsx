@@ -5,7 +5,6 @@ import AdminHeaderTitle from "components/menuHeader/admin/HeaderTitle";
 import { AdminHeaderSpace } from "components/menuHeader/admin/style";
 import {
 	MessageContainer,
-	MessageDetailsContainer,
 	MessageDetailsWrapper,
 	MessageFlexContainer,
 	MessagesListContainer,
