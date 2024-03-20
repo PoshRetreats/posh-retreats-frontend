@@ -5,18 +5,19 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <App />
-      </LocalizationProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<LocalizationProvider dateAdapter={AdapterDayjs}>
+				<App />
+			</LocalizationProvider>
+		</BrowserRouter>
+	</React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

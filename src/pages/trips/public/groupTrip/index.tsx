@@ -19,19 +19,49 @@ import ReactSlickSlider from "components/reactSlickSlider";
 import useAppNavigator from "hooks/useAppNavigator";
 import { CURRENCY } from "constants/constants";
 import commaNumber from "comma-number";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { makeGetRequestWithToken } from "requests/requests";
+import { getTripDetailsEndpoint } from "routes/server";
+import ComponentLoader from "components/loaders/ComponentLoader";
 
 export default function GroupTripOverView() {
-	// const location = useLocation();
-	// const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
+	const [tripData, setTripData] = useState<any>(null);
 	const { browserState, appNavigator } = useAppNavigator();
-	const data = browserState.tripDetails;
-	console.log({ data, browserState });
+	const params: any = useParams();
+	const data = browserState.tripDetails || tripData;
+	console.log({ data, browserState, params });
 	// const date = new Date(data.depatureDate)?.toDateString();
-	const formUrl = gotoGroupTripForm(data._id);
+	const formUrl = data && gotoGroupTripForm(data._id);
 	const hasItinerary = !!data?.review;
 
 	function gotoForm() {
 		appNavigator(formUrl, { trip: data });
+	}
+
+	async function getTripDetails() {
+		try {
+			setLoading(true);
+			const endpoint = getTripDetailsEndpoint(params.tripID);
+			const res: any = await makeGetRequestWithToken(endpoint);
+			console.log({ res });
+			if (res.success) {
+				setTripData(res.data);
+			}
+		} catch (err) {
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getTripDetails();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	if (loading || !data) {
+		return <ComponentLoader />;
 	}
 	return (
 		<div>
