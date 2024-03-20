@@ -14,6 +14,7 @@ import {
 	ADMIN_GROUP_TRIP_USERS_URL,
 	TRIPS_OVERVIEW_URL,
 	getItineraryUrl,
+	gotoTripOverview,
 } from "routes/frontend";
 import {
 	GeneralResponseType,
@@ -107,6 +108,7 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 	});
 
 	function handleTripClick() {
+		const overviewUrl = gotoTripOverview(data?._id)
 		if (isAdmin) {
 			appNavigator(ADMIN_GROUP_TRIPS_DETAILS_URL, {
 				tripDetails: { ...data },
@@ -114,7 +116,7 @@ export default function MiniGroupTrip({ data, isAdmin }: any) {
 			});
 			return;
 		}
-		appNavigator(TRIPS_OVERVIEW_URL, { tripDetails: { ...data } });
+		appNavigator(overviewUrl, { tripDetails: { ...data } });
 	}
 	return (
 		<MiniGroupTripContainer img={data.images[0]}>

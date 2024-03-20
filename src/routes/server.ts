@@ -24,23 +24,24 @@ export const SERVER_CREATE_ADMIN = `${SERVER_URL}/admin/create`;
 export const CONTACT_US = `${SERVER_URL}/contact-us`;
 
 //Trips
-export const SERVER_GROUP_TRIP = `${SERVER_URL}/trip/public/create`
-export const SERVER_PRIVATE_TRIP = `${SERVER_URL}/trip/private/create`
-export const SERVER_CREATE_TRIP = `${SERVER_URL}/trip/create`
-export const SERVER_ALL_TRIPS = `${SERVER_URL}/trip/all`
-export const SERVER_GET_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/all`
-export const SERVER_GET_ADMIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/admin/all`
-export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`
-export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`
+export const SERVER_GROUP_TRIP = `${SERVER_URL}/trip/public/create`;
+export const SERVER_PRIVATE_TRIP = `${SERVER_URL}/trip/private/create`;
+export const SERVER_CREATE_TRIP = `${SERVER_URL}/trip/create`;
+export const SERVER_ALL_TRIPS = `${SERVER_URL}/trip/all`;
+export const SERVER_GET_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/all`;
+export const SERVER_GET_ADMIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/admin/all`;
+export const SERVER_GET_LATEST_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/latest`;
+export const SERVER_JOIN_PUBLIC_TRIPS = `${SERVER_URL}/trip/join`;
 export const SERVER_DELETE_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/delete`;
 export const SERVER_END_PUBLIC_TRIPS = `${SERVER_URL}/trip/public/end`;
 export const SERVER_CREATE_TRIP_ITINERARY = `${SERVER_URL}/trip/public/itinerary`;
 export const SERVER_GET_PAST_TRIPS = `${SERVER_URL}/trip/past`;
 export const SERVER_GET_PAST_TRIP_REVIEWS = `${SERVER_URL}/trip/review/:id`;
+export const SERVER_GET_TRIP_OVERVIEW = `${SERVER_URL}/trip/:id`;
+export const getTripDetailsEndpoint = (id: string) => `${SERVER_URL}/trip/${id}`;
 
+export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/trip/past`;
+export const SERVER_GET_PRIVATE_TRIP = `${SERVER_URL}/trip/private/all`;
+export const SERVER__ADD_REVIEW = `${SERVER_URL}/trip/public/review`;
 
-export const SERVER_PAST_TRIPS_AND_REVIEW = `${SERVER_URL}/trip/past`
-export const SERVER_GET_PRIVATE_TRIP = `${SERVER_URL}/trip/private/all`
-export const SERVER__ADD_REVIEW = `${SERVER_URL}/trip/public/review`
-
-export const SERVER_PAST_TRIP_PREVIEW = `${SERVER_URL}/trip/review`
+export const SERVER_PAST_TRIP_PREVIEW = `${SERVER_URL}/trip/review`;
