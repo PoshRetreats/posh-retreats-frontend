@@ -1,11 +1,9 @@
-// import { getAuthCookie } from 'utilities/helpers';
 import axios from "axios";
 import { getAuthCookie, removeAuthCookie } from "utilities/helpers";
 
-
 function forceLogOut() {
-	removeAuthCookie()
-	window.location.href = '/'
+	removeAuthCookie();
+	window.location.href = "/";
 }
 
 export interface GeneralResponseType {
@@ -23,13 +21,14 @@ export enum CONTENT_TYPES {
 }
 
 export function handleUnauthorizedUser(response: any) {
-	if (response.data.statusCode === 403) {
-		alert("user forbidden");
+	if (response?.data?.statusCode === 403) {
+		alert("User forbidden");
 		forceLogOut();
-	}
-	if (response.data.statusCode === 401) {
-		alert("user unauthorized");
+	} else if (response?.data?.statusCode === 401) {
+		alert("User unauthorized");
 		forceLogOut();
+	} else {
+		console.warn("Unexpected error response:", response);
 	}
 }
 
@@ -43,14 +42,15 @@ export async function makePostRequestWithAxios(url: string, body: any) {
 				},
 			})
 			.then((res: any) => {
-				if (res.success === false) {
+				if (res?.data?.success === false) {
 					reject(res?.data);
+				} else {
+					resolve(res?.data);
 				}
-				resolve(res?.data);
 			})
 			.catch(({ response }) => {
 				handleUnauthorizedUser(response);
-				reject(response?.data);
+				reject(response?.data || "An unexpected error occurred.");
 			});
 	});
 	return promise;
@@ -69,7 +69,8 @@ export async function makePutRequestWithAxios(url: string, body: any) {
 				resolve(res?.data);
 			})
 			.catch(({ response }) => {
-				reject(response?.data);
+				handleUnauthorizedUser(response);
+				reject(response?.data || "An unexpected error occurred.");
 			});
 	});
 	return promise;
@@ -86,10 +87,11 @@ export async function makeDeleteRequestWithAxios(url: string, body: any) {
 				},
 			})
 			.then((res) => {
-				resolve(res.data?.response);
+				resolve(res?.data?.response);
 			})
 			.catch(({ response }) => {
-				reject(response?.data);
+				handleUnauthorizedUser(response);
+				reject(response?.data || "An unexpected error occurred.");
 			});
 	});
 	return promise;
@@ -109,7 +111,10 @@ export async function makeGetRequestWithToken(url: string) {
 			})
 			.catch(({ response }) => {
 				handleUnauthorizedUser(response);
-				reject(response?.data?.data?.message);
+				const errorMessage =
+					response?.data?.data?.message ||
+					"An error occurred while making a GET request";
+				reject(errorMessage);
 			});
 	});
 	return promise;
